@@ -121,7 +121,6 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size):
     entropias_original.extend(calcular_entropia(seq_original, k))               # entropia de la secuencia original 
     entropias_mutada.extend(calcular_entropia(seq_mutada, k))                   # entropia de la secuencia mutada
 
-    print("Ejemplo de mutaciones:", list(mutaciones.items())[:10])
     print("Original:", seq_original[762273])
     print("Mutada:", seq_mutada[762273])
 
