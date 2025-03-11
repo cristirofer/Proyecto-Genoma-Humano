@@ -140,7 +140,6 @@ def graficos(posiciones, entropias_original, entropias_mutada):
     plt.show()
 
 
-
 # Parametros
 vcf = "RP924_9589186940.vcf"
 fasta_ref = "sequence (1).fasta"
