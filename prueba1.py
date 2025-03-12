@@ -40,8 +40,6 @@ def aplicar_mutaciones(sequence, mut, chrom, start):
     sequence = list(sequence)                                   # Pasamos a lista, ya que las listas no se pueden modificar
     mutaciones_chrom = mut.get(str(chrom), {})  # Accedemos a las mutaciones del cromosoma
     
-    print(f"Mutaciones disponibles para {chrom}: {len(mutaciones_chrom)}")
-    print(f"Mutaciones disponibles para {chrom}: {len(mut.get(chrom, {}))}")
     for pos, (ref, alt) in mutaciones_chrom.items():
         idx = pos - start
         if 0 <= idx < len(sequence) and sequence[idx] != "N":  # Evitamos mutaciones en zonas desconocidas
@@ -60,8 +58,8 @@ def comparar_listas(lista1, lista2):
     else:
         diferencias = [(i, lista1[i], lista2[i]) for i in range(len(lista1)) if not (pd.isna(lista1[i]) and pd.isna(lista2[i])) and lista1[i] != lista2[i]]
         print(f"Las listas son diferentes en {len(diferencias)} posiciones.")
-        for i, val1, val2 in diferencias[:100]:  # Muestra solo las primeras 100 diferencias
-            print(f"Posición {i}: Original={val1}, Mutada={val2}")
+        #for i, val1, val2 in diferencias[:100]:  # Muestra solo las primeras 100 diferencias
+            #print(f"Posición {i}: Original={val1}, Mutada={val2}")
         return False
 
 
@@ -125,6 +123,15 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size):
     print("Mutada:", seq_mutada[762273])
 
     print(f"Total posiciones procesadas: {len(posiciones)}")
+    
+    posiciones_altas_entropia = obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada, seq_original, seq_mutada, start)
+    # Mostrar algunas posiciones de alta entropía
+    print("Posiciones con alta entropía y sus bases:")
+    for pos, base_orig, base_mut, ent_orig, ent_mut in posiciones_altas_entropia[:10]:
+        print(f"Posición {pos}: Original={base_orig}, Mutada={base_mut}, Entropía_Original={ent_orig:.4f}, Entropía_Mutada={ent_mut:.4f}")
+
+
+
     return posiciones, entropias_original, entropias_mutada
 
 #funcion para los graficos de la entropía y la frecuencia de los kmers
@@ -139,14 +146,54 @@ def graficos(posiciones, entropias_original, entropias_mutada):
     plt.show()
 
 
+def obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada, seq_original, seq_mutada, start, umbral_percentil=95):
+    """
+    Encuentra las posiciones con mayor entropía y extrae las bases en la secuencia original y mutada.
+
+    Parámetros:
+    - posiciones: Lista de posiciones en la secuencia.
+    - entropias_original: Lista de entropías de la secuencia original.
+    - entropias_mutada: Lista de entropías de la secuencia mutada.
+    - seq_original: Secuencia original.
+    - seq_mutada: Secuencia mutada.
+    - start: Posición inicial del bloque procesado.
+    - umbral_percentil: Percentil para definir entropía alta (por defecto, 95%).
+
+    Retorna:
+    - Lista con (posición, base_original, base_mutada, entropía_original, entropía_mutada).
+    """
+
+    # Convertir listas a arrays para facilitar operaciones
+    entropias_original = np.array(entropias_original)
+    entropias_mutada = np.array(entropias_mutada)
+
+    # Calcular el umbral de alta entropía
+    umbral_original = np.percentile(entropias_original[~np.isnan(entropias_original)], umbral_percentil)
+    umbral_mutada = np.percentile(entropias_mutada[~np.isnan(entropias_mutada)], umbral_percentil)
+
+    # Filtrar posiciones con alta entropía
+    posiciones_altas = []
+    for i, pos in enumerate(posiciones):
+        if entropias_original[i] >= umbral_original or entropias_mutada[i] >= umbral_mutada:
+            idx = pos - start  # Convertir posición real a índice en la secuencia
+            if 0 <= idx < len(seq_original):  # Verificar que esté dentro del rango válido
+                base_original = seq_original[idx]
+                base_mutada = seq_mutada[idx]
+                posiciones_altas.append((pos, base_original, base_mutada, entropias_original[i], entropias_mutada[i]))
+
+    return posiciones_altas
+
+
+
 # Parametros
 vcf = "RP924_9589186940.vcf"
 fasta_ref = "sequence (1).fasta"
 chrom = 1
 chrom_num = "NC_000001.10"
-k = 13                              # Tamaño de la ventana para los kmers
+k = 8                              # Tamaño de la ventana para los kmers
 
 # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
 posiciones, entropias_original, entropias_mutada = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, 1000000)
 comparar_listas(entropias_original, entropias_mutada)
+
 graficos(posiciones, entropias_original, entropias_mutada)
