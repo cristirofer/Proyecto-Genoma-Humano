@@ -1,5 +1,7 @@
 import math
 import time
+import matplotlib
+matplotlib.use('TkAgg')  # Backend sin interfaz gráfica (genera imágenes en archivos)
 import matplotlib.pyplot as plt
 from collections import defaultdict
 from Bio import Entrez, SeqIO
@@ -106,7 +108,7 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size):
     posiciones = []                                 # Lista para almacenar las posiciones
     
     #for start in range(0, 249250621, block_size):  # Salta por bloques de tamaño block_size
-    start = 0
+    start = 700000
     seq_original = get_sequence_from_fasta(fasta_ref, chrom_num, start, start + block_size) # extrae la secuencia desde start hasta start+block_size
     # Si no encuentra la secuencia termina el bucle
     if not seq_original:
@@ -119,8 +121,8 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size):
     entropias_original.extend(calcular_entropia(seq_original, k))               # entropia de la secuencia original 
     entropias_mutada.extend(calcular_entropia(seq_mutada, k))                   # entropia de la secuencia mutada
 
-    print("Original:", seq_original[762273])
-    print("Mutada:", seq_mutada[762273])
+    print("Original:", seq_original[62631])
+    print("Mutada:", seq_mutada[62631])
 
     print(f"Total posiciones procesadas: {len(posiciones)}")
     
@@ -136,14 +138,26 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size):
 
 #funcion para los graficos de la entropía y la frecuencia de los kmers
 def graficos(posiciones, entropias_original, entropias_mutada):
+    print("Guardando el gráfico...")
+    
+    if len(posiciones) > 100000:
+        print("Demasiados puntos para graficar, reduciendo el tamaño...")
+        posiciones = posiciones[::5]  # Tomar 1 de cada 5 puntos
+        entropias_original = entropias_original[::5]
+        entropias_mutada = entropias_mutada[::5]
+
+
     plt.figure(figsize=(10, 5))
-    plt.plot(posiciones, entropias_original, label="Original", color="blue", alpha=0.7)
-    plt.plot(posiciones, entropias_mutada, label="Mutada", color="red", alpha=0.7)
+    plt.bar(posiciones, entropias_original, color="blue", alpha=0.5, label="Original", width=1)
+    plt.bar(posiciones, entropias_mutada, color="red", alpha=0.5, label="Mutada", width=1)
     plt.xlabel("Posición en la secuencia")
     plt.ylabel("Entropía")
     plt.title("Entropía en cada posición")
     plt.legend()
-    plt.show()
+    plt.savefig("grafico.png")
+    plt.close()
+
+
 
 
 def obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada, seq_original, seq_mutada, start, umbral_percentil=95):
@@ -190,10 +204,10 @@ vcf = "RP924_9589186940.vcf"
 fasta_ref = "sequence (1).fasta"
 chrom = 1
 chrom_num = "NC_000001.10"
-k = 8                              # Tamaño de la ventana para los kmers
+k = 3                              # Tamaño de la ventana para los kmers
 
 # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
-posiciones, entropias_original, entropias_mutada = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, 1000000)
+posiciones, entropias_original, entropias_mutada = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, 100000)
 comparar_listas(entropias_original, entropias_mutada)
 
 graficos(posiciones, entropias_original, entropias_mutada)
