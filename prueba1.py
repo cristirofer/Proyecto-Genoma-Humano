@@ -38,20 +38,31 @@ def get_sequence_from_fasta(fasta_file, chrom, start, end):
     return None
 
 #Aqui aplicamos las mutaciones en la secuencia de refenrecia
-def aplicar_mutaciones(sequence, mut, chrom, start):
-    sequence = list(sequence)                                   # Pasamos a lista, ya que las listas no se pueden modificar
-    mutaciones_chrom = mut.get(str(chrom), {})  # Accedemos a las mutaciones del cromosoma
-    
+def aplicar_mutaciones(sequence, mut, chrom, start, vcf_output):
+    sequence = list(sequence)                               # Pasamos a lista, ya que las listas no se pueden modificar
+    mutaciones_chrom = mut.get(str(chrom), {})              # Accedemos a las mutaciones del cromosoma
+    mutaciones_no_aplicadas = []                            # Para guardar las mutaciones que no se pueden aplicar porque no coincide el alelo de refencia
+
     for pos, (ref, alt) in mutaciones_chrom.items():
-        idx = pos - start
-        if 0 <= idx < len(sequence) and sequence[idx] != "N":  # Evitamos mutaciones en zonas desconocidas
-            if sequence[idx] == ref:  # Solo mutamos si la referencia coincide
+        idx = pos - start - 1                                   # Le restamos 1 porque sequence esta en base 0
+        if 0 <= idx < len(sequence) and sequence[idx] != "N":   # Evitamos mutaciones en zonas desconocidas
+            if sequence[idx] == ref:                            # Solo mutamos si la referencia coincide
                 print(f"Mutación en posición {pos}: {sequence[idx]} -> {alt}")
-                sequence[idx] = alt[0]  # Aplicamos la mutación (tomando solo la primera base en caso de variantes múltiples)
+                sequence[idx] = alt[0]                          # Aplicamos la mutación (tomando solo la primera base en caso de variantes múltiples)
             else:
+                mutaciones_no_aplicadas.append((chrom, pos, ref, alt))  
                 print(f"Advertencia: La referencia en {pos} no coincide ({sequence[idx]} != {ref})")                              # Solo usa la primera base en caso de variantes múltiples
     
+    guardar_vcf_no_aplicadas(vcf_output, mutaciones_no_aplicadas)
     return "".join(sequence)                                    # Convertimos de nuevo a cadena
+
+
+def guardar_vcf_no_aplicadas(vcf_output, mutaciones_no_aplicadas):
+    with open(vcf_output, "w") as f:
+        f.write("CHROM\tPOS\tREF\tALT\n")  # Encabezado
+        for chrom, pos, ref, alt in mutaciones_no_aplicadas:
+            f.write(f"{chrom}\t{pos}\t{ref}\t{alt}\n")  # Escribir cada mutación en una línea
+
 
 def comparar_listas(lista1, lista2):
     if lista1 == lista2:
@@ -100,7 +111,7 @@ def calcular_entropia(sequence, k):
 
     return entropia.tolist()
     
-def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size):
+def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size, vcf_output):
     #para procesar la secuencia por bloques para no sobrecargar la memoria
     mutaciones = get_mutaciones(vcf, chrom)             # lista con las mutaciones del cromosoma 1
     entropias_original = []                         # Lista para almacenar la entropia en la original
@@ -116,13 +127,13 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size):
         #break
         return [], [], []  # Devuelve listas vacías si no se encuentra la secuencia
     
-    seq_mutada = aplicar_mutaciones(seq_original, mutaciones, chrom, start)     # aplica las mutaciones obtenidas del archivo vcf
+    seq_mutada = aplicar_mutaciones(seq_original, mutaciones, chrom, start, vcf_output)     # aplica las mutaciones obtenidas del archivo vcf
     posiciones.extend(range(start, start + len(seq_original)))                  # tomamos los valores desde start hasta start+len(seq_original)
     entropias_original.extend(calcular_entropia(seq_original, k))               # entropia de la secuencia original 
     entropias_mutada.extend(calcular_entropia(seq_mutada, k))                   # entropia de la secuencia mutada
 
-    print("Original:", seq_original[62631])
-    print("Mutada:", seq_mutada[62631])
+    print("Original:", seq_original[62632])
+    print("Mutada:", seq_mutada[62632])
 
     print(f"Total posiciones procesadas: {len(posiciones)}")
     
@@ -204,10 +215,11 @@ vcf = "RP924_9589186940.vcf"
 fasta_ref = "sequence (1).fasta"
 chrom = 1
 chrom_num = "NC_000001.10"
-k = 3                              # Tamaño de la ventana para los kmers
+k = 3                                       # Tamaño de la ventana para los kmers
+vcf_output = "mutaciones_no_aplicadas.vcf"  # archivo para guardar las mutaciones que no se han podido aplicar
 
 # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
-posiciones, entropias_original, entropias_mutada = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, 100000)
+posiciones, entropias_original, entropias_mutada = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, 100000, vcf_output)
 comparar_listas(entropias_original, entropias_mutada)
 
 graficos(posiciones, entropias_original, entropias_mutada)
