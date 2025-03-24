@@ -11,15 +11,15 @@ import numpy as np
 
 #Primero leemos las mutaciones del archivo vcf
 def get_mutaciones(vcf_file, chrom_filtrar):
-    mutaciones = defaultdict(dict) # diccionario para leer mutaciones
+    mutaciones = defaultdict(dict)                           # diccionario donde almacenamos los datos importantes de las mutaciones del vcf
     with vcfpy.Reader.from_path(vcf_file) as reader:
         for record in reader:
-            if str(record.CHROM) == str(chrom_filtrar):       # si coincide con el cromosoma
+            if str(record.CHROM) == str(chrom_filtrar):      # si coincide con el cromosoma en el que estamos
                 chrom = record.CHROM
                 pos = record.POS
                 ref = record.REF
                 alt = record.ALT[0].value
-                mutaciones[chrom][pos] = (ref, alt) # guardamos los datos
+                mutaciones[chrom][pos] = (ref, alt)         # guardamos los datos
     print(len(mutaciones[chrom]))
     return mutaciones
 
@@ -111,7 +111,24 @@ def calcular_entropia(sequence, k):
 
     return entropia.tolist()
     
-def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size, vcf_output):
+
+# Calcula la densidad de cada zona de tamaño 2l centrada en cada mutacion
+def calcular_densidad_mutaciones(mutaciones, chrom, l):
+
+    densidades = []                                                   # Lista donde guardaremos las densidades
+    mutaciones_chrom = mutaciones.get(str(chrom), {})                           # Accedemos a las mutaciones del cromosoma
+    posiciones_mutaciones = sorted(mutaciones_chrom.keys())
+
+    for pos in posiciones_mutaciones:
+        inicio = pos - l
+        fin = pos + l
+        cuenta = sum(1 for p in posiciones_mutaciones if inicio <= p <= fin)    # Contamos cuantas mutaciones hay en el rango inicio a fin
+        densidades.append((pos, cuenta))                                        # lo guardamos
+
+    return densidades
+
+
+def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l,  block_size, vcf_output):
     #para procesar la secuencia por bloques para no sobrecargar la memoria
     mutaciones = get_mutaciones(vcf, chrom)             # lista con las mutaciones del cromosoma 1
     entropias_original = []                         # Lista para almacenar la entropia en la original
@@ -131,7 +148,8 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size, vcf_ou
     posiciones.extend(range(start, start + len(seq_original)))                  # tomamos los valores desde start hasta start+len(seq_original)
     entropias_original.extend(calcular_entropia(seq_original, k))               # entropia de la secuencia original 
     entropias_mutada.extend(calcular_entropia(seq_mutada, k))                   # entropia de la secuencia mutada
-
+    densidad_mutaciones = calcular_densidad_mutaciones(mutaciones, chrom, l)    # densidad de las mutaciones
+    
     print("Original:", seq_original[62632])
     print("Mutada:", seq_mutada[62632])
 
@@ -145,29 +163,52 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, block_size, vcf_ou
 
 
 
-    return posiciones, entropias_original, entropias_mutada
+    return posiciones, entropias_original, entropias_mutada, densidad_mutaciones
 
-#funcion para los graficos de la entropía y la frecuencia de los kmers
-def graficos(posiciones, entropias_original, entropias_mutada):
-    print("Guardando el gráfico...")
-    
+#funcion para los graficos de la entropia y densidad
+def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutaciones):
+    print("Guardando los gráficos...")
+
     if len(posiciones) > 100000:
         print("Demasiados puntos para graficar, reduciendo el tamaño...")
         posiciones = posiciones[::5]  # Tomar 1 de cada 5 puntos
         entropias_original = entropias_original[::5]
         entropias_mutada = entropias_mutada[::5]
 
+    # Extraer posiciones y valores de densidad
+    posiciones_densidad = [x[0] for x in densidad_mutaciones]
+    valores_densidad = [x[1] for x in densidad_mutaciones]
 
+    ## Grafico 1: Entropía en cada posición (Barras)
     plt.figure(figsize=(10, 5))
-    plt.bar(posiciones, entropias_original, color="blue", alpha=0.5, label="Original", width=1)
-    plt.bar(posiciones, entropias_mutada, color="red", alpha=0.5, label="Mutada", width=1)
-    plt.xlabel("Posición en la secuencia")
+    plt.bar(posiciones, entropias_original, color="blue", alpha=0.5, label="Entropía Original", width=1)
+    plt.bar(posiciones, entropias_mutada, color="red", alpha=0.5, label="Entropía Mutada", width=1)
     plt.ylabel("Entropía")
     plt.title("Entropía en cada posición")
     plt.legend()
-    plt.savefig("grafico.png")
+    plt.tight_layout()
+    plt.savefig(f"grafico_entropia.png")
     plt.close()
+    print(f"Gráfico de entropía guardado como 'grafico_entropia.png'.")
+    
+    ## Gráfico 2: Densidad de Mutaciones (Histograma de Barras)
+    plt.figure(figsize=(10, 5))
 
+    # Ajustar correctamente los valores en el eje X
+    min_pos = min(posiciones_densidad)
+    max_pos = max(posiciones_densidad)
+    plt.bar(posiciones_densidad, valores_densidad, color="green", alpha=0.6, width=(max_pos - min_pos) / len(posiciones_densidad) * 2)  
+    plt.xlim(min_pos - 500, max_pos + 500)  # Agregar espacio a los extremos del gráfico
+
+    plt.xlabel("Posición en la secuencia")
+    plt.ylabel("Densidad de Mutaciones")
+    plt.title("Densidad de Mutaciones en el Genoma")
+    plt.tight_layout()
+    plt.savefig(f"grafico_densidad.png")
+    plt.close()
+    print(f"Grafico de densidad guardado como 'grafico_densidad.png'.")
+
+    
 
 
 
@@ -216,10 +257,12 @@ fasta_ref = "sequence (1).fasta"
 chrom = 1
 chrom_num = "NC_000001.10"
 k = 3                                       # Tamaño de la ventana para los kmers
+l = 500                                     #Tamaño de la ventana para calcular las densidades
 vcf_output = "mutaciones_no_aplicadas.vcf"  # archivo para guardar las mutaciones que no se han podido aplicar
 
 # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
-posiciones, entropias_original, entropias_mutada = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, 100000, vcf_output)
+posiciones, entropias_original, entropias_mutada, densidad_mutaciones = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, 100000, vcf_output) 
 comparar_listas(entropias_original, entropias_mutada)
+print(f"Densidad de mutaciones: {densidad_mutaciones[:10]}")  # Muestra las primeras 10 densidades
 
-graficos(posiciones, entropias_original, entropias_mutada)
+graficos(posiciones, entropias_original, entropias_mutada, densidad_mutaciones)
