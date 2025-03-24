@@ -11,15 +11,15 @@ import numpy as np
 
 #Primero leemos las mutaciones del archivo vcf
 def get_mutaciones(vcf_file, chrom_filtrar):
-    mutaciones = defaultdict(dict)                           # diccionario donde almacenamos los datos importantes de las mutaciones del vcf
+    mutaciones = defaultdict(dict)                              # diccionario donde almacenamos los datos importantes de las mutaciones del vcf
     with vcfpy.Reader.from_path(vcf_file) as reader:
         for record in reader:
-            if str(record.CHROM) == str(chrom_filtrar):      # si coincide con el cromosoma en el que estamos
+            if str(record.CHROM) == str(chrom_filtrar):         # si coincide con el cromosoma en el que estamos
                 chrom = record.CHROM
                 pos = record.POS
                 ref = record.REF
                 alt = record.ALT[0].value
-                mutaciones[chrom][pos] = (ref, alt)         # guardamos los datos
+                mutaciones[chrom][pos] = (ref, alt)             # guardamos los datos
     print(len(mutaciones[chrom]))
     return mutaciones
 
@@ -39,9 +39,9 @@ def get_sequence_from_fasta(fasta_file, chrom, start, end):
 
 #Aqui aplicamos las mutaciones en la secuencia de refenrecia
 def aplicar_mutaciones(sequence, mut, chrom, start, vcf_output):
-    sequence = list(sequence)                               # Pasamos a lista, ya que las listas no se pueden modificar
-    mutaciones_chrom = mut.get(str(chrom), {})              # Accedemos a las mutaciones del cromosoma
-    mutaciones_no_aplicadas = []                            # Para guardar las mutaciones que no se pueden aplicar porque no coincide el alelo de refencia
+    sequence = list(sequence)                                   # Pasamos a lista, ya que las listas no se pueden modificar
+    mutaciones_chrom = mut.get(str(chrom), {})                  # Accedemos a las mutaciones del cromosoma
+    mutaciones_no_aplicadas = []                                # Para guardar las mutaciones que no se pueden aplicar porque no coincide el alelo de refencia
 
     for pos, (ref, alt) in mutaciones_chrom.items():
         idx = pos - start - 1                                   # Le restamos 1 porque sequence esta en base 0
@@ -51,7 +51,7 @@ def aplicar_mutaciones(sequence, mut, chrom, start, vcf_output):
                 sequence[idx] = alt[0]                          # Aplicamos la mutación (tomando solo la primera base en caso de variantes múltiples)
             else:
                 mutaciones_no_aplicadas.append((chrom, pos, ref, alt))  
-                print(f"Advertencia: La referencia en {pos} no coincide ({sequence[idx]} != {ref})")                              # Solo usa la primera base en caso de variantes múltiples
+                print(f"Advertencia: La referencia en {pos} no coincide ({sequence[idx]} != {ref})")     # Solo usa la primera base en caso de variantes múltiples
     
     guardar_vcf_no_aplicadas(vcf_output, mutaciones_no_aplicadas)
     return "".join(sequence)                                    # Convertimos de nuevo a cadena
@@ -59,9 +59,9 @@ def aplicar_mutaciones(sequence, mut, chrom, start, vcf_output):
 
 def guardar_vcf_no_aplicadas(vcf_output, mutaciones_no_aplicadas):
     with open(vcf_output, "w") as f:
-        f.write("CHROM\tPOS\tREF\tALT\n")  # Encabezado
+        f.write("CHROM\tPOS\tREF\tALT\n")                       # Encabezado
         for chrom, pos, ref, alt in mutaciones_no_aplicadas:
-            f.write(f"{chrom}\t{pos}\t{ref}\t{alt}\n")  # Escribir cada mutación en una línea
+            f.write(f"{chrom}\t{pos}\t{ref}\t{alt}\n")          # Escribir cada mutación en una línea
 
 
 def comparar_listas(lista1, lista2):
@@ -100,14 +100,14 @@ def calcular_entropia(sequence, k):
             kmer_entropias[kmer] = -prob * np.log2(prob)    # Entropía del kmer
 
     # Asignamos a cada posición la suma de las entropías de los k-mers en los que está incluida
-    entropia = np.zeros(len(sequence))                  # Inicializamos el array de entropías
+    entropia = np.zeros(len(sequence))                      # Inicializamos el array de entropías
 
-    for i in range(len(sequence) - k + 1):              # Recorremos la secuencia para formar los kmers
-        kmer = sequence[i:i+k]                          # Extraemos el kmer en la posicion i
+    for i in range(len(sequence) - k + 1):                  # Recorremos la secuencia para formar los kmers
+        kmer = sequence[i:i+k]                              # Extraemos el kmer en la posicion i
         if "N" in kmer:
             entropia[i] = np.nan  # Si hay N
-        entropia_kmer = kmer_entropias.get(kmer, 0)     # Entropía del kmer (0 si no esta en el diccionario)
-        entropia[i:i+k] += abs(entropia_kmer)           # Sumamos la entropía del kmer a cada posicion en valor abs
+        entropia_kmer = kmer_entropias.get(kmer, 0)         # Entropía del kmer (0 si no esta en el diccionario)
+        entropia[i:i+k] += abs(entropia_kmer)               # Sumamos la entropía del kmer a cada posicion en valor abs
 
     return entropia.tolist()
     
@@ -115,7 +115,7 @@ def calcular_entropia(sequence, k):
 # Calcula la densidad de cada zona de tamaño 2l centrada en cada mutacion
 def calcular_densidad_mutaciones(mutaciones, chrom, l):
 
-    densidades = []                                                   # Lista donde guardaremos las densidades
+    densidades = []                                                             # Lista donde guardaremos las densidades
     mutaciones_chrom = mutaciones.get(str(chrom), {})                           # Accedemos a las mutaciones del cromosoma
     posiciones_mutaciones = sorted(mutaciones_chrom.keys())
 
@@ -131,9 +131,9 @@ def calcular_densidad_mutaciones(mutaciones, chrom, l):
 def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l,  block_size, vcf_output):
     #para procesar la secuencia por bloques para no sobrecargar la memoria
     mutaciones = get_mutaciones(vcf, chrom)             # lista con las mutaciones del cromosoma 1
-    entropias_original = []                         # Lista para almacenar la entropia en la original
-    entropias_mutada = []                           # Lista para almacenar la entropia en la mutada
-    posiciones = []                                 # Lista para almacenar las posiciones
+    entropias_original = []                             # Lista para almacenar la entropia en la original
+    entropias_mutada = []                               # Lista para almacenar la entropia en la mutada
+    posiciones = []                                     # Lista para almacenar las posiciones
     
     #for start in range(0, 249250621, block_size):  # Salta por bloques de tamaño block_size
     start = 700000
@@ -145,10 +145,10 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l,  block_size, vc
         return [], [], []  # Devuelve listas vacías si no se encuentra la secuencia
     
     seq_mutada = aplicar_mutaciones(seq_original, mutaciones, chrom, start, vcf_output)     # aplica las mutaciones obtenidas del archivo vcf
-    posiciones.extend(range(start, start + len(seq_original)))                  # tomamos los valores desde start hasta start+len(seq_original)
-    entropias_original.extend(calcular_entropia(seq_original, k))               # entropia de la secuencia original 
-    entropias_mutada.extend(calcular_entropia(seq_mutada, k))                   # entropia de la secuencia mutada
-    densidad_mutaciones = calcular_densidad_mutaciones(mutaciones, chrom, l)    # densidad de las mutaciones
+    posiciones.extend(range(start, start + len(seq_original)))                              # tomamos los valores desde start hasta start+len(seq_original)
+    entropias_original.extend(calcular_entropia(seq_original, k))                           # entropia de la secuencia original 
+    entropias_mutada.extend(calcular_entropia(seq_mutada, k))                               # entropia de la secuencia mutada
+    densidad_mutaciones = calcular_densidad_mutaciones(mutaciones, chrom, l)                # densidad de las mutaciones
     
     print("Original:", seq_original[62632])
     print("Mutada:", seq_mutada[62632])
@@ -171,7 +171,7 @@ def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutacion
 
     if len(posiciones) > 100000:
         print("Demasiados puntos para graficar, reduciendo el tamaño...")
-        posiciones = posiciones[::5]  # Tomar 1 de cada 5 puntos
+        posiciones = posiciones[::5]                    # Tomar 1 de cada 5 puntos
         entropias_original = entropias_original[::5]
         entropias_mutada = entropias_mutada[::5]
 
@@ -198,7 +198,7 @@ def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutacion
     min_pos = min(posiciones_densidad)
     max_pos = max(posiciones_densidad)
     plt.bar(posiciones_densidad, valores_densidad, color="green", alpha=0.6, width=(max_pos - min_pos) / len(posiciones_densidad) * 2)  
-    plt.xlim(min_pos - 500, max_pos + 500)  # Agregar espacio a los extremos del gráfico
+    plt.xlim(min_pos - 500, max_pos + 500)              # Agregar espacio a los extremos del gráfico
 
     plt.xlabel("Posición en la secuencia")
     plt.ylabel("Densidad de Mutaciones")
@@ -241,8 +241,8 @@ def obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada
     posiciones_altas = []
     for i, pos in enumerate(posiciones):
         if entropias_original[i] >= umbral_original or entropias_mutada[i] >= umbral_mutada:
-            idx = pos - start  # Convertir posición real a índice en la secuencia
-            if 0 <= idx < len(seq_original):  # Verificar que esté dentro del rango válido
+            idx = pos - start                           # Convertir posición real a índice en la secuencia
+            if 0 <= idx < len(seq_original):            # Verificar que esté dentro del rango válido
                 base_original = seq_original[idx]
                 base_mutada = seq_mutada[idx]
                 posiciones_altas.append((pos, base_original, base_mutada, entropias_original[i], entropias_mutada[i]))
@@ -256,9 +256,9 @@ vcf = "RP924_9589186940.vcf"
 fasta_ref = "sequence (1).fasta"
 chrom = 1
 chrom_num = "NC_000001.10"
-k = 3                                       # Tamaño de la ventana para los kmers
-l = 500                                     #Tamaño de la ventana para calcular las densidades
-vcf_output = "mutaciones_no_aplicadas.vcf"  # archivo para guardar las mutaciones que no se han podido aplicar
+k = 3                                                         # Tamaño de la ventana para los kmers
+l = 500                                                       # Tamaño de la ventana para calcular las densidades
+vcf_output = "mutaciones_no_aplicadas.vcf"                    # archivo para guardar las mutaciones que no se han podido aplicar
 
 # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
 posiciones, entropias_original, entropias_mutada, densidad_mutaciones = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, 100000, vcf_output) 
