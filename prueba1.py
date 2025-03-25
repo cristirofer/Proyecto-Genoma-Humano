@@ -8,6 +8,7 @@ from Bio import Entrez, SeqIO
 import vcfpy
 import pandas as pd
 import numpy as np
+import matplotlib.ticker as mticker
 
 #Primero leemos las mutaciones del archivo vcf
 def get_mutaciones(vcf_file, chrom_filtrar):
@@ -179,7 +180,7 @@ def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutacion
     posiciones_densidad = [x[0] for x in densidad_mutaciones]
     valores_densidad = [x[1] for x in densidad_mutaciones]
 
-    ## Grafico 1: Entropía en cada posición (Barras)
+    # Grafico entropía en cada posicion (barras)
     plt.figure(figsize=(10, 5))
     plt.bar(posiciones, entropias_original, color="blue", alpha=0.5, label="Entropía Original", width=1)
     plt.bar(posiciones, entropias_mutada, color="red", alpha=0.5, label="Entropía Mutada", width=1)
@@ -191,10 +192,10 @@ def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutacion
     plt.close()
     print(f"Gráfico de entropía guardado como 'grafico_entropia.png'.")
     
-    ## Gráfico 2: Densidad de Mutaciones (Histograma de Barras)
+    # Grafico densidad de mutaciones (barras)
     plt.figure(figsize=(10, 5))
 
-    # Ajustar correctamente los valores en el eje X
+    # Ajustar correctamente los valores en el eje x para que contenga las mutaciones
     min_pos = min(posiciones_densidad)
     max_pos = max(posiciones_densidad)
     plt.bar(posiciones_densidad, valores_densidad, color="green", alpha=0.6, width=(max_pos - min_pos) / len(posiciones_densidad) * 2)  
@@ -203,6 +204,14 @@ def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutacion
     plt.xlabel("Posición en la secuencia")
     plt.ylabel("Densidad de Mutaciones")
     plt.title("Densidad de Mutaciones en el Genoma")
+
+    ax = plt.gca()
+    ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{int(x):,}"))  # Formato de números enteros con comas
+
+    # 🔹 Mostrar un subconjunto de posiciones para evitar sobrecarga visual
+    posiciones_etiquetas = np.linspace(min(posiciones_densidad), max(posiciones_densidad), num=10, dtype=int)
+    plt.xticks(posiciones_etiquetas, rotation=45)
+
     plt.tight_layout()
     plt.savefig(f"grafico_densidad.png")
     plt.close()
@@ -211,23 +220,8 @@ def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutacion
     
 
 
-
+# Esta funcion es para encontrar las posiciones con mayor entropia y a que nucleotidos corresponden en la secuencia original y mutada
 def obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada, seq_original, seq_mutada, start, umbral_percentil=95):
-    """
-    Encuentra las posiciones con mayor entropía y extrae las bases en la secuencia original y mutada.
-
-    Parámetros:
-    - posiciones: Lista de posiciones en la secuencia.
-    - entropias_original: Lista de entropías de la secuencia original.
-    - entropias_mutada: Lista de entropías de la secuencia mutada.
-    - seq_original: Secuencia original.
-    - seq_mutada: Secuencia mutada.
-    - start: Posición inicial del bloque procesado.
-    - umbral_percentil: Percentil para definir entropía alta (por defecto, 95%).
-
-    Retorna:
-    - Lista con (posición, base_original, base_mutada, entropía_original, entropía_mutada).
-    """
 
     # Convertir listas a arrays para facilitar operaciones
     entropias_original = np.array(entropias_original)
@@ -263,6 +257,11 @@ vcf_output = "mutaciones_no_aplicadas.vcf"                    # archivo para gua
 # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
 posiciones, entropias_original, entropias_mutada, densidad_mutaciones = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, 100000, vcf_output) 
 comparar_listas(entropias_original, entropias_mutada)
-print(f"Densidad de mutaciones: {densidad_mutaciones[:10]}")  # Muestra las primeras 10 densidades
 
+
+# Hacemos un print para conocer las zonas con las mayores densidades de mutaciones
+densidad_top = sorted(densidad_mutaciones, key=lambda x: x[1], reverse=True)[:10]       # Ordenamos por densidad de mutaciones en orden descendente
+print(f"Posiciones con mayor densidad de mutaciones: {densidad_top}")                   # Imprime las 10 posiciones con mayor densidad
+
+#Y por ultimos llamamos a la funcion para generar los graficos
 graficos(posiciones, entropias_original, entropias_mutada, densidad_mutaciones)
