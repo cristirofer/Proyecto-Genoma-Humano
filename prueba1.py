@@ -176,10 +176,6 @@ def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutacion
         entropias_original = entropias_original[::5]
         entropias_mutada = entropias_mutada[::5]
 
-    # Extraer posiciones y valores de densidad
-    posiciones_densidad = [x[0] for x in densidad_mutaciones]
-    valores_densidad = [x[1] for x in densidad_mutaciones]
-
     # Grafico entropía en cada posicion (barras)
     plt.figure(figsize=(10, 5))
     plt.bar(posiciones, entropias_original, color="blue", alpha=0.5, label="Entropía Original", width=1)
@@ -193,26 +189,43 @@ def graficos(posiciones, entropias_original, entropias_mutada, densidad_mutacion
     print(f"Gráfico de entropía guardado como 'grafico_entropia.png'.")
     
     # Grafico densidad de mutaciones (barras)
-    plt.figure(figsize=(10, 5))
+    # Extraer posiciones y valores de densidad
+    posiciones = [x[0] for x in densidad_mutaciones]
+    valores = [x[1] for x in densidad_mutaciones]
 
-    # Ajustar correctamente los valores en el eje x para que contenga las mutaciones
-    min_pos = min(posiciones_densidad)
-    max_pos = max(posiciones_densidad)
-    plt.bar(posiciones_densidad, valores_densidad, color="green", alpha=0.6, width=(max_pos - min_pos) / len(posiciones_densidad) * 2)  
-    plt.xlim(min_pos - 500, max_pos + 500)              # Agregar espacio a los extremos del gráfico
+    # Encontrar el valor máximo de densidad
+    max_densidad = max(valores)
 
+    # Encontrar posiciones donde la densidad es máxima
+    posiciones_maximos = [posiciones[i] for i in range(len(valores)) if valores[i] == max_densidad]
+    valores_maximos = [max_densidad] * len(posiciones_maximos)  # Todas las y serán el mismo valor máximo
+
+    # Crear la figura
+    plt.figure(figsize=(12, 6))
+
+    # Graficar la densidad de mutaciones
+    plt.plot(posiciones, valores, linestyle="-", color="green", alpha=0.7, linewidth=1.5, label="Densidad de Mutaciones")
+
+    # Resaltar los máximos con puntos rojos
+    plt.scatter(posiciones_maximos, valores_maximos, color="red", label=f"Máximos ({max_densidad})", zorder=3)
+
+    # Agregar etiquetas de los máximos directamente en el gráfico
+    for i, pos in enumerate(posiciones_maximos):
+        plt.text(pos, max_densidad + 0.5, str(pos), fontsize=9, color="red", ha="center", rotation=45)
+
+    # Etiquetas y título
     plt.xlabel("Posición en la secuencia")
     plt.ylabel("Densidad de Mutaciones")
     plt.title("Densidad de Mutaciones en el Genoma")
 
-    ax = plt.gca()
-    ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{int(x):,}"))  # Formato de números enteros con comas
+    # Agregar una cuadrícula
+    plt.grid(True, linestyle="--", alpha=0.6)
 
-    # 🔹 Mostrar un subconjunto de posiciones para evitar sobrecarga visual
-    posiciones_etiquetas = np.linspace(min(posiciones_densidad), max(posiciones_densidad), num=10, dtype=int)
-    plt.xticks(posiciones_etiquetas, rotation=45)
+    # Ajustar etiquetas del eje X para mejor visualización
+    plt.xticks(ticks=posiciones[::max(1, len(posiciones)//10)], rotation=45)
 
-    plt.tight_layout()
+    # Agregar una leyenda
+    plt.legend()
     plt.savefig(f"grafico_densidad.png")
     plt.close()
     print(f"Grafico de densidad guardado como 'grafico_densidad.png'.")

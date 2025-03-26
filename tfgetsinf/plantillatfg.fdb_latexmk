@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742899976.36742 "/home/crodriguez/Proyecto-Genoma-Humano/tfgetsinf/plantillatfg.tex" "plantillatfg.pdf" "plantillatfg" 1742899976.97765 0
+["pdflatex"] 1742986882.96405 "/home/crodriguez/Proyecto-Genoma-Humano/tfgetsinf/plantillatfg.tex" "plantillatfg.pdf" "plantillatfg" 1742986883.62199 0
   "/etc/texmf/web2c/texmf.cnf" 1742895464.85555 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/crodriguez/Proyecto-Genoma-Humano/tfgetsinf/plantillatfg.tex" 1742899976.25047 15239 273001b13120ffea3524ecf9b9f33b26 ""
+  "/home/crodriguez/Proyecto-Genoma-Humano/tfgetsinf/plantillatfg.tex" 1742986882.84742 14759 2c39faa668d44e7d6dedde7c27ffbd30 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1136768653 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -134,12 +134,12 @@
   "baseportada.png" 1729495434 10500 6ac46f1b8867e6baf8118b0573fda68d ""
   "logo-etsinf.pdf" 1729495434 21439 2f398dd99afcba2884b0e7497ed2b108 ""
   "logo-upv.pdf" 1729495434 53878 e68480ee013a972986b057b59b03579b ""
-  "plantillatfg.aux" 1742899976.91146 3584 2b6124c53406362eec42c31b16543f93 "pdflatex"
-  "plantillatfg.lof" 1742899976.91546 330 0b2d908a66b4dfcf8a1c15d921fa5536 "pdflatex"
-  "plantillatfg.lot" 1742899976.91546 330 0b2d908a66b4dfcf8a1c15d921fa5536 "pdflatex"
-  "plantillatfg.out" 1742899976.91446 2400 b6e00efe9da2ecc548a3f75b23303d71 "pdflatex"
-  "plantillatfg.tex" 1742899976.25047 15239 273001b13120ffea3524ecf9b9f33b26 ""
-  "plantillatfg.toc" 1742899976.91546 1590 da4649b91585c53a20c2d960a37c0385 "pdflatex"
+  "plantillatfg.aux" 1742986883.55442 3583 37f9fe553f19864a595f700dea17ea52 "pdflatex"
+  "plantillatfg.lof" 1742986883.55842 330 0b2d908a66b4dfcf8a1c15d921fa5536 "pdflatex"
+  "plantillatfg.lot" 1742986883.55842 330 0b2d908a66b4dfcf8a1c15d921fa5536 "pdflatex"
+  "plantillatfg.out" 1742986883.55842 2412 933876f362a43e7eb4f61b4038a24887 "pdflatex"
+  "plantillatfg.tex" 1742986882.84742 14759 2c39faa668d44e7d6dedde7c27ffbd30 ""
+  "plantillatfg.toc" 1742986883.55842 1589 1ee23719a2239219356a63c29403c33a "pdflatex"
   "tfgetsinf.cls" 1729495434 13289 71cd7a89e93672c9d59cf4ecccd71f95 ""
   (generated)
   "plantillatfg.aux"
