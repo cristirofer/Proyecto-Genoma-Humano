@@ -108,44 +108,57 @@ def calcular_entropia_simple(sequence, k, w):
     return entropias
 
 
-# Ahora calculamos las probabilidades de transición de una cadena de Markov de orden k en la secuencia dada.
-def calcular_probabilidades_markov(sequence, k=1):
-    transiciones = defaultdict(lambda: defaultdict(int))    # Diccionario para guardar las transiciones (T)
-    total_transiciones = defaultdict(int)                   # Diccionario para guardar el numero total de transiciones
+# Ahora construye el autómata de Markov a partir de la secuencia dada.
+def construir_automata_markov(sequence, k_mer, k=3):
+    k -= 1
+    alfabeto = set(sequence)                                # Extraer los símbolos únicos en la secuencia
+    transiciones = defaultdict(lambda: defaultdict(int))    # Contador de transiciones
+    total_transiciones = defaultdict(int)                   # Contador total de transiciones desde cada estado
+    estados_iniciales = set()                               # Conjunto de estados iniciales (I)
+    estados_finales = set()                                 # Conjunto de estados finales (F)
 
-    # Recorremos la secuencia para contar transiciones
-    for i in range(len(sequence) - k):
-        contexto = sequence[i:i+k]                          # Estado actual (A para k =1, AG para k = 2)
-        siguiente = sequence[i+k]                           # Símbolo siguiente
-        transiciones[contexto][siguiente] += 1              # Añadimos 1 a la frecuencia de esa transicion
-        total_transiciones[contexto] += 1                   # Añadimos 1 al total de transiciones
+    # Recorrer la secuencia para extraer los kmers y registrar transiciones
+    for i in range(len(sequence) - k_mer + 1):
+        kmer = sequence[i:i+k_mer]                          # Extraer el kmer de tamaño k_mer
+        estado_actual = kmer[:k]                            # Primeras k bases → Estado actual
+        siguiente_estado = kmer[1:k+1]                      # Desplazado → Estado siguiente
+        
+        if len(estado_actual) == k:
+            estados_iniciales.add(estado_actual)            # Guardamos el estado inicial
+        if len(siguiente_estado) == k:
+            estados_finales.add(siguiente_estado)           # Guardamos el estado final
+        
+        transiciones[estado_actual][siguiente_estado] += 1  # Contamos la transición
+        total_transiciones[estado_actual] += 1              # Contamos total de transiciones desde el estado actual
 
-    # Recorremos de nuevo la lista de trasniciones para calcular las probabilidades
-    prob_markov = defaultdict(lambda: defaultdict(float))
-    for contexto, trans in transiciones.items():
-        for siguiente, count in trans.items():
-            prob_markov[contexto][siguiente] = count / total_transiciones[contexto]     # Dividimos la frecuencia de cada trasncion entre el numero total de transiciones
+    # Calcular probabilidades de transición dividiendo cada transición entre el total desde ese estado
+    matriz_transicion = defaultdict(lambda: defaultdict(float))
+    for estado, destinos in transiciones.items():
+        for siguiente_estado, count in destinos.items():
+            matriz_transicion[estado][siguiente_estado] = count / total_transiciones[estado]
 
-    return prob_markov
+    return alfabeto, estados_iniciales, estados_finales, matriz_transicion
 
 # Calcula la entropía basada en fuentes de Markov en ventanas de tamaño w (usa las probabilidades de markov)
-def calcular_entropia_markov(sequence, prob_markov, k=1, w=10):
+def calcular_entropia_markov(sequence, matriz_transicion, w, k=3):
+    k -= 1
     entropias = []
-    
-    for i in range(len(sequence) - w + 1):
-        subseq = sequence[i:i+w]                # Cogemos la ventana de tamaño w para cada posicion
+    for i in range(len(sequence) - w + 1):                          # Para cada ventana de tamaño w
+        subseq = sequence[i:i+w]                                    # La extraemos la ventana
         entropia = 0
 
         for j in range(len(subseq) - k):
-            contexto = subseq[j:j+k]
-            siguiente = subseq[j+k]
-            
-            # Probabilidad de transición
-            prob = prob_markov.get(contexto, {}).get(siguiente, 1e-6)  # Evitar log(0)
-            entropia -= prob * np.log2(prob)
+            estado_actual = subseq[j:j+k]                           # Obtenemos el estado actual
+            siguiente_estado = subseq[j+1:j+k+1]                    # Obtenemos el estado siguiente
+
+            if siguiente_estado in matriz_transicion.get(estado_actual, {}):
+                prob = matriz_transicion[estado_actual][siguiente_estado]  # calculamos la probabilidad de esa transición
+            else:
+                prob = 1e-6                                         # Asignamos una probabilidad muy pequeña para evitar log(0)
+
+            entropia -= prob * np.log2(prob)                        # Calculamos la entropia como el sumatorio
 
         entropias.append(entropia)
-
     return entropias
 
 # Calcula la densidad de cada zona de tamaño 2l centrada en cada mutacion
@@ -183,17 +196,19 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, w, block_size, 
     
     seq_mutada = aplicar_mutaciones(seq_original, mutaciones, chrom, start, vcf_output)             # aplica las mutaciones obtenidas del archivo vcf
     posiciones.extend(range(start, start + len(seq_original)))                                      # tomamos los valores desde start hasta start+len(seq_original)
+    
     entropias_original.extend(calcular_entropia_simple(seq_original, k, w))                         # entropia de la secuencia original 
     entropias_mutada.extend(calcular_entropia_simple(seq_mutada, k, w))                             # entropia de la secuencia mutada
     
-    # 1. Aprender modelo de Markov en la secuencia original
-    prob_markov = calcular_probabilidades_markov(seq_original, k=1)
+    prob_markov_original = construir_automata_markov(seq_original, k)                               # 1. Construir automata de Markov en la secuencia original
+    prob_markov_mutada = construir_automata_markov(seq_original, k)                                 # 1. Construir automata de Markov en la secuencia mutada
+
 
     # 2. Calcular entropía con Markov
-    entropias_markov_original = calcular_entropia_markov(seq_original, prob_markov, k=1, w=w)
-    entropias_markov_mutada = calcular_entropia_markov(seq_mutada, prob_markov, k=1, w=w)
+    entropias_markov_original = calcular_entropia_markov(seq_original, prob_markov_original, w)
+    entropias_markov_mutada = calcular_entropia_markov(seq_mutada, prob_markov_mutada, w)
 
-    densidad_mutaciones = calcular_densidad_mutaciones(mutaciones, chrom, l)                # densidad de las mutaciones
+    densidad_mutaciones = calcular_densidad_mutaciones(mutaciones, chrom, l)                        # densidad de las mutaciones
     
     print("Original:", seq_original[62632])
     print("Mutada:", seq_mutada[62632])
