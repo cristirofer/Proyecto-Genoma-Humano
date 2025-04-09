@@ -120,18 +120,18 @@ def construir_automata_markov(sequence, k_mer, k=3):
     # Recorrer la secuencia para extraer los kmers y registrar transiciones
     for i in range(len(sequence) - k_mer + 1):
         kmer = sequence[i:i+k_mer]                          # Extraer el kmer de tamaño k_mer
-        estado_actual = kmer[:k]                            # Primeras k bases → Estado actual
-        siguiente_estado = kmer[1:k+1]                      # Desplazado → Estado siguiente
+        estado_actual = kmer[:k]                            # Primeras k bases forman Estado actual
+        siguiente_estado = kmer[1:k+1]                      # Lo desplazamos una y formamos el siguiente
         
         if len(estado_actual) == k:
             estados_iniciales.add(estado_actual)            # Guardamos el estado inicial
         if len(siguiente_estado) == k:
             estados_finales.add(siguiente_estado)           # Guardamos el estado final
         
-        transiciones[estado_actual][siguiente_estado] += 1  # Contamos la transición
+        transiciones[estado_actual][siguiente_estado] += 1  # Contamos la transicion
         total_transiciones[estado_actual] += 1              # Contamos total de transiciones desde el estado actual
 
-    # Calcular probabilidades de transición dividiendo cada transición entre el total desde ese estado
+    # Esto es para calcular probabilidades de transicion dividiendo cada transicion entre el total desde ese estado
     matriz_transicion = defaultdict(lambda: defaultdict(float))
     for estado, destinos in transiciones.items():
         for siguiente_estado, count in destinos.items():
@@ -139,7 +139,7 @@ def construir_automata_markov(sequence, k_mer, k=3):
 
     return alfabeto, estados_iniciales, estados_finales, matriz_transicion
 
-# Guarda los elementos del automata en un archivo de texto
+# Ahora guardamos los elementos del automata en un archivo de texto
 def guardar_automata(alfabeto, estados_iniciales, estados_finales, matriz_transicion, output_file):
     with open(output_file, "w") as f:
         f.write("Alfabeto:\n")
