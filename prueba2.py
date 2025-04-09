@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.ticker as mticker
 
-#Primero leemos las mutaciones del archivo vcf
+# Primero leemos las mutaciones del archivo vcf
 def get_mutaciones(vcf_file, chrom_filtrar):
     mutaciones = defaultdict(dict)                              # diccionario donde almacenamos los datos importantes de las mutaciones del vcf
     with vcfpy.Reader.from_path(vcf_file) as reader:
@@ -139,7 +139,26 @@ def construir_automata_markov(sequence, k_mer, k=3):
 
     return alfabeto, estados_iniciales, estados_finales, matriz_transicion
 
-# Calcula la entropía basada en fuentes de Markov en ventanas de tamaño w (usa las probabilidades de markov)
+# Guarda los elementos del automata en un archivo de texto
+def guardar_automata(alfabeto, estados_iniciales, estados_finales, matriz_transicion, output_file):
+    with open(output_file, "w") as f:
+        f.write("Alfabeto:\n")
+        f.write(f"{sorted(alfabeto)}\n\n")
+
+        f.write("Estados Iniciales:\n")
+        f.write(f"{sorted(estados_iniciales)}\n\n")
+
+        f.write("Estados Finales:\n")
+        f.write(f"{sorted(estados_finales)}\n\n")
+
+        f.write("Transiciones (estado_actual, simbolo, siguiente_estado):\n")
+        for estado_actual, transiciones in matriz_transicion.items():
+            for siguiente_estado, prob in transiciones.items():
+                simbolo = siguiente_estado[-1]  # El ultimo simbolo del siguiente estado
+                f.write(f"({estado_actual}, {simbolo}, {siguiente_estado})\n")
+
+
+# Calcula la entropia basada en fuentes de Markov en ventanas de tamaño w (usa las probabilidades de markov)
 def calcular_entropia_markov(sequence, matriz_transicion, w, k=3):
     k -= 1
     entropias = []
@@ -200,13 +219,15 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, w, block_size, 
     entropias_original.extend(calcular_entropia_simple(seq_original, k, w))                         # entropia de la secuencia original 
     entropias_mutada.extend(calcular_entropia_simple(seq_mutada, k, w))                             # entropia de la secuencia mutada
     
-    prob_markov_original = construir_automata_markov(seq_original, k)                               # 1. Construir automata de Markov en la secuencia original
-    prob_markov_mutada = construir_automata_markov(seq_original, k)                                 # 1. Construir automata de Markov en la secuencia mutada
+    alfabeto_original, estados_iniciales_original, estados_finales_original, matriz_transicion_original = construir_automata_markov(seq_original, k)                               # 1. Construir automata de Markov en la secuencia original
+    alfabeto_mutada, estados_iniciales_mutada, estados_finales_mutada, matriz_transicion_mutada =  construir_automata_markov(seq_mutada, k)                                 # 1. Construir automata de Markov en la secuencia mutada
 
+    guardar_automata(alfabeto_original, estados_iniciales_original, estados_finales_original, matriz_transicion_original, "automata_original.txt")
+    guardar_automata(alfabeto_mutada, estados_iniciales_mutada, estados_finales_mutada, matriz_transicion_mutada, "automata_mutada.txt")
 
     # 2. Calcular entropía con Markov
-    entropias_markov_original = calcular_entropia_markov(seq_original, prob_markov_original, w)
-    entropias_markov_mutada = calcular_entropia_markov(seq_mutada, prob_markov_mutada, w)
+    entropias_markov_original = calcular_entropia_markov(seq_original, matriz_transicion_original, w)
+    entropias_markov_mutada = calcular_entropia_markov(seq_mutada, matriz_transicion_mutada, w)
 
     densidad_mutaciones = calcular_densidad_mutaciones(mutaciones, chrom, l)                        # densidad de las mutaciones
     
@@ -238,7 +259,7 @@ def graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_
 
     if len(posiciones) > 100000:
         print("Demasiados puntos para graficar, reduciendo el tamaño...")
-        posiciones = posiciones[::5]                    # Tomar 1 de cada 5 puntos
+        posiciones = posiciones[::5]                    # Tomamos 1 de cada 5 puntos
         entropias_original = entropias_original[::5]
         entropias_mutada = entropias_mutada[::5]
 
@@ -254,7 +275,7 @@ def graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_
     plt.close()
     print(f"Gráfico de entropía guardado como 'grafico_entropia.png'.")
     
-    # Grafico entropía de markov en cada posicion (barras)
+    # Grafico entropia de markov en cada posicion (barras)
     plt.figure(figsize=(10, 5))
     plt.bar(posiciones, entropias_markov_original, color="purple", alpha=0.5, label="Entropía Markov Original", width=1)
     plt.bar(posiciones, entropias_markov_mutada, color="orange", alpha=0.5, label="Entropía Markov Mutada", width=1)
@@ -271,12 +292,12 @@ def graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_
     posiciones = [x[0] for x in densidad_mutaciones]
     valores = [x[1] for x in densidad_mutaciones]
 
-    # Encontrar el valor máximo de densidad
+    # Encontrar el valor maximo de densidad
     max_densidad = max(valores)
 
-    # Encontrar posiciones donde la densidad es máxima
+    # Encontrar posiciones donde la densidad es maxima
     posiciones_maximos = [posiciones[i] for i in range(len(valores)) if valores[i] == max_densidad]
-    valores_maximos = [max_densidad] * len(posiciones_maximos)  # Todas las y serán el mismo valor máximo
+    valores_maximos = [max_densidad] * len(posiciones_maximos)  # Todas las y seran el mismo valor máximo
 
     # Crear la figura
     plt.figure(figsize=(12, 6))
@@ -309,8 +330,6 @@ def graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_
     print(f"Grafico de densidad guardado como 'grafico_densidad.png'.")
 
     
-
-
 # Esta funcion es para encontrar las posiciones con mayor entropia y a que nucleotidos corresponden en la secuencia original y mutada
 def obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada, seq_original, seq_mutada, start, umbral_percentil=95):
 
