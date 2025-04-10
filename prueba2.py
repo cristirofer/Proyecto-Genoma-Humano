@@ -109,7 +109,7 @@ def calcular_entropia_simple(sequence, k, w):
 
 
 # Ahora construye el autómata de Markov a partir de la secuencia dada.
-def construir_automata_markov(sequence, k_mer, k=3):
+def construir_automata_markov(sequence, k_mer, k=6):
     k -= 1
     alfabeto = set(sequence)                                # Extraer los símbolos únicos en la secuencia
     transiciones = defaultdict(lambda: defaultdict(int))    # Contador de transiciones
@@ -159,7 +159,7 @@ def guardar_automata(alfabeto, estados_iniciales, estados_finales, matriz_transi
 
 
 # Calcula la entropia basada en fuentes de Markov en ventanas de tamaño w (usa las probabilidades de markov)
-def calcular_entropia_markov(sequence, matriz_transicion, w, k=3):
+def calcular_entropia_markov(sequence, matriz_transicion, w, k=6):
     k -= 1
     entropias = []
     for i in range(len(sequence) - w + 1):                          # Para cada ventana de tamaño w
@@ -363,7 +363,7 @@ vcf = "RP924_9589186940.vcf"
 fasta_ref = "sequence (1).fasta"
 chrom = 1
 chrom_num = "NC_000001.10"
-k = 3                                                         # Tamaño de los kmers
+k = 7                                                         # Tamaño de los kmers
 l = 500                                                       # Tamaño de la ventana para calcular las densidades
 w = 100                                                       # tamaño de la ventana de desplazamiento
 vcf_output = "mutaciones_no_aplicadas.vcf"                    # archivo para guardar las mutaciones que no se han podido aplicar
