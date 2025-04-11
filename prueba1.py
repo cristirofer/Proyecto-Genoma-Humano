@@ -240,16 +240,16 @@ def obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada
     entropias_original = np.array(entropias_original)
     entropias_mutada = np.array(entropias_mutada)
 
-    # Calcular el umbral de alta entropía
+    # Calcular el umbral de alta entropia
     umbral_original = np.percentile(entropias_original[~np.isnan(entropias_original)], umbral_percentil)
     umbral_mutada = np.percentile(entropias_mutada[~np.isnan(entropias_mutada)], umbral_percentil)
 
-    # Filtrar posiciones con alta entropía
+    # Filtrar posiciones con alta entropia
     posiciones_altas = []
     for i, pos in enumerate(posiciones):
         if entropias_original[i] >= umbral_original or entropias_mutada[i] >= umbral_mutada:
-            idx = pos - start                           # Convertir posición real a índice en la secuencia
-            if 0 <= idx < len(seq_original):            # Verificar que esté dentro del rango válido
+            idx = pos - start                           # Convertir posicion real a indice en la secuencia
+            if 0 <= idx < len(seq_original):            # Verificar que esta dentro del rango válido
                 base_original = seq_original[idx]
                 base_mutada = seq_mutada[idx]
                 posiciones_altas.append((pos, base_original, base_mutada, entropias_original[i], entropias_mutada[i]))
