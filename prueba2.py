@@ -9,6 +9,7 @@ import vcfpy
 import pandas as pd
 import numpy as np
 import matplotlib.ticker as mticker
+import os
 
 # Primero leemos las mutaciones del archivo vcf
 def get_mutaciones(vcf_file, chrom_filtrar):
@@ -47,9 +48,10 @@ def aplicar_mutaciones(sequence, mut, chrom, start, vcf_output):
     for pos, (ref, alt) in mutaciones_chrom.items():
         idx = pos - start - 1                                   # Le restamos 1 porque sequence esta en base 0
         if 0 <= idx < len(sequence) and sequence[idx] != "N":   # Evitamos mutaciones en zonas desconocidas
-            if sequence[idx] == ref:                            # Solo mutamos si la referencia coincide
+            ref_real = sequence[idx:idx+len(ref)]               # Extraemos el trozo de la secuencia original
+            if "".join(ref_real) == ref:                        # Solo mutamos si la referencia coincide
                 print(f"Mutación en posición {pos}: {sequence[idx]} -> {alt}")
-                sequence[idx] = alt[0]                          # Aplicamos la mutación (tomando solo la primera base en caso de variantes múltiples)
+                sequence[idx:idx+len(ref)] = alt[0]                          # Aplicamos la mutación (tomando solo la primera base en caso de variantes múltiples)
             else:
                 mutaciones_no_aplicadas.append((chrom, pos, ref, alt))  
                 print(f"Advertencia: La referencia en {pos} no coincide ({sequence[idx]} != {ref})")     # Solo usa la primera base en caso de variantes múltiples
@@ -379,3 +381,30 @@ print(f"Posiciones con mayor densidad de mutaciones: {densidad_top}")           
 
 #Y por ultimos llamamos a la funcion para generar los graficos
 graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones)
+
+#logica de la aplicación
+class AnalizadorGenomico:
+    def __init__(self, fasta_ref, vcf, chrom, chrom_num, k, l, w, block_size, vcf_output):
+        self.fasta_ref = fasta_ref
+        self.vcf = vcf
+        self.chrom = chrom
+        self.chrom_num = chrom_num
+        self.k = k
+        self.l = l
+        self.w = w
+        self.block_size = block_size
+        self.vcf_output = vcf_output
+
+    def procesar(self):
+        posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones = procesar_por_bloques(
+            self.fasta_ref, self.vcf, self.chrom, self.chrom_num, self.k, self.l, self.w, self.block_size, self.vcf_output
+        )
+        
+        comparar_listas(entropias_original, entropias_mutada)
+        
+        densidad_top = sorted(densidad_mutaciones, key=lambda x: x[1], reverse=True)[:10]
+        print(f"Posiciones con mayor densidad de mutaciones: {densidad_top}")
+        
+        graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones)
+        
+        return posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones
