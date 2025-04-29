@@ -370,6 +370,7 @@ l = 500                                                       # Tamaño de la ve
 w = 100                                                       # tamaño de la ventana de desplazamiento
 vcf_output = "mutaciones_no_aplicadas.vcf"                    # archivo para guardar las mutaciones que no se han podido aplicar
 
+
 # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
 posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, w, 100000, vcf_output) 
 comparar_listas(entropias_original, entropias_mutada)
