@@ -60,8 +60,8 @@
 % les paraules clau i el resum en els tres idiomes                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\keywords{retinosis pigmentaria, datos genómicos, teoría de la información, cadenas de Markov, predicción de mutaciones, machine learning, entropía}        % Palabras clave
-         {retinosi pigmentària, dades genòmiques, teoria de la informació, cadenes de Markov, predicció de mutacions, machine learning, entropia}           % Paraules clau 
+\keywords{retinosi pigmentària, dades genòmiques, teoria de la informació, cadenes de Markov, predicció de mutacions, machine learning, entropia}           % Paraules clau
+         {retinosis pigmentaria, datos genómicos, teoría de la información, cadenas de Markov, predicción de mutaciones, machine learning, entropía}        % Palabras clave  
          {retinitis pigmentosa, genomic data, information theory, Markov chains, mutation prediction, machine learning, entropy}                            % Key words
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,11 +75,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}[spanish]
-   La retinosis pigmentaria (RP) es una de las distrofias hereditarias de retina (DHR) más comunes, esta se caracteriza por una degeneración progresiva de los fotorreceptores que conduce a una pérdida de visión irreversible. A pesar de los avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo incierto debido a la gran heterogeneidad genética de la enfermedad y la cantidad de genes asociados a DHR.
+   La retinosis pigmentaria (RP), una de las distrofias hereditarias de retina (DHR) más frecuente, es conocida por una degradación progresiva en los fotorreceptores que termina por causar pérdida visual irreversible. Aún con los recientes avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo un desafío debido a la amplia diversidad genética involucrada y la cantidad de genes relacionados con las DHR.
 
-   En este Trabajo de Fin de Grado, que amplía el Trabajo de Fin de Máster de Andrea Vañó Ribelles y Luis, se propone el uso de herramientas de Teoría de la Información y modelos de Fuentes de Markov para el análisis del genoma humano con el objetivo de predecir posibles mutaciones asociadas a la RP. Dado que la RP es una enfermedad rara y el número de individuos afectados es limitado, las técnicas de machine learning no resultan lo suficientemente efectivas debido a la escasez de datos para entrenar modelos robustos. En su lugar, este enfoque se centra en el análisis de regiones genómicas con alta entropía y elevada densidad de mutaciones, ya que estas zonas pueden ser clave para identificar variantes con mayor probabilidad de estar relacionadas con la patología. 
+   Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de Fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la RP. Puesto que la RP es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos.
 
-   Para ello, se emplearán datos genómicos disponibles en el National Center for Biotechnology Information (NCBI) y archivos VCF proporcionados por el Grupo de Investigación del IIS La Fe de Biomedicina Molecular, Celular y Genómica. El propósito de este estudio es profundizar en el conocimiento de las características del genoma asociadas a la enfermedad y aportar nuevas estrategias que ayuden a optimizar el diagnóstico genético de la retinosis pigmentaria. 
+   En vez de ello, este enfoque se centra en el análisis de regiones genómicas con elevada entropía y densidad de mutaciones, ya que estas áreas serían clave para detectar variantes con mayor probabilidad de estar vinculadas a la enfermedad.
+
+   Para ello, se han empleado los datos genómicos del National Center for Biotechnology Information (NCBI) y archivos VCF proporcionados por el Grupo de Investigación del IIS La Fe de Biomedicina Molecular, Celular y Genómica. El propósito del estudio es profundizar en las características del genoma asociadas a la enfermedad y aportar nuevas maneras de optimizar el diagnóstico genético de la retinosis pigmentaria.
    \\
    \\
 \end{abstract}
@@ -142,11 +144,11 @@
 
 \chapter{Estado del arte}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+El campo del análisis genómico de la retinosis pigmentaria (RP) está avanzando rápidamente, con desarrollos en la identificación genética, herramientas de predicción y terapias emergentes. Sin embargo, en un contexto de disponibilidad limitada de especialistas en retina, pruebas y asesoramiento genético, sigue existiendo una gran necesidad de métodos diagnósticos precisos y accesibles. Esta situación ha motivado la búsqueda de nuevas técnicas para mejorar la detección de esta enfermedad.
 
-\section{Motivación}
+\section{Métodos tradicionales}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+Los métodos tradicionales basados en sistemas de codificación médica como el ICD (International Classification of Diseases) y el SNOMED (Systematized Nomenclature of Medicine) han sido ampliamente utilizados en la medicina para clasificar enfermedades y registrar diagnósticos. Sin embargo, en el caso de enfermedades genéticas raras como la retinosis pigmentaria (RP), estos sistemas de codificación presentan importantes limitaciones. Esto es debido a que es una patología altamente heterogénea a nivel genético y clínico: existen numerosas mutaciones responsables y los síntomas pueden evolucionar de formas muy diversas entre pacientes. 
 
 \section{Objetivos}
 
