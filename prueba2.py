@@ -41,23 +41,38 @@ def get_sequence_from_fasta(fasta_file, chrom, start, end):
 
 #Aqui aplicamos las mutaciones en la secuencia de refenrecia
 def aplicar_mutaciones(sequence, mut, chrom, start, vcf_output):
-    sequence = list(sequence)                                   # Pasamos a lista, ya que las listas no se pueden modificar
-    mutaciones_chrom = mut.get(str(chrom), {})                  # Accedemos a las mutaciones del cromosoma
-    mutaciones_no_aplicadas = []                                # Para guardar las mutaciones que no se pueden aplicar porque no coincide el alelo de refencia
+    sequence = list(sequence)  # Convertimos la secuencia en lista para poder modificarla
+    mutaciones_chrom = mut.get(str(chrom), {})  # Mutaciones del cromosoma actual
+    mutaciones_no_aplicadas = []  # Para guardar las que no se puedan aplicar
 
-    for pos, (ref, alt) in mutaciones_chrom.items():
-        idx = pos - start - 1                                   # Le restamos 1 porque sequence esta en base 0
-        if 0 <= idx < len(sequence) and sequence[idx] != "N":   # Evitamos mutaciones en zonas desconocidas
-            ref_real = sequence[idx:idx+len(ref)]               # Extraemos el trozo de la secuencia original
-            if "".join(ref_real) == ref:                        # Solo mutamos si la referencia coincide
-                print(f"Mutación en posición {pos}: {sequence[idx]} -> {alt}")
-                sequence[idx:idx+len(ref)] = alt[0]                          # Aplicamos la mutación (tomando solo la primera base en caso de variantes múltiples)
+    # Ordenamos las mutaciones por posición
+    mutaciones_ordenadas = sorted(mutaciones_chrom.items())
+
+    desplazamiento = 0  # Acumulador del cambio de longitud
+
+    for pos_original, (ref, alt) in mutaciones_ordenadas:
+        idx = pos_original - start - 1 + desplazamiento  # Ajustamos la posición con el desplazamiento actual
+
+        # Verificamos si la posición modificada está dentro de los límites
+        if 0 <= idx < len(sequence):
+            ref_en_secuencia = ''.join(sequence[idx:idx + len(ref)])  # Extraemos la referencia desde la secuencia
+
+            if ref_en_secuencia == ref:  # Si la referencia coincide, aplicamos la mutación
+                print(f"Mutación en posición {pos_original}: {ref} -> {alt}")
+
+                # Sustitución respetando la longitud del ALT (tomamos solo la primera opción si hay múltiples alternativas)
+                alt_base = alt.split(',')[0]  # Por si hay múltiples variantes
+                sequence[idx:idx + len(ref)] = list(alt_base)
+
+                # Actualizamos el desplazamiento acumulado
+                desplazamiento += len(alt_base) - len(ref)
+
             else:
-                mutaciones_no_aplicadas.append((chrom, pos, ref, alt))  
-                print(f"Advertencia: La referencia en {pos} no coincide ({sequence[idx]} != {ref})")     # Solo usa la primera base en caso de variantes múltiples
-    
+                print(f"Advertencia: La referencia en {pos_original} no coincide ({ref_en_secuencia} != {ref})")
+                mutaciones_no_aplicadas.append((chrom, pos_original, ref, alt))
+        
     guardar_vcf_no_aplicadas(vcf_output, mutaciones_no_aplicadas)
-    return "".join(sequence)                                    # Convertimos de nuevo a cadena
+    return "".join(sequence)
 
 
 def guardar_vcf_no_aplicadas(vcf_output, mutaciones_no_aplicadas):
@@ -72,7 +87,8 @@ def comparar_listas(lista1, lista2):
         print("Las listas son idénticas.")
         return True
     else:
-        diferencias = [(i, lista1[i], lista2[i]) for i in range(len(lista1)) if not (pd.isna(lista1[i]) and pd.isna(lista2[i])) and lista1[i] != lista2[i]]
+        min_len = min(len(lista1), len(lista2))
+        diferencias = [(i, lista1[i], lista2[i]) for i in range(min_len) if not (pd.isna(lista1[i]) and pd.isna(lista2[i])) and lista1[i] != lista2[i]]
         print(f"Las listas son diferentes en {len(diferencias)} posiciones.")
         #for i, val1, val2 in diferencias[:100]:  # Muestra solo las primeras 100 diferencias
             #print(f"Posición {i}: Original={val1}, Mutada={val2}")
@@ -208,7 +224,7 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, w, block_size, 
     posiciones = []                                     # Lista para almacenar las posiciones
     
     #for start in range(0, 249250621, block_size):  # Salta por bloques de tamaño block_size
-    start = 700000
+    start = 1315000
     seq_original = get_sequence_from_fasta(fasta_ref, chrom_num, start, start + block_size)         # extrae la secuencia desde start hasta start+block_size
     # Si no encuentra la secuencia termina el bucle
     if not seq_original:
@@ -233,8 +249,8 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, w, block_size, 
 
     densidad_mutaciones = calcular_densidad_mutaciones(mutaciones, chrom, l)                        # densidad de las mutaciones
     
-    print("Original:", seq_original[62632])
-    print("Mutada:", seq_mutada[62632])
+    print("Original:", seq_original[96741])
+    print("Mutada:", seq_mutada[96741])
 
     print(f"Total posiciones procesadas: {len(posiciones)}")
     
@@ -277,10 +293,16 @@ def graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_
     plt.close()
     print(f"Gráfico de entropía guardado como 'grafico_entropia.png'.")
     
-    # Grafico entropia de markov en cada posicion (barras)
+    # Ajustar longitudes para entropía de Markov
+    min_length_markov = min(len(posiciones), len(entropias_markov_original), len(entropias_markov_mutada))
+    posiciones_markov = posiciones[:min_length_markov]
+    entropias_markov_original = entropias_markov_original[:min_length_markov]
+    entropias_markov_mutada = entropias_markov_mutada[:min_length_markov]
+
+    # Grafico entropía de markov en cada posicion (barras)
     plt.figure(figsize=(10, 5))
-    plt.bar(posiciones, entropias_markov_original, color="purple", alpha=0.5, label="Entropía Markov Original", width=1)
-    plt.bar(posiciones, entropias_markov_mutada, color="orange", alpha=0.5, label="Entropía Markov Mutada", width=1)
+    plt.bar(posiciones_markov, entropias_markov_original, color="purple", alpha=0.5, label="Entropía Markov Original", width=1)
+    plt.bar(posiciones_markov, entropias_markov_mutada, color="orange", alpha=0.5, label="Entropía Markov Mutada", width=1)
     plt.ylabel("Entropía (Markov)")
     plt.title("Entropía basada en Markov")
     plt.legend()
@@ -362,9 +384,9 @@ def obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada
 
 # Parametros
 vcf = "RP924_9589186940.vcf"
-fasta_ref = "sequence (1).fasta"
-chrom = 1
-chrom_num = "NC_000001.10"
+fasta_ref = "sequence (X).fasta"
+chrom = "X"
+chrom_num = "NC_000023.10"
 k = 7                                                         # Tamaño de los kmers
 l = 500                                                       # Tamaño de la ventana para calcular las densidades
 w = 100                                                       # tamaño de la ventana de desplazamiento
