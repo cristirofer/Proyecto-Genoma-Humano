@@ -27,6 +27,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[utf8]{inputenc} 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Para conseguir que la tabla de contenido no salga en rojo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -124,7 +125,17 @@
 
 \section{Objetivos}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+El objetivo principal de este Trabajo de Fin de Grado es proporcionar herramientas informáticas para el análisis genómico, en concreto aplicado a enfermedades raras como la Retinosis Pigmentaria (RP). Para ello contamos con archivos que contienen información sobre mutaciones y secuencias completas del genoma, y se implementan modelos basados en Teorías de la Información y Fuentes de Markov, con el fin de identificar regiones genómicas relevantes y predecir mutaciones potencialmente patogénicas.
+
+\subsection{Procesamiento de archivos VCF y secuencias genómicas}
+
+Hacer uso de herramientas y librerías de uso biomédico que permitan la lectura, escritura y análisis de archivos genéticos, y de esta manera, realizar un preproceso y de la información genética y aplicar mutaciones sobre la secuencia de referencia de forma precisa y eficiente.
+
+Preguntas de Investigación: 
+\begin{itemize}
+\item ¿Qué formato presentan los archivos VCF y cómo se puede garantizar la compatibilidad con los archivos FASTA con la secuencia genómica?
+\item ¿Cómo se pueden integrar las trasformaciones necesarias en la secuencia de referencia de manera correcta y sin conflictos entre ellas?
+\end{itemize}
 
 \section{Contexto}
 
@@ -148,19 +159,33 @@ El campo del análisis genómico de la retinosis pigmentaria (RP) está avanzand
 
 \section{Métodos tradicionales}
 
-Los métodos tradicionales basados en sistemas de codificación médica como el ICD (International Classification of Diseases) y el SNOMED (Systematized Nomenclature of Medicine) han sido ampliamente utilizados en la medicina para clasificar enfermedades y registrar diagnósticos. Sin embargo, en el caso de enfermedades genéticas raras como la retinosis pigmentaria (RP), estos sistemas de codificación presentan importantes limitaciones. Esto es debido a que es una patología altamente heterogénea a nivel genético y clínico: existen numerosas mutaciones responsables y los síntomas pueden evolucionar de formas muy diversas entre pacientes. 
+Los métodos tradicionales basados en sistemas de codificación médica como el ICD (International Classification of Diseases) y el SNOMED (Systematized Nomenclature of Medicine) han sido ampliamente utilizados en la medicina para clasificar enfermedades y registrar diagnósticos. Sin embargo, en el caso de enfermedades genéticas raras como la retinosis pigmentaria (RP), estos sistemas de codificación presentan importantes limitaciones\cite{VER}. Esto es debido a que es una patología altamente heterogénea a nivel genético y clínico: existen numerosas mutaciones responsables y los síntomas pueden evolucionar de formas muy diversas entre pacientes\cite{HAR}. 
 
-\section{Objetivos}
+\section{Inteligencia Artificial}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+En la actualidad se están utilizando métodos basados en inteligencia artificial (IA) para la detección, diagnóstico y pronóstico de numerosas enfermedades en distintas áreas de la medicina, desde oncología hasta neurología o cardiología. Esto es debido a la capacidad de la IA para trabajar con grandes volúmenes de datos e identificar en estos patrones complejos para generar predicciones con una alta precisión\cite{FER}. No obstante, su desarrollo para las distrofias hereditarias de retina (DHR), específicamente la retinosis pigmentaria (RP) todavía está en una fase temprana.
 
-\section{Contexto}
+\subsection{Aplicaciones de Machine Learning}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+El aprendizaje profundo (deep learning) es una subcategoría de la inteligencia artificial que ha ganado mucha atención en los últimos años, especialmente porque el aprendizaje profundo es muy eficaz en el reconocimiento de patrones y el análisis de imágenes\cite{STE}.
 
-\section{Estructura de la memoria}
+En un estudio reciente, se utilizaron tres modelos preentrenados; Inception-v3, ResNet-50 y VGG-19, para clasificar imágenes retinianas asociadas a diferentes genes relacionados con la retinosis pigmentaria. Tras un preprocesamiento exhaustivo que incluyó técnicas de class balancing y boosting para corregir la variabilidad genética, los modelos obtuvieron precisiones superiores al 80\% en los datos de training\cite{FER}. Sin embargo, al aplicar estos modelos a datos de testing, las tasas de precisión cayeron a un 54\%, 56\% y 54\% respectivamente, resultados claramente insuficientes para garantizar un diagnóstico clínico fiable debido a la elevada tasa de error.
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+Los estudios de IA disponibles, como el mencionado anteriormente, que buscan la detección, clasificación y predicción de DHR, siguen siendo en su mayoría retrospectivos e incluyen un número relativamente limitado de pacientes debido a su escasez\cite{ISS}. Esto pone de manifiesto la necesidad de continuar optimizando las metodologías empleadas para alcanzar niveles de exactitud que resulten aceptables en el ámbito médico.
+
+\subsection{Aplicaciones de Teorías de la Información y Fuentes de Markov}
+
+Aunque actualmente no existen estudios específicos que utilicen directamente Teorías de la Información y Fuentes de Markov al análisis genómico de la RP, estos enfoques se han consolidado como potenciales herramientas.
+
+Sabemos que las Teorías de la Información son útiles para medir la cantidad de información, la incertidumbre y el contenido informativo en sistemas complejos, como es el caso del genoma humano. En genómica, conceptos como la entropía permiten detectar mutaciones en el genoma humano, ya que son capaces de identificar cambios en la información genética, comparar con referencias conocidas o analizar patrones\cite{SEC}.
+
+Por su parte, los modelos de Fuentes de Markov (de orden k) permiten capturar patrones de dependencia entre nucleótidos y por lo tanto identificar regiones del genoma con propiedades estadísticas anómalas\cite{VOZ}, indicativas de posibles mutaciones patológicas.
+
+\section{Otras terapias emergentes}
+
+Además de los enfoques basados en el análisis genético, en los últimos años también se esta abordando el problema desde la estrategia de la terapia genética, dirigida al gen RPGR que es uno de los genes del cromosoma X que comúnmente está asociado a la RP (se tiene constancia de que es el causante de entre el 70\% y el 90\% de los casos ligados al cromosoma X)\cite{WAN}. Estas terapias consisten en la inyección subretinal de un virus modificado que transporta copias funcionales del gen RPGR, con el objetivo de restaurar la función perdida en las células de la retina afectadas\cite{ZON}.
+
+Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial identificar de manera precisa las mutaciones responsables. Mediante el uso de herramientas basadas Teorías de la Información es posible identificar de forma eficiente estas variantes, y así seleccionar a los candidatos adecuados para las terapias génicas y optimizar los ensayos clínicos.
 
 %\section{Notes bibliografiques} %%%%% Opcional
 
@@ -214,7 +239,7 @@ Los métodos tradicionales basados en sistemas de codificación médica como el 
 %                                BIBLIOGRAFIA                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{thebibliography}{10}
+\begin{thebibliography}{99}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MODEL D'ARTICLE                                                             %
@@ -235,11 +260,67 @@ Los métodos tradicionales basados en sistemas de codificación médica como el 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MODEL D'URL                                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibitem{WAR}
-   Comunicat de premsa del Departament de la Guerra, 
-   emés el 16 de febrer de 1946. 
-   \newblock Consultat a 
-   \url{http://americanhistory.si.edu/comphist/pr1.pdf}.
+
+\bibitem{VER}
+Verana Health.  
+\newblock Why Real-World Data is Key to Providing Insights Into Retinitis Pigmentosa,  
+emés el 20 de novembre de 2024.  
+\newblock Disponible en  
+\url{https://veranahealth.com/why-real-world-data-is-key-to-providing-insights-into-retinitis-pigmentosa/}.
+
+\bibitem{HAR}
+Hartong, D. T., Berson, E. L., \& Dryja, T. P.  
+\newblock Retinitis pigmentosa.  
+\newblock \textit{The Lancet}, vol. 368, núm. 9549, pp. 1795--1809, 2006.  
+\newblock Disponible en  
+\url{https://doi.org/10.1016/s0140-6736(06)69740-7}.
+
+\bibitem{FER}
+Ferreira, H., Marta, A., Machado, J., Couto, I., Marques, J. P., Beirão, J. M., \& Cunha, A.  
+\newblock Retinitis Pigmentosa Classification with Deep Learning and Integrated Gradients Analysis.  
+\newblock \textit{Applied Sciences}, vol. 15, núm. 4, art. 2181, 2025.  
+\newblock Disponible en  
+\url{https://doi.org/10.3390/app15042181}.
+
+\bibitem{STE}
+Stevenson, S.  
+\newblock How deep learning may play a role in predicting retinitis pigmentosa visual impairment,  
+emés el 14 de març de 2023.  
+\newblock Disponible en  
+\url{https://www.ophthalmologytimes.com/view/how-deep-learning-may-play-a-role-in-predicting-retinitis-pigmentosa-visual-impairment}.
+
+\bibitem{ISS}
+Issa, Mohamad et al.  
+\newblock Applications of artificial intelligence to inherited retinal diseases: A systematic review.  
+\newblock \textit{Survey of Ophthalmology}, vol. 70, núm. 2, pp. 255--264.  
+
+\bibitem{SEC}
+Societat Espanyola de Ciències de la Computació i Llenguatges (SECal).  
+\newblock Aplicaciones de la Teoría de la Información en Genómica,  
+sense data.  
+\newblock Disponible en  
+\url{https://www.secal.es}.
+
+\bibitem{VOZ}
+N.D.  
+\newblock Un algoritmo encuentra indicios de enfermedades en la parte del ADN que teóricamente no servía para nada,  
+emés el 21 d’abril de 2025.  
+\newblock Disponible en  
+\url{https://media.lavozdegalicia.es/noticia/sociedad/2025/04/21/algoritmo-encuentra-indicios-enfermedades-parte-adnconsidera-inutil/00031745236367256507381.htm}.
+
+\bibitem{WAN}
+Wang, Y., Juroch, K., Chen, Y., Ying, G., \& Birch, D. G.  
+\newblock Deep Learning–Facilitated Study of the Rate of Change in Photoreceptor Outer Segment Metrics in RPGR-Related X-Linked Retinitis Pigmentosa.  
+\newblock \textit{Investigative Ophthalmology \& Visual Science}, vol. 64, núm. 14, art. 31, 2023.  
+\newblock Disponible en  
+\url{https://doi.org/10.1167/iovs.64.14.31}.
+
+\bibitem{ZON}
+ZonaIT.  
+\newblock Avances en la terapia génica para la retinosis pigmentaria causada por mutaciones en el gen RPGR,  
+sense data.  
+\newblock Disponible en  
+\url{https://biotech-spain.com/es/articles/avances-en-la-terapia-g-nica-para-la-retinosis-pigmentaria-causada-por-mutaciones-en-el-gen-rpgr}.
 
 \end{thebibliography}
 \cleardoublepage

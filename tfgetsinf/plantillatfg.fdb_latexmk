@@ -1,11 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1745956096.32203 "/home/crist/TFG/tfgetsinf/plantillatfg.tex" "plantillatfg.pdf" "plantillatfg" 1745956096.95294 0
+["pdflatex"] 1746120265.41615 "/home/crist/TFG/tfgetsinf/plantillatfg.tex" "plantillatfg.pdf" "plantillatfg" 1746120267.96011 0
   "/etc/texmf/web2c/texmf.cnf" 1742933262.91717 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.600pk" 1746117765.63614 21792 cfd19e0b811178de2c4b166902d3b787 ""
   "/home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx1440.600pk" 1745955172.25831 34652 e46b75fe6f8bf1de10924d9afe58d73d ""
   "/home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx1728.600pk" 1745955172.74837 42260 fdc692d8f25b79cf835f0fb43a7aa9d7 ""
   "/home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx2488.600pk" 1745955173.23843 64008 b4723bce6ed63432ae99b11dee6ce94b ""
   "/home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk" 1745955171.75865 21952 067b3e404a87d25f2fed63b30d494b1a ""
-  "/home/crist/TFG/tfgetsinf/plantillatfg.tex" 1745956095.55651 17423 11fa02619570f98b83ab4cbd4e92dbd2 ""
+  "/home/crist/TFG/tfgetsinf/plantillatfg.tex" 1746120262.90563 24927 3a100adf3c299ccb1939b1dfb440e255 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1136768653 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -133,12 +134,12 @@
   "baseportada.png" 1742933374.29487 10500 6ac46f1b8867e6baf8118b0573fda68d ""
   "logo-etsinf.pdf" 1742933374.29487 21439 2f398dd99afcba2884b0e7497ed2b108 ""
   "logo-upv.pdf" 1742933374.29487 53878 e68480ee013a972986b057b59b03579b ""
-  "plantillatfg.aux" 1745956096.87546 5190 b6b5aa2ac1b8ffae712ac7a6454eb34f "pdflatex"
-  "plantillatfg.lof" 1745956096.87546 390 c50f603271ac15bbbd0a3713a13ae77b "pdflatex"
-  "plantillatfg.lot" 1745956096.87546 390 c50f603271ac15bbbd0a3713a13ae77b "pdflatex"
-  "plantillatfg.out" 1745956096.87546 3707 4cf6674f328273f783c64f34a305d36c "pdflatex"
-  "plantillatfg.tex" 1745956095.55651 17423 11fa02619570f98b83ab4cbd4e92dbd2 ""
-  "plantillatfg.toc" 1745956096.87546 2330 10f17f96927cf5b8c83272b78c70d09b "pdflatex"
+  "plantillatfg.aux" 1746120267.63563 5865 82e64b7d0e7193ef2a201084885a68aa "pdflatex"
+  "plantillatfg.lof" 1746120267.65563 390 c50f603271ac15bbbd0a3713a13ae77b "pdflatex"
+  "plantillatfg.lot" 1746120267.65563 390 c50f603271ac15bbbd0a3713a13ae77b "pdflatex"
+  "plantillatfg.out" 1746120267.65563 4661 c4d703dd91e4763e14fe852bb87c90da "pdflatex"
+  "plantillatfg.tex" 1746120262.90563 24927 3a100adf3c299ccb1939b1dfb440e255 ""
+  "plantillatfg.toc" 1746120267.65563 2635 f1376719527cc9fd7b3530a1b8fd73ab "pdflatex"
   "tfgetsinf.cls" 1742933374.29487 13289 71cd7a89e93672c9d59cf4ecccd71f95 ""
   (generated)
   "plantillatfg.aux"
