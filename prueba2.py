@@ -10,6 +10,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.ticker as mticker
 import os
+import requests
 
 # Primero leemos las mutaciones del archivo vcf
 def get_mutaciones(vcf_file, chrom_filtrar):
@@ -127,8 +128,8 @@ def calcular_entropia_simple(sequence, k, w):
 
 
 # Ahora construye el autómata de Markov a partir de la secuencia dada.
-def construir_automata_markov(sequence, k_mer, k=6):
-    k -= 1
+def construir_automata_markov(sequence, k_mer, k_markov):
+    k_markov -= 1
     alfabeto = set(sequence)                                # Extraer los símbolos únicos en la secuencia
     transiciones = defaultdict(lambda: defaultdict(int))    # Contador de transiciones
     total_transiciones = defaultdict(int)                   # Contador total de transiciones desde cada estado
@@ -138,12 +139,12 @@ def construir_automata_markov(sequence, k_mer, k=6):
     # Recorrer la secuencia para extraer los kmers y registrar transiciones
     for i in range(len(sequence) - k_mer + 1):
         kmer = sequence[i:i+k_mer]                          # Extraer el kmer de tamaño k_mer
-        estado_actual = kmer[:k]                            # Primeras k bases forman Estado actual
-        siguiente_estado = kmer[1:k+1]                      # Lo desplazamos una y formamos el siguiente
+        estado_actual = kmer[:k_markov]                            # Primeras k bases forman Estado actual
+        siguiente_estado = kmer[1:k_markov+1]                      # Lo desplazamos una y formamos el siguiente
         
-        if len(estado_actual) == k:
+        if len(estado_actual) == k_markov:
             estados_iniciales.add(estado_actual)            # Guardamos el estado inicial
-        if len(siguiente_estado) == k:
+        if len(siguiente_estado) == k_markov:
             estados_finales.add(siguiente_estado)           # Guardamos el estado final
         
         transiciones[estado_actual][siguiente_estado] += 1  # Contamos la transicion
@@ -177,16 +178,16 @@ def guardar_automata(alfabeto, estados_iniciales, estados_finales, matriz_transi
 
 
 # Calcula la entropia basada en fuentes de Markov en ventanas de tamaño w (usa las probabilidades de markov)
-def calcular_entropia_markov(sequence, matriz_transicion, w, k=6):
-    k -= 1
+def calcular_entropia_markov(sequence, matriz_transicion, w, k_markov):
+    k_markov -= 1
     entropias = []
     for i in range(len(sequence) - w + 1):                          # Para cada ventana de tamaño w
         subseq = sequence[i:i+w]                                    # La extraemos la ventana
         entropia = 0
 
-        for j in range(len(subseq) - k):
-            estado_actual = subseq[j:j+k]                           # Obtenemos el estado actual
-            siguiente_estado = subseq[j+1:j+k+1]                    # Obtenemos el estado siguiente
+        for j in range(len(subseq) - k_markov):
+            estado_actual = subseq[j:j+k_markov]                           # Obtenemos el estado actual
+            siguiente_estado = subseq[j+1:j+k_markov+1]                    # Obtenemos el estado siguiente
 
             if siguiente_estado in matriz_transicion.get(estado_actual, {}):
                 prob = matriz_transicion[estado_actual][siguiente_estado]  # calculamos la probabilidad de esa transición
@@ -214,7 +215,7 @@ def calcular_densidad_mutaciones(mutaciones, chrom, l):
     return densidades
 
 
-def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, w, block_size, vcf_output):
+def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k_mer, k_markov, l, w, block_size, vcf_output):
     #para procesar la secuencia por bloques para no sobrecargar la memoria
     mutaciones = get_mutaciones(vcf, chrom)             # lista con las mutaciones del cromosoma 1
     entropias_original = []                             # Lista para almacenar la entropia en la original
@@ -234,18 +235,18 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, w, block_size, 
     seq_mutada = aplicar_mutaciones(seq_original, mutaciones, chrom, start, vcf_output)             # aplica las mutaciones obtenidas del archivo vcf
     posiciones.extend(range(start, start + len(seq_original)))                                      # tomamos los valores desde start hasta start+len(seq_original)
     
-    entropias_original.extend(calcular_entropia_simple(seq_original, k, w))                         # entropia de la secuencia original 
-    entropias_mutada.extend(calcular_entropia_simple(seq_mutada, k, w))                             # entropia de la secuencia mutada
+    entropias_original.extend(calcular_entropia_simple(seq_original, k_mer, w))                         # entropia de la secuencia original 
+    entropias_mutada.extend(calcular_entropia_simple(seq_mutada, k_mer, w))                             # entropia de la secuencia mutada
     
-    alfabeto_original, estados_iniciales_original, estados_finales_original, matriz_transicion_original = construir_automata_markov(seq_original, k)                               # 1. Construir automata de Markov en la secuencia original
-    alfabeto_mutada, estados_iniciales_mutada, estados_finales_mutada, matriz_transicion_mutada =  construir_automata_markov(seq_mutada, k)                                 # 1. Construir automata de Markov en la secuencia mutada
+    alfabeto_original, estados_iniciales_original, estados_finales_original, matriz_transicion_original = construir_automata_markov(seq_original, k_mer, k_markov)                               # 1. Construir automata de Markov en la secuencia original
+    alfabeto_mutada, estados_iniciales_mutada, estados_finales_mutada, matriz_transicion_mutada =  construir_automata_markov(seq_mutada, k_mer, k_markov)                                 # 1. Construir automata de Markov en la secuencia mutada
 
     guardar_automata(alfabeto_original, estados_iniciales_original, estados_finales_original, matriz_transicion_original, "automata_original.txt")
     guardar_automata(alfabeto_mutada, estados_iniciales_mutada, estados_finales_mutada, matriz_transicion_mutada, "automata_mutada.txt")
 
     # 2. Calcular entropía con Markov
-    entropias_markov_original = calcular_entropia_markov(seq_original, matriz_transicion_original, w)
-    entropias_markov_mutada = calcular_entropia_markov(seq_mutada, matriz_transicion_mutada, w)
+    entropias_markov_original = calcular_entropia_markov(seq_original, matriz_transicion_original, w, k_markov)
+    entropias_markov_mutada = calcular_entropia_markov(seq_mutada, matriz_transicion_mutada, w, k_markov)
 
     densidad_mutaciones = calcular_densidad_mutaciones(mutaciones, chrom, l)                        # densidad de las mutaciones
     
@@ -383,36 +384,68 @@ def obtener_bases_alta_entropia(posiciones, entropias_original, entropias_mutada
 
 
 # Parametros
+
+chrom_ref = {
+    "1": "NC_000001.10",
+    "2": "NC_000002.11",
+    "3": "NC_000003.11",
+    "4": "NC_000004.11",
+    "5": "NC_000005.9",
+    "6": "NC_000006.11",
+    "7": "NC_000007.13",
+    "8": "NC_000008.10",
+    "9": "NC_000009.11",
+    "10": "NC_000010.10",
+    "11": "NC_000011.9",
+    "12": "NC_000012.11",
+    "13": "NC_000013.10",
+    "14": "NC_000014.8",
+    "15": "NC_000015.9",
+    "16": "NC_000016.9",
+    "17": "NC_000017.10",
+    "18": "NC_000018.9",
+    "19": "NC_000019.9",
+    "20": "NC_000020.10",
+    "21": "NC_000021.8",
+    "22": "NC_000022.10",
+    "X": "NC_000023.10",
+    "Y": "NC_000024.9",
+    "MT": "NC_012920.1"  # ADN mitocondrial (en principio no es necesario)
+}
+
 vcf = "RP924_9589186940.vcf"
 fasta_ref = "sequence (X).fasta"
 chrom = "X"
-chrom_num = "NC_000023.10"
-k = 7                                                         # Tamaño de los kmers
+chrom_num = chrom_ref.get(chrom.upper())
+k_mer = 7                                                     # Tamaño de los kmers
+k_markov = 6                                                  # Orden de la fuente de markov
 l = 500                                                       # Tamaño de la ventana para calcular las densidades
 w = 100                                                       # tamaño de la ventana de desplazamiento
 vcf_output = "mutaciones_no_aplicadas.vcf"                    # archivo para guardar las mutaciones que no se han podido aplicar
 
 
-# Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
-posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k, l, w, 100000, vcf_output) 
-comparar_listas(entropias_original, entropias_mutada)
+
+# # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
+# posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k_mer, l_markov, l, w, 100000, vcf_output) 
+# comparar_listas(entropias_original, entropias_mutada)
 
 
-# Hacemos un print para conocer las zonas con las mayores densidades de mutaciones
-densidad_top = sorted(densidad_mutaciones, key=lambda x: x[1], reverse=True)[:10]       # Ordenamos por densidad de mutaciones en orden descendente
-print(f"Posiciones con mayor densidad de mutaciones: {densidad_top}")                   # Imprime las 10 posiciones con mayor densidad
+# # Hacemos un print para conocer las zonas con las mayores densidades de mutaciones
+# densidad_top = sorted(densidad_mutaciones, key=lambda x: x[1], reverse=True)[:10]       # Ordenamos por densidad de mutaciones en orden descendente
+# print(f"Posiciones con mayor densidad de mutaciones: {densidad_top}")                   # Imprime las 10 posiciones con mayor densidad
 
-#Y por ultimos llamamos a la funcion para generar los graficos
-graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones)
+# #Y por ultimos llamamos a la funcion para generar los graficos
+# graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones)
 
 #logica de la aplicación
 class AnalizadorGenomico:
-    def __init__(self, fasta_ref, vcf, chrom, chrom_num, k, l, w, block_size, vcf_output):
+    def __init__(self, fasta_ref, vcf, chrom, chrom_num, k_mer, k_markov, l, w, block_size, vcf_output):
         self.fasta_ref = fasta_ref
         self.vcf = vcf
         self.chrom = chrom
         self.chrom_num = chrom_num
-        self.k = k
+        self.k_mer = k_mer
+        self.k_markov = k_markov
         self.l = l
         self.w = w
         self.block_size = block_size
@@ -420,7 +453,7 @@ class AnalizadorGenomico:
 
     def procesar(self):
         posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones = procesar_por_bloques(
-            self.fasta_ref, self.vcf, self.chrom, self.chrom_num, self.k, self.l, self.w, self.block_size, self.vcf_output
+            self.fasta_ref, self.vcf, self.chrom, self.chrom_num, self.k_mer, self.k_markov, self.l, self.w, self.block_size, self.vcf_output
         )
         
         comparar_listas(entropias_original, entropias_mutada)
