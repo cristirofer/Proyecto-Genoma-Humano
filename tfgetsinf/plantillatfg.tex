@@ -137,6 +137,38 @@ Preguntas de Investigación:
 \item ¿Cómo se pueden integrar las trasformaciones necesarias en la secuencia de referencia de manera correcta y sin conflictos entre ellas?
 \end{itemize}
 
+\subsection{Aplicación de Teorías de la Información y Fuentes de Markov al análisis de secuencias genómicas }
+
+Utilizar modelos de Teorías de la Información y Fuentes de Markov para predecir el impacto de las mutaciones en la secuencia genómica y así detectar zonas con valores anómalos de entropía, o alta densidad de mutaciones, para su posterior estudio. 
+
+Preguntas de Investigación: 
+\begin{itemize}
+\item ¿Qué diferencias se observan en los valores de entropía, tanto la simple como la realizada a partir de aplicar Fuentes de Markov, entre la secuencia original y la mutada? 
+\item ¿Hay alguna correlación entre las zonas con alta densidad de mutaciones y los valores de entropía? 
+\item ¿Cómo es la estructura que presenta el autómata de transición generado a partir de Fuentes de Markov de orden k? 
+\item ¿Cuáles son los valores óptimos de los parámetros para obtener resultados interesantes? 
+\end{itemize}
+
+\subsection{Desarrollo de una interfaz de usuario para la visualización de resultados }
+
+Crear una aplicación para facilitar el uso del programa, sin necesidad de tener conocimientos avanzados en informática. Esto es especialmente importante en este contexto, ya que se trata de una herramienta enfocada a un usuario que no es experto en informática. Además, esta interfaz debe permitir la interacción del usuario con la aplicación, modificando distintos parámetros para obtener diferentes resultados en función de lo que se busque, y visualizar gráficamente y de manera unificada los resultados de este análisis. 
+
+Preguntas de Investigación: 
+\begin{itemize}
+\item ¿Qué diseño debe tener la interfaz para que no sea demasiado compleja, pero permita interactuar ampliamente al usuario? 
+\item ¿Cómo presentar los resultados de manera ordenada, clara y concisa, para hacer accesible la información más complicada? 
+\end{itemize}
+
+\subsection{Contribución a las aplicaciones de la IA en el campo de la investigación genética }
+
+Proponer un nuevo enfoque de análisis genómico basado en Teorías de la Información, el cual no se había estudiado aún, y ofrecer una herramienta efectiva para el estudio de otras enfermedades raras con componente genético. 
+
+Preguntas de Investigación: 
+\begin{itemize}
+\item ¿Debe poder generalizarse el proyecto para otras patologías? 
+\item ¿Qué técnicas se podrían utilizar sobre los resultados obtenidos, como machine learning, para clasificar o encontrar patrones de mutaciones? 
+\end{itemize}
+
 \section{Contexto}
 
 ????? ????????????? ????????????? ????????????? ????????????? ????????????? 
@@ -183,7 +215,7 @@ Por su parte, los modelos de Fuentes de Markov (de orden k) permiten capturar pa
 
 \section{Otras terapias emergentes}
 
-Además de los enfoques basados en el análisis genético, en los últimos años también se esta abordando el problema desde la estrategia de la terapia genética, dirigida al gen RPGR que es uno de los genes del cromosoma X que comúnmente está asociado a la RP (se tiene constancia de que es el causante de entre el 70\% y el 90\% de los casos ligados al cromosoma X)\cite{WAN}. Estas terapias consisten en la inyección subretinal de un virus modificado que transporta copias funcionales del gen RPGR, con el objetivo de restaurar la función perdida en las células de la retina afectadas\cite{ZON}.
+Además de los enfoques basados en el análisis genético, en los últimos años también se está abordando el problema desde la estrategia de la terapia genética, dirigida al gen RPGR que es uno de los genes del cromosoma X que comúnmente está asociado a la RP (se tiene constancia de que es el causante de entre el 70\% y el 90\% de los casos ligados al cromosoma X)\cite{WAN}. Estas terapias consisten en la inyección subretinal de un virus modificado que transporta copias funcionales del gen RPGR, con el objetivo de restaurar la función perdida en las células de la retina afectadas\cite{ZON}.
 
 Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial identificar de manera precisa las mutaciones responsables. Mediante el uso de herramientas basadas Teorías de la Información es posible identificar de forma eficiente estas variantes, y así seleccionar a los candidatos adecuados para las terapias génicas y optimizar los ensayos clínicos.
 
