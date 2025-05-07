@@ -32,7 +32,7 @@ chrom_ref = {
     "22": "NC_000022.10",
     "X": "NC_000023.10",
     "Y": "NC_000024.9",
-    "MT": "NC_012920.1"  # 
+    "MT": "NC_012920.1"  # ADN mitocondrial (en principio no es necesario)
 }
 
 # Selección del cromosoma
@@ -55,6 +55,7 @@ k_mer = st.number_input("Introduce el tamaño de k-mer:", min_value=3, value=7)
 k_markov = st.number_input("Introduce el orden de la Fuente de Markov:", min_value=3, value=6)
 l = st.number_input("Introduce el tamaño de la ventana para la densidad:", min_value=100, value=500)
 w = st.number_input("Introduce el tamaño de la ventana para la entropía:", min_value=20, value=100)
+start = st.number_input("Introduce la posición de inicio", min_value=0, value=1315000)
 block_size = st.number_input("Introduce el tamaño del bloque:", min_value=1000, value=100000)
 
 vcf_output = "mutaciones_no_aplicadas.vcf"
@@ -69,7 +70,7 @@ if st.button("Ejecutar análisis"):
             f.write(vcf_uploaded.read())
 
         # Ejecutar análisis con el VCF cargado y FASTA precargado
-        analizador = AnalizadorGenomico(fasta_file, vcf_path, chrom, chrom_num, k_mer, k_markov, l, w, block_size, vcf_output)
+        analizador = AnalizadorGenomico(fasta_file, vcf_path, chrom, chrom_num, k_mer, k_markov, l, w, start, block_size, vcf_output)
         resultados = analizador.procesar()
         
         if resultados:

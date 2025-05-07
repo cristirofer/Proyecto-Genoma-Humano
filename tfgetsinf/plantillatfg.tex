@@ -49,7 +49,7 @@
 % titol, alumne, tutor i curs academic                                        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Diseño e implementación de herramientas de análisis de genoma basadas en la teoría de la información}
+\title{Diseño e implementación de herramientas de análisis de genoma basadas en la Teoría de la Tnformación}
 \author{Cristina Rodríguez Fernández}
 \tutor{Jose María Sempere Luna}
 \curs{2024-2025}
@@ -61,9 +61,9 @@
 % les paraules clau i el resum en els tres idiomes                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\keywords{retinosi pigmentària, dades genòmiques, teoria de la informació, cadenes de Markov, predicció de mutacions, machine learning, entropia}           % Paraules clau
-         {retinosis pigmentaria, datos genómicos, teoría de la información, cadenas de Markov, predicción de mutaciones, machine learning, entropía}        % Palabras clave  
-         {retinitis pigmentosa, genomic data, information theory, Markov chains, mutation prediction, machine learning, entropy}                            % Key words
+\keywords{retinosi pigmentària, dades genòmiques, Teoria de la informació, cadenes de Markov, predicció de mutacions, machine learning, entropia}           % Paraules clau
+         {retinosis pigmentaria, datos genómicos, Teoría de la información, cadenas de Markov, predicción de mutaciones, machine learning, entropía}        % Palabras clave  
+         {retinitis pigmentosa, genomic data, Information Theory, Markov chains, mutation prediction, machine learning, entropy}                            % Key words
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                              INICI DEL DOCUMENT                             %
@@ -125,7 +125,7 @@
 
 \section{Objetivos}
 
-El objetivo principal de este Trabajo de Fin de Grado es proporcionar herramientas informáticas para el análisis genómico, en concreto aplicado a enfermedades raras como la Retinosis Pigmentaria (RP). Para ello contamos con archivos que contienen información sobre mutaciones y secuencias completas del genoma, y se implementan modelos basados en Teorías de la Información y Fuentes de Markov, con el fin de identificar regiones genómicas relevantes y predecir mutaciones potencialmente patogénicas.
+El objetivo principal de este Trabajo de Fin de Grado es proporcionar herramientas informáticas para el análisis genómico, en concreto aplicado a enfermedades raras como la Retinosis Pigmentaria (RP). Para ello contamos con archivos que contienen información sobre mutaciones y secuencias completas del genoma, y se implementan modelos basados en Teoría de la Información y Fuentes de Markov, con el fin de identificar regiones genómicas relevantes y predecir mutaciones potencialmente patogénicas.
 
 \subsection{Procesamiento de archivos VCF y secuencias genómicas}
 
@@ -137,9 +137,9 @@ Preguntas de Investigación:
 \item ¿Cómo se pueden integrar las trasformaciones necesarias en la secuencia de referencia de manera correcta y sin conflictos entre ellas?
 \end{itemize}
 
-\subsection{Aplicación de Teorías de la Información y Fuentes de Markov al análisis de secuencias genómicas }
+\subsection{Aplicación de Teoría de la Información y Fuentes de Markov al análisis de secuencias genómicas }
 
-Utilizar modelos de Teorías de la Información y Fuentes de Markov para predecir el impacto de las mutaciones en la secuencia genómica y así detectar zonas con valores anómalos de entropía, o alta densidad de mutaciones, para su posterior estudio. 
+Utilizar modelos de Teoría de la Información y Fuentes de Markov para predecir el impacto de las mutaciones en la secuencia genómica y así detectar zonas con valores anómalos de entropía, o alta densidad de mutaciones, para su posterior estudio. 
 
 Preguntas de Investigación: 
 \begin{itemize}
@@ -161,7 +161,7 @@ Preguntas de Investigación:
 
 \subsection{Contribución a las aplicaciones de la IA en el campo de la investigación genética }
 
-Proponer un nuevo enfoque de análisis genómico basado en Teorías de la Información, el cual no se había estudiado aún, y ofrecer una herramienta efectiva para el estudio de otras enfermedades raras con componente genético. 
+Proponer un nuevo enfoque de análisis genómico basado en la Teoría de la Información, el cual no se había estudiado aún, y ofrecer una herramienta efectiva para el estudio de otras enfermedades raras con componente genético. 
 
 Preguntas de Investigación: 
 \begin{itemize}
@@ -175,7 +175,10 @@ Preguntas de Investigación:
 
 \section{Estructura de la memoria}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+La memoria de este TFG está estructurada en 7 secciones, cada una de estas a su vez divididas en subsecciones.  
+
+
+La primera sección se introduce el proyecto, se exponen el contexto y la motivación, y se justifican los objetivos. En la sección 2, se realiza una investigación del conocimiento y tecnologías existentes en la actualidad sobre el tema que se aborda en el proyecto, así como las limitaciones que aún existen, lo que justifica la necesidad de este proyecto. En la sección 3, se realiza una exposición de los conceptos clave, necesarios para entender este trabajo, los archivos genómicos utilizados y los principios de la Teoría de la Información. Después, en la sección 4, se describe la metodología seguida y el flujo de información y herramientas usadas a lo largo del proyecto. En la sección 5, se explica detalladamente el funcionamiento del programa. En la sección 6 se exponen y analizan los resultados obtenidos mediante la realización de pruebas cambiando los diferentes parámetros. Por último, en la sección 7, se finaliza el trabajo, explicando las conclusiones obtenidas seguida por un listado de las referencias bibliográficas utilizadas.  
 
 %\section{Notes bibliografiques} %%%%% Opcional
 
@@ -205,11 +208,11 @@ En un estudio reciente, se utilizaron tres modelos preentrenados; Inception-v3, 
 
 Los estudios de IA disponibles, como el mencionado anteriormente, que buscan la detección, clasificación y predicción de DHR, siguen siendo en su mayoría retrospectivos e incluyen un número relativamente limitado de pacientes debido a su escasez\cite{ISS}. Esto pone de manifiesto la necesidad de continuar optimizando las metodologías empleadas para alcanzar niveles de exactitud que resulten aceptables en el ámbito médico.
 
-\subsection{Aplicaciones de Teorías de la Información y Fuentes de Markov}
+\subsection{Aplicaciones de Teoría de la Información y Fuentes de Markov}
 
-Aunque actualmente no existen estudios específicos que utilicen directamente Teorías de la Información y Fuentes de Markov al análisis genómico de la RP, estos enfoques se han consolidado como potenciales herramientas.
+Aunque actualmente no existen estudios específicos que utilicen directamente Teoría de la Información y Fuentes de Markov al análisis genómico de la RP, estos enfoques se han consolidado como potenciales herramientas.
 
-Sabemos que las Teorías de la Información son útiles para medir la cantidad de información, la incertidumbre y el contenido informativo en sistemas complejos, como es el caso del genoma humano. En genómica, conceptos como la entropía permiten detectar mutaciones en el genoma humano, ya que son capaces de identificar cambios en la información genética, comparar con referencias conocidas o analizar patrones\cite{SEC}.
+Sabemos que la Teoría de la Información es útil para medir la cantidad de información, la incertidumbre y el contenido informativo en sistemas complejos, como es el caso del genoma humano. En genómica, conceptos como la entropía permiten detectar mutaciones en el genoma humano, ya que son capaces de identificar cambios en la información genética, comparar con referencias conocidas o analizar patrones\cite{SEC}.
 
 Por su parte, los modelos de Fuentes de Markov (de orden k) permiten capturar patrones de dependencia entre nucleótidos y por lo tanto identificar regiones del genoma con propiedades estadísticas anómalas\cite{VOZ}, indicativas de posibles mutaciones patológicas.
 
@@ -217,7 +220,7 @@ Por su parte, los modelos de Fuentes de Markov (de orden k) permiten capturar pa
 
 Además de los enfoques basados en el análisis genético, en los últimos años también se está abordando el problema desde la estrategia de la terapia genética, dirigida al gen RPGR que es uno de los genes del cromosoma X que comúnmente está asociado a la RP (se tiene constancia de que es el causante de entre el 70\% y el 90\% de los casos ligados al cromosoma X)\cite{WAN}. Estas terapias consisten en la inyección subretinal de un virus modificado que transporta copias funcionales del gen RPGR, con el objetivo de restaurar la función perdida en las células de la retina afectadas\cite{ZON}.
 
-Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial identificar de manera precisa las mutaciones responsables. Mediante el uso de herramientas basadas Teorías de la Información es posible identificar de forma eficiente estas variantes, y así seleccionar a los candidatos adecuados para las terapias génicas y optimizar los ensayos clínicos.
+Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial identificar de manera precisa las mutaciones responsables. Mediante el uso de herramientas basadas en Teoría de la Información es posible identificar de forma eficiente estas variantes, y así seleccionar a los candidatos adecuados para las terapias génicas y optimizar los ensayos clínicos.
 
 %\section{Notes bibliografiques} %%%%% Opcional
 
@@ -251,7 +254,7 @@ Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial 
 
 ????? ????????????? ????????????? ????????????? ????????????? ?????????????
 
-\chapter{Resultados}
+\chapter{Experimentos}
 
 ????? ????????????? ????????????? ????????????? ????????????? ????????????? 
 

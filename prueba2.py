@@ -11,6 +11,8 @@ import numpy as np
 import matplotlib.ticker as mticker
 import os
 import requests
+from matplotlib.ticker import ScalarFormatter
+
 
 # Primero leemos las mutaciones del archivo vcf
 def get_mutaciones(vcf_file, chrom_filtrar):
@@ -215,7 +217,7 @@ def calcular_densidad_mutaciones(mutaciones, chrom, l):
     return densidades
 
 
-def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k_mer, k_markov, l, w, block_size, vcf_output):
+def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k_mer, k_markov, l, w, start, block_size, vcf_output):
     #para procesar la secuencia por bloques para no sobrecargar la memoria
     mutaciones = get_mutaciones(vcf, chrom)             # lista con las mutaciones del cromosoma 1
     entropias_original = []                             # Lista para almacenar la entropia en la original
@@ -225,7 +227,7 @@ def procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k_mer, k_markov, l, w
     posiciones = []                                     # Lista para almacenar las posiciones
     
     #for start in range(0, 249250621, block_size):  # Salta por bloques de tamaño block_size
-    start = 1315000
+
     seq_original = get_sequence_from_fasta(fasta_ref, chrom_num, start, start + block_size)         # extrae la secuencia desde start hasta start+block_size
     # Si no encuentra la secuencia termina el bucle
     if not seq_original:
@@ -288,6 +290,9 @@ def graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_
     plt.bar(posiciones, entropias_mutada, color="red", alpha=0.5, label="Entropía Mutada", width=1)
     plt.ylabel("Entropía")
     plt.title("Entropía en cada posición")
+    ax = plt.gca()
+    ax.ticklabel_format(style='plain', axis='x')
+    ax.xaxis.set_major_formatter(ScalarFormatter())
     plt.legend()
     plt.tight_layout()
     plt.savefig(f"grafico_entropia.png")
@@ -306,6 +311,9 @@ def graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_
     plt.bar(posiciones_markov, entropias_markov_mutada, color="orange", alpha=0.5, label="Entropía Markov Mutada", width=1)
     plt.ylabel("Entropía (Markov)")
     plt.title("Entropía basada en Markov")
+    ax = plt.gca()
+    ax.ticklabel_format(style='plain', axis='x')
+    ax.xaxis.set_major_formatter(ScalarFormatter())
     plt.legend()
     plt.tight_layout()
     plt.savefig("grafico_entropia_markov.png")
@@ -347,7 +355,9 @@ def graficos(posiciones, entropias_original, entropias_mutada, entropias_markov_
 
     # Ajustar etiquetas del eje X para mejor visualización
     plt.xticks(ticks=posiciones[::max(1, len(posiciones)//10)], rotation=45)
-
+    ax = plt.gca()
+    ax.ticklabel_format(style='plain', axis='x')
+    ax.xaxis.set_major_formatter(ScalarFormatter())
     # Agregar una leyenda
     plt.legend()
     plt.savefig(f"grafico_densidad.png")
@@ -426,7 +436,7 @@ vcf_output = "mutaciones_no_aplicadas.vcf"                    # archivo para gua
 
 
 # # Ahora llamamos a procesar_por_bloques con el archivo fasta, el vcf, el chromosoma que queremos, el tamaño de ventana y tamaño de bloque
-# posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k_mer, l_markov, l, w, 100000, vcf_output) 
+# posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones = procesar_por_bloques(fasta_ref, vcf, chrom, chrom_num, k_mer, l_markov, l, w, 1315000, 100000, vcf_output) 
 # comparar_listas(entropias_original, entropias_mutada)
 
 
@@ -439,7 +449,7 @@ vcf_output = "mutaciones_no_aplicadas.vcf"                    # archivo para gua
 
 #logica de la aplicación
 class AnalizadorGenomico:
-    def __init__(self, fasta_ref, vcf, chrom, chrom_num, k_mer, k_markov, l, w, block_size, vcf_output):
+    def __init__(self, fasta_ref, vcf, chrom, chrom_num, k_mer, k_markov, l, w, start, block_size, vcf_output):
         self.fasta_ref = fasta_ref
         self.vcf = vcf
         self.chrom = chrom
@@ -448,12 +458,13 @@ class AnalizadorGenomico:
         self.k_markov = k_markov
         self.l = l
         self.w = w
+        self.start = start
         self.block_size = block_size
         self.vcf_output = vcf_output
 
     def procesar(self):
         posiciones, entropias_original, entropias_mutada, entropias_markov_original, entropias_markov_mutada, densidad_mutaciones = procesar_por_bloques(
-            self.fasta_ref, self.vcf, self.chrom, self.chrom_num, self.k_mer, self.k_markov, self.l, self.w, self.block_size, self.vcf_output
+            self.fasta_ref, self.vcf, self.chrom, self.chrom_num, self.k_mer, self.k_markov, self.l, self.w, self.start, self.block_size, self.vcf_output
         )
         
         comparar_listas(entropias_original, entropias_mutada)
