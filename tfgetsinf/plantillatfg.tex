@@ -27,6 +27,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[utf8]{inputenc} 
+\usepackage{graphicx}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Para conseguir que la tabla de contenido no salga en rojo
@@ -117,11 +119,35 @@
 
 \chapter{Introducción}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+La retinosis o retinitis pigmentaria (RP), una de las distrofias hereditarias de retina DHR más frecuente, es un grupo de enfermedades conocidas por una degradación progresiva en los fotorreceptores (células de la retina responsables de captar la luz y, por tanto, permitir la visión) que termina por causar pérdida visual irreversible. Esta patología suele manifestarse en un principio con ceguera nocturna, seguida por una reducción del campo visual periférico y, en fases avanzadas, puede llegar a la pérdida de la visión central\cite{NAT}. La RP presenta una gran heterogeneidad genética, lo que significa que puede estar causada por mutaciones en más de 100 genes diferentes, heredados bajo distintos patrones\cite{GIL}. Aún con los recientes avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo un desafío debido a la amplia diversidad genética involucrada y la cantidad de genes relacionados con las DHR. 
+
+ 
+
+Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de Fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la RP. Puesto que la RP es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos. 
+
+ 
+
+En vez de ello, este enfoque se centra en el análisis de regiones genómicas con elevada entropía y densidad de mutaciones, ya que estas áreas serían clave para detectar variantes con mayor probabilidad de estar vinculadas a la enfermedad. 
+
+ 
+
+Para ello, se han empleado los datos genómicos del National Center for Biotechnology Information (NCBI) y archivos VCF proporcionados por el Grupo de Investigación del IIS La Fe de Biomedicina Molecular, Celular y Genómica. El propósito del estudio es profundizar en las características del genoma asociadas a la enfermedad y aportar nuevas maneras de optimizar el diagnóstico genético de la retinosis pigmentaria. 
 
 \section{Motivación}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+\subsection{Motivación personal}
+Desde que comencé mi formación en Ingeniería Informática, siempre he tenido la convicción de que esta no debe limitarse a aspectos técnicos, algoritmos o eficiencia computacional, sino que debe orientarse también hacia herramientas que tengan un impacto positivo en la vida de las personas. Por eso, me interesan especialmente las aplicaciones la Inteligencia Artificial para mejorar la sociedad, hacer el mundo más justo e inclusivo y resolver problemas reales.  
+
+Siguiendo estos objetivos, y gracias al proyecto conjunto del Instituto VRAIN con el Grupo de Investigación del IIS La Fe de Biomedicina Molecular, Celular y Genómica, he tenido la oportunidad de formarme en diversas áreas de conocimiento y aplicar mis conocimientos técnicos a una dimensión ética y social. Por esta razón, considero que mejorar la calidad de vida de pacientes mediante herramientas que ayuden a investigadores y personal sanitario en el diagnóstico es una de las principales motivaciones que me impulsa en la realización de este proyecto. 
+
+\subsection{Motivación profesional}
+Las distrofias hereditarias de retina (DHR) constituyen un conjunto de enfermedades genéticas que afectan a la estructura y función de la retina, llevando progresivamente a la pérdida de visión, en muchos casos hasta alcanzar la ceguera legal. A pesar de ser consideradas enfermedades raras, su impacto es profundo y duradero, no solo desde el punto de vista funcional, sino también psicológico, afectando significativamente la calidad de vida de quienes las padecen\cite{STO}.
+
+Actualmente, no existe ningún tratamiento curativo, aunque se están explorando alternativas terapéuticas como las que se describen en la sección 2 de esta memoria, pero aún se encuentran en fase experimental. En este contexto, el diagnóstico genético tiene un papel fundamental en la orientación médica y la inclusión del paciente en ensayos clínicos\cite{HAN}.
+
+Uno de los principales desafíos en el estudio genético de las distrofias hereditarias de retina (DHR) radica en la gestión y análisis de la enorme cantidad de variantes obtenidas a partir de técnicas como la secuenciación del exoma completo (WES). Aunque se aplican filtros por frecuencia poblacional o predictores del impacto funcional, el volumen de información sigue siendo elevado, lo que dificulta alcanzar un diagnóstico genético preciso\cite{DEC}.
+
+En este trabajo se propone un enfoque complementario, basado en el uso de modelos computacionales que aplican principios de la teoría de la información y fuentes de Markov para analizar la secuencia genómica antes y después de la introducción de mutaciones. A través de métricas como la entropía y la densidad mutacional, se busca detectar alteraciones estructurales o funcionales que puedan asociarse con variantes patológicas. Esta estrategia no solo contribuye al desarrollo de nuevas herramientas de apoyo al diagnóstico, sino que también tiene una dimensión humana relevante: mejorar el acceso a un diagnóstico certero, lo que representa un paso fundamental para que los pacientes y sus familias encuentren respuestas, orientación clínica y esperanza de acceso a futuras terapias. 
 
 \section{Objetivos}
 
@@ -169,16 +195,14 @@ Preguntas de Investigación:
 \item ¿Qué técnicas se podrían utilizar sobre los resultados obtenidos, como machine learning, para clasificar o encontrar patrones de mutaciones? 
 \end{itemize}
 
-\section{Contexto}
-
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
 
 \section{Estructura de la memoria}
 
 La memoria de este TFG está estructurada en 7 secciones, cada una de estas a su vez divididas en subsecciones.  
 
 
-La primera sección se introduce el proyecto, se exponen el contexto y la motivación, y se justifican los objetivos. En la sección 2, se realiza una investigación del conocimiento y tecnologías existentes en la actualidad sobre el tema que se aborda en el proyecto, así como las limitaciones que aún existen, lo que justifica la necesidad de este proyecto. En la sección 3, se realiza una exposición de los conceptos clave, necesarios para entender este trabajo, los archivos genómicos utilizados y los principios de la Teoría de la Información. Después, en la sección 4, se describe la metodología seguida y el flujo de información y herramientas usadas a lo largo del proyecto. En la sección 5, se explica detalladamente el funcionamiento del programa. En la sección 6 se exponen y analizan los resultados obtenidos mediante la realización de pruebas cambiando los diferentes parámetros. Por último, en la sección 7, se finaliza el trabajo, explicando las conclusiones obtenidas seguida por un listado de las referencias bibliográficas utilizadas.  
+La primera sección se introduce el proyecto, se exponen el contexto y la motivación, y se justifican los objetivos. En la sección 2, se realiza una investigación del conocimiento y tecnologías existentes en la actualidad sobre el tema que se aborda en el proyecto, así como las limitaciones que aún existen, lo que justifica la necesidad de este proyecto. En la sección 3, se realiza una exposición de los conceptos clave necesarios para entender este trabajo, genética y mutaciones, los archivos genómicos utilizados y los principios de la Teoría de la Información. Después, en la sección 4, se describe la metodología seguida y el flujo de información y herramientas usadas a lo largo del proyecto. En la sección 5, se explica detalladamente el funcionamiento del programa. En la sección 6 se exponen y analizan los resultados obtenidos mediante la realización de pruebas cambiando los diferentes parámetros. Por último, en la sección 7, se finaliza el trabajo, explicando las conclusiones obtenidas, seguida por un listado de las referencias bibliográficas utilizadas. 
+
 
 %\section{Notes bibliografiques} %%%%% Opcional
 
@@ -218,7 +242,7 @@ Por su parte, los modelos de Fuentes de Markov (de orden k) permiten capturar pa
 
 \section{Otras terapias emergentes}
 
-Además de los enfoques basados en el análisis genético, en los últimos años también se está abordando el problema desde la estrategia de la terapia genética, dirigida al gen RPGR que es uno de los genes del cromosoma X que comúnmente está asociado a la RP (se tiene constancia de que es el causante de entre el 70\% y el 90\% de los casos ligados al cromosoma X)\cite{WAN}. Estas terapias consisten en la inyección subretinal de un virus modificado que transporta copias funcionales del gen RPGR, con el objetivo de restaurar la función perdida en las células de la retina afectadas\cite{ZON}.
+Además de los enfoques basados en el análisis genético, en los últimos años también se está abordando el problema desde la estrategia de la terapia genética, un tipo de terapia curativa que busca tratar la causa subyacente de una enfermedad genética corrigiendo o reemplazando directamente el gen defectuoso. Esta va dirigida al gen RPGR que es uno de los genes del cromosoma X que comúnmente está asociado a la RP (se tiene constancia de que es el causante de entre el 70\% y el 90\% de los casos ligados al cromosoma X)\cite{WAN}. Estas terapias consisten en la inyección subretinal de un virus modificado que transporta copias funcionales del gen RPGR, con el objetivo de restaurar la función perdida en las células de la retina afectadas\cite{ZON}.
 
 Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial identificar de manera precisa las mutaciones responsables. Mediante el uso de herramientas basadas en Teoría de la Información es posible identificar de forma eficiente estas variantes, y así seleccionar a los candidatos adecuados para las terapias génicas y optimizar los ensayos clínicos.
 
@@ -232,11 +256,109 @@ Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial 
 
 \chapter{Fundamentos teóricos}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+\section{Conceptos básicos de genética y mutaciones}
 
-\section{?? ???? ???? ? ?? ??}
+En el núcleo de cada célula humana se encuentra el ADN, que contiene toda la información genética necesaria para el funcionamiento y desarrollo del organismo. Sin embargo, el ADN no actúa directamente para realizar funciones celulares. En su lugar, esa información debe ser primero transcrita en moléculas de ARN, las cuales desempeñan roles clave en la expresión génica. Este proceso, conocido como transcripción, da lugar a diferentes tipos de ARN, que luego participan en distintos mecanismos celulares. 
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+Existen dos tipos principales de transcritos que resultan de este proceso: el ARN mensajero (ARNm), que lleva la información del ADN a los ribosomas para la síntesis de proteínas, y el ARN no codificante (ARNnc), que, aunque no se traduce en proteínas, cumple funciones esenciales como la regulación génica, la modificación del ARN, la estructura de los ribosomas y otras tareas fundamentales para el control celular. 
+
+El ARN mensajero (ARNm) actúa como intermediario entre el ADN y las proteínas de la siguiente manera: mediante el proceso de traducción, los ribosomas convierten cada molécula de ARNm en una proteína, es decir, en una secuencia de aminoácidos. Cada proteína adopta una estructura tridimensional compleja y funciones específicas. Gracias a la interacción entre el ADN, ARN y proteínas, el genoma es capaz de regular qué células deben crecer, morir y cómo se estructuran, entre otras funciones. 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=0.9\textwidth]{ADN.png}
+   \caption{Procesos genéticos de la síntesis de proteínas.}
+   \label{fig:etiqueta_opcional1}
+\end{figure}
+
+
+Por esta razón, cada individuo presenta un genoma ligeramente distinto al resto. Estas diferencias son conocidas como variaciones o mutaciones genómicas, y pueden suponer variaciones de un único nucleótido o múltiples nucleótidos. Estos cambios influyen en el fenotipo del individuo y también pueden ser responsables de ciertas enfermedades. 
+
+\begin{itemize}
+   \item SNV: sustitución de una sola base del ADN por otra. Es el tipo más común de variación genética en el genoma humano. 
+   \begin{itemize}
+      \item Sinónima: La sustitución no cambia el aminoácido codificado por el codón, debido a la degeneración del código genético. No suele tener efecto funcional, aunque puede afectar la eficiencia de traducción o el splicing. 
+      \item No sinónima: Cambia el aminoácido codificado. Esta a su vez se subdivide en Missense (se sustituye un aminoácido por otro, por lo que puede alterar la función o estructura de la proteína) y Nonsense (introduce un codón de parada prematuro, truncando la proteína, y esta normalmente acaba inactiva o no funcional). 
+   \end{itemize}
+   
+   \item  Indels (Inserciones y deleciones): Variaciones que implican la inserción o eliminación de un pequeño número de nucleótidos. Son el segundo tipo más común de variación.
+   \begin{itemize}
+      \item In-frame indel: El número de nucleótidos es múltiplo de 3. Esto afecta uno o más codones completos, pero no altera el marco de lectura. Puede tener o no efecto funcional. 
+      \item Frameshift indel: El número de nucleótidos no es múltiplo de 3, por lo que altera el marco de lectura de todo el gen a partir del punto del indel, generando proteínas aberrantes y normalmente no funcionales. 
+   \end{itemize}
+   \item Copy Number Variation (CNV): Amplificaciones o deleciones de segmentos largos del ADN. Pueden incluir genes completos o regiones reguladoras. Pueden estar relacionadas con la variabilidad fenotípica, trastornos del desarrollo y enfermedades neuropsiquiátricas\cite{ZHA}.
+   \item Structural Variation (SV): Alteraciones grandes en la estructura del genoma que incluyen inversiones, translocaciones, inserciones o deleciones mayores.
+   \begin{itemize}
+      \item Inversiones: Un segmento se invierte dentro del mismo cromosoma. 
+      \item Translocaciones: Fragmentos de ADN se trasladan a otras posiciones o cromosomas.
+      \item Grandes deleciones/duplicaciones: afectan múltiples genes/regiones. 
+   \end{itemize}
+\end{itemize}
+
+\section{Conceptos básicos de ficheros genéticos}
+
+
+
+\section{Teoría de la Información}
+La teoría de la información es una disciplina que estudia la cuantificación, almacenamiento y comunicación de datos, especialmente enfocada en la transmisión de información a través de canales. Fue desarrollada por Claude Shannon y Warren Weaver en los años 40. Sin embargo, su aplicación se ha extendido a otros campos como la informática, la lingüística, o la biología\cite{COV}.
+
+“Una fuente de información se define como un par (S, P) donde S es un alfabeto predefinido y P es una distribución de probabilidad sobre S. Dado que la fuente de información introduce una incertidumbre en la variable aleatoria definida por el alfabeto predefinido, la entropía mide el grado de incertidumbre de dicha variable. También el grado de aleatoriedad en la fuente de información y, en consecuencia, permite estimar las unidades de información necesarias en promedio para codificar todos los valores posibles que puedan darse en la fuente de información.”\cite{fuentesupv}
+
+Para entender mejor esta idea, definiremos unos conceptos clave:  
+
+\subsection{Canal de comunicación }
+
+Un canal de comunicación es el medio físico o digital a través del cual se transmite la información.  
+
+\subsection{Compresión de datos}
+
+La compresión hace referencia a la reducción del tamaño de los datos sin perder información.  
+
+\subsection{Código}
+
+El código es el sistema de símbolos o señales utilizado para representar la información. 
+
+\subsection{Entropía} 
+
+El concepto de entropía se introdujo en el siglo XIX en la termodinámica como una magnitud física que media el grado de desorden en un sistema. En la etapa de 1940, Shanon trasladó este concepto al ámbito de las comunicaciones, ya que definió la entropía como una medida de incertidumbre o sorpresa asociada a un conjunto de mensajes\cite[p.~4]{ROB}. Esta idea fundó lo que se conoce hoy en día como Teoría de la Información. Dada una variable aleatoria X con distribución de probabilidad P, la entropía se define como: 
+
+\[
+H(X) = - \sum_{i=1}^{n} p(x_i) \log_2 p(x_i)
+\]
+
+La entropía se interpreta como el número promedio de bits necesarios para codificar los resultados de una variable aleatoria. 
+
+\begin{itemize}
+   \item Entropía máxima: si una variable aleatoria tiene n resultados igualmente probables, es decir, todos tienen la misma probabilidad de ocurrencia, su entropía vale log 2 n. 
+   \item Entropía mínima: si hay certeza de ocurrencia de un evento, es decir, tiene probabilidad 1 y por lo tanto el resto 0, la entropía vale 0. \cite[p.~7]{ROB}
+\end{itemize}
+ 
+En el contexto de este Trabajo de Fin de Grado, esta idea se aplica a secuencias de ADN, donde cada símbolo representa una base nitrogenada (Adenina, Citosina, Timina y Guanina) y la probabilidad de ocurrencia de cada una se mide mediante la frecuencia relativa en una región determinada del genoma. Por ejemplo, calcular la entropía de un conjunto de k-mers en una secuencia de ADN podría ayudar a identificar regiones altamente conservadas o variables. Estas regiones pueden correlacionarse con funciones biológicas importantes, como promotores, regiones reguladoras, o sitios de mutación frecuentes. 
+
+\subsection{Modelos de Fuentes de Markov}
+
+“Una fuente de información con memoria nula se define como un par (S,P) donde la emisión de cada símbolo \( s_i \) sólo depende de su probabilidad \( p(s_i) \). Una fuente de información con memoria (de orden \( m \)) se define como un par (S,P) de forma que la emisión de cada símbolo \( s_i \) depende de los \( m \) símbolos emitidos con anterioridad, con una probabilidad condicional \( p(s_i \mid s_{i1}, s_{i2}, \dots, s_{im}) \).”\cite{fuentesupv}
+
+Las fuentes de información básicas no tienen memoria, es decir, en el cálculo de la probabilidad de una determinada base no se tienen en cuenta las bases anteriores. Sin embargo, en genómica, el ADN no es del todo aleatorio, ciertas bases tienden a seguir a otras con mayor probabilidad, lo que sugiere que un modelo de Fuente de Markov puede ser más realista. 
+
+Una Fuente de Markov (o fuente de información con memoria) se define como un sistema donde la probabilidad de que ocurra cada símbolo depende de los símbolos que le preceden. Estas nuevas probabilidades se consiguen gracias a la matriz de probabilidades de transición entre estados (los estados de una fuente de Markov de orden \( m \) serán todas las posibles combinaciones de \( m \) símbolos, es decir, \( n^m \)). Además, dada una fuente de Markov de orden \( m \), se puede establecer su diagrama de estados, que muestra los estados y las probabilidades condicionales entre ellos\cite[p.~20]{ROB}.
+
+\begin{itemize}
+   \item Una fuente de Markov diremos que es ergódica si todos los estados son alcanzables (observables) desde cualquier estado. 
+   \item Una fuente de Markov es homogénea si las probabilidades de transición entre estados no cambian a lo largo del tiempo.
+   \item Una fuente de Markov está en estado estacionario si la probabilidad de observación de sus estados no cambia a lo largo del tiempo. Las probabilidades se pueden obtener mediante la ecuación $\pi = \pi \times \Pi$, donde $\pi$ es el vector de probabilidad de los estados y $\Pi$ es la matriz de probabilidades condicionales (estocástica).
+\end{itemize}
+
+
+\begin{figure}
+   \centering
+   \includegraphics[width=0.9\textwidth]{entropia_markov.png}
+   \caption{Ejemplo de cálculo de entropía a partir de una Fuente de Markov.}
+   \label{fig:etiqueta_opcional}
+\end{figure}
+
+
+Por lo tanto, en una fuente de Markov de orden m, la probabilidad de ocurrencia de un símbolo, depende de los (m-1) símbolos anteriores. Cuanto mayor sea el orden (m), más información del contexto de incluye, y, en consecuencia, menores valores de entropía. Esto significa que modificar los valores de m, puede revelar patrones o regiones funcionales dentro de la secuencia dada. 
 
 \chapter{Metodología}
 
@@ -284,6 +406,11 @@ Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial 
    \newblock When computers were women.
    \newblock \textit{Technology and Culture}, 40:3:455--483, juliol, 1999.
 
+\bibitem{fuentesupv}
+   Departamento de Lenguajes y Sistemas Informáticos.
+   \newblock \textit{Fuentes de Información}.
+   \newblock Universitat Politècnica de València, versión 2, s.f.
+   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MODEL DE LLIBRE                                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -292,70 +419,123 @@ Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial 
    \newblock \textit{Historia universal de las cifras}.
    \newblock Espasa Calpe, S.A., Madrid, sisena edició, 2008.
 
+\bibitem{COV}
+   Thomas M. Cover and Joy A. Thomas.  
+   \newblock \textit{Elements of Information Theory}.  
+   \newblock Wiley-Interscience, segunda edición, 2006.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MODEL D'URL                                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\bibitem{NAT}
+   National Eye Institute.  
+   \newblock Retinitis pigmentaria | National Eye Institute.  
+   \newblock Consultado el 13 de mayo de 2025.  
+   \newblock Disponible en  
+   \url{https://www.nei.nih.gov/espanol/aprenda-sobre-la-salud-ocular/enfermedades-y-afecciones-de-los-ojos/retinitis-pigmentaria}.
+
+\bibitem{GIL}
+   Gil, G. A., Checa, F. L., Borrego, S., Chaparro-Hernández, P., Rueda, T. R., y Sanchez, J.  
+   \newblock Estudio de la variabilidad clínica y la heterogeneidad genética en la retinitis pigmentosa.  
+   \newblock Dialnet, 1994.  
+   \newblock Consultado el 13 de mayo de 2025.  
+   \newblock Disponible en  
+   \url{https://dialnet.unirioja.es/servlet/articulo?codigo=6768158}.
+
+\bibitem{STO}
+   Stone, E. M.  
+   \newblock Genetic Testing for Inherited Eye Disease.  
+   \newblock \textit{Archives of Ophthalmology}, 125(2):205, 2007.  
+   \newblock \url{https://doi.org/10.1001/archopht.125.2.205}.
+
+\bibitem{HAN}
+   Hanany, M., Rivolta, C., \& Sharon, D.  
+   \newblock Worldwide carrier frequency and genetic prevalence of autosomal recessive inherited retinal diseases.  
+   \newblock \textit{Proceedings of the National Academy of Sciences}, 117(5):2710–2716, 2020.  
+   \newblock \url{https://doi.org/10.1073/pnas.1913179117}.
+
+\bibitem{DEC}
+   De Castro Miró, M.  
+   \newblock \textit{Diagnóstico genético de las distrofias hereditarias de retina mediante secuenciación masiva de nueva generación (NGS)}.  
+   \newblock Tesis doctoral, Universitat de València, 2017.  
+   \newblock Repositorio UV.  
+   \newblock \url{https://roderic.uv.es/handle/10550/61138}.
+
+
 \bibitem{VER}
-Verana Health.  
-\newblock Why Real-World Data is Key to Providing Insights Into Retinitis Pigmentosa,  
-emés el 20 de novembre de 2024.  
-\newblock Disponible en  
-\url{https://veranahealth.com/why-real-world-data-is-key-to-providing-insights-into-retinitis-pigmentosa/}.
+   Verana Health.  
+   \newblock Why Real-World Data is Key to Providing Insights Into Retinitis Pigmentosa,  
+   emés el 20 de novembre de 2024.  
+   \newblock Disponible en  
+   \url{https://veranahealth.com/why-real-world-data-is-key-to-providing-insights-into-retinitis-pigmentosa/}.
 
 \bibitem{HAR}
-Hartong, D. T., Berson, E. L., \& Dryja, T. P.  
-\newblock Retinitis pigmentosa.  
-\newblock \textit{The Lancet}, vol. 368, núm. 9549, pp. 1795--1809, 2006.  
-\newblock Disponible en  
-\url{https://doi.org/10.1016/s0140-6736(06)69740-7}.
+   Hartong, D. T., Berson, E. L., \& Dryja, T. P.  
+   \newblock Retinitis pigmentosa.  
+   \newblock \textit{The Lancet}, vol. 368, núm. 9549, pp. 1795--1809, 2006.  
+   \newblock Disponible en  
+   \url{https://doi.org/10.1016/s0140-6736(06)69740-7}.
 
 \bibitem{FER}
-Ferreira, H., Marta, A., Machado, J., Couto, I., Marques, J. P., Beirão, J. M., \& Cunha, A.  
-\newblock Retinitis Pigmentosa Classification with Deep Learning and Integrated Gradients Analysis.  
-\newblock \textit{Applied Sciences}, vol. 15, núm. 4, art. 2181, 2025.  
-\newblock Disponible en  
-\url{https://doi.org/10.3390/app15042181}.
+   Ferreira, H., Marta, A., Machado, J., Couto, I., Marques, J. P., Beirão, J. M., \& Cunha, A.  
+   \newblock Retinitis Pigmentosa Classification with Deep Learning and Integrated Gradients Analysis.  
+   \newblock \textit{Applied Sciences}, vol. 15, núm. 4, art. 2181, 2025.  
+   \newblock Disponible en  
+   \url{https://doi.org/10.3390/app15042181}.
 
 \bibitem{STE}
-Stevenson, S.  
-\newblock How deep learning may play a role in predicting retinitis pigmentosa visual impairment,  
-emés el 14 de març de 2023.  
-\newblock Disponible en  
-\url{https://www.ophthalmologytimes.com/view/how-deep-learning-may-play-a-role-in-predicting-retinitis-pigmentosa-visual-impairment}.
+   Stevenson, S.  
+   \newblock How deep learning may play a role in predicting retinitis pigmentosa visual impairment,  
+   emés el 14 de març de 2023.  
+   \newblock Disponible en  
+   \url{https://www.ophthalmologytimes.com/view/how-deep-learning-may-play-a-role-in-predicting-retinitis-pigmentosa-visual-impairment}.
 
 \bibitem{ISS}
-Issa, Mohamad et al.  
-\newblock Applications of artificial intelligence to inherited retinal diseases: A systematic review.  
-\newblock \textit{Survey of Ophthalmology}, vol. 70, núm. 2, pp. 255--264.  
+   Issa, Mohamad et al.  
+   \newblock Applications of artificial intelligence to inherited retinal diseases: A systematic review.  
+   \newblock \textit{Survey of Ophthalmology}, vol. 70, núm. 2, pp. 255--264.  
 
 \bibitem{SEC}
-Societat Espanyola de Ciències de la Computació i Llenguatges (SECal).  
-\newblock Aplicaciones de la Teoría de la Información en Genómica,  
-sense data.  
-\newblock Disponible en  
-\url{https://www.secal.es}.
+   Societat Espanyola de Ciències de la Computació i Llenguatges (SECal).  
+   \newblock Aplicaciones de la Teoría de la Información en Genómica,  
+   sense data.  
+   \newblock Disponible en  
+   \url{https://www.secal.es}.
 
 \bibitem{VOZ}
-N.D.  
-\newblock Un algoritmo encuentra indicios de enfermedades en la parte del ADN que teóricamente no servía para nada,  
-emés el 21 d’abril de 2025.  
-\newblock Disponible en  
-\url{https://media.lavozdegalicia.es/noticia/sociedad/2025/04/21/algoritmo-encuentra-indicios-enfermedades-parte-adnconsidera-inutil/00031745236367256507381.htm}.
+   N.D.  
+   \newblock Un algoritmo encuentra indicios de enfermedades en la parte del ADN que teóricamente no servía para nada,  
+   emés el 21 d’abril de 2025.  
+   \newblock Disponible en  
+   \url{https://media.lavozdegalicia.es/noticia/sociedad/2025/04/21/algoritmo-encuentra-indicios-enfermedades-parte-adnconsidera-inutil/00031745236367256507381.htm}.
 
 \bibitem{WAN}
-Wang, Y., Juroch, K., Chen, Y., Ying, G., \& Birch, D. G.  
-\newblock Deep Learning–Facilitated Study of the Rate of Change in Photoreceptor Outer Segment Metrics in RPGR-Related X-Linked Retinitis Pigmentosa.  
-\newblock \textit{Investigative Ophthalmology \& Visual Science}, vol. 64, núm. 14, art. 31, 2023.  
-\newblock Disponible en  
-\url{https://doi.org/10.1167/iovs.64.14.31}.
+   Wang, Y., Juroch, K., Chen, Y., Ying, G., \& Birch, D. G.  
+   \newblock Deep Learning–Facilitated Study of the Rate of Change in Photoreceptor Outer Segment Metrics in RPGR-Related X-Linked Retinitis Pigmentosa.  
+   \newblock \textit{Investigative Ophthalmology \& Visual Science}, vol. 64, núm. 14, art. 31, 2023.  
+   \newblock Disponible en  
+   \url{https://doi.org/10.1167/iovs.64.14.31}.
 
 \bibitem{ZON}
-ZonaIT.  
-\newblock Avances en la terapia génica para la retinosis pigmentaria causada por mutaciones en el gen RPGR,  
-sense data.  
-\newblock Disponible en  
-\url{https://biotech-spain.com/es/articles/avances-en-la-terapia-g-nica-para-la-retinosis-pigmentaria-causada-por-mutaciones-en-el-gen-rpgr}.
+   ZonaIT.  
+   \newblock Avances en la terapia génica para la retinosis pigmentaria causada por mutaciones en el gen RPGR,  
+   sense data.  
+   \newblock Disponible en  
+   \url{https://biotech-spain.com/es/articles/avances-en-la-terapia-g-nica-para-la-retinosis-pigmentaria-causada-por-mutaciones-en-el-gen-rpgr}.
+
+\bibitem{ZHA}
+   F.~Zhang, W.~Gu, M.~E.~Hurles, i J.~R.~Lupski.
+   \newblock Copy Number Variation in Human Health, Disease, and Evolution.
+   \newblock \textit{Annual Review of Genomics and Human Genetics}, 10(1):451--481, 2009.
+   \newblock \url{https://doi.org/10.1146/annurev.genom.9.081307.164217}.
+   
+
+\bibitem{ROB}
+   Roberto Togneri y Christopher J. S. deSilva.  
+   \newblock \textit{Fundamentals of Information Theory and Coding Design}.  
+   \newblock CRC Press, Boca Raton, Florida, 2006.
+   
 
 \end{thebibliography}
 \cleardoublepage
