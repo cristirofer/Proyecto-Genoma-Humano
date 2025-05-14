@@ -28,6 +28,8 @@
 
 \usepackage[utf8]{inputenc} 
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage{adjustbox}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,7 +123,12 @@
 
 La retinosis o retinitis pigmentaria (RP), una de las distrofias hereditarias de retina DHR más frecuente, es un grupo de enfermedades conocidas por una degradación progresiva en los fotorreceptores (células de la retina responsables de captar la luz y, por tanto, permitir la visión) que termina por causar pérdida visual irreversible. Esta patología suele manifestarse en un principio con ceguera nocturna, seguida por una reducción del campo visual periférico y, en fases avanzadas, puede llegar a la pérdida de la visión central\cite{NAT}. La RP presenta una gran heterogeneidad genética, lo que significa que puede estar causada por mutaciones en más de 100 genes diferentes, heredados bajo distintos patrones\cite{GIL}. Aún con los recientes avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo un desafío debido a la amplia diversidad genética involucrada y la cantidad de genes relacionados con las DHR. 
 
- 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{Retinosis-Pigmetaria.jpg}
+   \caption{Ejemplo de visión de un paciente con visión normal y un paciente con RP.}
+   \label{fig:etiqueta_opcional2}
+\end{figure}
 
 Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de Fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la RP. Puesto que la RP es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos. 
 
@@ -246,9 +253,6 @@ Además de los enfoques basados en el análisis genético, en los últimos años
 
 Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial identificar de manera precisa las mutaciones responsables. Mediante el uso de herramientas basadas en Teoría de la Información es posible identificar de forma eficiente estas variantes, y así seleccionar a los candidatos adecuados para las terapias génicas y optimizar los ensayos clínicos.
 
-%\section{Notes bibliografiques} %%%%% Opcional
-
-%????? ????????????? ????????????? ????????????? ????????????? ?????????????
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         CAPITOLS (tants com calga)                          %
@@ -260,16 +264,16 @@ Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial 
 
 En el núcleo de cada célula humana se encuentra el ADN, que contiene toda la información genética necesaria para el funcionamiento y desarrollo del organismo. Sin embargo, el ADN no actúa directamente para realizar funciones celulares. En su lugar, esa información debe ser primero transcrita en moléculas de ARN, las cuales desempeñan roles clave en la expresión génica. Este proceso, conocido como transcripción, da lugar a diferentes tipos de ARN, que luego participan en distintos mecanismos celulares. 
 
-Existen dos tipos principales de transcritos que resultan de este proceso: el ARN mensajero (ARNm), que lleva la información del ADN a los ribosomas para la síntesis de proteínas, y el ARN no codificante (ARNnc), que, aunque no se traduce en proteínas, cumple funciones esenciales como la regulación génica, la modificación del ARN, la estructura de los ribosomas y otras tareas fundamentales para el control celular. 
+Existen dos tipos principales de transcritos que resultan de este proceso: el ARN mensajero (ARNm), que lleva la información del ADN a los ribosomas para la síntesis de proteínas, y el ARN no codificante (ARNnc), que, aunque no se traduce en proteínas, cumple funciones esenciales como la regulación génica, la modificación del ARN, la estructura de los ribosomas y otras tareas fundamentales para el control celular\cite[p.~254-300]{WAT}. 
 
-El ARN mensajero (ARNm) actúa como intermediario entre el ADN y las proteínas de la siguiente manera: mediante el proceso de traducción, los ribosomas convierten cada molécula de ARNm en una proteína, es decir, en una secuencia de aminoácidos. Cada proteína adopta una estructura tridimensional compleja y funciones específicas. Gracias a la interacción entre el ADN, ARN y proteínas, el genoma es capaz de regular qué células deben crecer, morir y cómo se estructuran, entre otras funciones. 
-
-\begin{figure}
+\begin{figure}[H]
    \centering
    \includegraphics[width=0.9\textwidth]{ADN.png}
    \caption{Procesos genéticos de la síntesis de proteínas.}
    \label{fig:etiqueta_opcional1}
 \end{figure}
+
+El ARN mensajero (ARNm) actúa como intermediario entre el ADN y las proteínas de la siguiente manera: mediante el proceso de traducción, los ribosomas convierten cada molécula de ARNm en una proteína, es decir, en una secuencia de aminoácidos. Cada proteína adopta una estructura tridimensional compleja y funciones específicas. Gracias a la interacción entre el ADN, ARN y proteínas, el genoma es capaz de regular qué células deben crecer, morir y cómo se estructuran, entre otras funciones\cite{RIN}. 
 
 
 Por esta razón, cada individuo presenta un genoma ligeramente distinto al resto. Estas diferencias son conocidas como variaciones o mutaciones genómicas, y pueden suponer variaciones de un único nucleótido o múltiples nucleótidos. Estos cambios influyen en el fenotipo del individuo y también pueden ser responsables de ciertas enfermedades. 
@@ -295,11 +299,97 @@ Por esta razón, cada individuo presenta un genoma ligeramente distinto al resto
    \end{itemize}
 \end{itemize}
 
+
 \section{Conceptos básicos de ficheros genéticos}
+
+Las tecnologías de secuenciación de nueva generación (NGS) son muy utilizadas hoy en día en investigación genómica y biomédica. Para facilitar el análisis y transferencia de datos, se han definido diferentes formatos de archivos estándar. 
+
+Cuando se secuencia una muestra biológica mediante un sistema de NGS, se generan pequeños fragmentos de ADN o ARN que representan secuencias del genoma, conocidos como lecturas. Estas lecturas se almacenan en archivos de lectura cruda (raw read files). Los formatos más comunes son: fasta, fastq y fasta.gz. 
+
+Después, esas lecturas deben ser alineadas con el genoma de referencia (como el genoma humano), y el resultado de este alineamiento se guarda en archivos SAM (Sequence Alignment Map) o BAM (Binary Alignment Map). 
+
+Por último, a partir de los archivos de alineamiento anteriores, se pueden realizar análisis posteriores para entender la muestra:  
+
+\begin{itemize}
+   \item Si el objetivo es identificar mutaciones (como los SNV), esta información se guarda en un archivo con formato VCF (Variant Call Format) o BCF (BIinary Call Format). 
+   \item Si se desea medir la densidad de lecturas en diferentes zonas del genoma, se obtienen archivos con formato Wiggle, BedGraph, BigWig o cWig.
+   \item Si se busca definir regiones que estén cubiertas por lecturas (por ejemplo, para identificar exones), los resultados se almacenan en formato bed o bigBed.
+\end{itemize}
+
+En este proyecto, nos enfocaremos principalmente en dos de estos formatos: 
+
+\subsection{FASTA}
+
+El formato FASTA es un formato de texto estándar para representar secuencias biológicas como ADN, ARN y proteínas mediante letras. Permite incluir nombres y comentarios de las secuencias. Es simple y permite la manipulación de secuencias usando herramientas de procesamiento de texto\cite{JAV}. Un archivo FASTA consta de una o varias secuencias estructuradas de la siguiente manera: una línea de encabezado que debe comenzar con el carácter ‘>’ seguido de un identificador único de secuencia (SeqID), y la secuencia de nucleótidos que puede estar compuesta por una o varias líneas \cite{FAS}.
+
+\begin{table}[H]
+   \centering
+   \caption{Ejemplo de archivo en formato FASTA}
+   \begin{tabular}{|l|}
+   \hline
+   \texttt{>chr1\_example\_sequence} \\ \hline
+   \texttt{AGCTGATCGATCGATCGTACGTAGCTAGCTGACT} \\
+   \texttt{GCTAGCTAGCATCGATCGTAGCTAGCTAGCTGAC} \\
+   \texttt{TAGCTAGCTAGCATCGATCGATCGATCGATCGTA} \\
+   \hline
+   \end{tabular}
+   \label{tabla:FASTA}
+   \end{table}
+   
+
+Gracias a su estructura sencilla y la compatibilidad con la mayoría de las herramientas bioinformáticas, se ha convertido en un formato estándar por su eficiencia para manipular secuencias biológicas\cite{GEN}
+
+\subsection{VCF}
+
+VCF es un formato de archivo de texto utilizado en bioinformática específicamente diseñado para almacenar información sobre variantes genómicas, detectadas mediante procesos de secuenciación del ADN. Se trata de un estándar utilizado en múltiples proyectos genómicos a gran escala, como es el 1000 Genome Project\cite{AUT}. Esto es debido a que se trata de un archivo muy estructurado y con capacidad de representar de manera clara y eficaz las variaciones observadas en una o varias muestras, y su facil escalabilidad\cite{EMB}.
+
+Dado que los archivos VCF estan diseñados para albergar una gran cantidad de información, existe un formato binario alternativo llamado BCF (Binary Call Format) para facilitar su almacenamiento, transferencia y análisis computacional, ya que es una versión comprimida del anterior. 
+
+Un archivo VCF consta de una cabecera y una sección de datos: 
+
+\begin{itemize}
+   \item La cabecera incluye un número arbitrario de líneas de metainformación, las cuales van precedidas de \texttt{\#\#}. Estas definen el contenido, las convenciones utilizadas, los tipos de anotaciones y los nombres de las columnas de la sección de datos\cite{DAN}.
+      \begin{table}[H]
+         \centering
+         \caption{Ejemplo de cabecera de un archivo VCF}
+         \begin{tabular}{|l|}
+         \hline
+         \texttt{\#\#fileformat=VCFv4.2} \\
+         \texttt{\#\#FILTER=<ID=PASS,Description="All filters passed">} \\
+         \texttt{\#\#INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">} \\
+         \texttt{\#\#FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">} \\
+         \texttt{\#CHROM POS ID REF ALT QUAL FILTER INFO FORMAT SAMPLE1 SAMPLE2} \\
+         \hline
+         \end{tabular}
+         \label{tabla:cabeceraVCF}
+      \end{table}
+      
+   \item En la sección de datos, cada fila corresponde a una variante identificada, de la cual se incluye la siguiente información estructurada en diferentes columnas: CHROM y POS describen el cromosoma y la posición de inicio en el genoma donde se encuentra la variante, ID es el identificador único de la variante, REF guarda cual debe ser el alelo de referencia según la base genómica establecida, ALT es la lista de alelos alternativos observados (separados por punto y coma si hubiera más de uno), QUAL es la puntuación de calidad de la variante (la confianza en esta), FILTER define el resultado del proceso de filtrado (si la variante pasa los controles de calidad), y por último INFO contiene anotaciones adicionales sobre la variante\cite{EMB}. Además, cuando el archivo VCF incluye información de varias muestras, se agregan diferentes siguientes campos entre los que destaca FORMAT, lista la cual define qué tipo de información se añade para cada muestra. 
+      \begin{table}[H]
+         \centering
+         \caption{Ejemplo de la sección de datos en un archivo VCF}
+         \begin{adjustbox}{width=\textwidth}
+         \begin{tabular}{|l|r|l|l|l|r|l|l|l|l|l|}
+         \hline
+         \textbf{CHROM} & \textbf{POS} & \textbf{ID} & \textbf{REF} & \textbf{ALT} & \textbf{QUAL} & \textbf{FILTER} & \textbf{INFO} & \textbf{FORMAT} & \textbf{SAMPLE1} & \textbf{SAMPLE2} \\
+         \hline
+         3 & 879317 & rs112 & G & A & 99.0 & PASS & AF=0.5;DP=100 & GT:DP & 0/1:48 & 1/1:52 \\
+         3 & 879445 & . & T & CTT & 72.5 & PASS & AF=0.25;DP=80 & GT:DP & 0/0:42 & 0/1:38 \\
+         3 & 879587 & rs119 & C & T & 85.2 & PASS & AF=0.33;DP=90 & GT:DP & 1/1:45 & 0/1:45 \\
+         \hline
+         \end{tabular}
+         \end{adjustbox}
+         \label{tabla:ejemploVCF}
+      \end{table}
+      
+      
+      
+\end{itemize}
 
 
 
 \section{Teoría de la Información}
+
 La teoría de la información es una disciplina que estudia la cuantificación, almacenamiento y comunicación de datos, especialmente enfocada en la transmisión de información a través de canales. Fue desarrollada por Claude Shannon y Warren Weaver en los años 40. Sin embargo, su aplicación se ha extendido a otros campos como la informática, la lingüística, o la biología\cite{COV}.
 
 “Una fuente de información se define como un par (S, P) donde S es un alfabeto predefinido y P es una distribución de probabilidad sobre S. Dado que la fuente de información introduce una incertidumbre en la variable aleatoria definida por el alfabeto predefinido, la entropía mide el grado de incertidumbre de dicha variable. También el grado de aleatoriedad en la fuente de información y, en consecuencia, permite estimar las unidades de información necesarias en promedio para codificar todos los valores posibles que puedan darse en la fuente de información.”\cite{fuentesupv}
@@ -335,6 +425,17 @@ La entropía se interpreta como el número promedio de bits necesarios para codi
  
 En el contexto de este Trabajo de Fin de Grado, esta idea se aplica a secuencias de ADN, donde cada símbolo representa una base nitrogenada (Adenina, Citosina, Timina y Guanina) y la probabilidad de ocurrencia de cada una se mide mediante la frecuencia relativa en una región determinada del genoma. Por ejemplo, calcular la entropía de un conjunto de k-mers en una secuencia de ADN podría ayudar a identificar regiones altamente conservadas o variables. Estas regiones pueden correlacionarse con funciones biológicas importantes, como promotores, regiones reguladoras, o sitios de mutación frecuentes. 
 
+\subsection{Información}
+
+Los conceptos de entropía e información están relacionados, pero es importante saber distinguirlos. La información es la diferencia entre la máxima entropía (por ejemplo, en una situación de incertidumbre total) y la entropía actual (con cierta cantidad de conocimiento). La información por tanto representa la reducción de incertidumbre:
+
+\[
+I(X:Y) = H(X) - H(X \mid Y)
+\]
+
+Esta relación se conoce como información mutua y cuantifica la cantidad de información que se obtiene de la variable X al conocer la variable Y. Es fundamental en muchos contextos como el análisis de datos o el análisis genómico, ya que ayuda a conocer las correlaciones entre una base y su contexto, o con otras entidades como proteínas, regiones funcionales o mutaciones. 
+
+
 \subsection{Modelos de Fuentes de Markov}
 
 “Una fuente de información con memoria nula se define como un par (S,P) donde la emisión de cada símbolo \( s_i \) sólo depende de su probabilidad \( p(s_i) \). Una fuente de información con memoria (de orden \( m \)) se define como un par (S,P) de forma que la emisión de cada símbolo \( s_i \) depende de los \( m \) símbolos emitidos con anterioridad, con una probabilidad condicional \( p(s_i \mid s_{i1}, s_{i2}, \dots, s_{im}) \).”\cite{fuentesupv}
@@ -344,13 +445,13 @@ Las fuentes de información básicas no tienen memoria, es decir, en el cálculo
 Una Fuente de Markov (o fuente de información con memoria) se define como un sistema donde la probabilidad de que ocurra cada símbolo depende de los símbolos que le preceden. Estas nuevas probabilidades se consiguen gracias a la matriz de probabilidades de transición entre estados (los estados de una fuente de Markov de orden \( m \) serán todas las posibles combinaciones de \( m \) símbolos, es decir, \( n^m \)). Además, dada una fuente de Markov de orden \( m \), se puede establecer su diagrama de estados, que muestra los estados y las probabilidades condicionales entre ellos\cite[p.~20]{ROB}.
 
 \begin{itemize}
-   \item Una fuente de Markov diremos que es ergódica si todos los estados son alcanzables (observables) desde cualquier estado. 
+   \item Una fuente de Markov diremos que es ergódica si todos los estados son alcanzables (observables) desde cualquier estado.
    \item Una fuente de Markov es homogénea si las probabilidades de transición entre estados no cambian a lo largo del tiempo.
    \item Una fuente de Markov está en estado estacionario si la probabilidad de observación de sus estados no cambia a lo largo del tiempo. Las probabilidades se pueden obtener mediante la ecuación $\pi = \pi \times \Pi$, donde $\pi$ es el vector de probabilidad de los estados y $\Pi$ es la matriz de probabilidades condicionales (estocástica).
 \end{itemize}
 
 
-\begin{figure}
+\begin{figure}[H]
    \centering
    \includegraphics[width=0.9\textwidth]{entropia_markov.png}
    \caption{Ejemplo de cálculo de entropía a partir de una Fuente de Markov.}
@@ -362,11 +463,133 @@ Por lo tanto, en una fuente de Markov de orden m, la probabilidad de ocurrencia 
 
 \chapter{Metodología}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
 
-\section{?? ???? ???? ? ?? ??}
+\section{Material y herramientas}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+\subsection{Entorno de Trabajo}
+
+El entorno de desarrollo se basa en el sistema operativo Linux, ya que muchas de las bibliotecas necesarias para el análisis de archivos VCF, como vcfpy, no tienen soporte en Windows. Para ello, se utiliza:
+\begin{itemize}
+   \item WSL (Windows Subsystem for Linux) en máquinas con sistema Windows.
+   \item Ubuntu directamente instalado en el equipo de trabajo de la oficina.
+\end{itemize}
+
+Como gestor de entornos y dependencias se emplea Anaconda, una distribución de Python orientada a ciencia de datos, bioinformática y aprendizaje automático. Anaconda incluye numerosas librerías útiles como numpy, pandas, matplotlib, scikit-learn, entre otras, y permite la creación de entornos virtuales aislados.
+
+\subsection{Archivos necesarios}
+
+\subsubsection{Archivos FASTA}
+
+El archivo FASTA es un formato estándar utilizado para almacenar secuencias de ADN, ARN o proteínas. Este formato de texto simple presenta las secuencias de interés precedidas por una línea de cabecera que comienza con el carácter > seguido de un identificador o descripción de la secuencia. 
+
+En el presente trabajo, los archivos FASTA utilizados deben corresponder al ensamblaje genómico GRCh37.p13, disponible en la base de datos NCBI (National Center for Biotechnology Information). Cada archivo FASTA corresponde a un cromosoma específico de los 46 cromosomas principales del genoma humano. 
+
+Se ha realizado mediante descarga local de estos archivos, ya que el acceso directo a las secuencias mediante peticiones a NCBI puede generar errores por limitaciones de memoria RAM en la ejecución del programa. 
+
+\subsubsection{Archivos VCF}
+
+El formato VCF (Variant Call Format) es un tipo de archivo utilizado para almacenar variantes genómicas identificadas. De aquí nos interesan especialmente: 
+
+\begin{itemize}
+   \item Líneas de metainformación. 
+   \item Una línea de encabezado.
+   \item Líneas de datos, donde cada línea describe una variante concreta. 
+\end{itemize}
+
+Cada variante contiene información sobre la posición en el genoma, el cromosoma, la base de referencia, la base alternativa, así como otros datos asociados a la calidad y características de la variante. De los tipos de variantes estudiados en la sección de fundamentos, los presentes en el archivo VCF con el que trabajamos son los siguientes: 
+
+\begin{itemize}
+   \item SNPs (Single Nucleotide Polymorphisms). 
+   \item Inserciones. 
+   \item Deleciones.
+\end{itemize}
+
+Por último, de los archivos VCF extraeremos la siguiente información esencial: 
+
+\begin{itemize}
+   \item Cromosoma en el que se encuentra la variante.
+   \item Posición de la variante dentro del cromosoma.  
+   \item Base de la secuencia de referencia.
+   \item Base correspondiente a la secuencia mutada.
+\end{itemize}
+ 
+\section{Hipótesis}
+
+La hipótesis de partida se basa en la idea de que la entropía de una secuencia de ADN experimenta cambios significativos en las regiones donde puede haber mutaciones patogénicas. Estas regiones de valores anómalos entropía podrían coincidir con las zonas funcionales asociadas a enfermedades raras. 
+
+El análisis se estructura en tres casos de estudio diferentes, cada uno enfocado a detectar patrones distintos en la secuencia:
+
+\subsection{Caso 1: Cálculo de entropía en ventanas deslizantes}
+
+En este primer análisis, se calcula la entropía en ventanas deslizantes de tamaño w a lo largo de la secuencia genómica. El objetivo es comparar las variaciones de entropía entre la secuencia de referencia y la secuencia mutada.
+
+La entropía $H$ para cada ventana se calcula como:
+
+\[
+H = - \sum p(kmer) \cdot \log_2 p(kmer)
+\]
+
+Donde:
+
+\begin{itemize}
+   \item $p(kmer)$ es la probabilidad de aparición de un k-mer dentro de la ventana.
+   \item La probabilidad se calcula como la fracción de la frecuencia de ese k-mer entre el número de tipos distintos de k-mer en la ventana.
+\end{itemize}
+
+Se recorren ambas secuencias (referencia y mutada) y se calcula la entropía de cada ventana. Posteriormente, se representan gráficamente las entropías de ambas secuencias a lo largo de la posición genómica para detectar picos o variaciones significativas.
+
+
+\subsection{Caso 2: Cálculo de densidad de mutaciones}
+
+En este segundo análisis, se estudia la densidad de mutaciones presentes en las regiones cercanas a cada variante detectada en el archivo VCF.
+
+Para ello, se toma una ventana de tamaño 2L centrada en cada mutación, es decir, se consideran L posiciones antes y L posiciones después de la posición de la mutación. Dentro de esta ventana, se cuenta el número de mutaciones existentes. Este procedimiento se repite para cada mutación presente en el archivo VCF.
+
+El resultado se almacena en una lista que posteriormente se utiliza para generar un gráfico de densidad de mutaciones. Este gráfico representa las zonas con mayor concentración de variantes, lo cual podría indicar regiones funcionales afectadas.
+
+
+\subsection{Caso 3: Cálculo de entropía basada en probabilidades condicionales (Modelo de Markov)}
+
+En el tercer análisis, se utiliza un enfoque más avanzado basado en modelos de Markov de orden k para calcular la entropía condicional entre k-mers.
+
+\subsubsection{Creación del Autómata}
+
+Se construye un autómata que permite modelar la secuencia como una cadena de
+estados, donde:
+
+\begin{itemize}
+   \item El alfabeto está formado los diferentes nucletidos {A, C, G, T}.
+   \item Los estados iniciales se corresponden con los primeros caracteres de los k-mers.
+   \item Los estados finales corresponden a los últimos caracteres de cada k-mer.
+   \item Las transiciones representan la concatenación de bases adyacentes.
+\end{itemize}
+
+
+Por ejemplo, dado un conjunto de k-mers {ACGT, ACCD}, se define:
+
+\begin{itemize}
+   \item Alfabeto: {A, C, G, T, D}.
+   \item Estados iniciales: {A}.
+   \item Estados finales: {T, D}.
+   \item Transiciones: {AC, CG, GT, CC, CD} (para un modelo de segundo orden).
+\end{itemize}
+
+
+\subsubsection{Cálculo de Probabilidades de Transición}
+Una vez definido el autómata, se recorren las secuencias y se cuentan las ocurrencias de cada transición. Con esta información, se calcula la probabilidad de transición desde un estado s a otro estado t como:
+
+\[
+p(s \to t) = \frac{Número de transiciones de  s \to t}{Total de transiciones desde  s}
+\]
+
+Si una transición no existe, se le asigna una probabilidad muy baja para evitar problemas en el cálculo del logaritmo.
+
+\subsubsection{Cálculo de Entropía Condicional}
+
+Se desliza una ventana de tamaño w sobre la secuencia y, dentro de esta ventana, se analizan las transiciones de tamaño k para calcular la contribución a la entropía condicional de cada transición.
+
+La entropía total de la ventana se calcula restando las contribuciones de todas las transiciones observadas.
+
 
 \chapter{Desarrollo}
 
@@ -424,6 +647,11 @@ Por lo tanto, en una fuente de Markov de orden m, la probabilidad de ocurrencia 
    \newblock \textit{Elements of Information Theory}.  
    \newblock Wiley-Interscience, segunda edición, 2006.
 
+\bibitem{WAT}
+   J.~D.~Watson, T.~A.~Baker, S.~P.~Bell, A.~Gann, M.~Levine i R.~Losick.
+   \newblock \textit{Molecular Biology of the Gene}.
+   \newblock Pearson Education, 7a edició, 2013.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MODEL D'URL                                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -431,15 +659,13 @@ Por lo tanto, en una fuente de Markov de orden m, la probabilidad de ocurrencia 
 \bibitem{NAT}
    National Eye Institute.  
    \newblock Retinitis pigmentaria | National Eye Institute.  
-   \newblock Consultado el 13 de mayo de 2025.  
    \newblock Disponible en  
    \url{https://www.nei.nih.gov/espanol/aprenda-sobre-la-salud-ocular/enfermedades-y-afecciones-de-los-ojos/retinitis-pigmentaria}.
 
 \bibitem{GIL}
    Gil, G. A., Checa, F. L., Borrego, S., Chaparro-Hernández, P., Rueda, T. R., y Sanchez, J.  
    \newblock Estudio de la variabilidad clínica y la heterogeneidad genética en la retinitis pigmentosa.  
-   \newblock Dialnet, 1994.  
-   \newblock Consultado el 13 de mayo de 2025.  
+   \newblock Dialnet, 1994.    
    \newblock Disponible en  
    \url{https://dialnet.unirioja.es/servlet/articulo?codigo=6768158}.
 
@@ -447,12 +673,14 @@ Por lo tanto, en una fuente de Markov de orden m, la probabilidad de ocurrencia 
    Stone, E. M.  
    \newblock Genetic Testing for Inherited Eye Disease.  
    \newblock \textit{Archives of Ophthalmology}, 125(2):205, 2007.  
+   \newblock Disponible en
    \newblock \url{https://doi.org/10.1001/archopht.125.2.205}.
 
 \bibitem{HAN}
    Hanany, M., Rivolta, C., \& Sharon, D.  
    \newblock Worldwide carrier frequency and genetic prevalence of autosomal recessive inherited retinal diseases.  
    \newblock \textit{Proceedings of the National Academy of Sciences}, 117(5):2710–2716, 2020.  
+   \newblock Disponible en
    \newblock \url{https://doi.org/10.1073/pnas.1913179117}.
 
 \bibitem{DEC}
@@ -460,6 +688,7 @@ Por lo tanto, en una fuente de Markov de orden m, la probabilidad de ocurrencia 
    \newblock \textit{Diagnóstico genético de las distrofias hereditarias de retina mediante secuenciación masiva de nueva generación (NGS)}.  
    \newblock Tesis doctoral, Universitat de València, 2017.  
    \newblock Repositorio UV.  
+   \newblock Disponible en
    \newblock \url{https://roderic.uv.es/handle/10550/61138}.
 
 
@@ -528,8 +757,52 @@ Por lo tanto, en una fuente de Markov de orden m, la probabilidad de ocurrencia 
    F.~Zhang, W.~Gu, M.~E.~Hurles, i J.~R.~Lupski.
    \newblock Copy Number Variation in Human Health, Disease, and Evolution.
    \newblock \textit{Annual Review of Genomics and Human Genetics}, 10(1):451--481, 2009.
+   \newblock Disponible en
    \newblock \url{https://doi.org/10.1146/annurev.genom.9.081307.164217}.
    
+\bibitem{JAV}
+   Javier, A.  
+   \newblock ¿Qué es el formato FASTA?    
+   \newblock Disponible en 
+   \newblock \url{https://es.scribd.com/document/540407009/que-es-el-formato-fasta}
+ 
+\bibitem{FAS}
+   National Center for Biotechnology Information (NCBI).  
+   \newblock FASTA Format for Nucleotide Sequences. 
+   \newblock Disponible en 
+   \newblock \url{https://www.ncbi.nlm.nih.gov/genbank/fastaformat/}
+ 
+\bibitem{AUT}
+   Auton, A., Abecasis, G. R., Altshuler, D. M., Durbin, R. M., Bentley, D. R., Chakravarti, A., Clark, A. G., Donnelly, P., Eichler, E. E., Flicek, P., Gabriel, S. B., Gibbs, R. A., Green, E. D., Hurles, M. E., Knoppers, B. M., Korbel, J. O., Lander, E. S., Lee, C., et al.  
+   \newblock A global reference for human genetic variation.  
+   \newblock \textit{Nature}, 526(7571), 68–74, 2015.  
+   \newblock Disponible en 
+   \newblock \url{https://doi.org/10.1038/nature15393}
+   
+\bibitem{EMB}
+   EMBL-EBI.  
+   \newblock Understanding VCF format | Human genetic variation.  
+   \newblock Disponible en 
+   \newblock \url{https://www-ebi-ac-uk.translate.goog/training/online/courses/human-genetic-variation-introduction/variant-identification-and-analysis/understanding-vcf-format/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sge}
+   
+\bibitem{DAN}
+   Danecek, P., Auton, A., Abecasis, G., Albers, C. A., Banks, E., DePristo, M. A., Handsaker, R. E., Lunter, G., Marth, G. T., Sherry, S. T., McVean, G., \& Durbin, R.  
+   \newblock The variant call format and VCFtools.  
+   \newblock \textit{Bioinformatics}, 27(15), 2156–2158, 2011.  
+   \newblock \url{https://doi.org/10.1093/bioinformatics/btr330}
+
+\bibitem{GEN}
+   Genómica computacional.  
+   \newblock Formato FASTA.  
+   \newblock \textit{Google Sites}, consultado en mayo de 2025.  
+   \newblock Disponible en: \url{https://sites.google.com/site/genomicaciencias/laboratorio/formato-fasta}
+
+\bibitem{RIN}
+   J.~L.~Rinn i H.~Y.~Chang.
+   \newblock Genome regulation by long noncoding RNAs.
+   \newblock \textit{Annual Review of Biochemistry}, 81:145--166, 2012.
+   \newblock Disponible en
+   \newblock \url{https://doi.org/10.1146/annurev-biochem-051410-092902}
 
 \bibitem{ROB}
    Roberto Togneri y Christopher J. S. deSilva.  
