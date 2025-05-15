@@ -30,6 +30,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{adjustbox}
+\usepackage{amsmath}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -579,7 +581,7 @@ Por ejemplo, dado un conjunto de k-mers {ACGT, ACCD}, se define:
 Una vez definido el autómata, se recorren las secuencias y se cuentan las ocurrencias de cada transición. Con esta información, se calcula la probabilidad de transición desde un estado s a otro estado t como:
 
 \[
-p(s \to t) = \frac{Número de transiciones de  s \to t}{Total de transiciones desde  s}
+p(s \to t) = \frac{\text{Número de transiciones de } s \to t}{\text{Total de transiciones desde } s}
 \]
 
 Si una transición no existe, se le asigna una probabilidad muy baja para evitar problemas en el cálculo del logaritmo.
