@@ -229,6 +229,8 @@ El campo del análisis genómico de la retinosis pigmentaria (RP) está avanzand
 
 Los métodos tradicionales basados en sistemas de codificación médica como el ICD (International Classification of Diseases) y el SNOMED (Systematized Nomenclature of Medicine) han sido ampliamente utilizados en la medicina para clasificar enfermedades y registrar diagnósticos. Sin embargo, en el caso de enfermedades genéticas raras como la retinosis pigmentaria (RP), estos sistemas de codificación presentan importantes limitaciones\cite{VER}. Esto es debido a que es una patología altamente heterogénea a nivel genético y clínico: existen numerosas mutaciones responsables y los síntomas pueden evolucionar de formas muy diversas entre pacientes\cite{HAR}. 
 
+Debido a esta complejidad, se ha recurrido a técnicas más especificas como los paneles genéticos dirigidos o la secuenciación de exoma completo (WES). Estos enfoques son capaces de examinar una gran cantidad de mutaciones de cada paciente. No obstante, muchos pacientes quedan sin un diagnositco definitivo debido a la dificultad para interpretar el gran volumen de información relativa a las variantes encontradas tras la secuenciación.
+
 \section{Inteligencia Artificial}
 
 En la actualidad se están utilizando métodos basados en inteligencia artificial (IA) para la detección, diagnóstico y pronóstico de numerosas enfermedades en distintas áreas de la medicina, desde oncología hasta neurología o cardiología. Esto es debido a la capacidad de la IA para trabajar con grandes volúmenes de datos e identificar en estos patrones complejos para generar predicciones con una alta precisión\cite{FER}. No obstante, su desarrollo para las distrofias hereditarias de retina (DHR), específicamente la retinosis pigmentaria (RP) todavía está en una fase temprana.
@@ -236,6 +238,8 @@ En la actualidad se están utilizando métodos basados en inteligencia artificia
 \subsection{Aplicaciones de Machine Learning}
 
 El aprendizaje profundo (deep learning) es una subcategoría de la inteligencia artificial que ha ganado mucha atención en los últimos años, especialmente porque el aprendizaje profundo es muy eficaz en el reconocimiento de patrones y el análisis de imágenes\cite{STE}.
+
+Inspirado en el cerebro humano, el aprendizaje profundo (Deep Learning) ha sido desarrollado utilizando redes neuronales para aprender a partir de datos, extrayendo y comprendiendo automáticamente características complejas. Un ejemplo común del uso del aprendizaje profundo en imágenes médicas son las redes neuronales convolucionales (CNN, por sus siglas en inglés). Las CNN participan en diversas tareas relacionadas con imágenes, como la detección, el reconocimiento y la segmentación de imágenes, mediante el uso de información espacial, la detección de características locales y la reducción de la complejidad del modelo a través del muestreo, el uso compartido de pesos y los campos receptivos locales\cite{SHE}.
 
 En un estudio reciente, se utilizaron tres modelos preentrenados; Inception-v3, ResNet-50 y VGG-19, para clasificar imágenes retinianas asociadas a diferentes genes relacionados con la retinosis pigmentaria. Tras un preprocesamiento exhaustivo que incluyó técnicas de class balancing y boosting para corregir la variabilidad genética, los modelos obtuvieron precisiones superiores al 80\% en los datos de training\cite{FER}. Sin embargo, al aplicar estos modelos a datos de testing, las tasas de precisión cayeron a un 54\%, 56\% y 54\% respectivamente, resultados claramente insuficientes para garantizar un diagnóstico clínico fiable debido a la elevada tasa de error.
 
@@ -251,7 +255,7 @@ Por su parte, los modelos de Fuentes de Markov (de orden k) permiten capturar pa
 
 \section{Otras terapias emergentes}
 
-Además de los enfoques basados en el análisis genético, en los últimos años también se está abordando el problema desde la estrategia de la terapia genética, un tipo de terapia curativa que busca tratar la causa subyacente de una enfermedad genética corrigiendo o reemplazando directamente el gen defectuoso. Esta va dirigida al gen RPGR que es uno de los genes del cromosoma X que comúnmente está asociado a la RP (se tiene constancia de que es el causante de entre el 70\% y el 90\% de los casos ligados al cromosoma X)\cite{WAN}. Estas terapias consisten en la inyección subretinal de un virus modificado que transporta copias funcionales del gen RPGR, con el objetivo de restaurar la función perdida en las células de la retina afectadas\cite{ZON}.
+Además de los enfoques basados en el análisis genético, en los últimos años también se está abordando el problema desde la estrategia de la terapia genética, un tipo de terapia curativa que busca tratar la causa subyacente de una enfermedad genética corrigiendo o reemplazando directamente el gen defectuoso. Esta va dirigida al gen RPGR que es uno de los genes del cromosoma X que comúnmente está asociado a la RP (se tiene constancia de que es el causante de entre el 70\% y el 90\% de los casos ligados al cromosoma X)\cite{WAN}. Estas terapias consisten en la inyección subretinal de un virus modificado que transporta copias funcionales del gen RPGR, con el objetivo de restaurar la función perdida en las células de la retina afectadas\cite{ZON}. Este tipo de tratamiento que se encuentra aún en fase de ensayo clínico, representa una posible cura genética para determinados subtipos de la RP, especialmente en pacientes jóvenes donde el daño celular aún no es irreversible.
 
 Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial identificar de manera precisa las mutaciones responsables. Mediante el uso de herramientas basadas en Teoría de la Información es posible identificar de forma eficiente estas variantes, y así seleccionar a los candidatos adecuados para las terapias génicas y optimizar los ensayos clínicos.
 
@@ -264,9 +268,10 @@ Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial 
 
 \section{Conceptos básicos de genética y mutaciones}
 
-En el núcleo de cada célula humana se encuentra el ADN, que contiene toda la información genética necesaria para el funcionamiento y desarrollo del organismo. Sin embargo, el ADN no actúa directamente para realizar funciones celulares. En su lugar, esa información debe ser primero transcrita en moléculas de ARN, las cuales desempeñan roles clave en la expresión génica. Este proceso, conocido como transcripción, da lugar a diferentes tipos de ARN, que luego participan en distintos mecanismos celulares. 
+En el núcleo de cada célula humana se encuentra el ADN, que contiene toda la información genética necesaria para el funcionamiento y desarrollo del organismo. El ADN está formado por una cadena de nucleótidos, que son las unidades básicas del material genético. Cada nucleótido se compone de tres partes: un grupo fosfato, un azúcar (desoxirribosa en el caso del ADN) y una base nitrogenada.
 
-Existen dos tipos principales de transcritos que resultan de este proceso: el ARN mensajero (ARNm), que lleva la información del ADN a los ribosomas para la síntesis de proteínas, y el ARN no codificante (ARNnc), que, aunque no se traduce en proteínas, cumple funciones esenciales como la regulación génica, la modificación del ARN, la estructura de los ribosomas y otras tareas fundamentales para el control celular\cite[p.~254-300]{WAT}. 
+Las bases nitrogenadas son moléculas orgánicas que contienen nitrógeno y que se agrupan en dos tipos principales: purinas y pirimidinas. En el ADN existen cuatro bases nitrogenadas: adenina (A) y guanina (G), que son purinas; y citosina (C) y timina (T), que son pirimidinas. Estas bases se emparejan de forma complementaria (A con T y C con G), lo que permite la formación de la estructura de doble hélice característica del ADN\cite{GEN}.
+
 
 \begin{figure}[H]
    \centering
@@ -274,6 +279,10 @@ Existen dos tipos principales de transcritos que resultan de este proceso: el AR
    \caption{Procesos genéticos de la síntesis de proteínas.}
    \label{fig:etiqueta_opcional1}
 \end{figure}
+
+Sin embargo, el ADN no actúa directamente para realizar funciones celulares. En su lugar, esa información debe ser primero transcrita en moléculas de ARN (en este la timina se sustituye por uracilo, otra pirimidina), las cuales desempeñan roles clave en la expresión génica. Este proceso, conocido como transcripción, da lugar a diferentes tipos de ARN, que luego participan en distintos mecanismos celulares.
+
+Existen dos tipos principales de transcritos que resultan de este proceso: el ARN mensajero (ARNm), que lleva la información del ADN a los ribosomas para la síntesis de proteínas, y el ARN no codificante (ARNnc), que, aunque no se traduce en proteínas, cumple funciones esenciales como la regulación génica, la modificación del ARN, la estructura de los ribosomas y otras tareas fundamentales para el control celular\cite[p.~254-300]{WAT}. 
 
 El ARN mensajero (ARNm) actúa como intermediario entre el ADN y las proteínas de la siguiente manera: mediante el proceso de traducción, los ribosomas convierten cada molécula de ARNm en una proteína, es decir, en una secuencia de aminoácidos. Cada proteína adopta una estructura tridimensional compleja y funciones específicas. Gracias a la interacción entre el ADN, ARN y proteínas, el genoma es capaz de regular qué células deben crecer, morir y cómo se estructuran, entre otras funciones\cite{RIN}. 
 
@@ -515,6 +524,21 @@ Por último, de los archivos VCF extraeremos la siguiente información esencial:
    \item Base correspondiente a la secuencia mutada.
 \end{itemize}
  
+
+\subsection{Librería utilizadas}
+
+Durante el desarrollo de este TFG, ha sido necesario apoyarse en algunas herramientas que requerían la instalación de ciertas librerías presentes para Python, tanto para el procesamiento y análisis del genoma como para la visualización de los distintos gráficos y el desarrollo de la interfaz de usuario. A continuación, se describen las principales librerías utilizadas y su aportación al proyecto:
+
+\begin{itemize}
+   \item Bio (biopython) es la librería por excelencia para la bioinformática, utilizada para acceder a las bases de datos del NCBI (mediante BIO.Entrez), y para la lectura y análisis de los archivos que contienen las secuencias genómicas en formato FASTA (mediante Bio.SeqIO).
+   \item Vcfpy es una librería creada para Python 3, y especializada en el manejo de archivos VCF. Esta permite leer, analizar y escribir los archivos con mutaciones de manera estructurada en computacionalmente eficiente, y extraer de manera sencilla e intuitiva la información que se requiere.
+   \item Matplotlib es una de las librerías más utilizadas de Python, y se encarga de la generación de gráficos. En este caso se emplea para visualizar de manera clara tres listas: la entropía simple, la entropía generada a partir de Fuentes de Markov, y la densidad de mutaciones en la secuencia genómica. Además, se ha configurado un backend (TkAgg) para poder trabajar sin interfaz gráfica, de manera que genera imágenes exportables (en formato png). Por último, se hace uso de matplotlib.ticker, que es un módulo auxiliar que permite personalizar los ejes y formatos numéricos en los gráficos generados.
+   \item Pandas es una librería para el análisis y manipulación de datos en forma de tablas, que se utiliza para gestionar y mostrar la información extraída de los archivos VCF y almacenar resultados intermedios, como mutaciones no aplicadas.
+   \item Numpy es la biblioteca utilizada para lograr la optimización en los cálculos numéricos. En este contexto se usa para operaciones como el cálculo de la entropía de Shannon y la entropía basada en modelos de Markov, ya que permite manejar grandes volúmenes de datos genómicos de forma eficiente.
+   \item Streamlit es una librería de Python de código abierto que facilita la creación y el intercambio de aplicaciones web para la ciencia de datos y el machine learning. Es una forma rápida y sencilla de convertir código Python en una aplicación web interactiva, sin necesidad de conocimientos previos de desarrollo web . En este proyecto, Streamlit facilita al usuario la carga de archivos VCF, la selección del cromosoma de estudio y la visualización de resultados gráficos y tabulares, sin necesidad de conocimientos técnicos avanzados.
+\end{itemize}
+
+
 \section{Hipótesis}
 
 La hipótesis de partida se basa en la idea de que la entropía de una secuencia de ADN experimenta cambios significativos en las regiones donde puede haber mutaciones patogénicas. Estas regiones de valores anómalos entropía podrían coincidir con las zonas funcionales asociadas a enfermedades raras. 
@@ -595,11 +619,107 @@ La entropía total de la ventana se calcula restando las contribuciones de todas
 
 \chapter{Desarrollo}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+\section{Lectura de las mutaciones presentes en el archivo VCF}
 
-\section{?? ???? ???? ? ?? ??}
+En primer lugar, se realiza la lectura del archivo VCF correspondiente a los pacientes que presentan una determinada enfermedad rara (en este caso retinosis pigmentaria).
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+Para ello, se utiliza una librería específica de Python (vcfpy), que permite extraer de manera estructurada los datos contenidos en el archivo. El programa recorre cada línea del VCF (ignorando las líneas de encabezado) y obtiene los datos fundamentales de cada mutación.
+
+\section{Almacenamiento de las mutaciones en una estructura de datos adecuada}
+
+Una vez extraídas las mutaciones del archivo VCF, se almacenan en un diccionario de Python o estructura equivalente, de tal manera que cada mutación queda registrada mediante los siguientes campos:
+
+\begin{itemize}
+   \item Cromosoma en el que se encuentra la variante.
+   \item Posición exacta dentro del cromosoma.
+   \item Base de la secuencia de referencia.
+   \item Base correspondiente a la secuencia mutada.
+\end{itemize}
+
+\section{Extracción de la secuencia de referencia del cromosoma correspondiente}
+
+En este paso, se procede a la lectura del archivo FASTA que contiene la secuencia de referencia del cromosoma que se desea analizar.
+
+Este archivo se recorre línea a línea, ignorando la cabecera (líneas que comienzan con el símbolo >) para obtener la secuencia del cromosoma especificado.
+
+Dos opciones: En caso de que la secuencia contenga caracteres N (indicando zonas donde no se conoce con certeza la base presente);
+1. estas posiciones serán ignoradas y no se tendrán en cuenta en los cálculos de entropía o en el análisis de las mutaciones, ya que no aportan información relevante,
+2. serán tratadas como un nuevo tipo de base nitrogenada, entendiendo que también aportan información a los valores de la entropía.
+
+En cualquier caso, estas zonas desconocidas no están cerca de ninguna mutación con las que se está trabajando.
+
+\section{Aplicación de las mutaciones sobre la secuencia de referencia}
+
+Una vez obtenida la secuencia de referencia del cromosoma, se incorporan las mutaciones almacenadas previamente.
+
+Para cada mutación, se comprueba que la base presente en la posición correspondiente de la secuencia de referencia coincide con la base de referencia indicada en el archivo VCF.
+
+En caso de que la base coincida, se realiza el cambio por la base alternativa especificada. Si la base no coincide (posible error en los datos o desactualización del archivo FASTA), la mutación se descarta, y se almacena la información de dicha mutación en un archivo para su posterior análisis o revisión.
+
+Este proceso da lugar a una nueva secuencia mutada, sobre la cual se realizarán las comparaciones con la secuencia original.
+
+\section{Cálculo de la entropía mediante ventanas deslizantes}
+
+A continuación, se calcula la entropía sobre ambas secuencias (referencia y mutada) utilizando una ventana deslizante de tamaño w (w > k).
+
+La ventana se desplaza a lo largo de la secuencia en pasos de una posición, y dentro de cada ventana se calcula la entropía en base a las probabilidades de aparición de cada k-mer.
+
+\section{Representación gráfica de la entropía en ambas secuencias}
+
+Una vez calculadas las entropías de ambas secuencias, se procede a su representación gráfica mediante librerías de visualización de Python (matplotlib).
+
+Los gráficos permiten observar de forma clara las zonas de la secuencia en las que se produce un incremento o decremento significativo de la entropía debido a la presencia de mutaciones.
+
+Estos cambios podrían estar asociados a regiones funcionales relevantes en el genoma o a zonas afectadas por enfermedades.
+
+\section{Cálculo de la densidad de mutaciones}
+
+En este paso, se analiza la concentración de mutaciones en torno a cada variante presente en el archivo VCF.
+
+Para ello, se centra una ventana de tamaño 2L en cada mutación, considerando L posiciones hacia atrás y L posiciones hacia adelante desde la posición de la variante.
+
+Dentro de esta ventana, se cuenta el número total de mutaciones presentes. Este procedimiento se repite para todas las mutaciones del cromosoma, generando una lista de valores que reflejan la densidad de mutaciones en distintas regiones.
+
+\section{Representación gráfica de la densidad de mutaciones}
+
+La lista obtenida en el paso anterior se utiliza para generar un gráfico que permite visualizar las regiones con mayor concentración de variantes.
+
+Este tipo de representación la utilizamos para detectar zonas del genoma donde se acumulan un elevado número de mutaciones, las cuales están resaltadas y se especifican sus valores concretos.
+
+\section{Construcción del autómata para el cálculo de probabilidades de transición}
+
+En este paso se construye un autómata basado en un modelo de Markov de orden K (no confundir con k de los k-mers), con el objetivo de modelar las transiciones entre k-mers presentes en la secuencia.
+
+Se define un alfabeto formado por el alfabeto {A, C, G, T} y, se recorre la secuencia para obtener los estados iniciales y finales de los k-mers, así como las transiciones existentes entre ellos.
+
+Una vez construido el autómata, se recorren las secuencias analizadas y se calculan las probabilidades de transición entre k-mers.
+
+\section{Representación y guardado del autómata}
+
+Una vez construido el autómata, se procede a su representación mediante guardado de los elementos principales en formato texto en un archivo txt.
+
+En este archivo se representan los elementos principales de la siguiente manera:
+
+\begin{itemize}
+   \item Estados iniciales y finales, como una lista de secuencias de tamaño K-1.
+   \item Transiciones, como una lista de tuplas del tipo: (estado actual, símbolo, siguiente estado)
+\end{itemize}
+
+\section{Cálculo de las probabilidades de transición y de la entropía condicional}
+
+A partir de las probabilidades almacenadas en el automata, se calcula la entropía condicional dentro de ventanas deslizantes de tamaño w, teniendo en cuenta las transiciones presentes en cada ventana.
+
+Esto permite obtener una medida de la entropía, considerando no solo la frecuencia de k-mers individuales, sino también las relaciones de dependencia entre bases.
+
+\section{Interfaz gráfica}
+
+Finalmente, se está desarrollando una interfaz de usuario mediante el uso de librerías gráficas como streamlit. A través de esta interfaz, el usuario podrá introducir una serie de parámetros entre los que se incluyen: el número del cromosoma a estudiar, el número de bloque o región concreta dentro del cromosoma, el archivo VCF que contiene las mutaciones de interés, así como el valor de k correspondiente al tamaño de los kmers que se desean analizar.
+
+Una vez introducidos estos datos, la aplicación se encarga de ejecutar el programa, devolviendo las siguientes salidas: las tablas de densidad de mutaciones, los valores de entropía calculados a lo largo de la secuencia, la frecuencia de aparición de los distintos k-mers, así como la representación del autómata construido a partir de las transiciones observadas en la secuencia genómica.
+
+
+
+
 
 \chapter{Experimentos}
 
@@ -693,6 +813,12 @@ La entropía total de la ventana se calcula restando las contribuciones de todas
    \newblock Disponible en
    \newblock \url{https://roderic.uv.es/handle/10550/61138}.
 
+\bibitem{SHE}
+   Shen, D., Wu, G., \& Suk, H.
+   \newblock Deep Learning in Medical Image Analysis.
+   \newblock \textit{Annual Review of Biomedical Engineering}, 19(1), 221--248, 2017.
+   \newblock Disponible en
+   \newblock \url{https://doi.org/10.1146/annurev-bioeng-071516-044442}
 
 \bibitem{VER}
    Verana Health.  
@@ -781,6 +907,13 @@ La entropía total de la ventana se calcula restando las contribuciones de todas
    \newblock Disponible en 
    \newblock \url{https://doi.org/10.1038/nature15393}
    
+\bibitem{GEN}
+   National Human Genome Research Institute (NHGRI).  
+   \newblock Introduction to Genomics.  
+   \newblock Disponible en  
+   \newblock \url{https://www.genome.gov/About-Genomics/Introduction-to-Genomics}
+
+
 \bibitem{EMB}
    EMBL-EBI.  
    \newblock Understanding VCF format | Human genetic variation.  
