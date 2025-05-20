@@ -26,11 +26,16 @@
 %                                          (si el vostre editor ho permet)    % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc} 
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{adjustbox}
-\usepackage{amsmath}
+\usepackage{textcomp}   % Maneja comillas
+\usepackage{lmodern}    % Fuente moderna
+\usepackage{listings}   % Para mostrar código (opcional)
+\usepackage{amsmath}    % Por si hay matemáticas
+
 
 
 
@@ -619,15 +624,27 @@ La entropía total de la ventana se calcula restando las contribuciones de todas
 
 \chapter{Desarrollo}
 
+\section{Importación de librerías y configuración inicial }
+
+En primer lugar, se realizan importaciones de librerías necesarias para ejecutar distintas funciones en el análisis genómico y se realiza una configuración inicial del servidor de Streamlit. 
+
+En back.py, el archivo que contiene la lógica de la aplicación, se hace uso de diversas bibliotecas necesarias para recuperar secuencias genómicas, analizarlas, generar gráficos, y trabajar con datos genómicos en diversos formatos. Se usan módulos estándar como math y time, y otros especializados como matplotlib para generar gráficos (aunque configurado para un backend sin interfaz gráfica con TkAgg), pandas y numpy para análisis de datos, y Bio de Biopython para acceder a bases de datos biológicas del NCBI. También se importa vcfpy para manejar archivos VCF (usados en genómica para representar variantes), y requests para hacer solicitudes HTTP. 
+
+En interfaz.py, se importan los módulos necesarios para construir la interfaz web con Streamlit, la herramienta de Python para crear aplicaciones interactivas. Se importa st de streamlit para generar la UI, AnalizadorGenomico desde el archivo back.py (que contiene la lógica), y bibliotecas estándar como pandas para manejo de datos, os para operaciones del sistema de archivos, y zipfile para comprimir archivos.  
+
+Adicionalmente, se ha añadido el archivo config.toml en la carpeta streamlit, estableciendo el parámetro maxUploadSize = 1000 dentro de la sección [server]. Esto significa que se ha aumentado el límite máximo de tamaño de archivo que el usuario puede subir a la aplicación a 1 GB, lo cual es necesario para poder trabajar con archivos genómicos grandes como las secuencias genómicas o los VCFs. 
+
+
 \section{Lectura de las mutaciones presentes en el archivo VCF}
 
-En primer lugar, se realiza la lectura del archivo VCF correspondiente a los pacientes que presentan una determinada enfermedad rara (en este caso retinosis pigmentaria).
+En segundo lugar, se realiza la lectura del archivo VCF correspondiente a los pacientes que presentan una determinada enfermedad rara (en este caso retinosis pigmentaria). 
 
-Para ello, se utiliza una librería específica de Python (vcfpy), que permite extraer de manera estructurada los datos contenidos en el archivo. El programa recorre cada línea del VCF (ignorando las líneas de encabezado) y obtiene los datos fundamentales de cada mutación.
+Para ello, se utiliza una librería específica de Python (vcfpy), que permite extraer de manera estructurada los datos contenidos en el archivo. El programa recorre cada línea del VCF (ignorando las líneas de encabezado) y obtiene los datos fundamentales de cada mutación. Sin embargo, no necesitamos obtener los detalles de todas las mutaciones, por lo que se realiza un filtrado para obtener solo las mutaciones que se encuentren en el cromosoma especificado por el usuario. 
+
 
 \section{Almacenamiento de las mutaciones en una estructura de datos adecuada}
 
-Una vez extraídas las mutaciones del archivo VCF, se almacenan en un diccionario de Python o estructura equivalente, de tal manera que cada mutación queda registrada mediante los siguientes campos:
+Una vez extraídas las mutaciones del archivo VCF, se almacenan en un diccionario de Python (ya que permite un acceso rápido y una organización estructurada y eficiente), de tal manera que cada mutación queda registrada mediante los siguientes campos: 
 
 \begin{itemize}
    \item Cromosoma en el que se encuentra la variante.
@@ -638,47 +655,61 @@ Una vez extraídas las mutaciones del archivo VCF, se almacenan en un diccionari
 
 \section{Extracción de la secuencia de referencia del cromosoma correspondiente}
 
-En este paso, se procede a la lectura del archivo FASTA que contiene la secuencia de referencia del cromosoma que se desea analizar.
+En este paso, se procede a la lectura del archivo FASTA que contiene la secuencia de referencia del cromosoma que se desea analizar.  
 
-Este archivo se recorre línea a línea, ignorando la cabecera (líneas que comienzan con el símbolo >) para obtener la secuencia del cromosoma especificado.
+Debido a que la secuencia de un cromosoma entero contiene una cantidad de información extremadamente elevada, su procesamiento sería muy costoso computacionalmente. Además, la generación de gráficos de toda la secuencia sería demasiado compleja. Por lo tanto, se ha optado por procesar la secuencia en bloques más pequeños, permitiendo un análisis más eficiente y visualmente interpretable. 
 
-Dos opciones: En caso de que la secuencia contenga caracteres N (indicando zonas donde no se conoce con certeza la base presente);
-1. estas posiciones serán ignoradas y no se tendrán en cuenta en los cálculos de entropía o en el análisis de las mutaciones, ya que no aportan información relevante,
-2. serán tratadas como un nuevo tipo de base nitrogenada, entendiendo que también aportan información a los valores de la entropía.
+Este archivo se abre en modo lectura (with open(fasta\_file, ``r'') as file) y se recorre línea a línea.
 
-En cualquier caso, estas zonas desconocidas no están cerca de ninguna mutación con las que se está trabajando.
+Para comprobar que el número de cromosoma es correcto, se limpia la cabecera eliminando el símbolo >\ y cualquier espacio extra, tomando solo el primer fragmento del ID en caso de que haya espacios (por ejemplo, si el encabezado es ``chr1\dots info'', se queda solo con ``chr1''). Si el id del registro coincide con el cromosoma solicitado por el usuario, se extrae la secuencia en el rango especificado y se convierte a mayúsculas. 
+
+Una vez extraída la secuencia, se han considerado dos opciones en caso de que la secuencia contenga caracteres N (indicando zonas donde no se conoce con certeza la base presente): 
+
+1. estas posiciones serán ignoradas y no se tendrán en cuenta en los cálculos de entropía o en el análisis de las mutaciones, ya que no aportan información relevante, 
+
+2. serán tratadas como un nuevo tipo de base nitrogenada, entendiendo que también aportan información a los valores de la entropía. 
+
+En cualquier caso, estas zonas desconocidas no están cerca de ninguna mutación con las que se está trabajando, por lo que no es relevante el tratamiento que se les dé. 
 
 \section{Aplicación de las mutaciones sobre la secuencia de referencia}
 
-Una vez obtenida la secuencia de referencia del cromosoma, se incorporan las mutaciones almacenadas previamente.
+Una vez obtenida la secuencia de referencia del cromosoma, se incorporan las mutaciones almacenadas previamente. Para ello, el primer paso es convertir la secuencia de referencia en una lista para permitir la modificación directa de esta. 
 
-Para cada mutación, se comprueba que la base presente en la posición correspondiente de la secuencia de referencia coincide con la base de referencia indicada en el archivo VCF.
+Después, se extraen solo las mutaciones correspondientes al cromosoma actual y se ordenan por posición. Para cada mutación, se ajusta la posición relativa dentro de la secuencia, ya que debemos considerar los posibles desplazamientos por cambios de longitud en mutaciones anteriores (por ejemplo, AAT --> A). Se extrae el segmento de referencia de la secuencia y se compara con la mutación esperada: se comprueba que las bases presentes en la posición correspondiente de la secuencia de referencia coinciden con las bases de referencia indicadas en el archivo VCF. 
 
-En caso de que la base coincida, se realiza el cambio por la base alternativa especificada. Si la base no coincide (posible error en los datos o desactualización del archivo FASTA), la mutación se descarta, y se almacena la información de dicha mutación en un archivo para su posterior análisis o revisión.
+En caso de que esta base coincida, se aplica la mutación, reemplazando el fragmento correspondiente con la nueva variante y se actualiza el desplazamiento, para ajustar futuras posiciones si cambia la longitud. 
 
-Este proceso da lugar a una nueva secuencia mutada, sobre la cual se realizarán las comparaciones con la secuencia original.
+En cambio, si la base no coincide (posible error en los datos o desactualización del archivo FASTA), la mutación se descarta, se almacena la información de dicha mutación en un archivo para su posterior análisis o revisión y se imprime una advertencia. 
+
+Este proceso da lugar a una nueva secuencia mutada, sobre la cual se realizarán las comparaciones con la secuencia original. 
 
 \section{Cálculo de la entropía mediante ventanas deslizantes}
 
-A continuación, se calcula la entropía sobre ambas secuencias (referencia y mutada) utilizando una ventana deslizante de tamaño w (w > k).
+A continuación, se calcula la entropía simple sobre ambas secuencias (referencia y mutada) utilizando una ventana deslizante de tamaño w (w > k). 
 
-La ventana se desplaza a lo largo de la secuencia en pasos de una posición, y dentro de cada ventana se calcula la entropía en base a las probabilidades de aparición de cada k-mer.
+Para ello se define primero una función para contar la frecuencia de cada k-mer en la secuencia (subcadenas de longitud k). Esto se realiza recorriendo la secuencia, extrayendo cada subcadena de longitud k e introduciéndola en un diccionario donde las claves son los k-mers y los valores son las frecuencias (se suma 1 por cada aparición a la entrada correspondiente).  
+
+Después, se procede a calcular la entropía de Shannon en ventanas deslizantes de tamaño w sobre la secuencia, basada en la distribución de k-mers dentro de cada ventana. La ventana se desplaza a lo largo de la secuencia en pasos de una posición, y dentro de cada ventana se calcula la entropía en base a las probabilidades de aparición de cada k-mer con la siguiente fórmula: 
+
+$H = -\sum p_i \cdot \log_2(p_i)$, donde $p_i$ es la probabilidad del k-mer $i$.
+
+Una vez calculada, se añade la entropía a una lista, y finalmente se devuelve la lista de entropías de cada ventana. 
 
 \section{Representación gráfica de la entropía en ambas secuencias}
 
-Una vez calculadas las entropías de ambas secuencias, se procede a su representación gráfica mediante librerías de visualización de Python (matplotlib).
+Una vez obtenida la lista de entropías de ambas secuencias, se procede a su representación gráfica mediante librerías de visualización de Python (matplotlib). 
 
-Los gráficos permiten observar de forma clara las zonas de la secuencia en las que se produce un incremento o decremento significativo de la entropía debido a la presencia de mutaciones.
+Los gráficos permiten observar de forma clara las zonas de la secuencia en las que se produce un incremento o decremento significativo de la entropía debido a la presencia de mutaciones. 
 
-Estos cambios podrían estar asociados a regiones funcionales relevantes en el genoma o a zonas afectadas por enfermedades.
+Estos cambios podrían estar asociados a regiones funcionales relevantes en el genoma o a zonas afectadas por enfermedades. 
 
 \section{Cálculo de la densidad de mutaciones}
 
-En este paso, se analiza la concentración de mutaciones en torno a cada variante presente en el archivo VCF.
+En este paso, se analiza la concentración de mutaciones en torno a cada variante presente en el archivo VCF. 
 
-Para ello, se centra una ventana de tamaño 2L en cada mutación, considerando L posiciones hacia atrás y L posiciones hacia adelante desde la posición de la variante.
+Para ello, se centra una ventana de tamaño 2L en cada mutación, considerando L posiciones hacia atrás y L posiciones hacia adelante desde la posición de la variante. 
 
-Dentro de esta ventana, se cuenta el número total de mutaciones presentes. Este procedimiento se repite para todas las mutaciones del cromosoma, generando una lista de valores que reflejan la densidad de mutaciones en distintas regiones.
+Dentro de esta ventana, se cuenta el número total de mutaciones presentes, y se guarda en una tupla (pos, cuenta) indicando cuántas mutaciones hay en torno a pos. Este procedimiento se repite para todas las mutaciones del cromosoma, generando una lista de valores que reflejan la densidad de mutaciones en distintas regiones. 
 
 \section{Representación gráfica de la densidad de mutaciones}
 
@@ -688,36 +719,74 @@ Este tipo de representación la utilizamos para detectar zonas del genoma donde 
 
 \section{Construcción del autómata para el cálculo de probabilidades de transición}
 
-En este paso se construye un autómata basado en un modelo de Markov de orden K (no confundir con k de los k-mers), con el objetivo de modelar las transiciones entre k-mers presentes en la secuencia.
+En este paso se construye un autómata basado en un modelo de Markov de orden K (no confundir con el parámetro k de los k-mers), con el objetivo de modelar las transiciones entre k-mers presentes en la secuencia. 
 
-Se define un alfabeto formado por el alfabeto {A, C, G, T} y, se recorre la secuencia para obtener los estados iniciales y finales de los k-mers, así como las transiciones existentes entre ellos.
+Para ello, primero se define un alfabeto formado por las diferentes bases {A, C, G, T} y se recorre la secuencia para generar los estados del autómata, definidos por subcadenas de longitud K - 1, y se registran las transiciones entre dichos estados como el paso de un estado a otro adyacente, desplazado en una base. Además, se obtienen los estados iniciales y finales a partir de los k-mers, que son aquellos estados que constituyen el comienzo y final, respectivamente, de un k-mer.  
 
-Una vez construido el autómata, se recorren las secuencias analizadas y se calculan las probabilidades de transición entre k-mers.
+Una vez construido el autómata, se recorren las secuencias analizadas y se calculan las probabilidades de transición entre estados dividiendo la frecuencia de cada transición entre el total de transiciones posibles desde su estado origen. El resultado final es un autómata que consiste en cuatro elementos:  
+
+
+\begin{itemize}
+   \item El alfabeto de símbolos.
+   \item El conjunto de estados iniciales.  
+   \item El conjunto de estados finales. 
+   \item La matriz de transición probabilística de los estados 
+\end{itemize}
 
 \section{Representación y guardado del autómata}
 
-Una vez construido el autómata, se procede a su representación mediante guardado de los elementos principales en formato texto en un archivo txt.
+Una vez construido el autómata, se procede a su representación mediante guardado de los elementos principales en formato texto en un archivo txt. Se genera un archivo para la secuencia original y otro para la secuencia mutada para poder realizar comparaciones. 
 
-En este archivo se representan los elementos principales de la siguiente manera:
+En este archivo se representan los elementos principales de la siguiente manera: 
 
 \begin{itemize}
+   \item Alfabeto como una lista con las diferentes bases nitrogenadas 
    \item Estados iniciales y finales, como una lista de secuencias de tamaño K-1.
    \item Transiciones, como una lista de tuplas del tipo: (estado actual, símbolo, siguiente estado)
 \end{itemize}
 
+
 \section{Cálculo de las probabilidades de transición y de la entropía condicional}
 
-A partir de las probabilidades almacenadas en el automata, se calcula la entropía condicional dentro de ventanas deslizantes de tamaño w, teniendo en cuenta las transiciones presentes en cada ventana.
+A partir de las probabilidades almacenadas en el autómata, se calcula la entropía condicional dentro de ventanas deslizantes de tamaño w, teniendo en cuenta las transiciones presentes en cada ventana. 
 
-Esto permite obtener una medida de la entropía, considerando no solo la frecuencia de k-mers individuales, sino también las relaciones de dependencia entre bases.
+Para ello, primero se recorre la secuencia usando una ventana deslizante de tamaño w, extrayendo una subsecuencia en cada iteración y dentro de cada ventana, se recorre la subsecuencia formando pares de estado actual, siguiente estado para obtener el valor de la probabilidad para esa transición. Ahora se aplica la fórmula de la entropía sumando el valor negativo de $p \cdot \log_2(p)$ para cada transición (si la transición no se encuentra, se asume una probabilidad muy pequeña para evitar $\log(0)$).
+
+
+Esto permite obtener una medida de la entropía, considerando no solo la frecuencia de k-mers individuales, sino también las relaciones de dependencia entre bases. 
 
 \section{Interfaz gráfica}
 
-Finalmente, se está desarrollando una interfaz de usuario mediante el uso de librerías gráficas como streamlit. A través de esta interfaz, el usuario podrá introducir una serie de parámetros entre los que se incluyen: el número del cromosoma a estudiar, el número de bloque o región concreta dentro del cromosoma, el archivo VCF que contiene las mutaciones de interés, así como el valor de k correspondiente al tamaño de los kmers que se desean analizar.
+Finalmente, con el objetivo de facilitar el uso de esta aplicación a usuarios no expertos en programación, se ha implementado una interfaz gráfica utilizando la biblioteca Streamlit, una herramienta en Python que permite construir aplicaciones web interactivas de forma sencilla y eficiente. 
 
-Una vez introducidos estos datos, la aplicación se encarga de ejecutar el programa, devolviendo las siguientes salidas: las tablas de densidad de mutaciones, los valores de entropía calculados a lo largo de la secuencia, la frecuencia de aparición de los distintos k-mers, así como la representación del autómata construido a partir de las transiciones observadas en la secuencia genómica.
+Esta interfaz permite realizar análisis genómicos de manera accesible y guiada a través de los diferentes pasos necesarios para cargar los datos, configurar los parámetros de análisis, ejecutar el procesamiento y visualizar o descargar los resultados generados. 
+
+ 
+
+A través de esta interfaz, el usuario podrá introducir una serie de parámetros entre los que se incluyen:  
 
 
+\begin{itemize}
+   \item Seleccionar el número de cromosoma a analizar desde un menú desplegable. A partir de esta selección, el sistema asocia automáticamente el identificador del cromosoma en formato GRCh37 y el archivo FASTA correspondiente (en caso de que no se encuentre, se muestra un mensaje de error). 
+   \item Se debe proporcionar un archivo con las mutaciones del paciente en formato VCF, cargado a través de subida de archivos. 
+   \item Tamaño de k-mer ($k$), que define el tamaño de las secuencias. 
+    \item Orden del modelo de Markov ($k_{\text{markov}}$), que determina cuántos símbolos anteriores se consideran en la probabilidad condicional.
+    \item Tamaño de ventana para densidad ($l$), que establece el rango en el que se tienen en cuenta las mutaciones alrededor de cada variante. 
+    \item Tamaño de ventana para entropía ($w$), para el cálculo de las entropías.
+   \item Posición de inicio y tamaño del bloque, para definir el segmento del cromosoma a analizar y así no cargar regiones genómicas excesivamente grandes. 
+\end{itemize}
+
+
+ 
+
+Una vez introducidos estos datos, la aplicación se encarga de ejecutar la lógica del programa: aplica las mutaciones del archivo VCF sobre la secuencia original, calcula la entropía simple y la entropía basada en probabilidades condicionales, analiza la densidad de mutaciones en regiones del genoma y genera los gráficos y archivos correspondientes. Finalizado este análisis, se devuelven las siguientes salidas:  
+
+\begin{itemize}
+   \item Tres imágenes descargables con los gráficos de entropía simple, entropía condicional (o de Markov) y densidad de mutaciones. 
+   \item Tres archivos para descargar: dos ficheros de texto con los autómatas de la secuencia original y secuencia mutada (los generados a partir de Fuentes de Markov), y un archivo con las mutaciones que no han podido aplicarse. 
+   \item Además, se proporciona la opción de descargar un archivo comprimido (.zip) que incluye todos los resultados para facilitar su almacenamiento o distribución. 
+\end{itemize}
+ 
 
 
 

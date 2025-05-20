@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.4.29)  19 MAY 2025 23:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.3.25)  20 MAY 2025 12:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/crist/TFG/tfgetsinf/plantillatfg.tex
-(/home/crist/TFG/tfgetsinf/plantillatfg.tex
+**/home/crodriguez/Proyecto-Genoma-Humano/tfgetsinf/plantillatfg.tex
+(/home/crodriguez/Proyecto-Genoma-Humano/tfgetsinf/plantillatfg.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (./tfgetsinf.cls
@@ -45,9 +45,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language52). Reported on input line 105.
+(babel)             (\language40). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language52). Reported on input line 108.
+(babel)             (\language40). Reported on input line 108.
 ) (/usr/share/texlive/texmf-dist/tex/generic/babel-catalan/catalan.ldf
 Language: catalan 2005/03/29 v2.2p Catalan support from the babel system
 Package babel Info: Making " an active character on input line 91.
@@ -377,7 +377,12 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 262.
 \c@appendix=\count299
-) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+ppl on input line 112.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
+File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks22
 \inpenc@posthook=\toks23
@@ -431,7 +436,43 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \sift@deathcycles=\count303
 \@vwid@loff=\dimen190
 \@vwid@roff=\dimen191
-)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+) (/usr/share/texmf/tex/latex/lm/lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/ppl/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/zplm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/zplm/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/zplm/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/ppl/b/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/zplm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/zplm/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/zplm/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/zplm/b/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/ppl/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/zplm/b/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/ppl/b/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip98
 
@@ -496,10 +537,10 @@ LaTeX Info: Redefining \Relbar on input line 971.
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 41.
-LaTeX Font Info:    Trying to load font information for T1+ppl on input line 78.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
-File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
+Package hyperref Info: Option `colorlinks' set `true' on input line 46.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 83.
+ (/usr/share/texmf/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count316
@@ -522,28 +563,28 @@ LaTeX Warning: Label `GEN' multiply defined.
 )
 \openout1 = `plantillatfg.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Info: Redefining \. on input line 78.
-LaTeX Info: Redefining \% on input line 78.
-LaTeX Info: Redefining \l on input line 78.
-LaTeX Info: Redefining \L on input line 78.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Info: Redefining \. on input line 83.
+LaTeX Info: Redefining \% on input line 83.
+LaTeX Info: Redefining \l on input line 83.
+LaTeX Info: Redefining \L on input line 83.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -611,97 +652,112 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package newfloat Info: `float' package detected.
 \c@lstlisting=\count323
-Package hyperref Info: Link coloring ON on input line 78.
+Package hyperref Info: Link coloring ON on input line 83.
  (./plantillatfg.out) (./plantillatfg.out)
 \@outlinefile=\write3
 \openout3 = `plantillatfg.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 78.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ppl.fd
-File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+
+
+LaTeX Font Warning: Font shape `T1/lmr/bx/sc' undefined
+(Font)              using `T1/lmr/bx/n' instead on input line 83.
+
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 83.
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+zplm on input line 78.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
-File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 83.
+ (/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 78.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
-File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 83.
+ (/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 78.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
-File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 83.
+ (/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 78.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 83.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 83.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 83.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 83.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
-<logo-upv.pdf, id=249, 331.2375pt x 105.39375pt>
+<logo-upv.pdf, id=253, 331.2375pt x 105.39375pt>
 File: logo-upv.pdf Graphic file (type pdf)
 <use logo-upv.pdf>
-Package pdftex.def Info: logo-upv.pdf  used on input line 78.
+Package pdftex.def Info: logo-upv.pdf  used on input line 83.
 (pdftex.def)             Requested size: 178.85042pt x 56.9055pt.
-<logo-etsinf.pdf, id=250, 311.1625pt x 120.45pt>
+<logo-etsinf.pdf, id=254, 311.1625pt x 120.45pt>
 File: logo-etsinf.pdf Graphic file (type pdf)
 <use logo-etsinf.pdf>
-Package pdftex.def Info: logo-etsinf.pdf  used on input line 78.
+Package pdftex.def Info: logo-etsinf.pdf  used on input line 83.
 (pdftex.def)             Requested size: 147.00606pt x 56.9055pt.
-<baseportada.png, id=251, 1027.84pt x 578.16pt>
+<baseportada.png, id=255, 1027.84pt x 578.16pt>
 File: baseportada.png Graphic file (type png)
 <use baseportada.png>
-Package pdftex.def Info: baseportada.png  used on input line 78.
+Package pdftex.def Info: baseportada.png  used on input line 83.
 (pdftex.def)             Requested size: 597.51208pt x 366.75699pt.
  [1
 
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} <./logo-upv.pdf> <./logo-etsinf.pdf> <./baseportada.png>] [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc} <./logo-upv.pdf> <./logo-etsinf.pdf> <./baseportada.png>] [2
 
 ]
-LaTeX Info: Redefining \. on input line 84.
-LaTeX Info: Redefining \% on input line 84.
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 84.
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
-File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+LaTeX Info: Redefining \. on input line 89.
+LaTeX Info: Redefining \% on input line 89.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 89.
+ (/usr/share/texmf/tex/latex/lm/t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 91--94
+Underfull \hbox (badness 10000) in paragraph at lines 96--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--94
+Underfull \hbox (badness 10000) in paragraph at lines 96--99
 
  []
 
-LaTeX Info: Redefining \. on input line 94.
-LaTeX Info: Redefining \% on input line 94.
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 100.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+LaTeX Info: Redefining \. on input line 99.
+LaTeX Info: Redefining \% on input line 99.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 105.
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 100--103
+Underfull \hbox (badness 10000) in paragraph at lines 105--108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--103
+Underfull \hbox (badness 10000) in paragraph at lines 105--108
 
  []
 
-LaTeX Info: Redefining \. on input line 103.
-LaTeX Info: Redefining \% on input line 103.
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 109--112
+LaTeX Info: Redefining \. on input line 108.
+LaTeX Info: Redefining \% on input line 108.
+[3{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 114--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--112
+Underfull \hbox (badness 10000) in paragraph at lines 114--117
 
  []
 
-LaTeX Info: Redefining \. on input line 112.
-LaTeX Info: Redefining \% on input line 112.
+LaTeX Info: Redefining \. on input line 117.
+LaTeX Info: Redefining \% on input line 117.
+
+Package spanish Warning: Replacing `T1/lmr/bx/sc' by 
+(spanish)                faked small caps on input line 117.
+
 [4] (./plantillatfg.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -713,15 +769,39 @@ LaTeX Info: Redefining \. on input line 5.
 LaTeX Info: Redefining \% on input line 5.
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
- [5
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 8.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 8.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 8.
+
+
+Package spanish Warning: Replacing `T1/lmr/bx/sc' by 
+(spanish)                faked small caps on input line 8.
+
+
+Package spanish Warning: Replacing `T1/lmr/bx/sc' by 
+(spanish)                faked small caps on input line 9.
+
+
+Package spanish Warning: Replacing `T1/lmr/bx/sc' by 
+(spanish)                faked small caps on input line 10.
+
+[5
 
 ])
 \tf@toc=\write4
 \openout4 = `plantillatfg.toc'.
 
-LaTeX Info: Redefining \. on input line 112.
-LaTeX Info: Redefining \% on input line 112.
- [6] (./plantillatfg.lof
+
+
+Package spanish Warning: Replacing `T1/lmr/bx/sc' by 
+(spanish)                faked small caps on input line 117.
+
+LaTeX Info: Redefining \. on input line 117.
+LaTeX Info: Redefining \% on input line 117.
+[6] (./plantillatfg.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Info: Redefining \. on input line 2.
@@ -757,245 +837,249 @@ LaTeX Info: Redefining \% on input line 7.
 
 ]
 Cap\'{\i }tulo 1.
-<Retinosis-Pigmetaria.jpg, id=379, 615.29875pt x 342.27875pt>
+<Retinosis-Pigmetaria.jpg, id=389, 615.29875pt x 342.27875pt>
 File: Retinosis-Pigmetaria.jpg Graphic file (type jpg)
 <use Retinosis-Pigmetaria.jpg>
-Package pdftex.def Info: Retinosis-Pigmetaria.jpg  used on input line 130.
+Package pdftex.def Info: Retinosis-Pigmetaria.jpg  used on input line 135.
 (pdftex.def)             Requested size: 384.1096pt x 213.6782pt.
 
-Underfull \vbox (badness 4072) has occurred while \output is active []
+Underfull \vbox (badness 4569) has occurred while \output is active []
 
  [1
 
  <./Retinosis-Pigmetaria.jpg>]
-LaTeX Info: Redefining \. on input line 160.
-LaTeX Info: Redefining \% on input line 160.
+LaTeX Info: Redefining \. on input line 165.
+LaTeX Info: Redefining \% on input line 165.
  [2]
-LaTeX Info: Redefining \. on input line 190.
-LaTeX Info: Redefining \% on input line 190.
+LaTeX Info: Redefining \. on input line 195.
+LaTeX Info: Redefining \% on input line 195.
  [3]
-LaTeX Info: Redefining \. on input line 224.
-LaTeX Info: Redefining \% on input line 224.
+LaTeX Info: Redefining \. on input line 229.
+LaTeX Info: Redefining \% on input line 229.
  [4]
 Cap\'{\i }tulo 2.
 
-Underfull \vbox (badness 5548) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5
 
 ]
-Overfull \hbox (4.6636pt too wide) in paragraph at lines 244--245
-[]\T1/ppl/m/n/10.95 En un es-tu-dio re-cien-te, se uti-li-za-ron tres mo-de-los pre-en-tre-na-dos; Inception-v3, ResNet-
- []
-
-LaTeX Info: Redefining \. on input line 259.
-LaTeX Info: Redefining \% on input line 259.
-[6]
-LaTeX Info: Redefining \. on input line 267.
-LaTeX Info: Redefining \% on input line 267.
+LaTeX Info: Redefining \. on input line 264.
+LaTeX Info: Redefining \% on input line 264.
+ [6]
+LaTeX Info: Redefining \. on input line 272.
+LaTeX Info: Redefining \% on input line 272.
  [7] [8
 
 ]
 Cap\'{\i }tulo 3.
-<ADN.png, id=445, 1541.76pt x 1027.84pt>
+<ADN.png, id=453, 1541.76pt x 1027.84pt>
 File: ADN.png Graphic file (type png)
 <use ADN.png>
-Package pdftex.def Info: ADN.png  used on input line 278.
+Package pdftex.def Info: ADN.png  used on input line 283.
 (pdftex.def)             Requested size: 384.1096pt x 256.0654pt.
 [9 <./ADN.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 318.
-LaTeX Info: Redefining \% on input line 318.
+LaTeX Info: Redefining \. on input line 323.
+LaTeX Info: Redefining \% on input line 323.
  [10]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 341.
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 346.
+ (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \. on input line 356.
-LaTeX Info: Redefining \% on input line 356.
+LaTeX Info: Redefining \. on input line 361.
+LaTeX Info: Redefining \% on input line 361.
  [11]
-LaTeX Info: Redefining \. on input line 407.
-LaTeX Info: Redefining \% on input line 407.
+LaTeX Info: Redefining \. on input line 412.
+LaTeX Info: Redefining \% on input line 412.
  [12]
-LaTeX Info: Redefining \. on input line 442.
-LaTeX Info: Redefining \% on input line 442.
- [13]
-<entropia_markov.png, id=501, 1583.9175pt x 916.42375pt>
+LaTeX Info: Redefining \. on input line 447.
+LaTeX Info: Redefining \% on input line 447.
+ [13{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}]
+<entropia_markov.png, id=513, 1583.9175pt x 916.42375pt>
 File: entropia_markov.png Graphic file (type png)
 <use entropia_markov.png>
-Package pdftex.def Info: entropia_markov.png  used on input line 467.
+Package pdftex.def Info: entropia_markov.png  used on input line 472.
 (pdftex.def)             Requested size: 384.1096pt x 222.2255pt.
 
 Underfull \vbox (badness 5091) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 471.
-LaTeX Info: Redefining \% on input line 471.
- [14]
-LaTeX Info: Redefining \. on input line 475.
-LaTeX Info: Redefining \% on input line 475.
+LaTeX Info: Redefining \. on input line 476.
+LaTeX Info: Redefining \% on input line 476.
+ [14{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+LaTeX Info: Redefining \. on input line 480.
+LaTeX Info: Redefining \% on input line 480.
  [15 <./entropia_markov.png>] [16
 
 ]
 Cap\'{\i }tulo 4.
 [17]
-LaTeX Info: Redefining \. on input line 538.
-LaTeX Info: Redefining \% on input line 538.
+LaTeX Info: Redefining \. on input line 543.
+LaTeX Info: Redefining \% on input line 543.
  [18]
-LaTeX Info: Redefining \. on input line 573.
-LaTeX Info: Redefining \% on input line 573.
+LaTeX Info: Redefining \. on input line 578.
+LaTeX Info: Redefining \% on input line 578.
  [19]
-LaTeX Info: Redefining \. on input line 620.
-LaTeX Info: Redefining \% on input line 620.
+LaTeX Info: Redefining \. on input line 625.
+LaTeX Info: Redefining \% on input line 625.
  [20]
-LaTeX Info: Redefining \. on input line 620.
-LaTeX Info: Redefining \% on input line 620.
+LaTeX Info: Redefining \. on input line 625.
+LaTeX Info: Redefining \% on input line 625.
  [21] [22
 
 ]
 Cap\'{\i }tulo 5.
-[23]
-LaTeX Info: Redefining \. on input line 683.
-LaTeX Info: Redefining \% on input line 683.
- [24]
-LaTeX Info: Redefining \. on input line 717.
-LaTeX Info: Redefining \% on input line 717.
- [25]
-LaTeX Info: Redefining \. on input line 724.
-LaTeX Info: Redefining \% on input line 724.
- [26]
-Cap\'{\i }tulo 6.
-[27
 
-] [28
+Underfull \vbox (badness 4441) has occurred while \output is active []
+
+ [23]
+LaTeX Info: Redefining \. on input line 679.
+LaTeX Info: Redefining \% on input line 679.
+ [24]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 710.
+LaTeX Info: Redefining \% on input line 710.
+ [25]
+Underfull \vbox (badness 2088) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 740.
+LaTeX Info: Redefining \% on input line 740.
+ [26]
+LaTeX Info: Redefining \. on input line 774.
+LaTeX Info: Redefining \% on input line 774.
+ [27]
+LaTeX Info: Redefining \. on input line 793.
+LaTeX Info: Redefining \% on input line 793.
+ [28]
+Cap\'{\i }tulo 6.
+[29
+
+] [30
 
 ]
 Cap\'{\i }tulo 7.
-[29] [30
+[31] [32
 
 ]
-Underfull \hbox (badness 2134) in paragraph at lines 782--786
-\T1/ppl/m/n/10.95 ni-ble en [][]$\T1/cmtt/m/n/10.95 https : / / www . nei . nih . gov / espanol / aprenda-[]sobre-[]la-[]salud-[]ocular /
+Underfull \hbox (badness 10000) in paragraph at lines 893--898
+[]\T1/lmr/m/n/10.95 Verana Health.  Why Real-World Da-ta is Key to Pro-vi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 824--829
-[]\T1/ppl/m/n/10.95 Verana Health.  Why Real-World Da-ta is Key to Pro-vi-
+Underfull \hbox (badness 10000) in paragraph at lines 893--898
+\T1/lmr/m/n/10.95 ding In-sights In-to Re-ti-ni-tis Pig-men-to-sa, emés el 20 de no-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 824--829
-\T1/ppl/m/n/10.95 ding In-sights In-to Re-ti-ni-tis Pig-men-to-sa, emés el 20 de no-
+Underfull \hbox (badness 10000) in paragraph at lines 893--898
+\T1/lmr/m/n/10.95 vem-bre de 2024.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / veranahealth . com /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 824--829
-\T1/ppl/m/n/10.95 vem-bre de 2024.  Dis-po-ni-ble en [][]$\T1/cmtt/m/n/10.95 https : / / veranahealth . com /
+Overfull \hbox (35.41357pt too wide) in paragraph at lines 893--898
+\T1/lmtt/m/n/10.95 why-[]real-[]world-[]data-[]is-[]key-[]to-[]providing-[]insights-[]into-[]retinitis-[]pigmentosa/$[][]\T1/lmr/m/n/10.95 . 
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 914--919
+[]\T1/lmr/m/n/10.95 Stevenson, S.  How deep lear-ning may play a ro-le in pre-dic-
  []
 
 
-Overfull \hbox (29.54155pt too wide) in paragraph at lines 824--829
-\T1/cmtt/m/n/10.95 why-[]real-[]world-[]data-[]is-[]key-[]to-[]providing-[]insights-[]into-[]retinitis-[]pigmentosa/$[][]\T1/ppl/m/n/10.95 . 
- []
-
-[31]
-Underfull \hbox (badness 10000) in paragraph at lines 845--850
-[]\T1/ppl/m/n/10.95 Stevenson, S.  How deep lear-ning may play a ro-le in pre-dic-
+Underfull \hbox (badness 10000) in paragraph at lines 914--919
+\T1/lmr/m/n/10.95 ting re-ti-ni-tis pig-men-to-sa vi-sual im-pair-ment, emés el 14 de ma-rç de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 845--850
-\T1/ppl/m/n/10.95 ting re-ti-ni-tis pig-men-to-sa vi-sual im-pair-ment, emés el 14 de ma-rç de
+Underfull \hbox (badness 10000) in paragraph at lines 914--919
+\T1/lmr/m/n/10.95 2023.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / www . ophthalmologytimes . com / view /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 845--850
-\T1/ppl/m/n/10.95 2023.  Dis-po-ni-ble en [][]$\T1/cmtt/m/n/10.95 https : / / www . ophthalmologytimes . com / view /
+Overfull \hbox (99.14964pt too wide) in paragraph at lines 914--919
+\T1/lmtt/m/n/10.95 how-[]deep-[]learning-[]may-[]play-[]a-[]role-[]in-[]predicting-[]retinitis-[]pigmentosa-[]visual-[]impairment$[][]\T1/lmr/m/n/10.95 . 
  []
 
 
-Overfull \hbox (92.28363pt too wide) in paragraph at lines 845--850
-\T1/cmtt/m/n/10.95 how-[]deep-[]learning-[]may-[]play-[]a-[]role-[]in-[]predicting-[]retinitis-[]pigmentosa-[]visual-[]impairment$[][]\T1/ppl/m/n/10.95 . 
+Underfull \hbox (badness 10000) in paragraph at lines 933--938
+\T1/lmr/m/n/10.95 ble en [][]$\T1/lmtt/m/n/10.95 https : / / media . lavozdegalicia . es / noticia / sociedad / 2025 / 04 / 21 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 864--869
-\T1/ppl/m/n/10.95 ble en [][]$\T1/cmtt/m/n/10.95 https : / / media . lavozdegalicia . es / noticia / sociedad / 2025 / 04 / 21 /
+Underfull \hbox (badness 10000) in paragraph at lines 933--938
+\T1/lmtt/m/n/10.95 algoritmo-[]encuentra-[]indicios-[]enfermedades-[]parte-[]adnconsidera-[]inutil /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 864--869
-\T1/cmtt/m/n/10.95 algoritmo-[]encuentra-[]indicios-[]enfermedades-[]parte-[]adnconsidera-[]inutil /
+Underfull \hbox (badness 10000) in paragraph at lines 947--952
+[]\T1/lmr/m/n/10.95 ZonaIT.  Avan-ces en la te-ra-pia gé-ni-ca pa-ra la re-ti-no-sis pig-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 878--883
-[]\T1/ppl/m/n/10.95 ZonaIT.  Avan-ces en la te-ra-pia gé-ni-ca pa-ra la re-ti-no-sis pig-
+Underfull \hbox (badness 10000) in paragraph at lines 947--952
+\T1/lmr/m/n/10.95 men-ta-ria cau-sa-da por mu-ta-cio-nes en el gen RPGR, sen-se da-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 878--883
-\T1/ppl/m/n/10.95 men-ta-ria cau-sa-da por mu-ta-cio-nes en el gen RPGR, sen-se da-
+Underfull \hbox (badness 10000) in paragraph at lines 947--952
+\T1/lmr/m/n/10.95 ta.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / biotech-[]spain . com / es / articles /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 878--883
-\T1/ppl/m/n/10.95 ta.  Dis-po-ni-ble en [][]$\T1/cmtt/m/n/10.95 https : / / biotech-[]spain . com / es / articles /
+Overfull \hbox (158.63698pt too wide) in paragraph at lines 947--952
+\T1/lmtt/m/n/10.95 avances-[]en-[]la-[]terapia-[]g-[]nica-[]para-[]la-[]retinosis-[]pigmentaria-[]causada-[]por-[]mutaciones-[]en-[]el-[]gen-[]rpgr$[][]\T1/lmr/m/n/10.95 . 
  []
 
 
-Overfull \hbox (150.86734pt too wide) in paragraph at lines 878--883
-\T1/cmtt/m/n/10.95 avances-[]en-[]la-[]terapia-[]g-[]nica-[]para-[]la-[]retinosis-[]pigmentaria-[]causada-[]por-[]mutaciones-[]en-[]el-[]gen-[]rpgr$[][]\T1/ppl/m/n/10.95 . 
+Underfull \hbox (badness 5036) in paragraph at lines 980--984
+[]\T1/lmr/m/n/10.95 National Hu-man Ge-no-me Re-search Ins-ti-tu-te (NH-GRI).  In-tro-duc-tion to
  []
 
 
-Underfull \hbox (badness 6364) in paragraph at lines 911--915
-[]\T1/ppl/m/n/10.95 National Hu-man Ge-no-me Re-search Ins-ti-tu-te (NH-GRI).  In-tro-duc-tion to
+Underfull \hbox (badness 10000) in paragraph at lines 980--984
+\T1/lmr/m/n/10.95 Ge-no-mics.  Dis-po-ni-ble en  [][]$\T1/lmtt/m/n/10.95 https : / / www . genome . gov / About-[]Genomics /
+ []
+
+LaTeX Info: Redefining \. on input line 986.
+LaTeX Info: Redefining \% on input line 986.
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 987--991
+[]\T1/lmr/m/n/10.95 EMBL-EBI.  Un-ders-tan-ding VCF for-mat | Hu-man ge-ne-tic va-ria-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 911--915
-\T1/ppl/m/n/10.95 Ge-no-mics.  Dis-po-ni-ble en  [][]$\T1/cmtt/m/n/10.95 https : / / www . genome . gov / About-[]Genomics /
- []
-
-LaTeX Info: Redefining \. on input line 917.
-LaTeX Info: Redefining \% on input line 917.
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 918--922
-[]\T1/ppl/m/n/10.95 EMBL-EBI.  Un-ders-tan-ding VCF for-mat | Hu-man ge-ne-tic va-ria-
+Underfull \hbox (badness 10000) in paragraph at lines 987--991
+\T1/lmr/m/n/10.95 tion.  Dis-po-ni-ble en  [][]$\T1/lmtt/m/n/10.95 https : / / www-[]ebi-[]ac-[]uk . translate . goog /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 918--922
-\T1/ppl/m/n/10.95 tion.  Dis-po-ni-ble en  [][]$\T1/cmtt/m/n/10.95 https : / / www-[]ebi-[]ac-[]uk . translate . goog /
+Underfull \hbox (badness 10000) in paragraph at lines 987--991
+\T1/lmtt/m/n/10.95 training / online / courses / human-[]genetic-[]variation-[]introduction /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 918--922
-\T1/cmtt/m/n/10.95 training / online / courses / human-[]genetic-[]variation-[]introduction /
+Underfull \hbox (badness 10000) in paragraph at lines 987--991
+\T1/lmtt/m/n/10.95 variant-[]identification-[]and-[]analysis / understanding-[]vcf-[]format / ? _ x _
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 918--922
-\T1/cmtt/m/n/10.95 variant-[]identification-[]and-[]analysis / understanding-[]vcf-[]format / ? _ x _ tr _
- []
-
-LaTeX Info: Redefining \. on input line 949.
-LaTeX Info: Redefining \% on input line 949.
-[33
+LaTeX Info: Redefining \. on input line 1018.
+LaTeX Info: Redefining \% on input line 1018.
+[35
 pdfTeX warning (ext4): destination with the same identifier (name{cite.GEN}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.949 \cleardoublepage
-                      ] [34
+l.1018 \cleardoublepage
+                       ] [36
 
 ]
 Ap\'{e}ndice A.
-[35
+[37
 
-] [36
+] [38
 
 ]
 Ap\'{e}ndice B.
-[37] (./plantillatfg.aux
+[39] (./plantillatfg.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
 LaTeX Info: Redefining \. on input line 13.
@@ -1013,24 +1097,27 @@ L3 programming layer <2024-01-22>
  ***********
 
 
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `plantillatfg.out' has not changed.
-(rerunfilecheck)             Checksum: 90BF4E7ED887475FDEA449CD2FE7892A;13908.
+(rerunfilecheck)             Checksum: CD53EF631EA6236E90AD028B70C8CDB9;14236.
  ) 
 Here is how much of TeX's memory you used:
- 17794 strings out of 474222
- 281699 string characters out of 5748733
+ 17938 strings out of 474222
+ 284878 string characters out of 5748733
  1942975 words of memory out of 5000000
- 39584 multiletter control sequences out of 15000+600000
- 606334 words of font info for 122 fonts, out of 8000000 for 9000
+ 39710 multiletter control sequences out of 15000+600000
+ 657644 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,13n,93p,1159b,1199s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.450pk> </home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx1440.600pk> </home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx1728.600pk> </home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/crist/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx2488.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on plantillatfg.pdf (45 pages, 2104349 bytes).
+ 90i,13n,93p,1183b,1197s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+Output written on plantillatfg.pdf (47 pages, 2313049 bytes).
 PDF statistics:
- 972 PDF objects out of 1000 (max. 8388607)
- 668 compressed objects within 7 object streams
- 148 named destinations out of 1000 (max. 500000)
- 519 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 816 PDF objects out of 1000 (max. 8388607)
+ 707 compressed objects within 8 object streams
+ 151 named destinations out of 1000 (max. 500000)
+ 527 words of extra memory for PDF output out of 10000 (max. 10000000)
 
