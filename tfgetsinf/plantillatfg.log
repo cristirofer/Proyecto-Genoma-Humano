@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.3.25)  20 MAY 2025 12:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.3.25)  20 MAY 2025 12:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -837,7 +837,7 @@ LaTeX Info: Redefining \% on input line 7.
 
 ]
 Cap\'{\i }tulo 1.
-<Retinosis-Pigmetaria.jpg, id=389, 615.29875pt x 342.27875pt>
+<Retinosis-Pigmetaria.jpg, id=392, 615.29875pt x 342.27875pt>
 File: Retinosis-Pigmetaria.jpg Graphic file (type jpg)
 <use Retinosis-Pigmetaria.jpg>
 Package pdftex.def Info: Retinosis-Pigmetaria.jpg  used on input line 135.
@@ -873,7 +873,7 @@ LaTeX Info: Redefining \% on input line 272.
 
 ]
 Cap\'{\i }tulo 3.
-<ADN.png, id=453, 1541.76pt x 1027.84pt>
+<ADN.png, id=456, 1541.76pt x 1027.84pt>
 File: ADN.png Graphic file (type png)
 <use ADN.png>
 Package pdftex.def Info: ADN.png  used on input line 283.
@@ -895,35 +895,37 @@ LaTeX Info: Redefining \% on input line 412.
 LaTeX Info: Redefining \. on input line 447.
 LaTeX Info: Redefining \% on input line 447.
  [13{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}]
-<entropia_markov.png, id=513, 1583.9175pt x 916.42375pt>
+<entropia_markov.png, id=515, 1583.9175pt x 916.42375pt>
 File: entropia_markov.png Graphic file (type png)
 <use entropia_markov.png>
-Package pdftex.def Info: entropia_markov.png  used on input line 472.
+Package pdftex.def Info: entropia_markov.png  used on input line 463.
 (pdftex.def)             Requested size: 384.1096pt x 222.2255pt.
-
-Underfull \vbox (badness 5091) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 476.
-LaTeX Info: Redefining \% on input line 476.
- [14{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-LaTeX Info: Redefining \. on input line 480.
-LaTeX Info: Redefining \% on input line 480.
- [15 <./entropia_markov.png>] [16
+LaTeX Info: Redefining \. on input line 472.
+LaTeX Info: Redefining \% on input line 472.
+ [14{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} <./entropia_markov.png>]
+<entropia_markov_ADN.png, id=523, 3850.385pt x 3987.89874pt>
+File: entropia_markov_ADN.png Graphic file (type png)
+<use entropia_markov_ADN.png>
+Package pdftex.def Info: entropia_markov_ADN.png  used on input line 479.
+(pdftex.def)             Requested size: 384.1096pt x 397.77878pt.
+LaTeX Info: Redefining \. on input line 486.
+LaTeX Info: Redefining \% on input line 486.
+ [15 <./entropia_markov_ADN.png>] [16
 
 ]
 Cap\'{\i }tulo 4.
 [17]
-LaTeX Info: Redefining \. on input line 543.
-LaTeX Info: Redefining \% on input line 543.
+LaTeX Info: Redefining \. on input line 549.
+LaTeX Info: Redefining \% on input line 549.
  [18]
-LaTeX Info: Redefining \. on input line 578.
-LaTeX Info: Redefining \% on input line 578.
+LaTeX Info: Redefining \. on input line 584.
+LaTeX Info: Redefining \% on input line 584.
  [19]
-LaTeX Info: Redefining \. on input line 625.
-LaTeX Info: Redefining \% on input line 625.
+LaTeX Info: Redefining \. on input line 631.
+LaTeX Info: Redefining \% on input line 631.
  [20]
-LaTeX Info: Redefining \. on input line 625.
-LaTeX Info: Redefining \% on input line 625.
+LaTeX Info: Redefining \. on input line 631.
+LaTeX Info: Redefining \% on input line 631.
  [21] [22
 
 ]
@@ -932,24 +934,24 @@ Cap\'{\i }tulo 5.
 Underfull \vbox (badness 4441) has occurred while \output is active []
 
  [23]
-LaTeX Info: Redefining \. on input line 679.
-LaTeX Info: Redefining \% on input line 679.
+LaTeX Info: Redefining \. on input line 685.
+LaTeX Info: Redefining \% on input line 685.
  [24]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 710.
-LaTeX Info: Redefining \% on input line 710.
+LaTeX Info: Redefining \. on input line 716.
+LaTeX Info: Redefining \% on input line 716.
  [25]
 Underfull \vbox (badness 2088) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 740.
-LaTeX Info: Redefining \% on input line 740.
+LaTeX Info: Redefining \. on input line 746.
+LaTeX Info: Redefining \% on input line 746.
  [26]
-LaTeX Info: Redefining \. on input line 774.
-LaTeX Info: Redefining \% on input line 774.
+LaTeX Info: Redefining \. on input line 780.
+LaTeX Info: Redefining \% on input line 780.
  [27]
-LaTeX Info: Redefining \. on input line 793.
-LaTeX Info: Redefining \% on input line 793.
+LaTeX Info: Redefining \. on input line 799.
+LaTeX Info: Redefining \% on input line 799.
  [28]
 Cap\'{\i }tulo 6.
 [29
@@ -961,114 +963,114 @@ Cap\'{\i }tulo 7.
 [31] [32
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 893--898
+Underfull \hbox (badness 10000) in paragraph at lines 899--904
 []\T1/lmr/m/n/10.95 Verana Health.  Why Real-World Da-ta is Key to Pro-vi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 893--898
+Underfull \hbox (badness 10000) in paragraph at lines 899--904
 \T1/lmr/m/n/10.95 ding In-sights In-to Re-ti-ni-tis Pig-men-to-sa, emés el 20 de no-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 893--898
+Underfull \hbox (badness 10000) in paragraph at lines 899--904
 \T1/lmr/m/n/10.95 vem-bre de 2024.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / veranahealth . com /
  []
 
 
-Overfull \hbox (35.41357pt too wide) in paragraph at lines 893--898
+Overfull \hbox (35.41357pt too wide) in paragraph at lines 899--904
 \T1/lmtt/m/n/10.95 why-[]real-[]world-[]data-[]is-[]key-[]to-[]providing-[]insights-[]into-[]retinitis-[]pigmentosa/$[][]\T1/lmr/m/n/10.95 . 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 914--919
+Underfull \hbox (badness 10000) in paragraph at lines 920--925
 []\T1/lmr/m/n/10.95 Stevenson, S.  How deep lear-ning may play a ro-le in pre-dic-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 914--919
+Underfull \hbox (badness 10000) in paragraph at lines 920--925
 \T1/lmr/m/n/10.95 ting re-ti-ni-tis pig-men-to-sa vi-sual im-pair-ment, emés el 14 de ma-rç de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 914--919
+Underfull \hbox (badness 10000) in paragraph at lines 920--925
 \T1/lmr/m/n/10.95 2023.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / www . ophthalmologytimes . com / view /
  []
 
 
-Overfull \hbox (99.14964pt too wide) in paragraph at lines 914--919
+Overfull \hbox (99.14964pt too wide) in paragraph at lines 920--925
 \T1/lmtt/m/n/10.95 how-[]deep-[]learning-[]may-[]play-[]a-[]role-[]in-[]predicting-[]retinitis-[]pigmentosa-[]visual-[]impairment$[][]\T1/lmr/m/n/10.95 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--938
+Underfull \hbox (badness 10000) in paragraph at lines 939--944
 \T1/lmr/m/n/10.95 ble en [][]$\T1/lmtt/m/n/10.95 https : / / media . lavozdegalicia . es / noticia / sociedad / 2025 / 04 / 21 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--938
+Underfull \hbox (badness 10000) in paragraph at lines 939--944
 \T1/lmtt/m/n/10.95 algoritmo-[]encuentra-[]indicios-[]enfermedades-[]parte-[]adnconsidera-[]inutil /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 947--952
+Underfull \hbox (badness 10000) in paragraph at lines 953--958
 []\T1/lmr/m/n/10.95 ZonaIT.  Avan-ces en la te-ra-pia gé-ni-ca pa-ra la re-ti-no-sis pig-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 947--952
+Underfull \hbox (badness 10000) in paragraph at lines 953--958
 \T1/lmr/m/n/10.95 men-ta-ria cau-sa-da por mu-ta-cio-nes en el gen RPGR, sen-se da-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 947--952
+Underfull \hbox (badness 10000) in paragraph at lines 953--958
 \T1/lmr/m/n/10.95 ta.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / biotech-[]spain . com / es / articles /
  []
 
 
-Overfull \hbox (158.63698pt too wide) in paragraph at lines 947--952
+Overfull \hbox (158.63698pt too wide) in paragraph at lines 953--958
 \T1/lmtt/m/n/10.95 avances-[]en-[]la-[]terapia-[]g-[]nica-[]para-[]la-[]retinosis-[]pigmentaria-[]causada-[]por-[]mutaciones-[]en-[]el-[]gen-[]rpgr$[][]\T1/lmr/m/n/10.95 . 
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 980--984
+Underfull \hbox (badness 5036) in paragraph at lines 986--990
 []\T1/lmr/m/n/10.95 National Hu-man Ge-no-me Re-search Ins-ti-tu-te (NH-GRI).  In-tro-duc-tion to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 980--984
+Underfull \hbox (badness 10000) in paragraph at lines 986--990
 \T1/lmr/m/n/10.95 Ge-no-mics.  Dis-po-ni-ble en  [][]$\T1/lmtt/m/n/10.95 https : / / www . genome . gov / About-[]Genomics /
  []
 
-LaTeX Info: Redefining \. on input line 986.
-LaTeX Info: Redefining \% on input line 986.
+LaTeX Info: Redefining \. on input line 992.
+LaTeX Info: Redefining \% on input line 992.
 [34]
-Underfull \hbox (badness 10000) in paragraph at lines 987--991
+Underfull \hbox (badness 10000) in paragraph at lines 993--997
 []\T1/lmr/m/n/10.95 EMBL-EBI.  Un-ders-tan-ding VCF for-mat | Hu-man ge-ne-tic va-ria-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 987--991
+Underfull \hbox (badness 10000) in paragraph at lines 993--997
 \T1/lmr/m/n/10.95 tion.  Dis-po-ni-ble en  [][]$\T1/lmtt/m/n/10.95 https : / / www-[]ebi-[]ac-[]uk . translate . goog /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 987--991
+Underfull \hbox (badness 10000) in paragraph at lines 993--997
 \T1/lmtt/m/n/10.95 training / online / courses / human-[]genetic-[]variation-[]introduction /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 987--991
+Underfull \hbox (badness 10000) in paragraph at lines 993--997
 \T1/lmtt/m/n/10.95 variant-[]identification-[]and-[]analysis / understanding-[]vcf-[]format / ? _ x _
  []
 
-LaTeX Info: Redefining \. on input line 1018.
-LaTeX Info: Redefining \% on input line 1018.
+LaTeX Info: Redefining \. on input line 1024.
+LaTeX Info: Redefining \% on input line 1024.
 [35
 pdfTeX warning (ext4): destination with the same identifier (name{cite.GEN}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1018 \cleardoublepage
+l.1024 \cleardoublepage
                        ] [36
 
 ]
@@ -1103,21 +1105,21 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `plantillatfg.out' has not changed.
-(rerunfilecheck)             Checksum: CD53EF631EA6236E90AD028B70C8CDB9;14236.
+(rerunfilecheck)             Checksum: EC788A47CF975EF167CB8B545A13D8E5;14236.
  ) 
 Here is how much of TeX's memory you used:
- 17938 strings out of 474222
- 284878 string characters out of 5748733
+ 17947 strings out of 474222
+ 285128 string characters out of 5748733
  1942975 words of memory out of 5000000
- 39710 multiletter control sequences out of 15000+600000
+ 39718 multiletter control sequences out of 15000+600000
  657644 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,13n,93p,1183b,1197s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on plantillatfg.pdf (47 pages, 2313049 bytes).
+Output written on plantillatfg.pdf (47 pages, 2585166 bytes).
 PDF statistics:
- 816 PDF objects out of 1000 (max. 8388607)
- 707 compressed objects within 8 object streams
- 151 named destinations out of 1000 (max. 500000)
- 527 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 821 PDF objects out of 1000 (max. 8388607)
+ 710 compressed objects within 8 object streams
+ 152 named destinations out of 1000 (max. 500000)
+ 532 words of extra memory for PDF output out of 10000 (max. 10000000)
 

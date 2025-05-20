@@ -362,6 +362,11 @@ INPUT ./entropia_markov.png
 INPUT ./entropia_markov.png
 INPUT ./entropia_markov.png
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc
+INPUT ./entropia_markov_ADN.png
+INPUT ./entropia_markov_ADN.png
+INPUT ./entropia_markov_ADN.png
+INPUT ./entropia_markov_ADN.png
+INPUT ./entropia_markov_ADN.png
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr6.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmri10.tfm

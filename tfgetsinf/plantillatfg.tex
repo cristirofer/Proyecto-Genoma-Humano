@@ -458,6 +458,14 @@ Esta relación se conoce como información mutua y cuantifica la cantidad de inf
 
 Las fuentes de información básicas no tienen memoria, es decir, en el cálculo de la probabilidad de una determinada base no se tienen en cuenta las bases anteriores. Sin embargo, en genómica, el ADN no es del todo aleatorio, ciertas bases tienden a seguir a otras con mayor probabilidad, lo que sugiere que un modelo de Fuente de Markov puede ser más realista. 
 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{entropia_markov.png}
+   \caption{Ejemplo de cálculo de entropía condicional.}
+   \label{fig:etiqueta_opcional}
+\end{figure}
+
+
 Una Fuente de Markov (o fuente de información con memoria) se define como un sistema donde la probabilidad de que ocurra cada símbolo depende de los símbolos que le preceden. Estas nuevas probabilidades se consiguen gracias a la matriz de probabilidades de transición entre estados (los estados de una fuente de Markov de orden \( m \) serán todas las posibles combinaciones de \( m \) símbolos, es decir, \( n^m \)). Además, dada una fuente de Markov de orden \( m \), se puede establecer su diagrama de estados, que muestra los estados y las probabilidades condicionales entre ellos\cite[p.~20]{ROB}.
 
 \begin{itemize}
@@ -466,14 +474,12 @@ Una Fuente de Markov (o fuente de información con memoria) se define como un si
    \item Una fuente de Markov está en estado estacionario si la probabilidad de observación de sus estados no cambia a lo largo del tiempo. Las probabilidades se pueden obtener mediante la ecuación $\pi = \pi \times \Pi$, donde $\pi$ es el vector de probabilidad de los estados y $\Pi$ es la matriz de probabilidades condicionales (estocástica).
 \end{itemize}
 
-
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.9\textwidth]{entropia_markov.png}
-   \caption{Ejemplo de cálculo de entropía a partir de una Fuente de Markov.}
-   \label{fig:etiqueta_opcional}
+   \includegraphics[width=0.9\textwidth]{entropia_markov_ADN.png}
+   \caption{Ejemplo de cálculo de entropía a partir de una Fuente de Markov en cadenas de ADN.}
+   \label{fig:etiqueta_opcional4}
 \end{figure}
-
 
 Por lo tanto, en una fuente de Markov de orden m, la probabilidad de ocurrencia de un símbolo, depende de los (m-1) símbolos anteriores. Cuanto mayor sea el orden (m), más información del contexto de incluye, y, en consecuencia, menores valores de entropía. Esto significa que modificar los valores de m, puede revelar patrones o regiones funcionales dentro de la secuencia dada. 
 
