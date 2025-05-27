@@ -51,6 +51,10 @@
 \contentsline {subsubsection}{Creación del Autómata}{20}{subsubsection*.13}%
 \contentsline {subsubsection}{Cálculo de Probabilidades de Transición}{20}{subsubsection*.14}%
 \contentsline {subsubsection}{Cálculo de Entropía Condicional}{21}{subsubsection*.15}%
+\contentsline {section}{\numberline {4.3}Arquitectura del sistema}{21}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Carga de Datos}{21}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Análisis de Secuencia Genómica}{21}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Visualización y Exportación de Resultados }{22}{subsection.4.3.3}%
 \contentsline {chapter}{\numberline {5}Desarrollo}{23}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Importación de librerías y configuración inicial }{23}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Lectura de las mutaciones presentes en el archivo VCF}{23}{section.5.2}%
@@ -65,13 +69,11 @@
 \contentsline {section}{\numberline {5.11}Representación y guardado del autómata}{27}{section.5.11}%
 \contentsline {section}{\numberline {5.12}Cálculo de las probabilidades de transición y de la entropía condicional}{27}{section.5.12}%
 \contentsline {section}{\numberline {5.13}Interfaz gráfica}{27}{section.5.13}%
-\contentsline {chapter}{\numberline {6}Experimentos}{29}{chapter.6}%
-\contentsline {section}{\numberline {6.1}?? ???? ???? ? ?? ??}{29}{section.6.1}%
-\contentsline {chapter}{\numberline {7}Conclusiones}{31}{chapter.7}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{33}{chapter*.16}%
+\contentsline {chapter}{\numberline {6}Experimentos}{33}{chapter.6}%
+\contentsline {section}{\numberline {6.1}?? ???? ???? ? ?? ??}{33}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Conclusiones}{35}{chapter.7}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{37}{chapter*.23}%
 \noindent \hrulefill \par 
 \appendicesname \par 
-\contentsline {chapter}{\numberline {A}Configuració del sistema}{37}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Fase d'inicialització}{37}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Identificació de dispositius}{37}{section.Alph1.2}%
-\contentsline {chapter}{\numberline {B}??? ???????????? ????}{39}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {A}Objetivos de Desarrollo Sostenible}{41}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}??? ???????????? ????}{43}{appendix.Alph2}%

@@ -369,6 +369,41 @@ INPUT ./entropia_markov_ADN.png
 INPUT ./entropia_markov_ADN.png
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr6.tfm
+INPUT ./Diagramas de flujo.png
+INPUT ./Diagramas de flujo.png
+INPUT ./Diagramas de flujo.png
+INPUT ./Diagramas de flujo.png
+INPUT ./Diagramas de flujo.png
+INPUT ./cromosoma_RP.png
+INPUT ./cromosoma_RP.png
+INPUT ./cromosoma_RP.png
+INPUT ./cromosoma_RP.png
+INPUT ./cromosoma_RP.png
+INPUT ./VCF_RP.png
+INPUT ./VCF_RP.png
+INPUT ./VCF_RP.png
+INPUT ./VCF_RP.png
+INPUT ./VCF_RP.png
+INPUT ./Analisis_RP.png
+INPUT ./Analisis_RP.png
+INPUT ./Analisis_RP.png
+INPUT ./Analisis_RP.png
+INPUT ./Analisis_RP.png
+INPUT ./Graficos_RP.png
+INPUT ./Graficos_RP.png
+INPUT ./Graficos_RP.png
+INPUT ./Graficos_RP.png
+INPUT ./Graficos_RP.png
+INPUT ./Automatas_RP.png
+INPUT ./Automatas_RP.png
+INPUT ./Automatas_RP.png
+INPUT ./Automatas_RP.png
+INPUT ./Automatas_RP.png
+INPUT ./Zip_RP.png
+INPUT ./Zip_RP.png
+INPUT ./Zip_RP.png
+INPUT ./Zip_RP.png
+INPUT ./Zip_RP.png
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT plantillatfg.aux
 INPUT ./plantillatfg.out

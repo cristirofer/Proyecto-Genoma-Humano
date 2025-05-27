@@ -152,7 +152,7 @@ Para ello, se han empleado los datos genómicos del National Center for Biotechn
 \subsection{Motivación personal}
 Desde que comencé mi formación en Ingeniería Informática, siempre he tenido la convicción de que esta no debe limitarse a aspectos técnicos, algoritmos o eficiencia computacional, sino que debe orientarse también hacia herramientas que tengan un impacto positivo en la vida de las personas. Por eso, me interesan especialmente las aplicaciones la Inteligencia Artificial para mejorar la sociedad, hacer el mundo más justo e inclusivo y resolver problemas reales.  
 
-Siguiendo estos objetivos, y gracias al proyecto conjunto del Instituto VRAIN con el Grupo de Investigación del IIS La Fe de Biomedicina Molecular, Celular y Genómica, he tenido la oportunidad de formarme en diversas áreas de conocimiento y aplicar mis conocimientos técnicos a una dimensión ética y social. Por esta razón, considero que mejorar la calidad de vida de pacientes mediante herramientas que ayuden a investigadores y personal sanitario en el diagnóstico es una de las principales motivaciones que me impulsa en la realización de este proyecto. 
+Siguiendo estos objetivos, y gracias al proyecto conjunto del Instituto VRAIN con el Grupo de Investigación del IIS La Fe de Biomedicina Molecular, Celular y Genómica, he tenido la oportunidad de formarme en diversas áreas y aplicar mis conocimientos técnicos a una dimensión ética y social. Por esta razón, considero que mejorar la calidad de vida de pacientes mediante herramientas que ayuden a investigadores y personal sanitario en el diagnóstico es una de las principales motivaciones que me impulsa en la realización de este proyecto. 
 
 \subsection{Motivación profesional}
 Las distrofias hereditarias de retina (DHR) constituyen un conjunto de enfermedades genéticas que afectan a la estructura y función de la retina, llevando progresivamente a la pérdida de visión, en muchos casos hasta alcanzar la ceguera legal. A pesar de ser consideradas enfermedades raras, su impacto es profundo y duradero, no solo desde el punto de vista funcional, sino también psicológico, afectando significativamente la calidad de vida de quienes las padecen\cite{STO}.
@@ -602,13 +602,13 @@ estados, donde:
 \end{itemize}
 
 
-Por ejemplo, dado un conjunto de k-mers {ACGT, ACCD}, se define:
+Por ejemplo, dado un conjunto de k-mers S = ACGT, ACCD, se define el siguiente modelo de segundo orden:
 
 \begin{itemize}
    \item Alfabeto: {A, C, G, T, D}.
    \item Estados iniciales: {A}.
    \item Estados finales: {T, D}.
-   \item Transiciones: {AC, CG, GT, CC, CD} (para un modelo de segundo orden).
+   \item Transiciones: {AC, CG, GT, CC, CD}.
 \end{itemize}
 
 
@@ -626,6 +626,64 @@ Si una transición no existe, se le asigna una probabilidad muy baja para evitar
 Se desliza una ventana de tamaño w sobre la secuencia y, dentro de esta ventana, se analizan las transiciones de tamaño k para calcular la contribución a la entropía condicional de cada transición.
 
 La entropía total de la ventana se calcula restando las contribuciones de todas las transiciones observadas.
+
+
+\section{Arquitectura del sistema}
+
+La arquitectura del sistema desarrollado en este Trabajo de Fin de Grado se estructura en base a una interfaz que se comunica con la parte lógica de análisis bioinformático. El diseño modular en diferentes archivos permite abstraer al usuario de los procesos complejos como la aplicación de variantes genéticas, el cálculo de entropía y el análisis de patrones, además de mantener un código organizado, reutilizable y más fácil de mantener o ampliar. 
+
+ 
+
+Por lo tanto, la aplicación está dividida en dos componentes principales: 
+
+\begin{itemize}
+   \item Una interfaz de usuario (archivo interfaz.py): Desarrollada con la biblioteca Streamlit, permite al usuario interactuar con el sistema mediante menús desplegables, campos de entrada y botones. Desde aquí se cargan los datos, se configuran los parámetros de análisis y se visualizan o descargan los resultados. 
+   \item La lógica de aplicación (archivo back.py): Contiene las funciones que procesan los datos genómicos, aplican las mutaciones, calculan entropía (simple y condicional), construyen autómatas de Markov y generan los gráficos. 
+\end{itemize}
+
+El flujo general está diseñado para permitir la carga eficiente de los datos genómicos y mutaciones, su procesamiento y la visualización de resultados. 
+
+\subsection{Carga de Datos}
+
+El sistema comienza con la selección de un número de cromosoma por parte del usuario. A partir de este número, la aplicación busca automáticamente el archivo de referencia correspondiente en formato FASTA, lo cual simplifica el uso del sistema y reduce errores. Del mismo modo, el usuario debe subir un archivo VCF con las variantes genéticas de la muestra que desee. Además, se da la opción de modificar los principales parámetros para el análisis. 
+
+Si no se encuentra el archivo FASTA correspondiente, o el archivo con las mutaciones no tiene extensión .vcf, se informa al usuario y se detiene el proceso. Esto garantiza que el sistema solo se ejecuta cuando todos los elementos necesarios están presentes. 
+
+\subsection{Análisis de Secuencia Genómica}
+
+A continuación, se lleva a cabo el núcleo del análisis, dividido en tres módulos: 
+
+
+\begin{itemize}
+   \item Cálculo de entropía en ventanas deslizantes: Se desliza una ventana de tamaño w a lo largo de la secuencia genómica (tanto de referencia como mutada) y se calcula la entropía en cada segmento usando la fórmula de Shannon. 
+   \item Densidad de mutaciones: Se analiza la distribución de mutaciones en la secuencia mediante una ventana de tamaño 2L centrada en cada variante detectada y se contabiliza el número de mutaciones en dicho intervalo. 
+   \item Entropía basada en modelos de Markov: Se construye un modelo de Fuente de Markov de orden k para representar la secuencia como una cadena de estados. A partir de las transiciones, se calculan probabilidades condicionales y, con ellas, se evalúa la entropía condicional. 
+\end{itemize}
+
+\subsection{Visualización y Exportación de Resultados }
+
+Tras finalizar el análisis, el sistema genera varios gráficos: 
+
+\begin{itemize}
+   \item Entropía simple de la secuencia de referencia y mutada. 
+   \item Entropía condicional o de Markov de la secuencia de referencia y mutada. 
+   \item Densidad de mutaciones en la secuencia. 
+\end{itemize}
+
+Además, se exportan los siguientes archivos para descarga: 
+   \begin{itemize}
+   \item Autómata de Markov de la secuencia original y de la secuencia mutada. 
+   \item Archivo VCF con las mutaciones que no se han podido aplicar. 
+   \item Archivo comprimido .zip con todos los resultados. 
+\end{itemize}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{Diagramas de flujo.png}
+      \caption{Diagrama de flujo del sistema.}
+      \label{fig:etiqueta_opcional5}
+   \end{figure}
+
 
 
 \chapter{Desarrollo}
@@ -774,23 +832,58 @@ A través de esta interfaz, el usuario podrá introducir una serie de parámetro
 
 \begin{itemize}
    \item Seleccionar el número de cromosoma a analizar desde un menú desplegable. A partir de esta selección, el sistema asocia automáticamente el identificador del cromosoma en formato GRCh37 y el archivo FASTA correspondiente (en caso de que no se encuentre, se muestra un mensaje de error). 
+   \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{cromosoma_RP.png}
+      \caption{Menú desplegable de selección de cromosoma en la interfaz de usuario.}
+      \label{fig:etiqueta_opcional6}
+   \end{figure}
    \item Se debe proporcionar un archivo con las mutaciones del paciente en formato VCF, cargado a través de subida de archivos. 
+   \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{VCF_RP.png}
+      \caption{Buscador de archivos en el sistema para proporcionar VCF en la interfaz de usuario.}
+      \label{fig:etiqueta_opcional7}
+   \end{figure}
    \item Tamaño de k-mer ($k$), que define el tamaño de las secuencias. 
-    \item Orden del modelo de Markov ($k_{\text{markov}}$), que determina cuántos símbolos anteriores se consideran en la probabilidad condicional.
-    \item Tamaño de ventana para densidad ($l$), que establece el rango en el que se tienen en cuenta las mutaciones alrededor de cada variante. 
-    \item Tamaño de ventana para entropía ($w$), para el cálculo de las entropías.
+   \item Orden del modelo de Markov ($k_{\text{markov}}$), que determina cuántos símbolos anteriores se consideran en la probabilidad condicional.
+   \item Tamaño de ventana para densidad ($l$), que establece el rango en el que se tienen en cuenta las mutaciones alrededor de cada variante. 
+   \item Tamaño de ventana para entropía ($w$), para el cálculo de las entropías.
    \item Posición de inicio y tamaño del bloque, para definir el segmento del cromosoma a analizar y así no cargar regiones genómicas excesivamente grandes. 
 \end{itemize}
 
-
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{Analisis_RP.png}
+      \caption{Parámetros configurables para el análisis en la interfaz de usuario.}
+      \label{fig:etiqueta_opcional8}
+   \end{figure}
  
 
 Una vez introducidos estos datos, la aplicación se encarga de ejecutar la lógica del programa: aplica las mutaciones del archivo VCF sobre la secuencia original, calcula la entropía simple y la entropía basada en probabilidades condicionales, analiza la densidad de mutaciones en regiones del genoma y genera los gráficos y archivos correspondientes. Finalizado este análisis, se devuelven las siguientes salidas:  
 
 \begin{itemize}
    \item Tres imágenes descargables con los gráficos de entropía simple, entropía condicional (o de Markov) y densidad de mutaciones. 
+   \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{Graficos_RP.png}
+      \caption{Imágenes de los gráficos resultantes del análisis en la interfaz de usuario.}
+      \label{fig:etiqueta_opcional9}
+   \end{figure}
    \item Tres archivos para descargar: dos ficheros de texto con los autómatas de la secuencia original y secuencia mutada (los generados a partir de Fuentes de Markov), y un archivo con las mutaciones que no han podido aplicarse. 
+   \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{Automatas_RP.png}
+      \caption{Archivos para descargar con los autómatas resultantes del análisis en la interfaz de usuario.}
+      \label{fig:etiqueta_opcional10}
+   \end{figure}
    \item Además, se proporciona la opción de descargar un archivo comprimido (.zip) que incluye todos los resultados para facilitar su almacenamiento o distribución. 
+   \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{Zip_RP.png}
+      \caption{Archivo comprimido para descargar con todos los archivos resultantes del análisis en la interfaz de usuario.}
+      \label{fig:etiqueta_opcional11}
+   \end{figure}
 \end{itemize}
  
 
@@ -1030,20 +1123,49 @@ Una vez introducidos estos datos, la aplicación se encarga de ejecutar la lógi
 \APPENDIX
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                         LA CONFIGURACIO DEL SISTEMA                         %
+%                                    ODS                                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Configuració del sistema}
+\chapter{Objetivos de Desarrollo Sostenible}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+\begin{table}[H]
+\centering
+\caption{Grado de relación del trabajo con los Objetivos de Desarrollo Sostenible (ODS).}
+\begin{tabular}{|p{7cm}|c|c|c|c|}
+\hline
+\textbf{Objetivos de Desarrollo Sostenible} & \textbf{Alto} & \textbf{Medio} & \textbf{Bajo} & \textbf{No procede} \\
+\hline
+ODS 1. Fin de la pobreza. & & & & X \\
+ODS 2. Hambre cero. & & & & X \\
+ODS 3. Salud y bienestar. & X & & & \\
+ODS 4. Educación de calidad. & & & & X \\
+ODS 5. Igualdad de género. & & & & X \\
+ODS 6. Agua limpia y saneamiento. & & & & X \\
+ODS 7. Energía asequible y no contaminante. & & & & X \\
+ODS 8. Trabajo decente y crecimiento económico. & & & & X \\
+ODS 9. Industria, innovación e infraestructuras. & & X & & \\
+ODS 10. Reducción de las desigualdades. & X & & & \\
+ODS 11. Ciudades y comunidades sostenibles. & & & X & \\
+ODS 12. Producción y consumo responsables. & & X & & \\
+ODS 13. Acción por el clima. & & & & X \\
+ODS 14. Vida submarina. & & & & X \\
+ODS 15. Vida de ecosistemas terrestres. & & & & X \\
+ODS 16. Paz, justicia e instituciones sólidas. & & & & X \\
+ODS 17. Alianzas para lograr objetivos. & & & & X \\
+\hline
+\end{tabular}
+\end{table}
 
-\section{Fase d'inicialització}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+Este proyecto presenta un alto grado de relación con el Objetivo de Desarrollo Sostenible (ODS) 3: Salud y bienestar, ya que se centra en el análisis del genoma humano mediante técnicas de Teoría de la Información con el objetivo de identificar la mutación causante de la RP. El diagnóstico temprano y preciso de esta patología permite mejorar la calidad de vida de los pacientes, facilitando un tratamiento adecuado y un mejor seguimiento clínico.
 
-\section{Identificació de dispositius}
+Asimismo, el proyecto se enmarca dentro del ámbito de la investigación científica e innovación tecnológica, lo cual está directamente vinculado con el ODS 9: Industria, innovación e infraestructura. La aplicación de métodos computacionales avanzados en el análisis genómico contribuye al desarrollo de nuevas herramientas diagnósticas y promueve el progreso en el campo de la bioinformática y la medicina personalizada.
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+Además, al estar dirigido al estudio de una enfermedad rara, este trabajo tiene una implicación significativa en la reducción de desigualdades, en concordancia con el ODS 10. Las personas afectadas por enfermedades poco frecuentes suelen enfrentar barreras en el acceso al diagnóstico y tratamiento. Este tipo de investigaciones contribuye a reducir esa brecha, promoviendo una atención médica más equitativa y accesible para poblaciones vulnerables.
+
+Finalmente, el uso de herramientas computacionales para la identificación de mutaciones clave en el genoma permite optimizar los recursos utilizados en laboratorios, disminuyendo la necesidad de realizar pruebas físicas extensas. Esto se alinea tanto con el ODS 12: Producción y consumo responsables, al fomentar un uso más eficiente de los recursos disponibles, como con el ODS 11: Ciudades y comunidades sostenibles, en cuanto a la sostenibilidad de las infraestructuras científicas y sanitarias que prestan estos servicios.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                               ALTRES  APÈNDIXS                              %
