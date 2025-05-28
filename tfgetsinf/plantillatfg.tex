@@ -891,11 +891,72 @@ Una vez introducidos estos datos, la aplicación se encarga de ejecutar la lógi
 
 \chapter{Experimentos}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+Con el objetivo de evaluar la eficacia de este proyecto en la identificación de mutaciones relevantes asociadas a la retinosis pigmentaria, se han diseñado y ejecutado una serie de experimentos sobre datos genómicos para comprobar el comportamiento del sistema desarrollado en distintos escenarios y medir su capacidad para detectar patrones genéticos relevantes mediante técnicas basadas en Teoría de la Información y Fuentes de Markov.  
 
-\section{?? ???? ???? ? ?? ??}
+En esta sección se detallan los archivos usados, los valores de los parámetros seleccionados, los procedimientos implementados y los resultados obtenidos, proporcionando un análisis crítico de los mismos. Todo ello con el fin de demostrar la aplicabilidad del enfoque y su correcto funcionamiento en el diagnóstico y estudio del genoma.  
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+\section{Experimentos con tamaño de k pequeño}
+
+Para el primer experimento, se trabajará con el cromosoma 1, descargado previamente desde en NCBI, y un tamaño de k-mer pequeño para una exploración general del genoma, detección de zonas con variabilidad o entropía anómala. Para ello se seleccionarán los siguientes valores: 
+
+\begin{itemize}
+   \item Número de cromosoma: 1.
+   \item Archivo con las mutaciones: \texttt{RP924\_9589186940.vcf}  (es el archivo VCF con las mutaciones proporcionado por IIS la Fe).
+   \item Tamaño de k-mer: 4.
+   \item Orden de la fuente de Markov: 3.
+   \item Tamaño de ventana para la densidad: 500.
+   \item Tamaño de ventana para la entropía: 100.
+   \item Posición de inicio: 874778.
+   \item Tamaño de bloque: 100000 
+\end{itemize}
+ 
+
+Una vez configurados estos parámetros, se procede a ejecutar el análisis, el cual tiene una duración aproximada de 5 minutos. Transcurrido este tiempo, el análisis finaliza y se imprimen por pantalla los siguientes resultados:
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{graf_exp1.png}
+      \caption{Gráficas obtenidas a partir del experimento 1.}
+      \label{fig:etiqueta_opcional12}
+\end{figure}
+
+A partir de las gráficas obtenidas, se pueden extraer diversas conclusiones relevantes sobre el comportamiento del genoma ante la presencia de mutaciones y la utilidad de las medidas de entropía para su detección.  
+
+En la primera gráfica, que representa la entropía simple mediante ventanas deslizantes de tamaño 100 para las secuencias original y mutada, se observan variaciones significativas en los valores de entropía en ciertas regiones. Estas diferencias sugieren que las mutaciones introducidas tienen un impacto en la distribución de los distintos k-mers en esas zonas y, por tanto, permite identificar regiones potencialmente relevantes del genoma. 
+
+La segunda gráfica, que refleja la entropía basada en Fuentes de Markov, también mediante ventanas deslizantes de tamaño 100, muestra un comportamiento más similar en ambas versiones de la secuencia, aunque se aprecian pequeñas diferencias en regiones específicas. Esto sugiere que, aunque el modelo de Markov suaviza los valores de entropía, sigue siendo capaz de captar alteraciones y además detectar patrones de mutación que afectan a la dependencia entre símbolos, más allá de su frecuencia individual.  
+
+Finalmente, en la tercera gráfica se representa la densidad de mutaciones a lo largo de la secuencia en ventanas de tamaño 1000 (2x500) centradas en cada mutación. Se identifican varios picos significativos, resaltados en rojo, que indican regiones con alta concentración de mutaciones. Estos máximos podrían coincidir con algunas posiciones en las que se observaron diferencias notables en las medidas de entropía, ya que se podría tratar de regiones del genoma susceptibles de contener variantes genéticas funcionalmente relevantes.  
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{aut1_exp1.png}
+      \caption{Autómata de la secuencia original obtenido a partir del experimento 1.}
+      \label{fig:etiqueta_opcional13}
+\end{figure}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{aut2_exp1.png}
+      \caption{Autómata de la secuencia mutada obtenido a partir del experimento 1.}
+      \label{fig:etiqueta_opcional14}
+\end{figure}
+
+A partir de los archivos de ambos autómatas se puede extraer la siguiente información: tanto el autómata con la secuencia original como la mutada comparten el mismo alfabeto y los mismos estados iniciales y finales. Sin embargo, aunque ambos archivos muestran las mismas transiciones, la frecuencia de transición entre estados sí ha cambiado y esto afecta directamente a la entropía condicional basada en el modelo de Markov, ya que las frecuencias de uso de las transiciones pueden generar una distribución de probabilidades diferente, aumentando o disminuyendo la entropía de determinadas regiones. 
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{mut_exp1.png}
+      \caption{Archivo con mutaciones no aplicadas obtenido a partir del experimento 1.}
+      \label{fig:etiqueta_opcional14}
+\end{figure}
+
+
+Finalmente, se ha verificado que el archivo generado con las mutaciones no aplicadas está vacío. Este resultado es un buen indicador, ya que significa que todas las variantes recogidas en el archivo VCF han podido integrarse correctamente en la secuencia de referencia descargada desde el NCBI y no se han producido conflictos entre las bases de referencia especificadas en el VCF y las que figuran en la secuencia genómica. 
+
+En conjunto, estos resultados demuestran que el análisis computacional de la entropía, tanto clásica como basada en modelos de Markov, permite detectar con eficacia alteraciones en el genoma. Esto respalda el potencial del enfoque desarrollado en este proyecto como herramienta de apoyo en el diagnóstico de enfermedades genéticas como la retinosis pigmentaria, contribuyendo al avance en métodos no invasivos y automáticos de análisis genético. 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                 CONCLUSIONS                                 %

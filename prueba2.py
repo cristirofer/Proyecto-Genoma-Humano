@@ -1,7 +1,7 @@
 import math
 import time
 import matplotlib
-matplotlib.use('TkAgg')  # Backend sin interfaz gráfica (genera imágenes en archivos)
+matplotlib.use('TkAgg')  # Backend sin interfaz grafica (genera imagenes en archivos)
 import matplotlib.pyplot as plt
 from collections import defaultdict
 from Bio import Entrez, SeqIO
@@ -176,7 +176,7 @@ def guardar_automata(alfabeto, estados_iniciales, estados_finales, matriz_transi
         for estado_actual, transiciones in matriz_transicion.items():
             for siguiente_estado, prob in transiciones.items():
                 simbolo = siguiente_estado[-1]  # El ultimo simbolo del siguiente estado
-                f.write(f"({estado_actual}, {simbolo}, {siguiente_estado})\n")
+                f.write(f"({estado_actual}, {simbolo}, {siguiente_estado}), {prob:.6f}\n")
 
 
 # Calcula la entropia basada en fuentes de Markov en ventanas de tamaño w (usa las probabilidades de markov)

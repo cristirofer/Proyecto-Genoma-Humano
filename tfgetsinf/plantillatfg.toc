@@ -70,10 +70,10 @@
 \contentsline {section}{\numberline {5.12}Cálculo de las probabilidades de transición y de la entropía condicional}{27}{section.5.12}%
 \contentsline {section}{\numberline {5.13}Interfaz gráfica}{27}{section.5.13}%
 \contentsline {chapter}{\numberline {6}Experimentos}{33}{chapter.6}%
-\contentsline {section}{\numberline {6.1}?? ???? ???? ? ?? ??}{33}{section.6.1}%
-\contentsline {chapter}{\numberline {7}Conclusiones}{35}{chapter.7}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{37}{chapter*.23}%
+\contentsline {section}{\numberline {6.1}Experimentos con tamaño de k pequeño}{33}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Conclusiones}{39}{chapter.7}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{41}{chapter*.27}%
 \noindent \hrulefill \par 
 \appendicesname \par 
-\contentsline {chapter}{\numberline {A}Objetivos de Desarrollo Sostenible}{41}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}??? ???????????? ????}{43}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {A}Objetivos de Desarrollo Sostenible}{45}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}??? ???????????? ????}{47}{appendix.Alph2}%
