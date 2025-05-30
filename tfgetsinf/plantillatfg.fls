@@ -334,6 +334,16 @@ INPUT ./Retinosis-Pigmetaria.jpg
 INPUT ./Retinosis-Pigmetaria.jpg
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx10.tfm
+INPUT ./retina.jpg
+INPUT ./retina.jpg
+INPUT ./retina.jpg
+INPUT ./retina.jpg
+INPUT ./retina.jpg
+INPUT ./fotorreceptores.jpg
+INPUT ./fotorreceptores.jpg
+INPUT ./fotorreceptores.jpg
+INPUT ./fotorreceptores.jpg
+INPUT ./fotorreceptores.jpg
 INPUT ./ADN.png
 INPUT ./ADN.png
 INPUT ./ADN.png
