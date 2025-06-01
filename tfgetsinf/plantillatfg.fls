@@ -207,6 +207,13 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/acronym/acronym.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/acronym/acronym.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/bigfoot/suffix.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/bigfoot/suffix.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
 INPUT /usr/share/texmf/tex/latex/lm/t1lmr.fd
 INPUT /usr/share/texmf/tex/latex/lm/t1lmr.fd
 INPUT /usr/share/texmf/tex/latex/lm/t1lmr.fd
