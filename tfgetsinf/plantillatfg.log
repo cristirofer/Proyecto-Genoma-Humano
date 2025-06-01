@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.3.25)  30 MAY 2025 11:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.4.29)  1 JUN 2025 19:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/crodriguez/Proyecto-Genoma-Humano/tfgetsinf/plantillatfg.tex
-(/home/crodriguez/Proyecto-Genoma-Humano/tfgetsinf/plantillatfg.tex
+**/home/crist/TFG/tfgetsinf/plantillatfg.tex
+(/home/crist/TFG/tfgetsinf/plantillatfg.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (./tfgetsinf.cls
@@ -45,9 +45,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language40). Reported on input line 105.
+(babel)             (\language52). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language40). Reported on input line 108.
+(babel)             (\language52). Reported on input line 108.
 ) (/usr/share/texlive/texmf-dist/tex/generic/babel-catalan/catalan.ldf
 Language: catalan 2005/03/29 v2.2p Catalan support from the babel system
 Package babel Info: Making " an active character on input line 91.
@@ -688,17 +688,17 @@ LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 8
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
-<logo-upv.pdf, id=269, 331.2375pt x 105.39375pt>
+<logo-upv.pdf, id=293, 331.2375pt x 105.39375pt>
 File: logo-upv.pdf Graphic file (type pdf)
 <use logo-upv.pdf>
 Package pdftex.def Info: logo-upv.pdf  used on input line 83.
 (pdftex.def)             Requested size: 178.85042pt x 56.9055pt.
-<logo-etsinf.pdf, id=270, 311.1625pt x 120.45pt>
+<logo-etsinf.pdf, id=294, 311.1625pt x 120.45pt>
 File: logo-etsinf.pdf Graphic file (type pdf)
 <use logo-etsinf.pdf>
 Package pdftex.def Info: logo-etsinf.pdf  used on input line 83.
 (pdftex.def)             Requested size: 147.00606pt x 56.9055pt.
-<baseportada.png, id=271, 1027.84pt x 578.16pt>
+<baseportada.png, id=295, 1027.84pt x 578.16pt>
 File: baseportada.png Graphic file (type png)
 <use baseportada.png>
 Package pdftex.def Info: baseportada.png  used on input line 83.
@@ -833,11 +833,16 @@ LaTeX Info: Redefining \% on input line 7.
 
  [7
 
-] [8
-
 ]
+
+Package spanish Warning: Replacing `T1/lmr/bx/sc' by 
+(spanish)                faked small caps on input line 123.
+
+LaTeX Info: Redefining \. on input line 123.
+LaTeX Info: Redefining \% on input line 123.
+[8]
 Cap\'{\i }tulo 1.
-<Retinosis-Pigmetaria.jpg, id=443, 615.29875pt x 342.27875pt>
+<Retinosis-Pigmetaria.jpg, id=485, 615.29875pt x 342.27875pt>
 File: Retinosis-Pigmetaria.jpg Graphic file (type jpg)
 <use Retinosis-Pigmetaria.jpg>
 Package pdftex.def Info: Retinosis-Pigmetaria.jpg  used on input line 135.
@@ -847,8 +852,9 @@ Underfull \vbox (badness 1377) has occurred while \output is active []
 
  [1
 
+
  <./Retinosis-Pigmetaria.jpg>]
-<retina.jpg, id=452, 843.15pt x 481.8pt>
+<retina.jpg, id=494, 843.15pt x 481.8pt>
 File: retina.jpg Graphic file (type jpg)
 <use retina.jpg>
 Package pdftex.def Info: retina.jpg  used on input line 162.
@@ -856,7 +862,7 @@ Package pdftex.def Info: retina.jpg  used on input line 162.
 LaTeX Info: Redefining \. on input line 170.
 LaTeX Info: Redefining \% on input line 170.
  [2 <./retina.jpg>]
-<fotorreceptores.jpg, id=460, 863.225pt x 438.63875pt>
+<fotorreceptores.jpg, id=503, 863.225pt x 438.63875pt>
 File: fotorreceptores.jpg Graphic file (type jpg)
 <use fotorreceptores.jpg>
 Package pdftex.def Info: fotorreceptores.jpg  used on input line 176.
@@ -889,7 +895,7 @@ LaTeX Info: Redefining \% on input line 314.
 
 ]
 Cap\'{\i }tulo 3.
-<ADN.png, id=529, 1541.76pt x 1027.84pt>
+<ADN.png, id=571, 1541.76pt x 1027.84pt>
 File: ADN.png Graphic file (type png)
 <use ADN.png>
 Package pdftex.def Info: ADN.png  used on input line 325.
@@ -911,7 +917,7 @@ LaTeX Info: Redefining \% on input line 454.
 LaTeX Info: Redefining \. on input line 489.
 LaTeX Info: Redefining \% on input line 489.
  [15{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}]
-<entropia_markov.png, id=585, 1583.9175pt x 916.42375pt>
+<entropia_markov.png, id=628, 1583.9175pt x 916.42375pt>
 File: entropia_markov.png Graphic file (type png)
 <use entropia_markov.png>
 Package pdftex.def Info: entropia_markov.png  used on input line 505.
@@ -919,7 +925,7 @@ Package pdftex.def Info: entropia_markov.png  used on input line 505.
 LaTeX Info: Redefining \. on input line 514.
 LaTeX Info: Redefining \% on input line 514.
  [16{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} <./entropia_markov.png>]
-<entropia_markov_ADN.png, id=593, 3850.385pt x 3987.89874pt>
+<entropia_markov_ADN.png, id=636, 3850.385pt x 3987.89874pt>
 File: entropia_markov_ADN.png Graphic file (type png)
 <use entropia_markov_ADN.png>
 Package pdftex.def Info: entropia_markov_ADN.png  used on input line 521.
@@ -943,7 +949,7 @@ LaTeX Info: Redefining \% on input line 673.
 LaTeX Info: Redefining \. on input line 702.
 LaTeX Info: Redefining \% on input line 702.
  [23]
-<Diagramas de flujo.png, id=632, 659.46375pt x 288.17662pt>
+<Diagramas de flujo.png, id=674, 659.46375pt x 288.17662pt>
 File: Diagramas de flujo.png Graphic file (type png)
 <use Diagramas de flujo.png>
 Package pdftex.def Info: Diagramas de flujo.png  used on input line 724.
@@ -958,257 +964,369 @@ Underfull \vbox (badness 4441) has occurred while \output is active []
  [25
 
 ]
-LaTeX Info: Redefining \. on input line 785.
-LaTeX Info: Redefining \% on input line 785.
+LaTeX Info: Redefining \. on input line 786.
+LaTeX Info: Redefining \% on input line 786.
  [26]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 816.
-LaTeX Info: Redefining \% on input line 816.
+LaTeX Info: Redefining \. on input line 817.
+LaTeX Info: Redefining \% on input line 817.
  [27]
 Underfull \vbox (badness 2088) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 846.
-LaTeX Info: Redefining \% on input line 846.
+LaTeX Info: Redefining \. on input line 847.
+LaTeX Info: Redefining \% on input line 847.
  [28]
-<cromosoma_RP.png, id=654, 1276.77pt x 705.63625pt>
+<cromosoma_RP.png, id=698, 1276.77pt x 705.63625pt>
 File: cromosoma_RP.png Graphic file (type png)
 <use cromosoma_RP.png>
-Package pdftex.def Info: cromosoma_RP.png  used on input line 879.
+Package pdftex.def Info: cromosoma_RP.png  used on input line 880.
 (pdftex.def)             Requested size: 384.1096pt x 212.2847pt.
-LaTeX Info: Redefining \. on input line 883.
-LaTeX Info: Redefining \% on input line 883.
+LaTeX Info: Redefining \. on input line 884.
+LaTeX Info: Redefining \% on input line 884.
  [29]
-<VCF_RP.png, id=660, 1708.3825pt x 629.35126pt>
+<VCF_RP.png, id=704, 1708.3825pt x 629.35126pt>
 File: VCF_RP.png Graphic file (type png)
 <use VCF_RP.png>
-Package pdftex.def Info: VCF_RP.png  used on input line 886.
+Package pdftex.def Info: VCF_RP.png  used on input line 887.
 (pdftex.def)             Requested size: 384.1096pt x 141.50189pt.
-<Analisis_RP.png, id=661, 813.0375pt x 1016.29688pt>
+<Analisis_RP.png, id=705, 813.0375pt x 1016.29688pt>
 File: Analisis_RP.png Graphic file (type png)
 <use Analisis_RP.png>
-Package pdftex.def Info: Analisis_RP.png  used on input line 899.
+Package pdftex.def Info: Analisis_RP.png  used on input line 900.
 (pdftex.def)             Requested size: 384.1096pt x 480.12529pt.
 
 Underfull \vbox (badness 4621) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 903.
-LaTeX Info: Redefining \% on input line 903.
+LaTeX Info: Redefining \. on input line 904.
+LaTeX Info: Redefining \% on input line 904.
  [30 <./cromosoma_RP.png> <./VCF_RP.png>]
-<Graficos_RP.png, id=669, 813.0375pt x 1016.29688pt>
+<Graficos_RP.png, id=713, 813.0375pt x 1016.29688pt>
 File: Graficos_RP.png Graphic file (type png)
 <use Graficos_RP.png>
-Package pdftex.def Info: Graficos_RP.png  used on input line 911.
+Package pdftex.def Info: Graficos_RP.png  used on input line 912.
 (pdftex.def)             Requested size: 384.1096pt x 480.12529pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 915.
-LaTeX Info: Redefining \% on input line 915.
+LaTeX Info: Redefining \. on input line 916.
+LaTeX Info: Redefining \% on input line 916.
  [31 <./Analisis_RP.png>]
-<Automatas_RP.png, id=675, 1016.29688pt x 602.25pt>
+<Automatas_RP.png, id=719, 1016.29688pt x 602.25pt>
 File: Automatas_RP.png Graphic file (type png)
 <use Automatas_RP.png>
-Package pdftex.def Info: Automatas_RP.png  used on input line 918.
+Package pdftex.def Info: Automatas_RP.png  used on input line 919.
 (pdftex.def)             Requested size: 384.1096pt x 227.61678pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 922.
-LaTeX Info: Redefining \% on input line 922.
+LaTeX Info: Redefining \. on input line 923.
+LaTeX Info: Redefining \% on input line 923.
  [32 <./Graficos_RP.png>]
-<Zip_RP.png, id=681, 1016.29688pt x 451.6875pt>
+<Zip_RP.png, id=725, 1016.29688pt x 451.6875pt>
 File: Zip_RP.png Graphic file (type png)
 <use Zip_RP.png>
-Package pdftex.def Info: Zip_RP.png  used on input line 925.
+Package pdftex.def Info: Zip_RP.png  used on input line 926.
 (pdftex.def)             Requested size: 384.1096pt x 170.71259pt.
-LaTeX Info: Redefining \. on input line 934.
-LaTeX Info: Redefining \% on input line 934.
+LaTeX Info: Redefining \. on input line 935.
+LaTeX Info: Redefining \% on input line 935.
  [33 <./Automatas_RP.png> <./Zip_RP.png>] [34
 
 ]
 Cap\'{\i }tulo 6.
-<graf_exp1.png, id=692, 813.0375pt x 1016.29688pt>
+<graf_exp1.png, id=737, 813.0375pt x 1016.29688pt>
 File: graf_exp1.png Graphic file (type png)
 <use graf_exp1.png>
-Package pdftex.def Info: graf_exp1.png  used on input line 960.
+Package pdftex.def Info: graf_exp1.png  used on input line 964.
 (pdftex.def)             Requested size: 384.1096pt x 480.12529pt.
 [35]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2717) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 971.
-LaTeX Info: Redefining \% on input line 971.
+LaTeX Info: Redefining \. on input line 973.
+LaTeX Info: Redefining \% on input line 973.
  [36 <./graf_exp1.png>]
-<aut1_exp1.png, id=703, 1103.12125pt x 806.01125pt>
+<aut1_exp1.png, id=748, 1103.12125pt x 806.01125pt>
 File: aut1_exp1.png Graphic file (type png)
 <use aut1_exp1.png>
-Package pdftex.def Info: aut1_exp1.png  used on input line 975.
+Package pdftex.def Info: aut1_exp1.png  used on input line 977.
 (pdftex.def)             Requested size: 341.43437pt x 249.46735pt.
-<aut2_exp1.png, id=704, 1103.12125pt x 806.01125pt>
+<aut2_exp1.png, id=749, 1103.12125pt x 806.01125pt>
 File: aut2_exp1.png Graphic file (type png)
 <use aut2_exp1.png>
-Package pdftex.def Info: aut2_exp1.png  used on input line 982.
+Package pdftex.def Info: aut2_exp1.png  used on input line 984.
 (pdftex.def)             Requested size: 341.43437pt x 249.46735pt.
-LaTeX Info: Redefining \. on input line 988.
-LaTeX Info: Redefining \% on input line 988.
+LaTeX Info: Redefining \. on input line 990.
+LaTeX Info: Redefining \% on input line 990.
  [37 <./aut1_exp1.png> <./aut2_exp1.png>]
-<mut_exp1.png, id=711, 606.265pt x 184.69pt>
+<mut_exp1.png, id=756, 606.265pt x 184.69pt>
 File: mut_exp1.png Graphic file (type png)
 <use mut_exp1.png>
-Package pdftex.def Info: mut_exp1.png  used on input line 991.
+Package pdftex.def Info: mut_exp1.png  used on input line 993.
 (pdftex.def)             Requested size: 384.1096pt x 117.01474pt.
-LaTeX Info: Redefining \. on input line 1010.
-LaTeX Info: Redefining \% on input line 1010.
+<graf_exp2.png, id=757, 712.6625pt x 903.375pt>
+File: graf_exp2.png Graphic file (type png)
+<use graf_exp2.png>
+Package pdftex.def Info: graf_exp2.png  used on input line 1018.
+(pdftex.def)             Requested size: 426.79135pt x 540.99536pt.
+LaTeX Info: Redefining \. on input line 1022.
+LaTeX Info: Redefining \% on input line 1022.
  [38 <./mut_exp1.png>]
-Cap\'{\i }tulo 7.
-[39
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] [40
+LaTeX Info: Redefining \. on input line 1027.
+LaTeX Info: Redefining \% on input line 1027.
+ [39 <./graf_exp2.png>]
+<graf_exp4.png, id=768, 679.53876pt x 906.38625pt>
+File: graf_exp4.png Graphic file (type png)
+<use graf_exp4.png>
+Package pdftex.def Info: graf_exp4.png  used on input line 1049.
+(pdftex.def)             Requested size: 426.79135pt x 569.26991pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 1053.
+LaTeX Info: Redefining \% on input line 1053.
+ [40]
+LaTeX Info: Redefining \. on input line 1057.
+LaTeX Info: Redefining \% on input line 1057.
+ [41 <./graf_exp4.png>]
+<aut1_exp4.png, id=779, 1016.29688pt x 813.0375pt>
+File: aut1_exp4.png Graphic file (type png)
+<use aut1_exp4.png>
+Package pdftex.def Info: aut1_exp4.png  used on input line 1061.
+(pdftex.def)             Requested size: 341.43437pt x 273.14153pt.
+<aut2_exp4.png, id=780, 1016.29688pt x 813.0375pt>
+File: aut2_exp4.png Graphic file (type png)
+<use aut2_exp4.png>
+Package pdftex.def Info: aut2_exp4.png  used on input line 1068.
+(pdftex.def)             Requested size: 341.43437pt x 273.14153pt.
+
+Underfull \vbox (badness 3019) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 1074.
+LaTeX Info: Redefining \% on input line 1074.
+ [42 <./aut1_exp4.png> <./aut2_exp4.png>]
+<graf_exp3.png, id=787, 665.48625pt x 905.3825pt>
+File: graf_exp3.png Graphic file (type png)
+<use graf_exp3.png>
+Package pdftex.def Info: graf_exp3.png  used on input line 1093.
+(pdftex.def)             Requested size: 384.1096pt x 522.58026pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 1097.
+LaTeX Info: Redefining \% on input line 1097.
+ [43]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 1103.
+LaTeX Info: Redefining \% on input line 1103.
+ [44 <./graf_exp3.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1106--1107
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1106--1107
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1106--1107
+
+ []
+
+LaTeX Info: Redefining \. on input line 1117.
+LaTeX Info: Redefining \% on input line 1117.
+[45] [46
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1057--1063
+Cap\'{\i }tulo 7.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [47]
+LaTeX Info: Redefining \. on input line 1151.
+LaTeX Info: Redefining \% on input line 1151.
+ [48]
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1158--1159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1158--1159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1158--1159
+
+ []
+
+LaTeX Info: Redefining \. on input line 1169.
+LaTeX Info: Redefining \% on input line 1169.
+[49] [50
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1208--1214
 \T1/lmtt/m/n/10.95 / / www . roche . es / que-[]hacemos / areas-[]terapeuticas / enfermedades-[]raras /
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 1074--1080
+Underfull \hbox (badness 3713) in paragraph at lines 1225--1231
 []\T1/lmr/m/n/10.95 Garrity, J.  Es-truc-tu-ra y fun-ción de los ojos.  \T1/lmr/m/it/10.95 Ma-nual MSD Ver-sión
  []
 
 
-Underfull \hbox (badness 5548) in paragraph at lines 1074--1080
+Underfull \hbox (badness 5548) in paragraph at lines 1225--1231
 \T1/lmr/m/it/10.95 Pa-ra Pú-bli-co Ge-ne-ral\T1/lmr/m/n/10.95 , 11 de mar-zo de 2024.  Dis-po-ni-ble en: [][]$\T1/lmtt/m/n/10.95 https :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1074--1080
+Underfull \hbox (badness 10000) in paragraph at lines 1225--1231
 \T1/lmtt/m/n/10.95 / / www . msdmanuals . com / es / hogar / trastornos-[]oft % C3 % A1lmicos / biolog % C3 %
  []
 
-[41]
-Underfull \hbox (badness 10000) in paragraph at lines 1137--1143
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 1288--1294
 []\T1/lmr/m/n/10.95 Verana Health.  Why Real-World Da-ta is Key to Pro-vi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1137--1143
+Underfull \hbox (badness 10000) in paragraph at lines 1288--1294
 \T1/lmr/m/n/10.95 ding In-sights In-to Re-ti-ni-tis Pig-men-to-sa, emés el 20 de no-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1137--1143
+Underfull \hbox (badness 10000) in paragraph at lines 1288--1294
 \T1/lmr/m/n/10.95 vem-bre de 2024.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / veranahealth . com /
  []
 
 
-Overfull \hbox (35.41357pt too wide) in paragraph at lines 1137--1143
+Overfull \hbox (35.41357pt too wide) in paragraph at lines 1288--1294
 \T1/lmtt/m/n/10.95 why-[]real-[]world-[]data-[]is-[]key-[]to-[]providing-[]insights-[]into-[]retinitis-[]pigmentosa/$[][]\T1/lmr/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1161--1167
+Underfull \hbox (badness 10000) in paragraph at lines 1312--1318
 []\T1/lmr/m/n/10.95 Stevenson, S.  How deep lear-ning may play a ro-le in pre-dic-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1161--1167
+Underfull \hbox (badness 10000) in paragraph at lines 1312--1318
 \T1/lmr/m/n/10.95 ting re-ti-ni-tis pig-men-to-sa vi-sual im-pair-ment, emés el 14 de ma-rç de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1161--1167
+Underfull \hbox (badness 10000) in paragraph at lines 1312--1318
 \T1/lmr/m/n/10.95 2023.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / www . ophthalmologytimes . com / view /
  []
 
 
-Overfull \hbox (99.14964pt too wide) in paragraph at lines 1161--1167
+Overfull \hbox (99.14964pt too wide) in paragraph at lines 1312--1318
 \T1/lmtt/m/n/10.95 how-[]deep-[]learning-[]may-[]play-[]a-[]role-[]in-[]predicting-[]retinitis-[]pigmentosa-[]visual-[]impairment$[][]\T1/lmr/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1182--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1333--1339
 \T1/lmr/m/n/10.95 ble en [][]$\T1/lmtt/m/n/10.95 https : / / media . lavozdegalicia . es / noticia / sociedad / 2025 / 04 / 21 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1182--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1333--1339
 \T1/lmtt/m/n/10.95 algoritmo-[]encuentra-[]indicios-[]enfermedades-[]parte-[]adnconsidera-[]inutil /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1198--1204
+Underfull \hbox (badness 10000) in paragraph at lines 1349--1355
 []\T1/lmr/m/n/10.95 ZonaIT.  Avan-ces en la te-ra-pia gé-ni-ca pa-ra la re-ti-no-sis pig-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1198--1204
+Underfull \hbox (badness 10000) in paragraph at lines 1349--1355
 \T1/lmr/m/n/10.95 men-ta-ria cau-sa-da por mu-ta-cio-nes en el gen RPGR, sen-se da-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1198--1204
+Underfull \hbox (badness 10000) in paragraph at lines 1349--1355
 \T1/lmr/m/n/10.95 ta.  Dis-po-ni-ble en [][]$\T1/lmtt/m/n/10.95 https : / / biotech-[]spain . com / es / articles /
  []
 
 
-Overfull \hbox (164.38571pt too wide) in paragraph at lines 1198--1204
+Overfull \hbox (164.38571pt too wide) in paragraph at lines 1349--1355
 \T1/lmtt/m/n/10.95 avances-[]en-[]la-[]terapia-[]g-[]nica-[]para-[]la-[]retinosis-[]pigmentaria-[]causada-[]por-[]mutaciones-[]en-[]el-[]gen-[]rpgr/$[][]\T1/lmr/m/n/10.95 .
  []
 
-LaTeX Info: Redefining \. on input line 1204.
-LaTeX Info: Redefining \% on input line 1204.
-[42]
-Underfull \hbox (badness 5036) in paragraph at lines 1236--1241
+LaTeX Info: Redefining \. on input line 1355.
+LaTeX Info: Redefining \% on input line 1355.
+[52]
+Underfull \hbox (badness 5036) in paragraph at lines 1387--1392
 []\T1/lmr/m/n/10.95 National Hu-man Ge-no-me Re-search Ins-ti-tu-te (NH-GRI).  In-tro-duc-tion to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1236--1241
+Underfull \hbox (badness 10000) in paragraph at lines 1387--1392
 \T1/lmr/m/n/10.95 Ge-no-mics.  Dis-po-ni-ble en  [][]$\T1/lmtt/m/n/10.95 https : / / www . genome . gov / About-[]Genomics /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1244--1249
+Underfull \hbox (badness 10000) in paragraph at lines 1395--1400
 []\T1/lmr/m/n/10.95 EMBL-EBI.  Un-ders-tan-ding VCF for-mat | Hu-man ge-ne-tic va-ria-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1244--1249
+Underfull \hbox (badness 10000) in paragraph at lines 1395--1400
 \T1/lmr/m/n/10.95 tion.  Dis-po-ni-ble en  [][]$\T1/lmtt/m/n/10.95 https : / / www-[]ebi-[]ac-[]uk . translate . goog /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1244--1249
+Underfull \hbox (badness 10000) in paragraph at lines 1395--1400
 \T1/lmtt/m/n/10.95 training / online / courses / human-[]genetic-[]variation-[]introduction /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1244--1249
+Underfull \hbox (badness 10000) in paragraph at lines 1395--1400
 \T1/lmtt/m/n/10.95 variant-[]identification-[]and-[]analysis / understanding-[]vcf-[]format / ? _ x _
  []
 
-LaTeX Info: Redefining \. on input line 1277.
-LaTeX Info: Redefining \% on input line 1277.
-[43
+LaTeX Info: Redefining \. on input line 1440.
+LaTeX Info: Redefining \% on input line 1440.
+[53
 pdfTeX warning (ext4): destination with the same identifier (name{cite.GEN}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1277 \cleardoublepage
-                       ] [44
+l.1440 \bibitem{HUS}
+                    ]
+Underfull \hbox (badness 1852) in paragraph at lines 1441--1448
+[]\T1/lmr/m/n/10.95 Li, H.  Chap-ter 2 - Ba-sics of com-mu-ni-ca-tions.  En \T1/lmr/m/it/10.95 Com-mu-ni-ca-tions for
+ []
 
-]
+
+Underfull \hbox (badness 3815) in paragraph at lines 1441--1448
+\T1/lmr/m/it/10.95 Con-trol in Cy-ber Phy-si-cal Sys-tems\T1/lmr/m/n/10.95 , Mor-gan Kauf-mann, 2016, págs. 9--30.
+ []
+
+LaTeX Info: Redefining \. on input line 1460.
+LaTeX Info: Redefining \% on input line 1460.
+[54]
 Ap\'{e}ndice A.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [45
+ [55
+
 
 ]
-LaTeX Info: Redefining \. on input line 1335.
-LaTeX Info: Redefining \% on input line 1335.
- [46]
+LaTeX Info: Redefining \. on input line 1518.
+LaTeX Info: Redefining \% on input line 1518.
+ [56]
 Ap\'{e}ndice B.
-[47
+[57
 
 ] (./plantillatfg.aux
 LaTeX Info: Redefining \. on input line 12.
@@ -1234,21 +1352,21 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `plantillatfg.out' has not changed.
-(rerunfilecheck)             Checksum: B6C24CE3E37F4F608DDDC4F547759703;14943.
+(rerunfilecheck)             Checksum: 1662B5D891F06F9CD942DA87AC62CF86;16860.
  ) 
 Here is how much of TeX's memory you used:
- 18085 strings out of 474222
- 287767 string characters out of 5748733
- 1947975 words of memory out of 5000000
- 39828 multiletter control sequences out of 15000+600000
+ 18164 strings out of 474222
+ 288972 string characters out of 5748733
+ 1948975 words of memory out of 5000000
+ 39880 multiletter control sequences out of 15000+600000
  657644 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,13n,93p,1183b,1197s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,13n,93p,1159b,1197s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on plantillatfg.pdf (55 pages, 3844435 bytes).
+Output written on plantillatfg.pdf (65 pages, 5437494 bytes).
 PDF statistics:
- 952 PDF objects out of 1000 (max. 8388607)
- 808 compressed objects within 9 object streams
- 180 named destinations out of 1000 (max. 500000)
- 629 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1067 PDF objects out of 1200 (max. 8388607)
+ 902 compressed objects within 10 object streams
+ 207 named destinations out of 1000 (max. 500000)
+ 702 words of extra memory for PDF output out of 10000 (max. 10000000)
 

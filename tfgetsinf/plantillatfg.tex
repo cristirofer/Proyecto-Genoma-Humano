@@ -771,9 +771,10 @@ Para comprobar que el número de cromosoma es correcto, se limpia la cabecera el
 
 Una vez extraída la secuencia, se han considerado dos opciones en caso de que la secuencia contenga caracteres N (indicando zonas donde no se conoce con certeza la base presente): 
 
-1. estas posiciones serán ignoradas y no se tendrán en cuenta en los cálculos de entropía o en el análisis de las mutaciones, ya que no aportan información relevante, 
-
-2. serán tratadas como un nuevo tipo de base nitrogenada, entendiendo que también aportan información a los valores de la entropía. 
+\begin{enumerate}
+  \item Estas posiciones serán ignoradas y no se tendrán en cuenta en los cálculos de entropía o en el análisis de las mutaciones, ya que no aportan información relevante.
+  \item Serán tratadas como un nuevo tipo de base nitrogenada, entendiendo que también aportan información a los valores de la entropía.
+\end{enumerate}
 
 En cualquier caso, estas zonas desconocidas no están cerca de ninguna mutación con las que se está trabajando, por lo que no es relevante el tratamiento que se les dé. 
 
@@ -939,7 +940,8 @@ En esta sección se detallan los archivos usados, los valores de los parámetros
 
 \section{Experimento base}
 
-Para el primer experimento, se trabajará con el cromosoma 1, descargado previamente desde en NCBI, y un tamaño de k-mer pequeño para una exploración general del genoma, detección de zonas con variabilidad o entropía anómala. Para ello se seleccionarán los siguientes valores: 
+Para el primer experimento, se trabajará con el cromosoma 1, descargado previamente desde en NCBI, y un tamaño de k-mer pequeño para una exploración general del genoma, detección de zonas con variabilidad o entropía anómala. Como consecuencia, tambien debemos trabajar con un valor pequeño para el orden de la Fuente de Markov, ya que este debe ser menor al tamaño de k-mer por la naturaleza de la aplicación. Para ello se seleccionarán los siguientes valores:
+
 
 \begin{itemize}
    \item Número de cromosoma: 1.
@@ -955,14 +957,14 @@ Para el primer experimento, se trabajará con el cromosoma 1, descargado previam
 
 Una vez configurados estos parámetros, se procede a ejecutar el análisis, el cual tiene una duración aproximada de 5 minutos. Transcurrido este tiempo, el análisis finaliza y se imprimen por pantalla los siguientes resultados:
 
+A partir de las gráficas obtenidas, se pueden extraer diversas conclusiones relevantes sobre el comportamiento del genoma ante la presencia de mutaciones y la utilidad de las medidas de entropía para su detección.  
+
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.9\textwidth]{graf_exp1.png}
       \caption{Gráficas obtenidas a partir del experimento 1.}
       \label{fig:etiqueta_opcional12}
 \end{figure}
-
-A partir de las gráficas obtenidas, se pueden extraer diversas conclusiones relevantes sobre el comportamiento del genoma ante la presencia de mutaciones y la utilidad de las medidas de entropía para su detección.  
 
 En la primera gráfica, que representa la entropía simple mediante ventanas deslizantes de tamaño 100 para las secuencias original y mutada, se observan variaciones significativas en los valores de entropía en ciertas regiones. Estas diferencias sugieren que las mutaciones introducidas tienen un impacto en la distribución de los distintos k-mers en esas zonas y, por tanto, permite identificar regiones potencialmente relevantes del genoma. 
 
@@ -996,11 +998,116 @@ A partir de los archivos de ambos autómatas se puede extraer la siguiente infor
 Finalmente, se ha verificado que el archivo generado con las mutaciones no aplicadas está vacío. Este resultado es un buen indicador, ya que significa que todas las variantes recogidas en el archivo VCF han podido integrarse correctamente en la secuencia de referencia descargada desde el NCBI y no se han producido conflictos entre las bases de referencia especificadas en el VCF y las que figuran en la secuencia genómica. 
 
 
-\section{Experimento base}
+\section{Experimento con valores grandes para el tamaño de k-mer}
+
+Para este experimento también se trabajará con el cromosoma 1, pero ahora con un tamaño de k-mer grande. De esta manera, podremos observar sobre la misma secuencia y sin modificar el resto de los parámetros, patrones más específicos, especialmente en regiones con alta densidad de mutaciones. Por lo tanto, se han escogido los siguientes valores:
+
+\begin{itemize}
+   \item Número de cromosoma: 1.
+   \item Archivo con las mutaciones: \texttt{RP924\_9589186940.vcf}  (es el archivo VCF con las mutaciones proporcionado por IIS la Fe).
+   \item Tamaño de k-mer: 12.
+   \item Orden de la fuente de Markov: 3.
+   \item Tamaño de ventana para la densidad: 500.
+   \item Tamaño de ventana para la entropía: 100.
+   \item Posición de inicio: 874778.
+   \item Tamaño de bloque: 100000 
+\end{itemize}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{graf_exp2.png}
+      \caption{Gráficas obtenidas a partir del experimento 2.}
+      \label{fig:etiqueta_opcional17}
+\end{figure}
+
+A la vista de los gráficos, comprobamos que al aumentar el tamaño de k-mer, los valores de entropía en la primera gráfica son notablemente mayores, y además se reduce la variabilidad local. Esto es lógico, ya que un k-mer más largo representa una combinación más específica de bases, lo que hace que cualquier cambio puntual tenga menos impacto sobre la frecuencia de aparición de todos los posibles k-mers. Por esta razón, se puede deducir que la entropía con k=12 detecta menos ruido. Por otro lado, podemos ver una superposición casi total en la segunda gráfica entre la secuencia original y la mutada, que puede indicar que ahora las mutaciones no afectan de forma significativa las probabilidades de transición. 
+
+Como el aumento del tamaño del k-mer no afecta a la densidad de mutaciones, la tercera gráfica no varía, ya que este análisis se basa únicamente en el recuento local de variantes dentro de ventanas genómicas. 
+
+Por otro lado, los autómatas generados resultan prácticamente iguales a los del experimento anterior porque el orden de la Fuente de Markov no ha cambiado. La secuencia analizada es la misma, así que no genera una distribución estadística muy distinta con k-mers largos, y la mayoría de las transiciones importantes ya estaban presentes con k=4.
+
+De nuevo, se ha verificado que el archivo generado con las mutaciones no aplicadas está vacío, lo cual es un indicador del buen funcionamiento del programa.
 
 
-En conjunto, estos resultados demuestran que el análisis computacional de la entropía, tanto clásica como basada en modelos de Markov, permite detectar con eficacia alteraciones en el genoma. Esto respalda el potencial del enfoque desarrollado en este proyecto como herramienta de apoyo en el diagnóstico de enfermedades genéticas como la retinosis pigmentaria, contribuyendo al avance en métodos no invasivos y automáticos de análisis genético. 
+\section{Experimento con valores grandes para el orden de la fuente de Markov}
 
+Esta vez se mantienen todos los parámetros como en el experimento anterior excepto el orden de la fuente de Markov, que aumenta para detectar mutaciones que alteren estructuras locales complejas e identificar zonas funcionales del genoma con mayor precisión. Los valores escogidos son los siguientes:
+
+\begin{itemize}
+   \item Número de cromosoma: 1.
+   \item Archivo con las mutaciones: \texttt{RP924\_9589186940.vcf}  (es el archivo VCF con las mutaciones proporcionado por IIS la Fe).
+   \item Tamaño de k-mer: 12.
+   \item Orden de la fuente de Markov: 7.
+   \item Tamaño de ventana para la densidad: 500.
+   \item Tamaño de ventana para la entropía: 100.
+   \item Posición de inicio: 874778.
+   \item Tamaño de bloque: 100000 
+\end{itemize}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{graf_exp4.png}
+      \caption{Gráficas obtenidas a partir del experimento 3.}
+      \label{fig:etiqueta_opcional42}
+\end{figure}
+
+Tanto en la primera gráfica donde se representa la entropía simple en cada ventana de la secuencia original y la mutada, como en la tercera donde se puede observar la densidad de mutaciones, no se perciben cambios respecto al anterior experimento. Esto es debido a que el parámetro del orden de la fuente de Markov no tiene relación con estas métricas, por lo que sus valores no se modifican.
+
+En cambio, en la segunda gráfica, correspondiente a la entropía basada en fuentes de Markov se nota una mayor separación entre la entropía original y mutada, en comparación con los anteriores experimentos con menor orden de Markov. Además, aparecen picos más definidos de baja entropía, lo que sugiere que el modelo capta regiones con transiciones poco frecuentes, o incluso nuevos estados creados por mutaciones raras.
+
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{aut1_exp4.png}
+      \caption{Fragmentos del autómata de la secuencia original obtenido a partir del experimento 3.}
+      \label{fig:etiqueta_opcional43}
+\end{figure}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{aut2_exp4.png}
+      \caption{Fragmentos del autómata de la secuencia mutada obtenido a partir del experimento 3.}
+      \label{fig:etiqueta_opcional44}
+\end{figure}
+
+Pasando a los autómatas generados, tanto los estados iniciales y finales, como las transiciones ahora estan formados por más nucleótidos. Además, el número de estados y transiciones ha aumentado considerablemente con respecto a los autómatas generados anteriormente, ya que al incrementar el orden de la fuente de Markov, los estados pasan a representar combinaciones más largas de nucleótidos. Con un orden mayor, los estados representan contextos más largos y específicos dentro de la secuencia de ADN. Esto permite modelar dependencias más complejas entre los nucleótidos.
+
+
+\section{Experimentos con cromosoma X}
+
+En este experimento se mantienen los parámetros como en el experimento base, pero ahora se explorará el cromosoma X y la posición de inicio pasa a ser 1315000 (comprende una zona con alta proporción de mutaciones), ya que existen genes específicos como el RPGR y el RP2, que están directamente implicados en la retinosis pigmentaria ligada al cromosoma X. Las mutaciones en estos genes son responsables de un porcentaje significativo de los casos de RP. Por esta razón, se han escogido los siguientes parámetros:
+
+\begin{itemize}
+   \item Número de cromosoma: X.
+   \item Archivo con las mutaciones: \texttt{RP924\_9589186940.vcf}  (es el archivo VCF con las mutaciones proporcionado por IIS la Fe).
+   \item Tamaño de k-mer: 4.
+   \item Orden de la fuente de Markov: 3.
+   \item Tamaño de ventana para la densidad: 500.
+   \item Tamaño de ventana para la entropía: 100.
+   \item Posición de inicio: 1315000.
+   \item Tamaño de bloque: 100000 
+\end{itemize}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{graf_exp3.png}
+      \caption{Gráficas obtenidas a partir del experimento 4.}
+      \label{fig:etiqueta_opcional31}
+\end{figure}
+
+En la primera gráfica se observa una mayor variabilidad entre la entropía de la secuencia original y la secuencia mutada, en comparación con los experimentos anteriores en el cromosoma 1. Aquí se puede ver que existen regiones localizadas donde se produce una caída significativa de la entropía, lo cual puede indicar regiones funcionales, como genes ligados al sexo. Esto tendría sentido, ya que este se encarga de determinar el sexo en humanos y otros mamíferos, aunque también contiene muchos genes vinculados a enfermedades.
+
+A la vista del segundo gráfico, la entropía Markov se mantiene mucho más constante y elevada, similar a lo observado anteriormente. Sin embargo, también hay ligeras diferencias entre la secuencia original y la mutada, aunque no tan notables como en la entropía simple.
+
+En la gráfica de densidad de mutaciones se observa un máximo claro al principio de la secuencia (marcado con etiqueta roja), pero a lo largo del cromosoma, la densidad se mantiene relativamente baja, lo cual es común en regiones no codificantes o en secuencias menos estudiadas. La posición del máximo, al estar concentrado en una sola región específica del cromosoma, puede reflejar la presencia de genes con alta tasa de variación o de regiones inestables.
+
+Al considerar el autómata de Markov, de nuevo tanto el autómata generado de la secuencia original como la mutada comparten el mismo alfabeto y los mismos estados iniciales y finales. De la misma manera, aunque ambos archivos muestran las mismas transiciones, la frecuencia de transición entre estados sí ha cambiado entre ellos y con respecto al experimento base, aunque sutilmente. Mientras que los gráficos sí reflejan cambios más abruptos en diferentes regiones, el autómata es más insensible a cambios puntuales, ya que necesita modificaciones significativas en la distribución de transiciones para reflejar una diferencia más pronunciada.
+
+Esta vez también se encuentra vacío el archivo generado con las mutaciones no aplicadas, lo demuestra el buen funcionamiento incluso en diferentes regiones genómicas.\\\\\\
+
+En conjunto, estos resultados demuestran que el análisis computacional de la entropía, tanto clásica como basada en modelos de Markov, permite detectar con eficacia alteraciones en el genoma. Esto respalda el potencial del enfoque desarrollado en este proyecto como herramienta de apoyo en el diagnóstico de enfermedades genéticas como la retinosis pigmentaria, contribuyendo al avance en métodos no invasivos y automáticos de análisis genético.
+
+No obstante, es importante destacar que los resultados obtenidos, incluyendo las gráficas y patrones identificados, deben ser ahora revisados y evaluados por expertos en medicina y genómica. Solo profesionales especializados podrán determinar si las diferencias observadas son clínicamente relevantes y validar si pueden utilizarse para el estudio de la RP.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1009,7 +1116,51 @@ En conjunto, estos resultados demuestran que el análisis computacional de la en
 
 \chapter{Conclusiones}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+El presente Trabajo de Fin de Grado ha explorado el uso de herramientas basadas en la Teoría de la Información y modelos de fuentes de Markov para analizar secuencias genómicas asociadas a la RP. A partir de secuencias de referencia obtenidas del NCBI y mutaciones extraídas de archivos VCF proporcionados por el IIS La Fe, se ha construido una herramienta capaz de detectar regiones genómicas con alta variabilidad o con alteraciones inusuales.
+
+Uno de los objetivos principales ha sido garantizar una correcta integración de las variantes sobre la secuencia de referencia. Para ello, se han empleado herramientas bioinformáticas como Biopython y vcfpy que permiten trabajar con los formatos de los archivos proporcionados. La correcta aplicación de las mutaciones sobre la secuencia de referencia se ha validado al observar que, en las ejecuciones realizadas en la sección de experimentos, el archivo de mutaciones no aplicadas resultó vacío, lo que indica que no se han producido conflictos entre los datos. Esto da fiabilidad al análisis y refuerza el potencial del sistema para ser usado con datos clínicos reales.
+
+Sobre la secuencia mutada y la original, se han aplicado diferentes enfoques de análisis complementarios. En primer lugar, se ha calculado la entropía en ventanas deslizantes a lo largo de la secuencia para detectar variaciones estadísticas que indiquen cambios en la distribución de los nucleótidos, lo cual podría estar relacionado con regiones funcionales o mutaciones relevantes. Posteriormente, se ha utilizado un modelo de fuente de Markov de orden k para construir un autómata que representa las probabilidades de transición entre distintos estados definidos por k-mers, permitiendo así un análisis más profundo de la estructura secuencial del ADN. Además, se ha incorporado un análisis de densidad de mutaciones mediante el uso de ventanas centradas en cada variante, con el objetivo de localizar zonas con una alta concentración de mutaciones en el genoma.
+
+Con el fin de facilitar el uso de esta herramienta a usuarios que no poseen conocimientos avanzados en programación o informática, se ha desarrollado una interfaz gráfica utilizando la librería Streamlit. Esta interfaz permite cargar los archivos genómicos, ajustar los parámetros del análisis (como el tamaño de los k-mers, el orden de Markov o el tamaño de las ventanas), ejecutar el análisis completo, y visualizar los resultados en forma de gráficos. Además, ofrece la posibilidad de descargar los archivos resultantes (como los autómatas generados o los informes de mutaciones no aplicadas) para su posterior estudio. Esta capa de abstracción permite que investigadores biomédicos, técnicos de laboratorio o personal sanitario puedan utilizar la herramienta sin necesidad de interactuar directamente con el código, lo que representa un paso importante hacia la usabilidad en contextos clínicos reales.
+
+\section{Trabajo futuro}
+
+Aunque los resultados obtenidos pueden ser prometedores, el presente trabajo puede ampliarse y mejorarse en distintas direcciones:
+
+\subsection{Ampliación a otras enfermedades raras}
+
+Un trabajo futuro que podría ser prometedor consiste en extender el sistema desarrollado al estudio de otras enfermedades raras causadas por mutaciones genéticas, más allá de la RP. Dado que muchas enfermedades raras comparten características con la RP, como la elevada heterogeneidad genética, la escasez de datos anotados, y la dificultad diagnóstica debido al volumen de variantes generadas por tecnologías como la secuenciación del exoma. Por esta razón resulta razonable pensar que este proyecto podría ser útil también en otros contextos.
+
+Además, aplicar esta herramienta a otras enfermedades, como la de Charcot-Marie-Tooth (afección hereditaria que afecta los nervios periféricos, causando debilidad muscular, pérdida de sensación y deformidades en los pies y manos\cite{MEDL}), permitiría verificar su validez y capacidad de generalización, como por ejemplo enfermedades raras neuromusculares, metabólicas o del desarrollo que también requieren métodos para reducir el espacio de búsqueda.
+
+Por último, este enfoque permitiría comparar cómo es la información en las diferentes enfermedades y explorar si ciertas regiones genómicas muestran patrones similares de entropía o transiciones anómalas en distintas patologías, lo cual podría abrir nuevas vías para encontrar regiones funcionales compartidas o mecanismos genómicos comunes.
+
+\subsection{Aplicación de técnicas de Machine Learning}
+
+Otra posible mejora del sistema desarrollado sería la incorporación de algoritmos de Machine Learning para lograr optimizar de manera automática los valores de parámetros principales utilizados en los análisis. Actualmente algunos valores como el tamaño de los k-mers, el orden de la fuente de Markov o el tamaño de las ventanas se configuran manualmente, y como hemos visto en la sección anterior, influyen de forma significativa en la sensibilidad y especificidad del modelo para detectar patrones relevantes en la secuencia genómica.
+
+De esta manera, mediante el uso de técnicas de aprendizaje automático, como métodos de validación cruzada (cross-validation), el sistema podría evaluar diferentes combinaciones de parámetros y seleccionar aquellas que maximicen diferentes criterios, como podría ser la identificación de regiones con mutaciones significativas y regiones neutras, o la concordancia con anotaciones clínicas existentes. Este enfoque permitiría adaptar dinámicamente el análisis a distintos genes, regiones genómicas o tipos de enfermedades, sin requerir la intervención manual del usuario.
+
+Aunque actualmente solo se dispone de una pequeña cantidad de diagnósticos para la RP, se podrían emplear modelos de machine learning supervisado donde las variantes genéticas hayan sido clasificadas como patogénicas o benignas por expertos. Estos modelos podrían aprender representaciones complejas del genoma que escapen a métodos estadísticos clásicos. En ese caso se podrían aplicar técnicas como los árboles de decisión, random forests, redes neuronales o boosting para identificar combinaciones de patrones en los perfiles de las entropías y densidad de mutaciones que tengan correlación con la potencial patogenicidad de una variante.
+
+
+\subsection{Exploración de otras métricas de Teoría de la Información}
+
+Aunque en este proyecto se ha utilizado la entropía como herramienta principal para medir la incertidumbre, se podría plantear el uso de otras métricas del campo de la Teoría de la Información en futuros desarrollos con el objetivo de evaluar si los resultados presentan una mejora con respecto a los previamente obtenidos y si los valores permiten una identificación más precisa de las regiones asociadas a mutaciones patogénicas.
+
+\begin{itemize}
+   \item Divergencia de Kullback-Leibler (KL): es una métrica que se utiliza para comparar dos distribuciones. Sobre este trabajo, se podría aplicar para medir las diferencias entre la secuencia original y la mutada, cuantificando cuánto difieren ambas entre sí\cite{BUH}.
+   \item Información mutua: mide la cantidad de información que dos variables aleatorias se proporcionan mutuamente. La ambigüedad sobre Y cuando se desconoce X es H(Y). Si se conoce X, la ambigüedad sobre Y disminuye a \( H(Y \mid X) \). Puede emplearse para medir la dependencia entre posiciones del genoma o entre ventanas adyacentes, lo que podría ayudar a detectar correlaciones estructurales\cite{HUS}.
+   \item Capacidad del canal: se refiere a la cantidad máxima de información que puede ser transmitida a través de él de forma confiable. Como experimento, se podría estudiar cuánta información puede transmitir una región del ADN, ya que valores altos podrían indicar zonas funcionalmente importantes\cite{BLA}.\\
+\end{itemize}
+
+Estas métricas podrían complementar o incluso superar a la entropía en algunos casos, como por ejemplo para comparar distribuciones o medir la cantidad de redundancia en el genoma.\\\\\\
+
+En definitiva, este trabajo ha abordado el reto de la combinación entre Teoría de la Información y análisis genómico, proponiendo una solución automatizada y visual que contribuye a optimizar el estudio de enfermedades genéticas raras, y sienta las bases para la investigación con aplicaciones reales en el diagnóstico de enfermedades raras como la RP. A medida que se incorporen nuevas herramientas y se integren con otras metodologías, este enfoque podría evolucionar hacia su uso práctico por parte de profesionales del ámbito de la salud.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                BIBLIOGRAFIA                                 %
@@ -1270,6 +1421,38 @@ En conjunto, estos resultados demuestran que el análisis computacional de la en
    \newblock \url{https://doi.org/10.1146/annurev-biochem-051410-092902}.
    \newblock Consultado el 30 de mayo de 2025.
 
+\bibitem{MEDL}
+   MedlinePlus.  
+   \newblock Enfermedad de Charcot-Marie-Tooth: enciclopedia médica.  
+   \newblock s.f.  
+   \newblock Disponible en  
+   \url{https://medlineplus.gov/spanish/ency/article/000727.htm}.  
+   \newblock Consultado el 1 de junio de 2025.
+
+\bibitem{BUH}
+   Buhl, N.  
+   \newblock KL Divergence in Machine Learning.  
+   \newblock \textit{Encord}, 4 de noviembre de 2024.  
+   \newblock Disponible en  
+   \url{https://encord.com/blog/kl-divergence-in-machine-learning/}.  
+   \newblock Consultado el 1 de junio de 2025.
+
+\bibitem{HUS}
+   Li, H.  
+   \newblock Chapter 2 - Basics of communications.  
+   \newblock En \textit{Communications for Control in Cyber Physical Systems}, Morgan Kaufmann, 2016, págs. 9--30.  
+   \newblock ISBN: 9780128019504.  
+   \newblock Disponible en  
+   \url{https://www.sciencedirect.com/science/article/pii/B9780128019504000020}.  
+   \newblock Consultado el 1 de junio de 2025.
+
+\bibitem{BLA}
+   Blahut, R. E.  
+   \newblock Information Theory and Coding.  
+   \newblock En \textit{Elsevier eBooks}, 2002, págs. 25--31.  
+   \newblock Disponible en  
+   \url{https://doi.org/10.1016/b978-075067291-7/50027-3}.  
+   \newblock Consultado el 1 de junio de 2025.
 
    
 

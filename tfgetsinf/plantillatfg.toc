@@ -72,10 +72,16 @@
 \contentsline {section}{\numberline {5.13}Interfaz gráfica}{29}{section.5.13}%
 \contentsline {chapter}{\numberline {6}Experimentos}{35}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Experimento base}{35}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Experimento base}{38}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Conclusiones}{39}{chapter.7}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{41}{chapter*.29}%
+\contentsline {section}{\numberline {6.2}Experimento con valores grandes para el tamaño de k-mer}{38}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Experimento con valores grandes para el orden de la fuente de Markov}{40}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Experimentos con cromosoma X}{43}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Conclusiones}{47}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Trabajo futuro}{48}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Ampliación a otras enfermedades raras}{48}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Aplicación de técnicas de Machine Learning}{48}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Exploración de otras métricas de Teoría de la Información}{49}{subsection.7.1.3}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{51}{chapter*.34}%
 \noindent \hrulefill \par 
 \appendicesname \par 
-\contentsline {chapter}{\numberline {A}Objetivos de Desarrollo Sostenible}{45}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}??? ???????????? ????}{47}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {A}Objetivos de Desarrollo Sostenible}{55}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}??? ???????????? ????}{57}{appendix.Alph2}%
