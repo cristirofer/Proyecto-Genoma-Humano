@@ -89,7 +89,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}[spanish]
-   La retinosis pigmentaria (\ac{RP}), una de las distrofias hereditarias de retina (\ac{DGR}) más frecuente, es conocida por una degradación progresiva en los fotorreceptores que termina por causar pérdida visual irreversible. Aún con los recientes avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo un desafío debido a la amplia diversidad genética involucrada y la cantidad de genes relacionados con las \ac{DGR}.
+   La \ac{RP}, una de las \ac{DHR} más frecuente, es conocida por una degradación progresiva en los fotorreceptores que termina por causar pérdida visual irreversible. Aún con los recientes avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo un desafío debido a la amplia diversidad genética involucrada y la cantidad de genes relacionados con las \ac{DHR}.
 
    Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de Fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la \ac{RP}. Puesto que la \ac{RP} es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos.
 
@@ -109,7 +109,7 @@
    \\
 \end{abstract}
 \begin{abstract}[english]
-   Retinitis pigmentosa (\ac{RP}) is one of the most common hereditary retinal dystrophies (HRD). It is characterized by the progressive degeneration of photoreceptors, leading to irreversible vision loss. Despite advances in human genome sequencing, the origin of this condition remains uncertain due to the high genetic heterogeneity of the disease and the large number of genes associated with HRD.
+   Retinitis pigmentosa (\ac{RP}) is one of the most common hereditary retinal dystrophies (\ac{HRD}). It is characterized by the progressive degeneration of photoreceptors, leading to irreversible vision loss. Despite advances in human genome sequencing, the origin of this condition remains uncertain due to the high genetic heterogeneity of the disease and the large number of genes associated with HRD.
 
    In this Bachelor's Thesis, which expands upon the Master's Thesis by Andrea Vañó Ribelles and Luis, the use of Information Theory tools and Markov Source models is proposed for the analysis of the human genome, with the aim of predicting possible mutations associated with \ac{RP}. Since \ac{RP} is a rare disease and the number of affected individuals is limited, machine learning techniques are not sufficiently effective due to the lack of data needed to train robust models. Instead, this approach focuses on the analysis of genomic regions with high entropy and a high density of mutations, as these areas may be key to identifying variants with a higher probability of being related to the pathology.
 
@@ -139,9 +139,13 @@
   \acro{IIS}{Instituto de Investigación Sanitaria}
   \acro{RP}{Retinosis Pigmentaria}
   \acro{DHR}{Distrofias Hereditarias de Retina}
+  \acro{DGR}{Distròfies Hereditàries de Retina}
+  \acro{HRD}{Hereditary Retinal Dystrophies}
   \acro{VCF}{Variant Call Format}
   \acro{FASTA}{Fast-All (formato de secuencia biológica)}
   \acro{SNP}{Single Nucleotide Polymorphism}
+  \acro{ADN}{Ácido Desoxirribonucleico}
+  \acro{ARN}{Ácido Ribonucleico}
   \acro{INDEL}{Inserción o Deleción de nucleótidos}
   \acro{WES}{Whole Exome Sequencing}
   \acro{CNV}{Copy Number Variation}
@@ -157,7 +161,7 @@
 
 \chapter{Introducción}
 
-La retinosis o retinitis pigmentaria (\ac{RP}), una de las distrofias hereditarias de retina \ac{DGR} más frecuente, es un grupo de enfermedades conocidas por una degradación progresiva en los fotorreceptores que termina por causar pérdida visual irreversible. Esta patología suele manifestarse en un principio con ceguera nocturna, seguida por una reducción del campo visual periférico y, en fases avanzadas, puede llegar a la pérdida de la visión central\cite{NAT}. Aún con los recientes avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo un desafío debido a la amplia diversidad genética involucrada y la cantidad de genes relacionados con las \ac{DGR}. 
+La retinosis o retinitis pigmentaria (\ac{RP}), una de las distrofias hereditarias de retina (\ac{DHR}) más frecuente, es un grupo de enfermedades conocidas por una degradación progresiva en los fotorreceptores que termina por causar pérdida visual irreversible. Esta patología suele manifestarse en un principio con ceguera nocturna, seguida por una reducción del campo visual periférico y, en fases avanzadas, puede llegar a la pérdida de la visión central\cite{NAT}. Aún con los recientes avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo un desafío debido a la amplia diversidad genética involucrada y la cantidad de genes relacionados con las \ac{DHR}. 
 
 \begin{figure}[H]
    \centering
@@ -184,7 +188,7 @@ Sin embargo, son muchas las personas que conviven con ellas, más de 300 millone
 
 Estas patologías suelen ser crónicas, progresivas, tienen origen genético y, con frecuencia son de carácter invalidante. Además, pueden afectar tanto a las capacidades físicas de las personas como a las mentales, conductuales y sensoriales. Normalmente comienzan a manifestarse de forma temprana, se estima que hasta en dos tercios de los pacientes los síntomas comienzan antes de los 2 años, aunque pueden aparecer a lo largo de toda la vida. 
 
-La Retinosis Pigmentaria o Retinitis Pigmentaria (\ac{RP}) es un conjunto de enfermedades hereditarias degenerativas que afectan a la retina, provocando una pérdida progresiva de la visión. La \ac{RP} es una de las Distrofias Hereditarias de Retina (\ac{DGR}) más comunes, pero existen otras como la enfermedad de Stargardt, la distrofia viteliforme de Best, y el síndrome de Usher. Como su nombre indica, esta enfermedad afecta directamente a la retina, es decir, la capa interna y posterior del ojo, sensible a la luz, donde se encuentra la mayor parte de los fotorreceptores. Estos fotorreceptores son células especializadas que convierten la luz en señales eléctricas, que luego se transmiten al cerebro a través del nervio óptico\cite{GAR}.
+La Retinosis Pigmentaria o Retinitis Pigmentaria (\ac{RP}) es un conjunto de enfermedades hereditarias degenerativas que afectan a la retina, provocando una pérdida progresiva de la visión. La \ac{RP} es una de las Distrofias Hereditarias de Retina (\ac{DHR}) más comunes, pero existen otras como la enfermedad de Stargardt, la distrofia viteliforme de Best, y el síndrome de Usher. Como su nombre indica, esta enfermedad afecta directamente a la retina, es decir, la capa interna y posterior del ojo, sensible a la luz, donde se encuentra la mayor parte de los fotorreceptores. Estos fotorreceptores son células especializadas que convierten la luz en señales eléctricas, que luego se transmiten al cerebro a través del nervio óptico\cite{GAR}.
 
 \begin{figure}[H]
    \centering
@@ -226,11 +230,11 @@ Desde que comencé mi formación en Ingeniería Informática, siempre he tenido 
 Siguiendo estos objetivos, y gracias al proyecto conjunto del Instituto VRAIN con el Grupo de Investigación del \ac{IIS} La Fe de Biomedicina Molecular, Celular y Genómica, he tenido la oportunidad de formarme en diversas áreas y aplicar mis conocimientos técnicos a una dimensión ética y social. Por esta razón, considero que mejorar la calidad de vida de pacientes mediante herramientas que ayuden a investigadores y personal sanitario en el diagnóstico es una de las principales motivaciones que me impulsa en la realización de este proyecto. 
 
 \subsection{Motivación profesional}
-Las distrofias hereditarias de retina (\ac{DGR}) constituyen un conjunto de enfermedades genéticas que afectan a la estructura y función de la retina, llevando progresivamente a la pérdida de visión, en muchos casos hasta alcanzar la ceguera legal. A pesar de ser consideradas enfermedades raras, su impacto es profundo y duradero, no solo desde el punto de vista funcional, sino también psicológico, afectando significativamente la calidad de vida de quienes las padecen\cite{STO}.
+Las distrofias hereditarias de retina (\ac{DHR}) constituyen un conjunto de enfermedades genéticas que afectan a la estructura y función de la retina, llevando progresivamente a la pérdida de visión, en muchos casos hasta alcanzar la ceguera legal. A pesar de ser consideradas enfermedades raras, su impacto es profundo y duradero, no solo desde el punto de vista funcional, sino también psicológico, afectando significativamente la calidad de vida de quienes las padecen\cite{STO}.
 
 Actualmente, no existe ningún tratamiento curativo, aunque se están explorando alternativas terapéuticas como las que se describen en la sección 2 de esta memoria, pero aún se encuentran en fase experimental. En este contexto, el diagnóstico genético tiene un papel fundamental en la orientación médica y la inclusión del paciente en ensayos clínicos\cite{HAN}.
 
-Uno de los principales desafíos en el estudio genético de las distrofias hereditarias de retina (\ac{DGR}) radica en la gestión y análisis de la enorme cantidad de variantes obtenidas a partir de técnicas como la secuenciación del exoma completo (\ac{WES}). Aunque se aplican filtros por frecuencia poblacional o predictores del impacto funcional, el volumen de información sigue siendo elevado, lo que dificulta alcanzar un diagnóstico genético preciso\cite{DEC}.
+Uno de los principales desafíos en el estudio genético de las distrofias hereditarias de retina (\ac{DHR}) radica en la gestión y análisis de la enorme cantidad de variantes obtenidas a partir de técnicas como la secuenciación del exoma completo (\ac{WES}). Aunque se aplican filtros por frecuencia poblacional o predictores del impacto funcional, el volumen de información sigue siendo elevado, lo que dificulta alcanzar un diagnóstico genético preciso\cite{DEC}.
 
 En este trabajo se propone un enfoque complementario, basado en el uso de modelos computacionales que aplican principios de la teoría de la información y fuentes de Markov para analizar la secuencia genómica antes y después de la introducción de mutaciones. A través de métricas como la entropía y la densidad mutacional, se busca detectar alteraciones estructurales o funcionales que puedan asociarse con variantes patológicas. Esta estrategia no solo contribuye al desarrollo de nuevas herramientas de apoyo al diagnóstico, sino que también tiene una dimensión humana relevante: mejorar el acceso a un diagnóstico certero, lo que representa un paso fundamental para que los pacientes y sus familias encuentren respuestas, orientación clínica y esperanza de acceso a futuras terapias. 
 
@@ -309,7 +313,7 @@ Debido a esta complejidad, se ha recurrido a técnicas más especificas como los
 
 \section{Inteligencia Artificial}
 
-En la actualidad se están utilizando métodos basados en inteligencia artificial (\ac{IA}) para la detección, diagnóstico y pronóstico de numerosas enfermedades en distintas áreas de la medicina, desde oncología hasta neurología o cardiología. Esto es debido a la capacidad de la \ac{IA} para trabajar con grandes volúmenes de datos e identificar en estos patrones complejos para generar predicciones con una alta precisión\cite{FER}. No obstante, su desarrollo para las distrofias hereditarias de retina (\ac{DGR}), específicamente la Retinosis Pigmentaria (\ac{RP}) todavía está en una fase temprana.
+En la actualidad se están utilizando métodos basados en inteligencia artificial (\ac{IA}) para la detección, diagnóstico y pronóstico de numerosas enfermedades en distintas áreas de la medicina, desde oncología hasta neurología o cardiología. Esto es debido a la capacidad de la \ac{IA} para trabajar con grandes volúmenes de datos e identificar en estos patrones complejos para generar predicciones con una alta precisión\cite{FER}. No obstante, su desarrollo para las distrofias hereditarias de retina (\ac{DHR}), específicamente la Retinosis Pigmentaria (\ac{RP}) todavía está en una fase temprana.
 
 \subsection{Aplicaciones de Machine Learning}
 
@@ -319,7 +323,7 @@ Inspirado en el cerebro humano, el aprendizaje profundo (Deep Learning) ha sido 
 
 En un estudio reciente, se utilizaron tres modelos preentrenados; Inception-v3, ResNet-50 y VGG-19, para clasificar imágenes retinianas asociadas a diferentes genes relacionados con la retinosis pigmentaria. Tras un preprocesamiento exhaustivo que incluyó técnicas de class balancing y boosting para corregir la variabilidad genética, los modelos obtuvieron precisiones superiores al 80\% en los datos de training\cite{FER}. Sin embargo, al aplicar estos modelos a datos de testing, las tasas de precisión cayeron a un 54\%, 56\% y 54\% respectivamente, resultados claramente insuficientes para garantizar un diagnóstico clínico fiable debido a la elevada tasa de error.
 
-Los estudios de \ac{IA} disponibles, como el mencionado anteriormente, que buscan la detección, clasificación y predicción de \ac{DGR}, siguen siendo en su mayoría retrospectivos e incluyen un número relativamente limitado de pacientes debido a su escasez\cite{ISS}. Esto pone de manifiesto la necesidad de continuar optimizando las metodologías empleadas para alcanzar niveles de exactitud que resulten aceptables en el ámbito médico.
+Los estudios de \ac{IA} disponibles, como el mencionado anteriormente, que buscan la detección, clasificación y predicción de \ac{DHR}, siguen siendo en su mayoría retrospectivos e incluyen un número relativamente limitado de pacientes debido a su escasez\cite{ISS}. Esto pone de manifiesto la necesidad de continuar optimizando las metodologías empleadas para alcanzar niveles de exactitud que resulten aceptables en el ámbito médico.
 
 \subsection{Aplicaciones de Teoría de la Información y Fuentes de Markov}
 
@@ -344,9 +348,9 @@ Sin embargo, para que estas terapias sean verdaderamente efectivas, es esencial 
 
 \section{Conceptos básicos de genética y mutaciones}
 
-En el núcleo de cada célula humana se encuentra el ADN, que contiene toda la información genética necesaria para el funcionamiento y desarrollo del organismo. El ADN está formado por una cadena de nucleótidos, que son las unidades básicas del material genético. Cada nucleótido se compone de tres partes: un grupo fosfato, un azúcar (desoxirribosa en el caso del ADN) y una base nitrogenada.
+En el núcleo de cada célula humana se encuentra el \ac{ADN}, que contiene toda la información genética necesaria para el funcionamiento y desarrollo del organismo. El \ac{ADN} está formado por una cadena de nucleótidos, que son las unidades básicas del material genético. Cada nucleótido se compone de tres partes: un grupo fosfato, un azúcar (desoxirribosa en el caso del ADN) y una base nitrogenada.
 
-Las bases nitrogenadas son moléculas orgánicas que contienen nitrógeno y que se agrupan en dos tipos principales: purinas y pirimidinas. En el ADN existen cuatro bases nitrogenadas: adenina (A) y guanina (G), que son purinas; y citosina (C) y timina (T), que son pirimidinas. Estas bases se emparejan de forma complementaria (A con T y C con G), lo que permite la formación de la estructura de doble hélice característica del ADN\cite{GEN}.
+Las bases nitrogenadas son moléculas orgánicas que contienen nitrógeno y que se agrupan en dos tipos principales: purinas y pirimidinas. En el \ac{ADN} existen cuatro bases nitrogenadas: adenina (A) y guanina (G), que son purinas; y citosina (C) y timina (T), que son pirimidinas. Estas bases se emparejan de forma complementaria (A con T y C con G), lo que permite la formación de la estructura de doble hélice característica del \ac{ADN}\cite{GEN}.
 
 
 \begin{figure}[H]
@@ -356,17 +360,17 @@ Las bases nitrogenadas son moléculas orgánicas que contienen nitrógeno y que 
    \label{fig:etiqueta_opcional1}
 \end{figure}
 
-Sin embargo, el ADN no actúa directamente para realizar funciones celulares. En su lugar, esa información debe ser primero transcrita en moléculas de ARN (en este la timina se sustituye por uracilo, otra pirimidina), las cuales desempeñan roles clave en la expresión génica. Este proceso, conocido como transcripción, da lugar a diferentes tipos de ARN, que luego participan en distintos mecanismos celulares.
+Sin embargo, el \ac{ADN} no actúa directamente para realizar funciones celulares. En su lugar, esa información debe ser primero transcrita en moléculas de \ac{ARN} (en este la timina se sustituye por uracilo, otra pirimidina), las cuales desempeñan roles clave en la expresión génica. Este proceso, conocido como transcripción, da lugar a diferentes tipos de \ac{ARN}, que luego participan en distintos mecanismos celulares.
 
-Existen dos tipos principales de transcritos que resultan de este proceso: el ARN mensajero (ARNm), que lleva la información del ADN a los ribosomas para la síntesis de proteínas, y el ARN no codificante (ARNnc), que, aunque no se traduce en proteínas, cumple funciones esenciales como la regulación génica, la modificación del ARN, la estructura de los ribosomas y otras tareas fundamentales para el control celular\cite[p.~254-300]{WAT}. 
+Existen dos tipos principales de transcritos que resultan de este proceso: el \ac{ARN} mensajero (\ac{ARN}m), que lleva la información del \ac{ADN} a los ribosomas para la síntesis de proteínas, y el \ac{ARN} no codificante (ARNnc), que, aunque no se traduce en proteínas, cumple funciones esenciales como la regulación génica, la modificación del \ac{ARN}, la estructura de los ribosomas y otras tareas fundamentales para el control celular\cite[p.~254-300]{WAT}. 
 
-El ARN mensajero (ARNm) actúa como intermediario entre el ADN y las proteínas de la siguiente manera: mediante el proceso de traducción, los ribosomas convierten cada molécula de ARNm en una proteína, es decir, en una secuencia de aminoácidos. Cada proteína adopta una estructura tridimensional compleja y funciones específicas. Gracias a la interacción entre el ADN, ARN y proteínas, el genoma es capaz de regular qué células deben crecer, morir y cómo se estructuran, entre otras funciones\cite{RIN}. 
+El ARN mensajero (ARNm) actúa como intermediario entre el \ac{ADN} y las proteínas de la siguiente manera: mediante el proceso de traducción, los ribosomas convierten cada molécula de \ac{ARN}m en una proteína, es decir, en una secuencia de aminoácidos. Cada proteína adopta una estructura tridimensional compleja y funciones específicas. Gracias a la interacción entre el ADN, \ac{ARN} y proteínas, el genoma es capaz de regular qué células deben crecer, morir y cómo se estructuran, entre otras funciones\cite{RIN}. 
 
 
 Por esta razón, cada individuo presenta un genoma ligeramente distinto al resto. Estas diferencias son conocidas como variaciones o mutaciones genómicas, y pueden suponer variaciones de un único nucleótido o múltiples nucleótidos. Estos cambios influyen en el fenotipo del individuo y también pueden ser responsables de ciertas enfermedades. 
 
 \begin{itemize}
-   \item SNV: sustitución de una sola base del ADN por otra. Es el tipo más común de variación genética en el genoma humano. 
+   \item SNV: sustitución de una sola base del \ac{ADN} por otra. Es el tipo más común de variación genética en el genoma humano. 
    \begin{itemize}
       \item Sinónima: La sustitución no cambia el aminoácido codificado por el codón, debido a la degeneración del código genético. No suele tener efecto funcional, aunque puede afectar la eficiencia de traducción o el splicing. 
       \item No sinónima: Cambia el aminoácido codificado. Esta a su vez se subdivide en Missense (se sustituye un aminoácido por otro, por lo que puede alterar la función o estructura de la proteína) y Nonsense (introduce un codón de parada prematuro, truncando la proteína, y esta normalmente acaba inactiva o no funcional). 
@@ -377,11 +381,11 @@ Por esta razón, cada individuo presenta un genoma ligeramente distinto al resto
       \item In-frame \ac{INDEL}: El número de nucleótidos es múltiplo de 3. Esto afecta uno o más codones completos, pero no altera el marco de lectura. Puede tener o no efecto funcional. 
       \item Frameshift \ac{INDEL}: El número de nucleótidos no es múltiplo de 3, por lo que altera el marco de lectura de todo el gen a partir del punto del \ac{INDEL}, generando proteínas aberrantes y normalmente no funcionales. 
    \end{itemize}
-   \item Copy Number Variation (\ac{CNV}): Amplificaciones o deleciones de segmentos largos del ADN. Pueden incluir genes completos o regiones reguladoras. Pueden estar relacionadas con la variabilidad fenotípica, trastornos del desarrollo y enfermedades neuropsiquiátricas\cite{ZHA}.
+   \item Copy Number Variation (\ac{CNV}): Amplificaciones o deleciones de segmentos largos del \ac{ADN}. Pueden incluir genes completos o regiones reguladoras. Pueden estar relacionadas con la variabilidad fenotípica, trastornos del desarrollo y enfermedades neuropsiquiátricas\cite{ZHA}.
    \item Structural Variation (\ac{SV}): Alteraciones grandes en la estructura del genoma que incluyen inversiones, translocaciones, inserciones o deleciones mayores.
    \begin{itemize}
       \item Inversiones: Un segmento se invierte dentro del mismo cromosoma. 
-      \item Translocaciones: Fragmentos de ADN se trasladan a otras posiciones o cromosomas.
+      \item Translocaciones: Fragmentos de \ac{ADN} se trasladan a otras posiciones o cromosomas.
       \item Grandes deleciones/duplicaciones: afectan múltiples genes/regiones. 
    \end{itemize}
 \end{itemize}
@@ -391,7 +395,7 @@ Por esta razón, cada individuo presenta un genoma ligeramente distinto al resto
 
 Las tecnologías de secuenciación de nueva generación (NGS) son muy utilizadas hoy en día en investigación genómica y biomédica. Para facilitar el análisis y transferencia de datos, se han definido diferentes formatos de archivos estándar. 
 
-Cuando se secuencia una muestra biológica mediante un sistema de NGS, se generan pequeños fragmentos de ADN o ARN que representan secuencias del genoma, conocidos como lecturas. Estas lecturas se almacenan en archivos de lectura cruda (raw read files). Los formatos más comunes son: \ac{FASTA}, fastq y fasta.gz. 
+Cuando se secuencia una muestra biológica mediante un sistema de NGS, se generan pequeños fragmentos de \ac{ADN} o \ac{ARN} que representan secuencias del genoma, conocidos como lecturas. Estas lecturas se almacenan en archivos de lectura cruda (raw read files). Los formatos más comunes son: \ac{FASTA}, fastq y fasta.gz. 
 
 Después, esas lecturas deben ser alineadas con el genoma de referencia (como el genoma humano), y el resultado de este alineamiento se guarda en archivos SAM (Sequence Alignment Map) o BAM (Binary Alignment Map). 
 
@@ -407,7 +411,7 @@ En este proyecto, nos enfocaremos principalmente en dos de estos formatos:
 
 \subsection{FASTA}
 
-El formato \ac{FASTA} es un formato de texto estándar para representar secuencias biológicas como ADN, ARN y proteínas mediante letras. Permite incluir nombres y comentarios de las secuencias. Es simple y permite la manipulación de secuencias usando herramientas de procesamiento de texto\cite{JAV}. Un archivo \ac{FASTA} consta de una o varias secuencias estructuradas de la siguiente manera: una línea de encabezado que debe comenzar con el carácter ‘>’ seguido de un identificador único de secuencia (SeqID), y la secuencia de nucleótidos que puede estar compuesta por una o varias líneas \cite{FAS}.
+El formato \ac{FASTA} es un formato de texto estándar para representar secuencias biológicas como \ac{ADN}, \ac{ARN} y proteínas mediante letras. Permite incluir nombres y comentarios de las secuencias. Es simple y permite la manipulación de secuencias usando herramientas de procesamiento de texto\cite{JAV}. Un archivo \ac{FASTA} consta de una o varias secuencias estructuradas de la siguiente manera: una línea de encabezado que debe comenzar con el carácter ‘>’ seguido de un identificador único de secuencia (SeqID), y la secuencia de nucleótidos que puede estar compuesta por una o varias líneas \cite{FAS}.
 
 \begin{table}[H]
    \centering
@@ -428,7 +432,7 @@ Gracias a su estructura sencilla y la compatibilidad con la mayoría de las herr
 
 \subsection{VCF}
 
-\ac{VCF} es un formato de archivo de texto utilizado en bioinformática específicamente diseñado para almacenar información sobre variantes genómicas, detectadas mediante procesos de secuenciación del ADN. Se trata de un estándar utilizado en múltiples proyectos genómicos a gran escala, como es el 1000 Genome Project\cite{AUT}. Esto es debido a que se trata de un archivo muy estructurado y con capacidad de representar de manera clara y eficaz las variaciones observadas en una o varias muestras, y su facil escalabilidad\cite{EMB}.
+\ac{VCF} es un formato de archivo de texto utilizado en bioinformática específicamente diseñado para almacenar información sobre variantes genómicas, detectadas mediante procesos de secuenciación del \ac{ADN}. Se trata de un estándar utilizado en múltiples proyectos genómicos a gran escala, como es el 1000 Genome Project\cite{AUT}. Esto es debido a que se trata de un archivo muy estructurado y con capacidad de representar de manera clara y eficaz las variaciones observadas en una o varias muestras, y su facil escalabilidad\cite{EMB}.
 
 Dado que los archivos \ac{VCF} estan diseñados para albergar una gran cantidad de información, existe un formato binario alternativo llamado BCF (Binary Call Format) para facilitar su almacenamiento, transferencia y análisis computacional, ya que es una versión comprimida del anterior. 
 
@@ -510,7 +514,7 @@ La entropía se interpreta como el número promedio de bits necesarios para codi
    \item Entropía mínima: si hay certeza de ocurrencia de un evento, es decir, tiene probabilidad 1 y por lo tanto el resto 0, la entropía vale 0.
 \end{itemize}
  
-En el contexto de este Trabajo de Fin de Grado, esta idea se aplica a secuencias de ADN, donde cada símbolo representa una base nitrogenada (Adenina, Citosina, Timina y Guanina) y la probabilidad de ocurrencia de cada una se mide mediante la frecuencia relativa en una región determinada del genoma. Por ejemplo, calcular la entropía de un conjunto de k-mers en una secuencia de ADN podría ayudar a identificar regiones altamente conservadas o variables. Estas regiones pueden correlacionarse con funciones biológicas importantes, como promotores, regiones reguladoras, o sitios de mutación frecuentes. 
+En el contexto de este Trabajo de Fin de Grado, esta idea se aplica a secuencias de \ac{ADN}, donde cada símbolo representa una base nitrogenada (Adenina, Citosina, Timina y Guanina) y la probabilidad de ocurrencia de cada una se mide mediante la frecuencia relativa en una región determinada del genoma. Por ejemplo, calcular la entropía de un conjunto de k-mers en una secuencia de \ac{ADN} podría ayudar a identificar regiones altamente conservadas o variables. Estas regiones pueden correlacionarse con funciones biológicas importantes, como promotores, regiones reguladoras, o sitios de mutación frecuentes. 
 
 \subsection{Información}
 
@@ -527,7 +531,7 @@ Esta relación se conoce como información mutua y cuantifica la cantidad de inf
 
 “Una fuente de información con memoria nula se define como un par (S,P) donde la emisión de cada símbolo \( s_i \) sólo depende de su probabilidad \( p(s_i) \). Una fuente de información con memoria (de orden \( m \)) se define como un par (S,P) de forma que la emisión de cada símbolo \( s_i \) depende de los \( m \) símbolos emitidos con anterioridad, con una probabilidad condicional \( p(s_i \mid s_{i1}, s_{i2}, \dots, s_{im}) \).”\cite[p.~19]{ROB}
 
-Las fuentes de información básicas no tienen memoria, es decir, en el cálculo de la probabilidad de una determinada base no se tienen en cuenta las bases anteriores. Sin embargo, en genómica, el ADN no es del todo aleatorio, ciertas bases tienden a seguir a otras con mayor probabilidad, lo que sugiere que un modelo de Fuente de Markov puede ser más realista. 
+Las fuentes de información básicas no tienen memoria, es decir, en el cálculo de la probabilidad de una determinada base no se tienen en cuenta las bases anteriores. Sin embargo, en genómica, el \ac{ADN} no es del todo aleatorio, ciertas bases tienden a seguir a otras con mayor probabilidad, lo que sugiere que un modelo de Fuente de Markov puede ser más realista. 
 
 \begin{figure}[H]
    \centering
@@ -548,7 +552,7 @@ Una Fuente de Markov (o fuente de información con memoria) se define como un si
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.9\textwidth]{entropia_markov_ADN.png}
-   \caption{Ejemplo de cálculo de entropía a partir de una Fuente de Markov en cadenas de ADN.}
+   \caption{Ejemplo de cálculo de entropía a partir de una Fuente de Markov en cadenas de \ac{ADN}.}
    \label{fig:etiqueta_opcional4}
 \end{figure}
 
@@ -573,7 +577,7 @@ Como gestor de entornos y dependencias se emplea Anaconda, una distribución de 
 
 \subsubsection{Archivos FASTA}
 
-El archivo \ac{FASTA} es un formato estándar utilizado para almacenar secuencias de ADN, ARN o proteínas. Este formato de texto simple presenta las secuencias de interés precedidas por una línea de cabecera que comienza con el carácter > seguido de un identificador o descripción de la secuencia. 
+El archivo \ac{FASTA} es un formato estándar utilizado para almacenar secuencias de \ac{ADN}, \ac{ARN} o proteínas. Este formato de texto simple presenta las secuencias de interés precedidas por una línea de cabecera que comienza con el carácter > seguido de un identificador o descripción de la secuencia. 
 
 En el presente trabajo, los archivos \ac{FASTA} utilizados deben corresponder al ensamblaje genómico GRCh37.p13, disponible en la base de datos \ac{NCBI} (National Center for Biotechnology Information). Cada archivo \ac{FASTA} corresponde a un cromosoma específico de los 46 cromosomas principales del genoma humano. 
 
@@ -623,7 +627,7 @@ Durante el desarrollo de este \ac{TFG}, ha sido necesario apoyarse en algunas he
 
 \section{Hipótesis}
 
-La hipótesis de partida se basa en la idea de que la entropía de una secuencia de ADN experimenta cambios significativos en las regiones donde puede haber mutaciones patogénicas. Estas regiones de valores anómalos entropía podrían coincidir con las zonas funcionales asociadas a enfermedades raras. 
+La hipótesis de partida se basa en la idea de que la entropía de una secuencia de \ac{ADN} experimenta cambios significativos en las regiones donde puede haber mutaciones patogénicas. Estas regiones de valores anómalos entropía podrían coincidir con las zonas funcionales asociadas a enfermedades raras. 
 
 El análisis se estructura en tres casos de estudio diferentes, cada uno enfocado a detectar patrones distintos en la secuencia:
 
@@ -1099,7 +1103,7 @@ En cambio, en la segunda gráfica, correspondiente a la entropía basada en fuen
       \label{fig:etiqueta_opcional44}
 \end{figure}
 
-Pasando a los autómatas generados, tanto los estados iniciales y finales, como las transiciones ahora estan formados por más nucleótidos. Además, el número de estados y transiciones ha aumentado considerablemente con respecto a los autómatas generados anteriormente, ya que al incrementar el orden de la fuente de Markov, los estados pasan a representar combinaciones más largas de nucleótidos. Con un orden mayor, los estados representan contextos más largos y específicos dentro de la secuencia de ADN. Esto permite modelar dependencias más complejas entre los nucleótidos.
+Pasando a los autómatas generados, tanto los estados iniciales y finales, como las transiciones ahora estan formados por más nucleótidos. Además, el número de estados y transiciones ha aumentado considerablemente con respecto a los autómatas generados anteriormente, ya que al incrementar el orden de la fuente de Markov, los estados pasan a representar combinaciones más largas de nucleótidos. Con un orden mayor, los estados representan contextos más largos y específicos dentro de la secuencia de \ac{ADN}. Esto permite modelar dependencias más complejas entre los nucleótidos.
 
 
 \section{Experimentos con cromosoma X}
@@ -1149,7 +1153,7 @@ El presente Trabajo de Fin de Grado ha explorado el uso de herramientas basadas 
 
 Uno de los objetivos principales ha sido garantizar una correcta integración de las variantes sobre la secuencia de referencia. Para ello, se han empleado herramientas bioinformáticas como Biopython y vcfpy que permiten trabajar con los formatos de los archivos proporcionados. La correcta aplicación de las mutaciones sobre la secuencia de referencia se ha validado al observar que, en las ejecuciones realizadas en la sección de experimentos, el archivo de mutaciones no aplicadas resultó vacío, lo que indica que no se han producido conflictos entre los datos. Esto da fiabilidad al análisis y refuerza el potencial del sistema para ser usado con datos clínicos reales.
 
-Sobre la secuencia mutada y la original, se han aplicado diferentes enfoques de análisis complementarios. En primer lugar, se ha calculado la entropía en ventanas deslizantes a lo largo de la secuencia para detectar variaciones estadísticas que indiquen cambios en la distribución de los nucleótidos, lo cual podría estar relacionado con regiones funcionales o mutaciones relevantes. Posteriormente, se ha utilizado un modelo de fuente de Markov de orden k para construir un autómata que representa las probabilidades de transición entre distintos estados definidos por k-mers, permitiendo así un análisis más profundo de la estructura secuencial del ADN. Además, se ha incorporado un análisis de densidad de mutaciones mediante el uso de ventanas centradas en cada variante, con el objetivo de localizar zonas con una alta concentración de mutaciones en el genoma.
+Sobre la secuencia mutada y la original, se han aplicado diferentes enfoques de análisis complementarios. En primer lugar, se ha calculado la entropía en ventanas deslizantes a lo largo de la secuencia para detectar variaciones estadísticas que indiquen cambios en la distribución de los nucleótidos, lo cual podría estar relacionado con regiones funcionales o mutaciones relevantes. Posteriormente, se ha utilizado un modelo de fuente de Markov de orden k para construir un autómata que representa las probabilidades de transición entre distintos estados definidos por k-mers, permitiendo así un análisis más profundo de la estructura secuencial del \ac{ADN}. Además, se ha incorporado un análisis de densidad de mutaciones mediante el uso de ventanas centradas en cada variante, con el objetivo de localizar zonas con una alta concentración de mutaciones en el genoma.
 
 Con el fin de facilitar el uso de esta herramienta a usuarios que no poseen conocimientos avanzados en programación o informática, se ha desarrollado una interfaz gráfica utilizando la librería Streamlit. Esta interfaz permite cargar los archivos genómicos, ajustar los parámetros del análisis (como el tamaño de los k-mers, el orden de Markov o el tamaño de las ventanas), ejecutar el análisis completo, y visualizar los resultados en forma de gráficos. Además, ofrece la posibilidad de descargar los archivos resultantes (como los autómatas generados o los informes de mutaciones no aplicadas) para su posterior estudio. Esta capa de abstracción permite que investigadores biomédicos, técnicos de laboratorio o personal sanitario puedan utilizar la herramienta sin necesidad de interactuar directamente con el código, lo que representa un paso importante hacia la usabilidad en contextos clínicos reales.
 
@@ -1181,7 +1185,7 @@ Aunque en este proyecto se ha utilizado la entropía como herramienta principal 
 \begin{itemize}
    \item Divergencia de Kullback-Leibler (KL): es una métrica que se utiliza para comparar dos distribuciones. Sobre este trabajo, se podría aplicar para medir las diferencias entre la secuencia original y la mutada, cuantificando cuánto difieren ambas entre sí\cite{BUH}.
    \item Información mutua: mide la cantidad de información que dos variables aleatorias se proporcionan mutuamente. La ambigüedad sobre Y cuando se desconoce X es H(Y). Si se conoce X, la ambigüedad sobre Y disminuye a \( H(Y \mid X) \). Puede emplearse para medir la dependencia entre posiciones del genoma o entre ventanas adyacentes, lo que podría ayudar a detectar correlaciones estructurales\cite{HUS}.
-   \item Capacidad del canal: se refiere a la cantidad máxima de información que puede ser transmitida a través de él de forma confiable. Como experimento, se podría estudiar cuánta información puede transmitir una región del ADN, ya que valores altos podrían indicar zonas funcionalmente importantes\cite{BLA}.\\
+   \item Capacidad del canal: se refiere a la cantidad máxima de información que puede ser transmitida a través de él de forma confiable. Como experimento, se podría estudiar cuánta información puede transmitir una región del \ac{ADN}, ya que valores altos podrían indicar zonas funcionalmente importantes\cite{BLA}.\\
 \end{itemize}
 
 Estas métricas podrían complementar o incluso superar a la entropía en algunos casos, como por ejemplo para comparar distribuciones o medir la cantidad de redundancia en el genoma.\\\\\\
@@ -1543,10 +1547,6 @@ Finalmente, el uso de herramientas computacionales para la identificación de mu
 %                               ALTRES  APÈNDIXS                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\chapter{??? ???????????? ????}
-
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
 
 
 

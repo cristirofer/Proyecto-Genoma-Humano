@@ -5,11 +5,11 @@
 \babel@toc {spanish}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{\'{I}ndice general}{\es@scroman {v}}{section*.5}%
-\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {vii}}{section*.7}%
-\contentsline {chapter}{\'Indice de tablas}{\es@scroman {vii}}{section*.8}%
+\contentsline {chapter}{\'{I}ndice general}{\es@scroman {v}}{section*.7}%
+\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {vii}}{section*.9}%
+\contentsline {chapter}{\'Indice de tablas}{\es@scroman {vii}}{section*.11}%
 \noindent \hrulefill \par 
-\contentsline {chapter}{Lista de abreviaturas}{1}{chapter*.11}%
+\contentsline {chapter}{Lista de abreviaturas}{1}{chapter*.14}%
 \contentsline {chapter}{\numberline {1}Introducción}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Contexto}{4}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Motivación}{6}{section.1.2}%
@@ -43,16 +43,16 @@
 \contentsline {section}{\numberline {4.1}Material y herramientas}{21}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Entorno de Trabajo}{21}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Archivos necesarios}{21}{subsection.4.1.2}%
-\contentsline {subsubsection}{Archivos FASTA}{21}{subsubsection*.27}%
-\contentsline {subsubsection}{Archivos VCF}{21}{subsubsection*.29}%
+\contentsline {subsubsection}{Archivos FASTA}{21}{subsubsection*.31}%
+\contentsline {subsubsection}{Archivos VCF}{21}{subsubsection*.33}%
 \contentsline {subsection}{\numberline {4.1.3}Librerías utilizadas}{22}{subsection.4.1.3}%
 \contentsline {section}{\numberline {4.2}Hipótesis}{23}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Caso 1: Cálculo de entropía en ventanas deslizantes}{23}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Caso 2: Cálculo de densidad de mutaciones}{23}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Caso 3: Cálculo de entropía basada en probabilidades condicionales (Modelo de Markov)}{24}{subsection.4.2.3}%
-\contentsline {subsubsection}{Creación del Autómata}{24}{subsubsection*.31}%
-\contentsline {subsubsection}{Cálculo de Probabilidades de Transición}{24}{subsubsection*.32}%
-\contentsline {subsubsection}{Cálculo de Entropía Condicional}{25}{subsubsection*.33}%
+\contentsline {subsubsection}{Creación del Autómata}{24}{subsubsection*.35}%
+\contentsline {subsubsection}{Cálculo de Probabilidades de Transición}{24}{subsubsection*.36}%
+\contentsline {subsubsection}{Cálculo de Entropía Condicional}{25}{subsubsection*.37}%
 \contentsline {section}{\numberline {4.3}Arquitectura del sistema}{25}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Carga de Datos}{25}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Análisis de Secuencia Genómica}{25}{subsection.4.3.2}%
@@ -81,8 +81,7 @@
 \contentsline {subsection}{\numberline {7.1.1}Ampliación a otras enfermedades raras}{50}{subsection.7.1.1}%
 \contentsline {subsection}{\numberline {7.1.2}Aplicación de técnicas de Machine Learning}{50}{subsection.7.1.2}%
 \contentsline {subsection}{\numberline {7.1.3}Exploración de otras métricas de Teoría de la Información}{51}{subsection.7.1.3}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{53}{chapter*.50}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{53}{chapter*.54}%
 \noindent \hrulefill \par 
-\appendicesname \par 
+\appendixname \par 
 \contentsline {chapter}{\numberline {A}Objetivos de Desarrollo Sostenible}{57}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}??? ???????????? ????}{59}{appendix.Alph2}%

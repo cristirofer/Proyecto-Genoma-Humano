@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1748800495.20506 "/home/crist/TFG/tfgetsinf/plantillatfg.tex" "plantillatfg.pdf" "plantillatfg" 1748800498.87462 0
+["pdflatex"] 1748813721.3984 "/home/crist/TFG/tfgetsinf/plantillatfg.tex" "plantillatfg.pdf" "plantillatfg" 1748813725.44947 0
   "/etc/texmf/web2c/texmf.cnf" 1742933262.91717 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/crist/TFG/tfgetsinf/plantillatfg.tex" 1748800487.4106 125216 6ddf7988a98703caad5d82f1f0d5d772 ""
+  "/home/crist/TFG/tfgetsinf/plantillatfg.tex" 1748813713.04266 125387 a07a58906360704ce616c819773438be ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm" 1136768653 2796 d37c29814a6717720ee1a7c9a0b2c3b8 ""
@@ -208,12 +208,12 @@
   "logo-etsinf.pdf" 1742933374.29487 21439 2f398dd99afcba2884b0e7497ed2b108 ""
   "logo-upv.pdf" 1742933374.29487 53878 e68480ee013a972986b057b59b03579b ""
   "mut_exp1.png" 1748469358.70595 3726 9c11506e91bacda7dbd88bd11abf4ac1 ""
-  "plantillatfg.aux" 1748800498.71861 27373 fec0995895e7ebeab3691c623ac40eda "pdflatex"
-  "plantillatfg.lof" 1748800498.72661 3628 bb20afff4eae3e3dd937074de3c878f3 "pdflatex"
-  "plantillatfg.lot" 1748800498.72661 929 41a4ec2f82714706ce07018487dca12d "pdflatex"
-  "plantillatfg.out" 1748800498.72661 17017 789de951ded486bff4dbdd159b647b99 "pdflatex"
-  "plantillatfg.tex" 1748800487.4106 125216 6ddf7988a98703caad5d82f1f0d5d772 ""
-  "plantillatfg.toc" 1748800498.72661 7829 a2e5efdb06297c4a2b015c5ae8d8b3fe "pdflatex"
+  "plantillatfg.aux" 1748813725.2827 28393 e4736444d22a150d1cf846b0abfae301 "pdflatex"
+  "plantillatfg.lof" 1748813725.2947 3614 82dbc1da6ca77fac324f7b70cfdd7b2a "pdflatex"
+  "plantillatfg.lot" 1748813725.2947 909 7b237ea503330045c84d7c8f32f8b92a "pdflatex"
+  "plantillatfg.out" 1748813725.2947 16858 b9613029179a295edf47db7ed68bf05a "pdflatex"
+  "plantillatfg.tex" 1748813713.04266 125387 a07a58906360704ce616c819773438be ""
+  "plantillatfg.toc" 1748813725.2947 7745 7c08ed16ed141324badcacc8b06ad88c "pdflatex"
   "retina.jpg" 1748469358.74422 186143 31202da6c6f92419a46e4791a459dfdb ""
   "tfgetsinf.cls" 1742933374.29487 13289 71cd7a89e93672c9d59cf4ecccd71f95 ""
   (generated)
