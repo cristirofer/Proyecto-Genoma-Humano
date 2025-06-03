@@ -74,9 +74,9 @@
 % les paraules clau i el resum en els tres idiomes                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\keywords{retinosi pigmentària, dades genòmiques, Teoria de la informació, cadenes de Markov, predicció de mutacions, machine learning, entropia}           % Paraules clau
-         {retinosis pigmentaria, datos genómicos, Teoría de la información, cadenas de Markov, predicción de mutaciones, machine learning, entropía}        % Palabras clave  
-         {retinitis pigmentosa, genomic data, Information Theory, Markov chains, mutation prediction, machine learning, entropy}                            % Key words
+\keywords{retinosi pigmentària, anàlisi genòmic, teoria de la informació, fonts de Markov, entropia, variants genètiques, visualització de dades, fitxer VCF, k-mers, densitat de mutacions}             % Paraules clau
+         {retinosis pigmentaria, análisis genómico, teoría de la información, fuentes de Markov, entropía, variantes genéticas, visualización de datos, archivo VCF, k-mers, densidad de mutaciones}     % Palabras clave  
+         {retinitis pigmentosa, genomic analysis, information theory, Markov sources, entropy, genetic variants, data visualization, VCF file, k-mers, mutation density}                                 % Key words
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                              INICI DEL DOCUMENT                             %
@@ -89,31 +89,36 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}[spanish]
-   La \ac{RP}, una de las \ac{DHR} más frecuente, es conocida por una degradación progresiva en los fotorreceptores que termina por causar pérdida visual irreversible. Aún con los recientes avances en la secuenciación del genoma humano, el origen de esta condición sigue siendo un desafío debido a la amplia diversidad genética involucrada y la cantidad de genes relacionados con las \ac{DHR}.
+   Este Trabajo de Fin de Grado se ha centrado en el desarrollo de una herramienta computacional de análisis de secuencias genómicas basada en Teoría de la Información y modelos de fuentes de Markov, con el objetivo de estudiar cómo afectan ciertas mutaciones genéticas asociadas a enfermedades raras, en concreto la retinosis pigmentaria (RP). Para ello se han aplicado técnicas como el cálculo de entropía (tanto simple y como condicional), así como el análisis de densidad de mutaciones a lo largo del genoma. 
 
-   Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de Fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la \ac{RP}. Puesto que la \ac{RP} es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos.
+   El sistema ha sido diseñado con un enfoque modular, separando la lógica del análisis de la parte visual mediante una interfaz gráfica. Esta interfaz permite la carga de archivos genómicos, la configuración de parámetros clave para el análisis (tamaño de k-mer, orden de fuente de Markov, tamaño de ventana...), y la visualización clara de los resultados. De esta manera, se facilita su uso para personal clínico o investigador que no tiene por qué contar con conocimientos avanzados de programación. 
 
-   En vez de ello, este enfoque se centra en el análisis de regiones genómicas con elevada entropía y densidad de mutaciones, ya que estas áreas serían clave para detectar variantes con mayor probabilidad de estar vinculadas a la enfermedad.
+   A partir de los archivos con las secuencias de referencia obtenidos del NCBI y archivos VCF con mutaciones proporcionados por el IIS La Fe, esta herramienta es capaz de aplicar las mutaciones sobre la secuencia, construir autómatas de Markov y comparar las diferencias entre la versión original y la mutada. Los resultados muestran una alta correspondencia entre zonas con mayor densidad de mutaciones y valores anómalos de entropía, lo que podría ayudar a identificar zonas del genoma especialmente relevantes desde el punto de vista clínico. 
 
-   Para ello, se han empleado los datos genómicos del National Center for Biotechnology Information (NCBI) y archivos \ac{VCF} proporcionados por el Grupo de Investigación del \ac{IIS} La Fe de Biomedicina Molecular, Celular y Genómica. El propósito del estudio es profundizar en las características del genoma asociadas a la enfermedad y aportar nuevas maneras de optimizar el diagnóstico genético de la retinosis pigmentaria.
+   Este sistema no solo permite automatizar el análisis de grandes volúmenes de datos genéticos, sino que podría ser base para futuros proyectos y su incorporación al ámbito médico en contextos reales. 
    \\
    \\
 \end{abstract}
 \begin{abstract}[catalan]
-   La retinosi pigmentària (\ac{RP}) és una de les distròfies hereditàries de retina (\ac{DGR}) més comunes. Es caracteritza per una degeneració progressiva dels fotoreceptors que provoca una pèrdua de visió irreversible. Malgrat els avanços en la seqüenciació del genoma humà, l'origen d'aquesta malaltia continua sent incert a causa de la gran heterogeneïtat genètica de la patologia i la quantitat de gens associats a les \ac{DGR}.
 
-   En aquest Treball de Fi de Grau, que amplia el Treball de Fi de Màster d'Andrea Vañó Ribelles i Luis, es proposa la utilització d'eines de la Teoria de la Informació i models de Fonts de Markov per a l'anàlisi del genoma humà amb l'objectiu de predir possibles mutacions associades a la RP. Com que la RP és una malaltia rara i el nombre de persones afectades és reduït, les tècniques de machine learning no resulten prou efectives a causa de l'escassetat de dades per a entrenar models robustos. En lloc d’això, aquest enfocament se centra en l’anàlisi de regions genòmiques amb alta entropia i elevada densitat de mutacions, ja que aquestes zones poden ser clau per a identificar variants amb una major probabilitat d’estar relacionades amb la patologia.
+   Aquest Treball de Fi de Grau s'ha centrat en el desenvolupament d'una eina computacional per a l'anàlisi de seqüències genòmiques basada en la Teoria de la Informació i models de fonts de Markov, amb l'objectiu d'estudiar com afecten certes mutacions genètiques associades a malalties rares, concretament la retinosi pigmentària (RP). Per a això, s'han aplicat tècniques com el càlcul de l'entropia (tant simple com condicional), així com l'anàlisi de la densitat de mutacions al llarg del genoma. 
 
-   Per a dur a terme aquest estudi, s'utilitzaran dades genòmiques disponibles al National Center for Biotechnology Information (NCBI) i arxius \ac{VCF} proporcionats pel Grup d'Investigació de l'\ac{IIS} La Fe de Biomedicina Molecular, Cel·lular i Genòmica. L'objectiu d'aquest treball és aprofundir en el coneixement de les característiques del genoma associades a la malaltia i aportar noves estratègies que ajuden a optimitzar el diagnòstic genètic de la retinosi pigmentària.
+   El sistema ha sigut dissenyat amb un enfocament modular, separant la lògica de l'anàlisi de la part visual mitjançant una interfície gràfica. Aquesta interfície permet carregar fitxers genòmics, configurar paràmetres clau per a l'anàlisi (com la mida del k-mer, l'ordre de la font de Markov, o la mida de la finestra), i visualitzar els resultats de manera clara. Així es facilita el seu ús per a personal clínic o investigador que no tinga coneixements avançats en programació. 
+
+   A partir dels fitxers amb les seqüències de referència obtingudes del NCBI i dels fitxers VCF amb mutacions proporcionats per l'IIS La Fe, aquesta eina és capaç d'aplicar les mutacions sobre la seqüència, construir autòmats de Markov i comparar les diferències entre la versió original i la mutada. Els resultats mostren una alta correspondència entre zones amb major densitat de mutacions i valors anòmals d'entropia, la qual cosa podria ajudar a identificar àrees del genoma especialment rellevants des del punt de vista clínic. 
+
+   Aquest sistema no sols permet automatitzar l'anàlisi de grans volums de dades genètiques, sinó que també podria servir com a base per a futurs projectes i la seua integració en l'àmbit mèdic en contextos reals. 
    \\
    \\
 \end{abstract}
 \begin{abstract}[english]
-   Retinitis pigmentosa (\ac{RP}) is one of the most common hereditary retinal dystrophies (\ac{HRD}). It is characterized by the progressive degeneration of photoreceptors, leading to irreversible vision loss. Despite advances in human genome sequencing, the origin of this condition remains uncertain due to the high genetic heterogeneity of the disease and the large number of genes associated with HRD.
+   This Final Degree Project has focused on the development of a computational tool for genomic sequence analysis based on Information Theory and Markov source models, with the aim of studying how certain genetic mutations associated with rare diseases — specifically retinitis pigmentosa (RP) — affect the genome. To achieve this, techniques such as entropy calculation (both simple and conditional) and mutation density analysis across the genome have been applied. 
 
-   In this Bachelor's Thesis, which expands upon the Master's Thesis by Andrea Vañó Ribelles and Luis, the use of Information Theory tools and Markov Source models is proposed for the analysis of the human genome, with the aim of predicting possible mutations associated with \ac{RP}. Since \ac{RP} is a rare disease and the number of affected individuals is limited, machine learning techniques are not sufficiently effective due to the lack of data needed to train robust models. Instead, this approach focuses on the analysis of genomic regions with high entropy and a high density of mutations, as these areas may be key to identifying variants with a higher probability of being related to the pathology.
+   The system has been designed with a modular approach, separating the analysis logic from the visual layer using a graphical interface. This interface allows users to load genomic files, configure key analysis parameters (such as k-mer size, Markov model order, window size...), and clearly visualize the results. In doing so, it makes the tool accessible to clinical or research personnel without advanced programming knowledge. 
 
-   To achieve this, genomic data available from the National Center for Biotechnology Information (NCBI) and \ac{VCF} files provided by the Research Group of the \ac{IIS} La Fe in Molecular, Cellular and Genomic Biomedicine will be used. The purpose of this study is to deepen the understanding of the genomic features associated with the disease and to provide new strategies that help optimize the genetic diagnosis of retinitis pigmentosa.
+   Using reference sequence files from the NCBI and VCF files with mutations provided by the IIS La Fe, the tool can apply the mutations to the sequence, build Markov automata, and compare the differences between the original and mutated versions. The results show a high correlation between regions with higher mutation density and abnormal entropy values, which could help identify clinically relevant areas of the genome. 
+
+   This system not only enables the automation of large-scale genetic data analysis, but it could also serve as the foundation for future projects and its incorporation into real-world medical contexts. 
    \\
    \\
 \end{abstract}
@@ -141,6 +146,7 @@
   \acro{DHR}{Distrofias Hereditarias de Retina}
   \acro{DGR}{Distròfies Hereditàries de Retina}
   \acro{HRD}{Hereditary Retinal Dystrophies}
+  \acro{ML}{Machine Learning}
   \acro{VCF}{Variant Call Format}
   \acro{FASTA}{Fast-All (formato de secuencia biológica)}
   \acro{SNP}{Single Nucleotide Polymorphism}
@@ -170,7 +176,7 @@ La retinosis o retinitis pigmentaria (\ac{RP}), una de las distrofias hereditari
    \label{fig:etiqueta_opcional2}
 \end{figure}
 
-Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster (TFM) de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de Fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la \ac{RP}. Puesto que la \ac{RP} es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos. 
+Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster (TFM) de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la \ac{RP}. Puesto que la \ac{RP} es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning (\ac{ML}) no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos. 
 
  
 
@@ -188,7 +194,7 @@ Sin embargo, son muchas las personas que conviven con ellas, más de 300 millone
 
 Estas patologías suelen ser crónicas, progresivas, tienen origen genético y, con frecuencia son de carácter invalidante. Además, pueden afectar tanto a las capacidades físicas de las personas como a las mentales, conductuales y sensoriales. Normalmente comienzan a manifestarse de forma temprana, se estima que hasta en dos tercios de los pacientes los síntomas comienzan antes de los 2 años, aunque pueden aparecer a lo largo de toda la vida. 
 
-La Retinosis Pigmentaria o Retinitis Pigmentaria (\ac{RP}) es un conjunto de enfermedades hereditarias degenerativas que afectan a la retina, provocando una pérdida progresiva de la visión. La \ac{RP} es una de las Distrofias Hereditarias de Retina (\ac{DHR}) más comunes, pero existen otras como la enfermedad de Stargardt, la distrofia viteliforme de Best, y el síndrome de Usher. Como su nombre indica, esta enfermedad afecta directamente a la retina, es decir, la capa interna y posterior del ojo, sensible a la luz, donde se encuentra la mayor parte de los fotorreceptores. Estos fotorreceptores son células especializadas que convierten la luz en señales eléctricas, que luego se transmiten al cerebro a través del nervio óptico\cite{GAR}.
+La retinosis pigmentaria (\ac{RP}) es un conjunto de enfermedades hereditarias degenerativas que afectan a la retina, provocando una pérdida progresiva de la visión. La \ac{RP} es una de las Distrofias Hereditarias de Retina (\ac{DHR}) más comunes, pero existen otras como la enfermedad de Stargardt, la distrofia viteliforme de Best, y el síndrome de Usher. Como su nombre indica, esta enfermedad afecta directamente a la retina, es decir, la capa interna y posterior del ojo, sensible a la luz, donde se encuentra la mayor parte de los fotorreceptores. Estos fotorreceptores son células especializadas que convierten la luz en señales eléctricas, que luego se transmiten al cerebro a través del nervio óptico\cite{GAR}.
 
 \begin{figure}[H]
    \centering
@@ -240,7 +246,7 @@ En este trabajo se propone un enfoque complementario, basado en el uso de modelo
 
 \section{Objetivos}
 
-El objetivo principal de este Trabajo de Fin de Grado es proporcionar herramientas informáticas para el análisis genómico, en concreto aplicado a enfermedades raras como la Retinosis Pigmentaria (\ac{RP}). Para ello contamos con archivos que contienen información sobre mutaciones y secuencias completas del genoma, y se implementan modelos basados en Teoría de la Información y Fuentes de Markov, con el fin de identificar regiones genómicas relevantes y predecir mutaciones potencialmente patogénicas.
+El objetivo principal de este Trabajo de Fin de Grado es proporcionar herramientas informáticas para el análisis genómico, en concreto aplicado a enfermedades raras como la retinosis pigmentaria (\ac{RP}). Para ello contamos con archivos que contienen información sobre mutaciones y secuencias completas del genoma, y se implementan modelos basados en Teoría de la Información y fuentes de Markov, con el fin de identificar regiones genómicas relevantes y predecir mutaciones potencialmente patogénicas.
 
 \subsection{Procesamiento de archivos \ac{VCF} y secuencias genómicas}
 
@@ -252,15 +258,15 @@ Preguntas de Investigación:
 \item ¿Cómo se pueden integrar las trasformaciones necesarias en la secuencia de referencia de manera correcta y sin conflictos entre ellas?
 \end{itemize}
 
-\subsection{Aplicación de Teoría de la Información y Fuentes de Markov al análisis de secuencias genómicas }
+\subsection{Aplicación de Teoría de la Información y fuentes de Markov al análisis de secuencias genómicas }
 
-Utilizar modelos de Teoría de la Información y Fuentes de Markov para predecir el impacto de las mutaciones en la secuencia genómica y así detectar zonas con valores anómalos de entropía, o alta densidad de mutaciones, para su posterior estudio. 
+Utilizar modelos de Teoría de la Información y fuentes de Markov para predecir el impacto de las mutaciones en la secuencia genómica y así detectar zonas con valores anómalos de entropía, o alta densidad de mutaciones, para su posterior estudio. 
 
 Preguntas de Investigación: 
 \begin{itemize}
-\item ¿Qué diferencias se observan en los valores de entropía, tanto la simple como la realizada a partir de aplicar Fuentes de Markov, entre la secuencia original y la mutada? 
+\item ¿Qué diferencias se observan en los valores de entropía, tanto la simple como la realizada a partir de aplicar fuentes de Markov, entre la secuencia original y la mutada? 
 \item ¿Hay alguna correlación entre las zonas con alta densidad de mutaciones y los valores de entropía? 
-\item ¿Cómo es la estructura que presenta el autómata de transición generado a partir de Fuentes de Markov de orden k? 
+\item ¿Cómo es la estructura que presenta el autómata de transición generado a partir de fuentes de Markov de orden k? 
 \item ¿Cuáles son los valores óptimos de los parámetros para obtener resultados interesantes? 
 \end{itemize}
 
@@ -281,7 +287,7 @@ Proponer un nuevo enfoque de análisis genómico basado en la Teoría de la Info
 Preguntas de Investigación: 
 \begin{itemize}
 \item ¿Debe poder generalizarse el proyecto para otras patologías? 
-\item ¿Qué técnicas se podrían utilizar sobre los resultados obtenidos, como machine learning, para clasificar o encontrar patrones de mutaciones? 
+\item ¿Qué técnicas se podrían utilizar sobre los resultados obtenidos, como \ac{ML}, para clasificar o encontrar patrones de mutaciones? 
 \end{itemize}
 
 
@@ -307,13 +313,13 @@ El campo del análisis genómico de la retinosis pigmentaria (\ac{RP}) está ava
 
 \section{Métodos tradicionales}
 
-Los métodos tradicionales basados en sistemas de codificación médica como el ICD (International Classification of Diseases) y el SNOMED (Systematized Nomenclature of Medicine) han sido ampliamente utilizados en la medicina para clasificar enfermedades y registrar diagnósticos. Sin embargo, en el caso de enfermedades genéticas raras como la Retinosis Pigmentaria (\ac{RP}), estos sistemas de codificación presentan importantes limitaciones\cite{VER}. Esto es debido a que es una patología altamente heterogénea a nivel genético y clínico: existen numerosas mutaciones responsables y los síntomas pueden evolucionar de formas muy diversas entre pacientes\cite{HAR}. 
+Los métodos tradicionales basados en sistemas de codificación médica como el ICD (International Classification of Diseases) y el SNOMED (Systematized Nomenclature of Medicine) han sido ampliamente utilizados en la medicina para clasificar enfermedades y registrar diagnósticos. Sin embargo, en el caso de enfermedades genéticas raras como la retinosis pigmentaria (\ac{RP}), estos sistemas de codificación presentan importantes limitaciones\cite{VER}. Esto es debido a que es una patología altamente heterogénea a nivel genético y clínico: existen numerosas mutaciones responsables y los síntomas pueden evolucionar de formas muy diversas entre pacientes\cite{HAR}. 
 
 Debido a esta complejidad, se ha recurrido a técnicas más especificas como los paneles genéticos dirigidos o la secuenciación de exoma completo (\ac{WES}). Estos enfoques son capaces de examinar una gran cantidad de mutaciones de cada paciente. No obstante, muchos pacientes quedan sin un diagnositco definitivo debido a la dificultad para interpretar el gran volumen de información relativa a las variantes encontradas tras la secuenciación.
 
 \section{Inteligencia Artificial}
 
-En la actualidad se están utilizando métodos basados en inteligencia artificial (\ac{IA}) para la detección, diagnóstico y pronóstico de numerosas enfermedades en distintas áreas de la medicina, desde oncología hasta neurología o cardiología. Esto es debido a la capacidad de la \ac{IA} para trabajar con grandes volúmenes de datos e identificar en estos patrones complejos para generar predicciones con una alta precisión\cite{FER}. No obstante, su desarrollo para las distrofias hereditarias de retina (\ac{DHR}), específicamente la Retinosis Pigmentaria (\ac{RP}) todavía está en una fase temprana.
+En la actualidad se están utilizando métodos basados en inteligencia artificial (\ac{IA}) para la detección, diagnóstico y pronóstico de numerosas enfermedades en distintas áreas de la medicina, desde oncología hasta neurología o cardiología. Esto es debido a la capacidad de la \ac{IA} para trabajar con grandes volúmenes de datos e identificar en estos patrones complejos para generar predicciones con una alta precisión\cite{FER}. No obstante, su desarrollo para las distrofias hereditarias de retina (\ac{DHR}), específicamente la retinosis pigmentaria (\ac{RP}) todavía está en una fase temprana.
 
 \subsection{Aplicaciones de Machine Learning}
 
@@ -325,13 +331,13 @@ En un estudio reciente, se utilizaron tres modelos preentrenados; Inception-v3, 
 
 Los estudios de \ac{IA} disponibles, como el mencionado anteriormente, que buscan la detección, clasificación y predicción de \ac{DHR}, siguen siendo en su mayoría retrospectivos e incluyen un número relativamente limitado de pacientes debido a su escasez\cite{ISS}. Esto pone de manifiesto la necesidad de continuar optimizando las metodologías empleadas para alcanzar niveles de exactitud que resulten aceptables en el ámbito médico.
 
-\subsection{Aplicaciones de Teoría de la Información y Fuentes de Markov}
+\subsection{Aplicaciones de Teoría de la Información y fuentes de Markov}
 
-Aunque actualmente no existen estudios específicos que utilicen directamente Teoría de la Información y Fuentes de Markov al análisis genómico de la \ac{RP}, estos enfoques se han consolidado como potenciales herramientas.
+Aunque actualmente no existen estudios específicos que utilicen directamente Teoría de la Información y fuentes de Markov al análisis genómico de la \ac{RP}, estos enfoques se han consolidado como potenciales herramientas.
 
 Sabemos que la Teoría de la Información es útil para medir la cantidad de información, la incertidumbre y el contenido informativo en sistemas complejos, como es el caso del genoma humano. En genómica, conceptos como la entropía permiten detectar mutaciones en el genoma humano, ya que son capaces de identificar cambios en la información genética, comparar con referencias conocidas o analizar patrones\cite{SEC}.
 
-Por su parte, los modelos de Fuentes de Markov (de orden k) permiten capturar patrones de dependencia entre nucleótidos y por lo tanto identificar regiones del genoma con propiedades estadísticas anómalas\cite{VOZ}, indicativas de posibles mutaciones patológicas.
+Por su parte, los modelos de fuentes de Markov (de orden k) permiten capturar patrones de dependencia entre nucleótidos y por lo tanto identificar regiones del genoma con propiedades estadísticas anómalas\cite{VOZ}, indicativas de posibles mutaciones patológicas.
 
 \section{Otras terapias emergentes}
 
@@ -527,7 +533,7 @@ I(X:Y) = H(X) - H(X \mid Y)
 Esta relación se conoce como información mutua y cuantifica la cantidad de información que se obtiene de la variable X al conocer la variable Y. Es fundamental en muchos contextos como el análisis de datos o el análisis genómico, ya que ayuda a conocer las correlaciones entre una base y su contexto, o con otras entidades como proteínas, regiones funcionales o mutaciones. 
 
 
-\subsection{Modelos de Fuentes de Markov}
+\subsection{Modelos de fuentes de Markov}
 
 “Una fuente de información con memoria nula se define como un par (S,P) donde la emisión de cada símbolo \( s_i \) sólo depende de su probabilidad \( p(s_i) \). Una fuente de información con memoria (de orden \( m \)) se define como un par (S,P) de forma que la emisión de cada símbolo \( s_i \) depende de los \( m \) símbolos emitidos con anterioridad, con una probabilidad condicional \( p(s_i \mid s_{i1}, s_{i2}, \dots, s_{im}) \).”\cite[p.~19]{ROB}
 
@@ -618,10 +624,10 @@ Durante el desarrollo de este \ac{TFG}, ha sido necesario apoyarse en algunas he
 \begin{itemize}
    \item Bio (biopython) es la librería por excelencia para la bioinformática, utilizada para acceder a las bases de datos del \ac{NCBI} (mediante BIO.Entrez), y para la lectura y análisis de los archivos que contienen las secuencias genómicas en formato \ac{FASTA} (mediante Bio.SeqIO).
    \item Vcfpy es una librería creada para Python 3, y especializada en el manejo de archivos \ac{VCF}. Esta permite leer, analizar y escribir los archivos con mutaciones de manera estructurada en computacionalmente eficiente, y extraer de manera sencilla e intuitiva la información que se requiere.
-   \item Matplotlib es una de las librerías más utilizadas de Python, y se encarga de la generación de gráficos. En este caso se emplea para visualizar de manera clara tres listas: la entropía simple, la entropía generada a partir de Fuentes de Markov, y la densidad de mutaciones en la secuencia genómica. Además, se ha configurado un backend (TkAgg) para poder trabajar sin interfaz gráfica, de manera que genera imágenes exportables (en formato png). Por último, se hace uso de matplotlib.ticker, que es un módulo auxiliar que permite personalizar los ejes y formatos numéricos en los gráficos generados.
+   \item Matplotlib es una de las librerías más utilizadas de Python, y se encarga de la generación de gráficos. En este caso se emplea para visualizar de manera clara tres listas: la entropía simple, la entropía generada a partir de fuentes de Markov, y la densidad de mutaciones en la secuencia genómica. Además, se ha configurado un backend (TkAgg) para poder trabajar sin interfaz gráfica, de manera que genera imágenes exportables (en formato png). Por último, se hace uso de matplotlib.ticker, que es un módulo auxiliar que permite personalizar los ejes y formatos numéricos en los gráficos generados.
    \item Pandas es una librería para el análisis y manipulación de datos en forma de tablas, que se utiliza para gestionar y mostrar la información extraída de los archivos \ac{VCF} y almacenar resultados intermedios, como mutaciones no aplicadas.
    \item Numpy es la biblioteca utilizada para lograr la optimización en los cálculos numéricos. En este contexto se usa para operaciones como el cálculo de la entropía de Shannon y la entropía basada en modelos de Markov, ya que permite manejar grandes volúmenes de datos genómicos de forma eficiente.
-   \item Streamlit es una librería de Python de código abierto que facilita la creación y el intercambio de aplicaciones web para la ciencia de datos y el machine learning. Es una forma rápida y sencilla de convertir código Python en una aplicación web interactiva, sin necesidad de conocimientos previos de desarrollo web . En este proyecto, Streamlit facilita al usuario la carga de archivos \ac{VCF}, la selección del cromosoma de estudio y la visualización de resultados gráficos y tabulares, sin necesidad de conocimientos técnicos avanzados.
+   \item Streamlit es una librería de Python de código abierto que facilita la creación y el intercambio de aplicaciones web para la ciencia de datos y el Machine Learning. Es una forma rápida y sencilla de convertir código Python en una aplicación web interactiva, sin necesidad de conocimientos previos de desarrollo web . En este proyecto, Streamlit facilita al usuario la carga de archivos \ac{VCF}, la selección del cromosoma de estudio y la visualización de resultados gráficos y tabulares, sin necesidad de conocimientos técnicos avanzados.
 \end{itemize}
 
 
@@ -946,7 +952,7 @@ Una vez introducidos estos datos, la aplicación se encarga de ejecutar la lógi
       \caption{Imágenes de los gráficos resultantes del análisis en la interfaz de usuario.}
       \label{fig:etiqueta_opcional9}
    \end{figure}
-   \item Tres archivos para descargar: dos ficheros de texto con los autómatas de la secuencia original y secuencia mutada (los generados a partir de Fuentes de Markov), y un archivo con las mutaciones que no han podido aplicarse. 
+   \item Tres archivos para descargar: dos ficheros de texto con los autómatas de la secuencia original y secuencia mutada (los generados a partir de fuentes de Markov), y un archivo con las mutaciones que no han podido aplicarse. 
    \begin{figure}[H]
       \centering
       \includegraphics[width=0.9\textwidth]{Automatas_RP.png}
@@ -967,7 +973,7 @@ Una vez introducidos estos datos, la aplicación se encarga de ejecutar la lógi
 
 \chapter{Experimentos}
 
-Con el objetivo de evaluar la eficacia de este proyecto en la identificación de mutaciones relevantes asociadas a la retinosis pigmentaria, se han diseñado y ejecutado una serie de experimentos sobre datos genómicos para comprobar el comportamiento del sistema desarrollado en distintos escenarios y medir su capacidad para detectar patrones genéticos relevantes mediante técnicas basadas en Teoría de la Información y Fuentes de Markov.  
+Con el objetivo de evaluar la eficacia de este proyecto en la identificación de mutaciones relevantes asociadas a la retinosis pigmentaria, se han diseñado y ejecutado una serie de experimentos sobre datos genómicos para comprobar el comportamiento del sistema desarrollado en distintos escenarios y medir su capacidad para detectar patrones genéticos relevantes mediante técnicas basadas en Teoría de la Información y fuentes de Markov.  
 
 En esta sección se detallan los archivos usados, los valores de los parámetros seleccionados, los procedimientos implementados y los resultados obtenidos, proporcionando un análisis crítico de los mismos. Todo ello con el fin de demostrar la aplicabilidad del enfoque y su correcto funcionamiento en el diagnóstico y estudio del genoma.  
 
@@ -1001,7 +1007,7 @@ A partir de las gráficas obtenidas, se pueden extraer diversas conclusiones rel
 
 En la primera gráfica, que representa la entropía simple mediante ventanas deslizantes de tamaño 100 para las secuencias original y mutada, se observan variaciones significativas en los valores de entropía en ciertas regiones. Estas diferencias sugieren que las mutaciones introducidas tienen un impacto en la distribución de los distintos k-mers en esas zonas y, por tanto, permite identificar regiones potencialmente relevantes del genoma. 
 
-La segunda gráfica, que refleja la entropía basada en Fuentes de Markov, también mediante ventanas deslizantes de tamaño 100, muestra un comportamiento más similar en ambas versiones de la secuencia, aunque se aprecian pequeñas diferencias en regiones específicas. Esto sugiere que, aunque el modelo de Markov suaviza los valores de entropía, sigue siendo capaz de captar alteraciones y además detectar patrones de mutación que afectan a la dependencia entre símbolos, más allá de su frecuencia individual.  
+La segunda gráfica, que refleja la entropía basada en fuentes de Markov, también mediante ventanas deslizantes de tamaño 100, muestra un comportamiento más similar en ambas versiones de la secuencia, aunque se aprecian pequeñas diferencias en regiones específicas. Esto sugiere que, aunque el modelo de Markov suaviza los valores de entropía, sigue siendo capaz de captar alteraciones y además detectar patrones de mutación que afectan a la dependencia entre símbolos, más allá de su frecuencia individual.  
 
 Finalmente, en la tercera gráfica se representa la densidad de mutaciones a lo largo de la secuencia en ventanas de tamaño 1000 (2x500) centradas en cada mutación. Se identifican varios picos significativos, resaltados en rojo, que indican regiones con alta concentración de mutaciones. Estos máximos podrían coincidir con algunas posiciones en las que se observaron diferencias notables en las medidas de entropía, ya que se podría tratar de regiones del genoma susceptibles de contener variantes genéticas funcionalmente relevantes.  
 
@@ -1108,7 +1114,7 @@ Pasando a los autómatas generados, tanto los estados iniciales y finales, como 
 
 \section{Experimentos con cromosoma X}
 
-En este experimento se mantienen los parámetros como en el experimento base, pero ahora se explorará el cromosoma X y la posición de inicio pasa a ser 1315000 (comprende una zona con alta proporción de mutaciones), ya que existen genes específicos como el RPGR y el RP2, que están directamente implicados en la retinosis pigmentaria ligada al cromosoma X. Las mutaciones en estos genes son responsables de un porcentaje significativo de los casos de Retinosis Pigmentaria (\ac{RP}). Por esta razón, se han escogido los siguientes parámetros:
+En este experimento se mantienen los parámetros como en el experimento base, pero ahora se explorará el cromosoma X y la posición de inicio pasa a ser 1315000 (comprende una zona con alta proporción de mutaciones), ya que existen genes específicos como el RPGR y el RP2, que están directamente implicados en la retinosis pigmentaria ligada al cromosoma X. Las mutaciones en estos genes son responsables de un porcentaje significativo de los casos de retinosis pigmentaria (\ac{RP}). Por esta razón, se han escogido los siguientes parámetros:
 
 \begin{itemize}
    \item Número de cromosoma: X.
@@ -1171,11 +1177,11 @@ Por último, este enfoque permitiría comparar cómo es la información en las d
 
 \subsection{Aplicación de técnicas de Machine Learning}
 
-Otra posible mejora del sistema desarrollado sería la incorporación de algoritmos de Machine Learning para lograr optimizar de manera automática los valores de parámetros principales utilizados en los análisis. Actualmente algunos valores como el tamaño de los k-mers, el orden de la fuente de Markov o el tamaño de las ventanas se configuran manualmente, y como hemos visto en la sección anterior, influyen de forma significativa en la sensibilidad y especificidad del modelo para detectar patrones relevantes en la secuencia genómica.
+Otra posible mejora del sistema desarrollado sería la incorporación de algoritmos de Machine Learning (\ac{ML}) para lograr optimizar de manera automática los valores de parámetros principales utilizados en los análisis. Actualmente algunos valores como el tamaño de los k-mers, el orden de la fuente de Markov o el tamaño de las ventanas se configuran manualmente, y como hemos visto en la sección anterior, influyen de forma significativa en la sensibilidad y especificidad del modelo para detectar patrones relevantes en la secuencia genómica.
 
 De esta manera, mediante el uso de técnicas de aprendizaje automático, como métodos de validación cruzada (cross-validation), el sistema podría evaluar diferentes combinaciones de parámetros y seleccionar aquellas que maximicen diferentes criterios, como podría ser la identificación de regiones con mutaciones significativas y regiones neutras, o la concordancia con anotaciones clínicas existentes. Este enfoque permitiría adaptar dinámicamente el análisis a distintos genes, regiones genómicas o tipos de enfermedades, sin requerir la intervención manual del usuario.
 
-Aunque actualmente solo se dispone de una pequeña cantidad de diagnósticos para la \ac{RP}, se podrían emplear modelos de machine learning supervisado donde las variantes genéticas hayan sido clasificadas como patogénicas o benignas por expertos. Estos modelos podrían aprender representaciones complejas del genoma que escapen a métodos estadísticos clásicos. En ese caso se podrían aplicar técnicas como los árboles de decisión, random forests, redes neuronales o boosting para identificar combinaciones de patrones en los perfiles de las entropías y densidad de mutaciones que tengan correlación con la potencial patogenicidad de una variante.
+Aunque actualmente solo se dispone de una pequeña cantidad de diagnósticos para la \ac{RP}, se podrían emplear modelos de ML supervisado donde las variantes genéticas hayan sido clasificadas como patogénicas o benignas por expertos. Estos modelos podrían aprender representaciones complejas del genoma que escapen a métodos estadísticos clásicos. En ese caso se podrían aplicar técnicas como los árboles de decisión, random forests, redes neuronales o boosting para identificar combinaciones de patrones en los perfiles de las entropías y densidad de mutaciones que tengan correlación con la potencial patogenicidad de una variante.
 
 
 \subsection{Exploración de otras métricas de Teoría de la Información}
