@@ -603,7 +603,7 @@ El formato \ac{VCF} (Variant Call Format) es un tipo de archivo utilizado para a
 Cada variante contiene información sobre la posición en el genoma, el cromosoma, la base de referencia, la base alternativa, así como otros datos asociados a la calidad y características de la variante. De los tipos de variantes estudiados en la sección de fundamentos, los presentes en el archivo \ac{VCF} con el que trabajamos son los siguientes: 
 
 \begin{itemize}
-   \item \ac{SNP}s (Single Nucleotide Polymorphisms). 
+   \item \ac{SNP}s. 
    \item Inserciones. 
    \item Deleciones.
 \end{itemize}
@@ -624,10 +624,10 @@ Durante el desarrollo de este \ac{TFG}, ha sido necesario apoyarse en algunas he
 
 \begin{itemize}
    \item Bio (biopython) es la librería por excelencia para la bioinformática, utilizada para acceder a las bases de datos del \ac{NCBI} (mediante BIO.Entrez), y para la lectura y análisis de los archivos que contienen las secuencias genómicas en formato \ac{FASTA} (mediante Bio.SeqIO).
-   \item Vcfpy es una librería creada para Python 3, y especializada en el manejo de archivos \ac{VCF}. Esta permite leer, analizar y escribir los archivos con mutaciones de manera estructurada en computacionalmente eficiente, y extraer de manera sencilla e intuitiva la información que se requiere.
+   \item Vcfpy es una librería creada para Python 3, y especializada en el manejo de archivos \ac{VCF}. Esta permite leer, analizar y escribir los archivos con mutaciones de manera estructurada y computacionalmente eficiente, y extraer de manera sencilla e intuitiva la información que se requiere.
    \item Matplotlib es una de las librerías más utilizadas de Python, y se encarga de la generación de gráficos. En este caso se emplea para visualizar de manera clara tres listas: la entropía simple, la entropía generada a partir de fuentes de Markov, y la densidad de mutaciones en la secuencia genómica. Además, se ha configurado un backend (TkAgg) para poder trabajar sin interfaz gráfica, de manera que genera imágenes exportables (en formato png). Por último, se hace uso de matplotlib.ticker, que es un módulo auxiliar que permite personalizar los ejes y formatos numéricos en los gráficos generados.
    \item Pandas es una librería para el análisis y manipulación de datos en forma de tablas, que se utiliza para gestionar y mostrar la información extraída de los archivos \ac{VCF} y almacenar resultados intermedios, como mutaciones no aplicadas.
-   \item Numpy es la biblioteca utilizada para lograr la optimización en los cálculos numéricos. En este contexto se usa para operaciones como el cálculo de la entropía de Shannon y la entropía basada en modelos de Markov, ya que permite manejar grandes volúmenes de datos genómicos de forma eficiente.
+   \item Numpy es la biblioteca utilizada para lograr la optimización en los cálculos numéricos. En este contexto se usa para operaciones como el cálculo de la entropía simple y la entropía basada en modelos de Markov, ya que permite manejar grandes volúmenes de datos genómicos de forma eficiente.
    \item Streamlit es una librería de Python de código abierto que facilita la creación y el intercambio de aplicaciones web para la ciencia de datos y el Machine Learning. Es una forma rápida y sencilla de convertir código Python en una aplicación web interactiva, sin necesidad de conocimientos previos de desarrollo web . En este proyecto, Streamlit facilita al usuario la carga de archivos \ac{VCF}, la selección del cromosoma de estudio y la visualización de resultados gráficos y tabulares, sin necesidad de conocimientos técnicos avanzados.
 \end{itemize}
 
@@ -677,20 +677,20 @@ Se construye un autómata que permite modelar la secuencia como una cadena de
 estados, donde:
 
 \begin{itemize}
-   \item El alfabeto está formado los diferentes nucletidos {A, C, G, T}.
+   \item El alfabeto está formado las diferentes bases nitrogenadas {A, C, G, T}.
    \item Los estados iniciales se corresponden con los primeros caracteres de los k-mers.
    \item Los estados finales corresponden a los últimos caracteres de cada k-mer.
    \item Las transiciones representan la concatenación de bases adyacentes.
 \end{itemize}
 
 
-Por ejemplo, dado un conjunto de k-mers S = ACGT, ACCD, se define el siguiente modelo de segundo orden:
+Por ejemplo, dado un conjunto de k-mers S = ACGT, ACCG, se define el siguiente modelo de segundo orden:
 
 \begin{itemize}
-   \item Alfabeto: {A, C, G, T, D}.
+   \item Alfabeto: {A, C, G, T}.
    \item Estados iniciales: {A}.
-   \item Estados finales: {T, D}.
-   \item Transiciones: {AC, CG, GT, CC, CD}.
+   \item Estados finales: {T, G}.
+   \item Transiciones: {AC, CG, GT, CC}.
 \end{itemize}
 
 
