@@ -12,26 +12,26 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Procesos genéticos de la síntesis de proteínas.}}{13}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Ejemplo de cálculo de entropía condicional.}}{18}{figure.caption.28}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Ejemplo de cálculo de entropía a partir de una Fuente de Markov en cadenas de \ac {ADN}.}}{19}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ejemplo de cálculo de entropía condicional.}}{18}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ejemplo de cálculo de entropía a partir de una Fuente de Markov en cadenas de \ac {ADN}.}}{19}{figure.caption.30}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de flujo del sistema.}}{26}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de flujo del sistema.}}{26}{figure.caption.38}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Menú desplegable de selección de cromosoma en la interfaz de usuario.}}{32}{figure.caption.38}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Buscador de archivos en el sistema para proporcionar \ac {VCF} en la interfaz de usuario.}}{32}{figure.caption.39}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Parámetros configurables para el análisis en la interfaz de usuario.}}{33}{figure.caption.40}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Imágenes de los gráficos resultantes del análisis en la interfaz de usuario.}}{34}{figure.caption.41}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Archivos para descargar con los autómatas resultantes del análisis en la interfaz de usuario.}}{35}{figure.caption.42}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Archivo comprimido para descargar con todos los archivos resultantes del análisis en la interfaz de usuario.}}{35}{figure.caption.43}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Menú desplegable de selección de cromosoma en la interfaz de usuario.}}{32}{figure.caption.39}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Buscador de archivos en el sistema para proporcionar \ac {VCF} en la interfaz de usuario.}}{32}{figure.caption.40}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Parámetros configurables para el análisis en la interfaz de usuario.}}{33}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Imágenes de los gráficos resultantes del análisis en la interfaz de usuario.}}{34}{figure.caption.42}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Archivos para descargar con los autómatas resultantes del análisis en la interfaz de usuario.}}{35}{figure.caption.43}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Archivo comprimido para descargar con todos los archivos resultantes del análisis en la interfaz de usuario.}}{35}{figure.caption.44}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Gráficas obtenidas a partir del experimento 1.}}{38}{figure.caption.44}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Autómata de la secuencia original obtenido a partir del experimento 1.}}{39}{figure.caption.45}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Autómata de la secuencia mutada obtenido a partir del experimento 1.}}{39}{figure.caption.46}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Archivo con mutaciones no aplicadas obtenido a partir del experimento 1.}}{40}{figure.caption.47}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Gráficas obtenidas a partir del experimento 2.}}{41}{figure.caption.48}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Gráficas obtenidas a partir del experimento 3.}}{43}{figure.caption.49}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Fragmentos del autómata de la secuencia original obtenido a partir del experimento 3.}}{44}{figure.caption.50}%
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Fragmentos del autómata de la secuencia mutada obtenido a partir del experimento 3.}}{44}{figure.caption.51}%
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Gráficas obtenidas a partir del experimento 4.}}{46}{figure.caption.52}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Gráficas obtenidas a partir del experimento 1.}}{38}{figure.caption.45}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Autómata de la secuencia original obtenido a partir del experimento 1.}}{39}{figure.caption.46}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Autómata de la secuencia mutada obtenido a partir del experimento 1.}}{39}{figure.caption.47}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Archivo con mutaciones no aplicadas obtenido a partir del experimento 1.}}{40}{figure.caption.48}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Gráficas obtenidas a partir del experimento 2.}}{41}{figure.caption.49}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Gráficas obtenidas a partir del experimento 3.}}{43}{figure.caption.50}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Fragmentos del autómata de la secuencia original obtenido a partir del experimento 3.}}{44}{figure.caption.51}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Fragmentos del autómata de la secuencia mutada obtenido a partir del experimento 3.}}{44}{figure.caption.52}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Gráficas obtenidas a partir del experimento 4.}}{46}{figure.caption.53}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
