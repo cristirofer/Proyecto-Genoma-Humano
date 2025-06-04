@@ -177,7 +177,7 @@ La retinosis o retinitis pigmentaria (\ac{RP}), una de las distrofias hereditari
    \label{fig:etiqueta_opcional2}
 \end{figure}
 
-Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster (TFM) de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la \ac{RP}. Puesto que la \ac{RP} es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning (\ac{ML}) no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos. 
+Este Trabajo de Fin de Grado, continuación del Trabajo de Fin de Máster (\ac{TFM}) de Andrea Vañó Ribelles y el Trabajo de Fin de Grado de Luis Alberto Martínez Bravo, explora el uso de herramientas de Teoría de la Información y modelos de fuentes de Markov para analizar el genoma humano, con el objetivo de predecir posibles mutaciones asociadas a la \ac{RP}. Puesto que la \ac{RP} es una enfermedad rara y el número de personas afectadas es muy pequeño, las técnicas de Machine Learning (\ac{ML}) no resultan lo suficientemente efectivas debido a la falta de datos para desarrollar modelos robustos. 
 
  
 
@@ -844,7 +844,7 @@ Una vez calculada, se añade la entropía a una lista, y finalmente se devuelve 
 
 \section{Representación gráfica de la entropía en ambas secuencias}
 
-Una vez obtenida la lista de entropías de ambas secuencias, se procede a su representación gráfica mediante librerías de visualización de Python (matplotlib). 
+Una vez obtenida la lista de entropías de ambas secuencias, se procede a su representación gráfica mediante la librería de visualización de Python matplotlib. Para ello se hace uso de la función plt.bar() que genera una gráfica de barras verticales donde el eje \textit{x} representa las posiciones en la secuencia, y el eje \textit{y} los valores de entropía.
 
 Los gráficos permiten observar de forma clara las zonas de la secuencia en las que se produce un incremento o decremento significativo de la entropía debido a la presencia de mutaciones. 
 
@@ -860,7 +860,7 @@ Dentro de esta ventana, se cuenta el número total de mutaciones presentes, y se
 
 \section{Representación gráfica de la densidad de mutaciones}
 
-La lista obtenida en el paso anterior se utiliza para generar un gráfico que permite visualizar las regiones con mayor concentración de variantes.
+La lista obtenida en el paso anterior se utiliza para generar un gráfico que permite visualizar las regiones con mayor concentración de variantes. En este caso se utiliza la función plt.plot() que genera una gráfica de líneas conectando puntos donde el eje \textit{x} representa las posiciones en la secuencia, y el eje \textit{y} las densidades. Además, mediante las herramientas disponibles en la libreía matplotlib se han resaltado en rojo los picos con mayor densidad de mutaciones, así como sus posiciones exactas en la secuencia.
 
 Este tipo de representación la utilizamos para detectar zonas del genoma donde se acumulan un elevado número de mutaciones, las cuales están resaltadas y se especifican sus valores concretos.
 
@@ -900,7 +900,14 @@ A partir de las probabilidades almacenadas en el autómata, se calcula la entrop
 Para ello, primero se recorre la secuencia usando una ventana deslizante de tamaño w, extrayendo una subsecuencia en cada iteración y dentro de cada ventana, se recorre la subsecuencia formando pares de estado actual, siguiente estado para obtener el valor de la probabilidad para esa transición. Ahora se aplica la fórmula de la entropía sumando el valor negativo de $p \cdot \log_2(p)$ para cada transición (si la transición no se encuentra, se asume una probabilidad muy pequeña para evitar $\log(0)$).
 
 
-Esto permite obtener una medida de la entropía, considerando no solo la frecuencia de k-mers individuales, sino también las relaciones de dependencia entre bases. 
+Esto permite obtener una medida de la entropía, considerando no solo la frecuencia de k-mers individuales, sino también las relaciones de dependencia entre bases (nucleótidos). 
+
+\section{Representación gráfica de la entropía condicional en ambas secuencias}
+
+Como en el caso de la entropía simple, se procede a su representación gráfica mediante la librería matplotlib usando la función plt.bar() que genera una gráfica de barras verticales donde el eje \textit{x} representa las posiciones en la secuencia, y el eje \textit{y} los valores de entropía condicional.
+
+Los gráficos permiten observar algunas zonas de la secuencia en las que se producen alteraciones en los valores de entropía debido a dependencias entre bases (nucleótidos) que no es capaz de captar la entropía simple. 
+
 
 \section{Interfaz gráfica}
 
@@ -980,7 +987,7 @@ En esta sección se detallan los archivos usados, los valores de los parámetros
 
 \section{Experimento base}
 
-Para el primer experimento, se trabajará con el cromosoma 1, descargado previamente desde en \ac{NCBI}, y un tamaño de k-mer pequeño para una exploración general del genoma, detección de zonas con variabilidad o entropía anómala. Como consecuencia, tambien debemos trabajar con un valor pequeño para el orden de la Fuente de Markov, ya que este debe ser menor al tamaño de k-mer por la naturaleza de la aplicación. Para ello se seleccionarán los siguientes valores:
+Para el primer experimento, se trabajará con el cromosoma 1, descargado previamente desde el \ac{NCBI}, y un tamaño de k-mer pequeño para una exploración general del genoma, detección de zonas con variabilidad o entropía anómala. Como consecuencia, tambien debemos trabajar con un valor pequeño para el orden de la Fuente de Markov, ya que este debe ser menor al tamaño de k-mer por la naturaleza de la aplicación. Para ello se seleccionarán los siguientes valores:
 
 
 \begin{itemize}
@@ -1060,7 +1067,7 @@ Para este experimento también se trabajará con el cromosoma 1, pero ahora con 
       \label{fig:etiqueta_opcional17}
 \end{figure}
 
-A la vista de los gráficos, comprobamos que al aumentar el tamaño de k-mer, los valores de entropía en la primera gráfica son notablemente mayores, y además se reduce la variabilidad local. Esto es lógico, ya que un k-mer más largo representa una combinación más específica de bases, lo que hace que cualquier cambio puntual tenga menos impacto sobre la frecuencia de aparición de todos los posibles k-mers. Por esta razón, se puede deducir que la entropía con k=12 detecta menos ruido. Por otro lado, podemos ver una superposición casi total en la segunda gráfica entre la secuencia original y la mutada, que puede indicar que ahora las mutaciones no afectan de forma significativa las probabilidades de transición. 
+A la vista de los gráficos, comprobamos que al aumentar el tamaño de k-mer, los valores de entropía en la primera gráfica son notablemente mayores, y además se reduce la variabilidad local. Esto es lógico, ya que un k-mer más largo representa una combinación más específica de bases o nucleótidos, lo que hace que cualquier cambio puntual tenga menos impacto sobre la frecuencia de aparición de todos los posibles k-mers. Por esta razón, se puede deducir que la entropía con k=12 detecta menos ruido. Por otro lado, podemos ver una superposición casi total en la segunda gráfica entre la secuencia original y la mutada, que puede indicar que ahora las mutaciones no afectan de forma significativa las probabilidades de transición. 
 
 Como el aumento del tamaño del k-mer no afecta a la densidad de mutaciones, la tercera gráfica no varía, ya que este análisis se basa únicamente en el recuento local de variantes dentro de ventanas genómicas. 
 
@@ -1145,7 +1152,7 @@ Al considerar el autómata de Markov, de nuevo tanto el autómata generado de la
 
 Esta vez también se encuentra vacío el archivo generado con las mutaciones no aplicadas, lo demuestra el buen funcionamiento incluso en diferentes regiones genómicas.\\\\\\
 
-En conjunto, estos resultados demuestran que el análisis computacional de la entropía, tanto clásica como basada en modelos de Markov, permite detectar con eficacia alteraciones en el genoma. Esto respalda el potencial del enfoque desarrollado en este proyecto como herramienta de apoyo en el diagnóstico de enfermedades genéticas como la retinosis pigmentaria, contribuyendo al avance en métodos no invasivos y automáticos de análisis genético.
+En conjunto, estos resultados demuestran que el análisis computacional de la entropía, tanto clásica como basada en modelos de Markov permite detectar con eficacia alteraciones en el genoma. Esto respalda el potencial del enfoque desarrollado en este proyecto como herramienta de apoyo en el diagnóstico de enfermedades genéticas como la retinosis pigmentaria, contribuyendo al avance en métodos no invasivos y automáticos de análisis genético.
 
 No obstante, es importante destacar que los resultados obtenidos, incluyendo las gráficas y patrones identificados, deben ser ahora revisados y evaluados por expertos en medicina y genómica. Solo profesionales especializados podrán determinar si las diferencias observadas son clínicamente relevantes y validar si pueden utilizarse para el estudio de la \ac{RP}.
 
@@ -1170,11 +1177,11 @@ Aunque los resultados obtenidos pueden ser prometedores, el presente trabajo pue
 
 \subsection{Ampliación a otras enfermedades raras}
 
-Un trabajo futuro que podría ser prometedor consiste en extender el sistema desarrollado al estudio de otras enfermedades raras causadas por mutaciones genéticas, más allá de la \ac{RP}. Dado que muchas enfermedades raras comparten características con la \ac{RP}, como la elevada heterogeneidad genética, la escasez de datos anotados, y la dificultad diagnóstica debido al volumen de variantes generadas por tecnologías como la secuenciación del exoma. Por esta razón resulta razonable pensar que este proyecto podría ser útil también en otros contextos.
+Un trabajo futuro que podría ser prometedor consiste en extender el sistema desarrollado al estudio de otras enfermedades raras causadas por mutaciones genéticas, más allá de la \ac{RP}. Dado que muchas enfermedades raras comparten características con la \ac{RP}, como la elevada heterogeneidad genética, la escasez de datos anotados, y la dificultad diagnóstica por culpa del volumen de variantes generadas por tecnologías de secuenciación. Por esta razón resulta razonable pensar que este proyecto podría ser útil también en otros contextos.
 
 Además, aplicar esta herramienta a otras enfermedades, como la de Charcot-Marie-Tooth (afección hereditaria que afecta los nervios periféricos, causando debilidad muscular, pérdida de sensación y deformidades en los pies y manos\cite{MEDL}), permitiría verificar su validez y capacidad de generalización, como por ejemplo enfermedades raras neuromusculares, metabólicas o del desarrollo que también requieren métodos para reducir el espacio de búsqueda.
 
-Por último, este enfoque permitiría comparar cómo es la información en las diferentes enfermedades y explorar si ciertas regiones genómicas muestran patrones similares de entropía o transiciones anómalas en distintas patologías, lo cual podría abrir nuevas vías para encontrar regiones funcionales compartidas o mecanismos genómicos comunes.
+Por último, este enfoque tambien permitiría comparar cómo es la información en las diferentes enfermedades y explorar si ciertas regiones genómicas muestran patrones similares de entropía o transiciones anómalas en distintas patologías, lo cual podría abrir nuevas vías para encontrar regiones funcionales compartidas o mecanismos genómicos comunes.
 
 \subsection{Aplicación de técnicas de Machine Learning}
 
