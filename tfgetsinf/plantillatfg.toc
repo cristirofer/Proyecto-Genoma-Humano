@@ -6,83 +6,85 @@
 \babel@toc {english}{}\relax 
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\'{I}ndice general}{\es@scroman {v}}{section*.1}%
-\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {vii}}{section*.4}%
-\contentsline {chapter}{\'Indice de tablas}{\es@scroman {vii}}{section*.7}%
+\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {vii}}{section*.2}%
+\contentsline {chapter}{\'Indice de tablas}{\es@scroman {viii}}{section*.3}%
 \noindent \hrulefill \par 
-\contentsline {chapter}{Lista de abreviaturas}{1}{chapter*.10}%
+\contentsline {chapter}{Lista de abreviaturas}{1}{chapter*.4}%
 \contentsline {chapter}{\numberline {1}Introducción}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Contexto}{4}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Motivación}{6}{section.1.2}%
 \contentsline {subsection}{\numberline {1.2.1}Motivación personal}{6}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}Motivación profesional}{6}{subsection.1.2.2}%
-\contentsline {section}{\numberline {1.3}Objetivos}{7}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Procesamiento de archivos \ac {VCF} y secuencias genómicas}{7}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.3}Objetivos}{6}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Procesamiento de archivos \acs {VCF} y secuencias genómicas}{7}{subsection.1.3.1}%
 \contentsline {subsection}{\numberline {1.3.2}Aplicación de Teoría de la Información y fuentes de Markov al análisis de secuencias genómicas }{7}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Desarrollo de una interfaz de usuario para la visualización de resultados }{8}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.3.4}Contribución a las aplicaciones de la \ac {IA} en el campo de la investigación genética }{8}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.3}Desarrollo de una interfaz de usuario para la visualización de resultados }{7}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Contribución a las aplicaciones de la \acs {IA} en el campo de la investigación genética }{8}{subsection.1.3.4}%
 \contentsline {section}{\numberline {1.4}Estructura de la memoria}{8}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Estado del arte}{11}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Métodos tradicionales}{11}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Inteligencia Artificial}{11}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Aplicaciones de Machine Learning}{12}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Aplicaciones de Teoría de la Información y fuentes de Markov}{12}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Otras terapias emergentes}{12}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Fundamentos teóricos}{15}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Conceptos básicos de genética y mutaciones}{15}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Conceptos básicos de ficheros genéticos}{17}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}FASTA}{17}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}VCF}{18}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Teoría de la Información}{18}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Canal de comunicación }{19}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Compresión de datos}{19}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Código}{19}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Entropía}{19}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Información}{20}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Modelos de fuentes de Markov}{20}{subsection.3.3.6}%
-\contentsline {chapter}{\numberline {4}Metodología}{23}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Material y herramientas}{23}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Entorno de Trabajo}{23}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Archivos necesarios}{23}{subsection.4.1.2}%
-\contentsline {subsubsection}{Archivos FASTA}{23}{subsubsection*.32}%
-\contentsline {subsubsection}{Archivos VCF}{23}{subsubsection*.34}%
-\contentsline {subsection}{\numberline {4.1.3}Librerías utilizadas}{24}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Hipótesis}{25}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Caso 1: Cálculo de entropía en ventanas deslizantes}{25}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Caso 2: Cálculo de densidad de mutaciones}{25}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Caso 3: Cálculo de entropía basada en probabilidades condicionales (Modelo de Markov)}{26}{subsection.4.2.3}%
-\contentsline {subsubsection}{Creación del Autómata}{26}{subsubsection*.36}%
-\contentsline {subsubsection}{Cálculo de Probabilidades de Transición}{26}{subsubsection*.37}%
-\contentsline {subsubsection}{Cálculo de Entropía Condicional}{27}{subsubsection*.38}%
-\contentsline {section}{\numberline {4.3}Arquitectura del sistema}{27}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Carga de Datos}{27}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Análisis de Secuencia Genómica}{27}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Visualización y Exportación de Resultados }{28}{subsection.4.3.3}%
-\contentsline {chapter}{\numberline {5}Desarrollo}{29}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Importación de librerías y configuración inicial }{29}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Lectura de las mutaciones presentes en el archivo \ac {VCF}}{29}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Almacenamiento de las mutaciones en una estructura de datos adecuada}{30}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Extracción de la secuencia de referencia del cromosoma correspondiente}{30}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Aplicación de las mutaciones sobre la secuencia de referencia}{30}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Cálculo de la entropía mediante ventanas deslizantes}{31}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Representación gráfica de la entropía en ambas secuencias}{31}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Cálculo de la densidad de mutaciones}{32}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Representación gráfica de la densidad de mutaciones}{32}{section.5.9}%
-\contentsline {section}{\numberline {5.10}Construcción del autómata para el cálculo de probabilidades de transición}{32}{section.5.10}%
-\contentsline {section}{\numberline {5.11}Representación y guardado del autómata}{33}{section.5.11}%
-\contentsline {section}{\numberline {5.12}Cálculo de las probabilidades de transición y de la entropía condicional}{33}{section.5.12}%
-\contentsline {section}{\numberline {5.13}Representación gráfica de la entropía condicional en ambas secuencias}{33}{section.5.13}%
-\contentsline {section}{\numberline {5.14}Interfaz gráfica}{33}{section.5.14}%
-\contentsline {chapter}{\numberline {6}Experimentos}{39}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Experimento base}{39}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Experimento con valores grandes para el tamaño de k-mer}{42}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Experimento con valores grandes para el orden de la fuente de Markov}{44}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Experimentos con cromosoma X}{47}{section.6.4}%
-\contentsline {chapter}{\numberline {7}Conclusiones}{51}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Trabajo futuro}{52}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Ampliación a otras enfermedades raras}{52}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Aplicación de técnicas de Machine Learning}{52}{subsection.7.1.2}%
-\contentsline {subsection}{\numberline {7.1.3}Exploración de otras métricas de Teoría de la Información}{53}{subsection.7.1.3}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{55}{chapter*.55}%
+\contentsline {chapter}{\numberline {2}Estado del arte}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Métodos tradicionales}{9}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Inteligencia Artificial}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Aplicaciones de Machine Learning}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Aplicaciones de Teoría de la Información y fuentes de Markov}{10}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Otras terapias emergentes}{10}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Fundamentos teóricos}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Conceptos básicos de genética y mutaciones}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Conceptos básicos de ficheros genéticos}{15}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}FASTA}{15}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}VCF}{16}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Teoría de la Información}{16}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Canal de comunicación }{17}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Compresión de datos}{17}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Código}{17}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Entropía}{17}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Información}{18}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Modelos de fuentes de Markov}{18}{subsection.3.3.6}%
+\contentsline {chapter}{\numberline {4}Análisis del problema}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Análisis del marco legal y ético}{21}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Identificación y análisis de soluciones}{21}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Caso 1: Cálculo de entropía en ventanas deslizantes}{22}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Caso 2: Cálculo de entropía basada en probabilidades condicionales (Modelo de Markov)}{22}{subsection.4.2.2}%
+\contentsline {subsubsection}{Creación de la fuente de Markov}{22}{subsubsection*.13}%
+\contentsline {subsubsection}{Cálculo de Probabilidades de Transición}{23}{subsubsection*.14}%
+\contentsline {subsubsection}{Cálculo de Entropía Condicional}{23}{subsubsection*.15}%
+\contentsline {subsection}{\numberline {4.2.3}Caso 3: Cálculo de densidad de mutaciones}{25}{subsection.4.2.3}%
+\contentsline {chapter}{\numberline {5}Diseño de la solución }{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Tecnologías utilizadas}{27}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Entorno de Trabajo}{27}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Archivos necesarios}{27}{subsection.5.1.2}%
+\contentsline {subsubsection}{Archivos FASTA}{27}{subsubsection*.18}%
+\contentsline {subsubsection}{Archivos VCF}{27}{subsubsection*.19}%
+\contentsline {subsection}{\numberline {5.1.3}Librerías utilizadas}{28}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Arquitectura del sistema}{29}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Carga de Datos}{30}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Análisis de Secuencia Genómica}{30}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Visualización y Exportación de Resultados }{30}{subsection.5.2.3}%
+\contentsline {chapter}{\numberline {6}Desarrollo}{33}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Importación de librerías y configuración inicial }{33}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Lectura de las mutaciones presentes en el archivo \acs {VCF}}{33}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Almacenamiento de las mutaciones en una estructura de datos adecuada}{34}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Extracción de la secuencia de referencia del cromosoma correspondiente}{34}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Aplicación de las mutaciones sobre la secuencia de referencia}{34}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Cálculo de la entropía mediante ventanas deslizantes}{35}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Representación gráfica de la entropía en ambas secuencias}{35}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Cálculo de la densidad de mutaciones}{36}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Representación gráfica de la densidad de mutaciones}{36}{section.6.9}%
+\contentsline {section}{\numberline {6.10}Construcción de la fuente de Markov para el cálculo de probabilidades de transición}{36}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Representación y guardado de la fuente de Markov}{37}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Cálculo de las probabilidades de transición y de la entropía condicional}{37}{section.6.12}%
+\contentsline {section}{\numberline {6.13}Representación gráfica de la entropía condicional en ambas secuencias}{37}{section.6.13}%
+\contentsline {section}{\numberline {6.14}Interfaz gráfica}{37}{section.6.14}%
+\contentsline {chapter}{\numberline {7}Experimentos}{43}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Experimento base}{43}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Experimento con valores grandes para el tamaño de k-mer}{46}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Experimento con valores grandes para el orden de la fuente de Markov}{48}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Experimentos con cromosoma X}{51}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Conclusiones}{55}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Trabajo futuro}{56}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Ampliación a otras enfermedades raras}{56}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Aplicación de técnicas de Machine Learning}{56}{subsection.8.1.2}%
+\contentsline {subsection}{\numberline {8.1.3}Exploración de otras métricas de Teoría de la Información}{57}{subsection.8.1.3}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{59}{chapter*.37}%
 \noindent \hrulefill \par 
 \appendixname \par 
-\contentsline {chapter}{\numberline {A}Objetivos de Desarrollo Sostenible}{59}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {A}Objetivos de Desarrollo Sostenible}{63}{appendix.Alph1}%

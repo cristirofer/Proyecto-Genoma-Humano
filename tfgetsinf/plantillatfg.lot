@@ -8,12 +8,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Ejemplo de archivo en formato \ac {FASTA}}}{17}{table.caption.27}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Ejemplo de cabecera de un archivo \ac {VCF}}}{18}{table.caption.28}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Ejemplo de la sección de datos en un archivo VCF}}{18}{table.caption.29}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Ejemplo de archivo en formato \acs {FASTA}}}{15}{table.caption.9}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Ejemplo de cabecera de un archivo \acs {VCF}}}{16}{table.caption.10}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Ejemplo de la sección de datos en un archivo VCF}}{16}{table.caption.11}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Probabilidades de transición entre estados}}{24}{table.caption.17}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Grado de relación del trabajo con los Objetivos de Desarrollo Sostenible (\ac {ODS}).}}{59}{table.caption.57}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Grado de relación del trabajo con los Objetivos de Desarrollo Sostenible (\acs {ODS}).}}{63}{table.caption.39}%
