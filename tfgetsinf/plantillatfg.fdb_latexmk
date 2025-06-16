@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1750099800.96372 "/home/crist/TFG/tfgetsinf/plantillatfg.tex" "plantillatfg.pdf" "plantillatfg" 1750099804.34747 0
+["pdflatex"] 1750101899.08412 "/home/crist/TFG/tfgetsinf/plantillatfg.tex" "plantillatfg.pdf" "plantillatfg" 1750101902.62282 0
   "/etc/texmf/web2c/texmf.cnf" 1742933262.91717 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/crist/TFG/tfgetsinf/plantillatfg.tex" 1750099795.94946 137960 e923e62554e0d1b2ece36adb2a01bce8 ""
+  "/home/crist/TFG/tfgetsinf/plantillatfg.tex" 1750101898.73799 137947 1237f5ab85fff9d1f473f2e826b3f4da ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm" 1136768653 2796 d37c29814a6717720ee1a7c9a0b2c3b8 ""
@@ -214,12 +214,12 @@
   "logo-etsinf.pdf" 1742933374.29487 21439 2f398dd99afcba2884b0e7497ed2b108 ""
   "logo-upv.pdf" 1742933374.29487 53878 e68480ee013a972986b057b59b03579b ""
   "mut_exp1.png" 1748469358.70595 3726 9c11506e91bacda7dbd88bd11abf4ac1 ""
-  "plantillatfg.aux" 1750099804.17718 29231 0a16417b8baaa89acd1505dca1ba0908 "pdflatex"
-  "plantillatfg.lof" 1750099804.18498 4090 2f404c591b9412ecedb2b407a359f28f "pdflatex"
-  "plantillatfg.lot" 1750099804.18498 1054 1c21c529075fdec9ed74db9b8d7da6cc "pdflatex"
-  "plantillatfg.out" 1750099804.18498 18026 c30cf642915c724fa61ee2c8ad5fe4b4 "pdflatex"
-  "plantillatfg.tex" 1750099795.94946 137960 e923e62554e0d1b2ece36adb2a01bce8 ""
-  "plantillatfg.toc" 1750099804.18498 8315 08ef9362266c4c810ef5fe9d5b2f182c "pdflatex"
+  "plantillatfg.aux" 1750101902.42613 29231 0a16417b8baaa89acd1505dca1ba0908 "pdflatex"
+  "plantillatfg.lof" 1750101902.4388 4090 2f404c591b9412ecedb2b407a359f28f "pdflatex"
+  "plantillatfg.lot" 1750101902.4388 1054 1c21c529075fdec9ed74db9b8d7da6cc "pdflatex"
+  "plantillatfg.out" 1750101902.4388 18026 c30cf642915c724fa61ee2c8ad5fe4b4 "pdflatex"
+  "plantillatfg.tex" 1750101898.73799 137947 1237f5ab85fff9d1f473f2e826b3f4da ""
+  "plantillatfg.toc" 1750101902.4388 8315 08ef9362266c4c810ef5fe9d5b2f182c "pdflatex"
   "retina.jpg" 1748469358.74422 186143 31202da6c6f92419a46e4791a459dfdb ""
   "tfgetsinf.cls" 1742933374.29487 13289 71cd7a89e93672c9d59cf4ecccd71f95 ""
   (generated)
