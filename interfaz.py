@@ -1,5 +1,5 @@
 import streamlit as st
-from prueba2 import AnalizadorGenomico
+from back import AnalizadorGenomico
 import pandas as pd
 import os
 import zipfile
