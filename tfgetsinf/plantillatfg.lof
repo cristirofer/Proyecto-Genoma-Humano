@@ -14,26 +14,28 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Procesos genéticos de la síntesis de proteínas.}}{13}{figure.caption.8}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Ejemplo de cálculo de entropía condicional.}}{19}{figure.caption.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de transiciones a partir de la fuente de Markov.}}{24}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de transiciones a partir de la fuente de Markov.}}{25}{figure.caption.18}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de las librerías utilizadas y su relacion con los diferentes módulos.}}{29}{figure.caption.20}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama de flujo del sistema.}}{31}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de las librerías utilizadas y su relacion con los diferentes módulos.}}{29}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama de flujo del sistema.}}{31}{figure.caption.24}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Menú desplegable de selección de cromosoma en la interfaz de usuario.}}{38}{figure.caption.22}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Buscador de archivos en el sistema para proporcionar \acs {VCF} en la interfaz de usuario.}}{38}{figure.caption.23}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Parámetros configurables para el análisis en la interfaz de usuario.}}{39}{figure.caption.24}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Imágenes de los gráficos resultantes del análisis en la interfaz de usuario.}}{40}{figure.caption.25}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Archivos para descargar con las fuentes de Markov resultantes del análisis en la interfaz de usuario.}}{41}{figure.caption.26}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Archivo comprimido para descargar con todos los archivos resultantes del análisis en la interfaz de usuario.}}{41}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Fragmento de código de importación de librerías en back.py}}{33}{figure.caption.25}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Fragmento de código de importación de librerías en interfaz.py}}{34}{figure.caption.26}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Menú desplegable de selección de cromosoma en la interfaz de usuario.}}{39}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Buscador de archivos en el sistema para proporcionar \acs {VCF} en la interfaz de usuario.}}{39}{figure.caption.28}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Parámetros configurables para el análisis en la interfaz de usuario.}}{40}{figure.caption.29}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Imágenes de los gráficos resultantes del análisis en la interfaz de usuario.}}{41}{figure.caption.30}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Archivos para descargar con las fuentes de Markov resultantes del análisis en la interfaz de usuario.}}{42}{figure.caption.31}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Archivo comprimido para descargar con todos los archivos resultantes del análisis en la interfaz de usuario.}}{42}{figure.caption.32}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Gráficas obtenidas a partir del experimento 1.}}{44}{figure.caption.28}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Fuente de Markov de la secuencia original obtenido a partir del experimento 1.}}{45}{figure.caption.29}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Fuente de Markov de la secuencia mutada obtenido a partir del experimento 1.}}{45}{figure.caption.30}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Archivo con mutaciones no aplicadas obtenido a partir del experimento 1.}}{46}{figure.caption.31}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Gráficas obtenidas a partir del experimento 2.}}{47}{figure.caption.32}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Gráficas obtenidas a partir del experimento 3.}}{49}{figure.caption.33}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Fragmentos de la fuente de Markov de la secuencia original obtenida a partir del experimento 3.}}{50}{figure.caption.34}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Fragmentos de la fuente de Markov de la secuencia mutada obtenida a partir del experimento 3.}}{50}{figure.caption.35}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Gráficas obtenidas a partir del experimento 4.}}{52}{figure.caption.36}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Gráficas obtenidas a partir del experimento 1.}}{44}{figure.caption.33}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Fuente de Markov de la secuencia original obtenido a partir del experimento 1.}}{45}{figure.caption.34}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Fuente de Markov de la secuencia mutada obtenido a partir del experimento 1.}}{45}{figure.caption.35}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Archivo con mutaciones no aplicadas obtenido a partir del experimento 1.}}{46}{figure.caption.36}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Gráficas obtenidas a partir del experimento 2.}}{47}{figure.caption.37}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Gráficas obtenidas a partir del experimento 3.}}{49}{figure.caption.38}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Fragmentos de la fuente de Markov de la secuencia original obtenida a partir del experimento 3.}}{50}{figure.caption.39}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Fragmentos de la fuente de Markov de la secuencia mutada obtenida a partir del experimento 3.}}{50}{figure.caption.40}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Gráficas obtenidas a partir del experimento 4.}}{52}{figure.caption.41}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -602,6 +602,46 @@ Donde:
 
 Se recorren ambas secuencias (referencia y mutada) y se calcula la entropía de cada ventana. Posteriormente, se representan gráficamente las entropías de ambas secuencias a lo largo de la posición genómica para detectar picos o variaciones significativas.
 
+\subsubsection{Ejemplo}
+
+Se tiene la siguiente secuencia genómica simplificada de ADN: ATGCGATCGAACGT. Se define una ventana deslizante de tamaño $w = 8$ con desplazamiento $1$, lo cual permite obtener las siguientes sub-secuencias (ventanas):
+
+\begin{itemize}
+    \item Ventana 1: \texttt{ATGCGATC}
+    \item Ventana 2: \texttt{TGCGATCG}
+    \item Ventana 3: \texttt{GCGATCGA}
+    \item Ventana 4: \texttt{CGATCGAA}
+    \item Ventana 5: \texttt{GATCGAAC}
+    \item Ventana 6: \texttt{ATCGAACG}
+    \item Ventana 7: \texttt{TCGAACGT}
+\end{itemize}
+
+Tomamos como ejemplo la primera ventana: ATGCGATC. Dentro de esta ventana se extraen los trigrama (k-mers de tamaño 3), con desplazamiento 1:
+
+\begin{itemize}
+    \item ATG
+    \item TGC
+    \item GCG
+    \item CGA
+    \item GAT
+    \item ATC
+\end{itemize}
+
+En este caso, cada trigrama aparece una sola vez en la ventana, por lo que todas las probabilidades son iguales:
+
+\[
+p(\text{k-mer}) = \frac{1}{6}
+\]
+
+Ahora, se procede a calcular la entropía sustituyendo en la fórmula:
+
+\[
+H = - \sum_{i=1}^{n} p(k_i) \cdot \log_2 p(k_i)
+\]
+
+\[
+H = - 6 \cdot \left( \frac{1}{6} \cdot \log_2 \frac{1}{6} \right) = - \log_2 \frac{1}{6} \approx \log_2 6 \approx 2.585
+\]
 
 
 \subsection{Caso 2: Cálculo de entropía basada en probabilidades condicionales (Modelo de Markov)}
@@ -643,11 +683,13 @@ Si una transición no existe, se le asigna una probabilidad muy baja para evitar
 Se desliza una ventana de tamaño w sobre la secuencia y, dentro de esta ventana, se analizan las transiciones de tamaño k para calcular la contribución a la entropía condicional de cada transición.
 
 La entropía total de la ventana se calcula restando las contribuciones de todas las transiciones observadas.
-\\
-\\
 
-A modo de ejemplo: se tiene una secuencia genómica correspondiente a una ventana de tamaño 10: ATGCACGCAG, el tamaño de kmer es 4, y la orden de la fuente de Markov (k) es 3. A partir de esta secuencia se extraen los siguientes k-mers de tamaño 4: {ATGC, TGCA, GCAC, CACG, ACGC, CGCA, GCAG}.
+\subsubsection{Ejemplo}
 
+A modo de ejemplo, se tiene una secuencia genómica correspondiente a una ventana de tamaño 10: ATGCACGCAG, el tamaño de kmer es 4, y la orden de la fuente de Markov (k) es 3. A partir de esta secuencia se extraen los siguientes k-mers de tamaño 4: 
+\[
+\{ATGC,\ TGCA,\ GCAC,\ CACG,\ ACGC,\ CGCA,\ GCAG\}.
+\]
 Por lo tanto, se formalizan estos datos:
 
 \begin{itemize}
@@ -747,6 +789,25 @@ Para ello, se toma una ventana de tamaño 2L centrada en cada mutación, es deci
 
 El resultado se almacena en una lista que posteriormente se utiliza para generar un gráfico de densidad de mutaciones. Este gráfico representa las zonas con mayor concentración de variantes, lo cual podría indicar regiones funcionales afectadas.
 
+\subsubsection{Ejemplo}
+
+Tras procesar un archivo \acs{VCF}, se obtienen las siguientes posiciones de variantes genéticas en una región del genoma:
+
+\[
+\{1000,\ 1220,\ 1340,\ 1500,\ 3050,\ 8000\}
+\]
+
+Para estudiar la densidad de mutaciones, es necesario definir una ventana simétrica de tamaño $2L$, centrada en cada mutación. En este caso, se toma $L = 200$. De este modo para cada mutación se considera el rango: $[p - 200,\ p + 200]$
+
+donde $p$ es la posición de la mutación.
+
+Por ejemplo, para la mutación en la posición $1500$, se define la ventana $[1300,\ 1700]$. Dentro de esta ventana, se encuentra dentro del rango la mutación en $1340$ y la de $1500$, por lo que la densidad sería $2$. Realizando este procedimiento para todas las posiciones, se obtendría la siguiente lista de densidades:
+
+\[
+\{1,\ 3,\ 3,\ 2,\ 1,\ 1\}
+\]
+
+donde cada valor indica cuántas mutaciones se encuentran en la vecindad de cada variante.
 
 
 
@@ -890,7 +951,21 @@ En primer lugar, se realizan importaciones de librerías necesarias para ejecuta
 
 En back.py, el archivo que contiene la lógica de la aplicación, se hace uso de diversas bibliotecas necesarias para recuperar secuencias genómicas, analizarlas, generar gráficos, y trabajar con datos genómicos en diversos formatos. Se usan módulos estándar como math y time, y otros especializados como matplotlib para generar gráficos (aunque configurado para un backend sin interfaz gráfica con TkAgg), pandas y numpy para análisis de datos, y Bio de Biopython para acceder a bases de datos biológicas del \acs{NCBI}. También se importa vcfpy para manejar archivos \acs{VCF} (usados en genómica para representar variantes), y requests para hacer solicitudes HTTP. 
 
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.9\textwidth]{Capturaback.PNG}
+      \caption{Fragmento de código de importación de librerías en back.py}
+      \label{fig:etiqueta_opcional125}
+   \end{figure}
+
 En interfaz.py, se importan los módulos necesarios para construir la interfaz web con Streamlit, la herramienta de Python para crear aplicaciones interactivas. Se importa st de streamlit para generar la UI, AnalizadorGenomico desde el archivo back.py (que contiene la lógica), y bibliotecas estándar como pandas para manejo de datos, os para operaciones del sistema de archivos, y zipfile para comprimir archivos.  
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.7\textwidth]{Capturainterfaz.PNG}
+      \caption{Fragmento de código de importación de librerías en interfaz.py}
+      \label{fig:etiqueta_opcional126}
+   \end{figure}
 
 Adicionalmente, se ha añadido el archivo config.toml en la carpeta streamlit, estableciendo el parámetro maxUploadSize = 1000 dentro de la sección [server]. Esto significa que se ha aumentado el límite máximo de tamaño de archivo que el usuario puede subir a la aplicación a 1 GB, lo cual es necesario para poder trabajar con archivos genómicos grandes como las secuencias genómicas o los \acs{VCF}s. 
 
