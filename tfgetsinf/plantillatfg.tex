@@ -1360,6 +1360,15 @@ Sobre la secuencia mutada y la original, se han aplicado diferentes enfoques de 
 
 Con el fin de facilitar el uso de esta herramienta a usuarios que no poseen conocimientos avanzados en programación o informática, se ha desarrollado una interfaz gráfica utilizando la librería Streamlit. Esta interfaz permite cargar los archivos genómicos, ajustar los parámetros del análisis (como el tamaño de los k-mers, el orden de Markov o el tamaño de las ventanas), ejecutar el análisis completo, y visualizar los resultados en forma de gráficos. Además, ofrece la posibilidad de descargar los archivos resultantes (como las fuentes de Markov generadas o los informes de mutaciones no aplicadas) para su posterior estudio. Esta capa de abstracción permite que investigadores biomédicos, técnicos de laboratorio o personal sanitario puedan utilizar la herramienta sin necesidad de interactuar directamente con el código, lo que representa un paso importante hacia la usabilidad en contextos clínicos reales.
 
+\section{Relación del trabajo desarrollado con los estudios cursados}
+
+Durante el desarrollo de este proyecto se han puesto en práctica una cantidad significativa de conocimientos y competencias adquiridos a lo largo del Grado en Ingeniería Informática. 
+
+Por una parte, desde el ámbito teórico, toda la parte de construcción del autómata y las fuentes de Markov está directamente relacionada con lo que se estudia en Teoría de Lenguajes y Autómatas (TAL), Computabilidad y Complejidad (CMC), y Lenguajes de Programación y Procesadores de Lenguaje (LPPL) ya que se trabaja con estados, transiciones y cadenas. Por otro lado, el desarrollo del análisis (entropía, densidad, transición de k-mers) se basa en conceptos de Algorítmica (ALT), donde se diseñaron algoritmos eficientes para recorrer y procesar grandes volúmenes de datos, y para el tratamiento de datos se han aplicado los principios estudiados en Sistemas de Almacenamiento y Recuperación de Información (SAR) para organizar estructuras de datos (listas y diccionarios) y manejar distintos formatos estándar garantizando la compatibilidad entre ellos. Además, aunque no se han implementado modelos completos de aprendizaje automático, el enfoque basado en la detección de patrones y medidas estadísticas se relaciona con lo aprendido en Percepción (PER) y Aprendizaje Automático (APR). En este sentido, en los apartados de trabajo futuro, se plantean posibles extensiones en esa dirección.
+
+Desde el punto de vista de las competencias transversales, una de las más relevantes que se ha puesto en práctica durante este proyecto ha sido la de Innovación y creatividad, ya que el trabajo ha implicado enfrentarse a un problema sin una solución establecida, lo que ha requerido el diseño de un enfoque propio que combina múltiples áreas del conocimiento, y que va más allá de los contenidos abordados en las asignaturas estudiadas.
+
+
 \section{Trabajo futuro}
 
 Aunque los resultados obtenidos pueden ser prometedores, el presente trabajo puede ampliarse y mejorarse en distintas direcciones:
@@ -1393,7 +1402,7 @@ Aunque en este proyecto se ha utilizado la entropía como herramienta principal 
 
 Estas métricas podrían complementar o incluso superar a la entropía en algunos casos, como por ejemplo para comparar distribuciones o medir la cantidad de redundancia en el genoma.\\\\\\
 
-En definitiva, este trabajo ha abordado el reto de la combinación entre Teoría de la Información y análisis genómico, proponiendo una solución automatizada y visual que contribuye a optimizar el estudio de enfermedades genéticas raras, y sienta las bases para la investigación con aplicaciones reales en el diagnóstico de enfermedades raras como la \acs{RP}. A medida que se incorporen nuevas herramientas y se integren con otras metodologías, este enfoque podría evolucionar hacia su uso práctico por parte de profesionales del ámbito de la salud.
+En definitiva, este trabajo ha abordado el reto de la combinación entre Teoría de la Información y análisis genómico, proponiendo una solución automatizada y visual que contribuye al estudio de enfermedades genéticas raras, y sienta las bases para la investigación con aplicaciones reales en el diagnóstico de enfermedades raras como la \acs{RP}. A medida que se incorporen nuevas herramientas y se integren con otras metodologías, este enfoque podría evolucionar hacia su uso práctico por parte de profesionales del ámbito de la salud.
 
 
 
