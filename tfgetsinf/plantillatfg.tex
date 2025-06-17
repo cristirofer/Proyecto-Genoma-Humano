@@ -112,7 +112,7 @@
    \\
 \end{abstract}
 \begin{abstract}[english]
-   This Final Degree Project has focused on the development of a computational tool for genomic sequence analysis based on Information Theory, with the aim of studying how certain genetic mutations associated with rare diseases, specifically retinitis pigmentosa (RP), affect the genome. To achieve this, techniques such as entropy calculation (both simple and conditional), mutation density analysis across the genome have been applied and and Markov source modeling. 
+   This Final Degree Project has focused on the development of a computational tool for genomic sequence analysis based on Information Theory, with the aim of studying how certain genetic mutations associated with rare diseases, specifically retinitis pigmentosa (RP), affect the genome. To achieve this, techniques such as entropy calculation (both simple and conditional), mutation density analysis across the genome have been applied and Markov source modeling. 
 
    The system has been designed with a modular approach, separating the analysis logic from the visual layer using a graphical interface. This interface allows users to load genomic files, configure key analysis parameters (such as k-mer size, Markov model order, window size...), and clearly visualize the results. In doing so, it makes the tool accessible to clinical or research personnel without advanced programming knowledge. 
 
@@ -196,7 +196,7 @@ Se conoce como “enfermedad rara” o “huérfana” a aquellas enfermedades q
 
 Sin embargo, son muchas las personas que conviven con ellas, más de 300 millones en el mundo, 3 de ellos en España, ya que se estima que existen más de 7.000 enfermedades raras, de las cuales se han identificado 6.417 según datos recientes\cite{CON}.
 
-Estas patologías suelen ser crónicas, progresivas, tienen origen genético y, con frecuencia son de carácter invalidante. Además, pueden afectar tanto a las capacidades físicas de las personas como a las mentales, conductuales y sensoriales. Normalmente comienzan a manifestarse de forma temprana, se estima que hasta en dos tercios de los pacientes los síntomas comienzan antes de los 2 años, aunque pueden aparecer a lo largo de toda la vida. 
+Estas patologías suelen ser crónicas, progresivas, tienen origen genético y, con frecuencia son de carácter invalidante. Además, pueden afectar tanto a las capacidades físicas de las personas como mentales, conductuales y sensoriales. Normalmente comienzan a manifestarse de forma temprana, se estima que hasta en dos tercios de los pacientes los síntomas comienzan antes de los 2 años, aunque pueden aparecer a lo largo de toda la vida. 
 
 La retinosis pigmentaria (\acs{RP}) es un conjunto de enfermedades hereditarias degenerativas que afectan a la retina, provocando una pérdida progresiva de la visión. La \acs{RP} es una de las Distrofias Hereditarias de Retina (\acs{DHR}) más comunes, pero existen otras como la enfermedad de Stargardt, la distrofia viteliforme de Best, y el síndrome de Usher. Como su nombre indica, esta enfermedad afecta directamente a la retina, es decir, la capa interna y posterior del ojo, sensible a la luz, donde se encuentra la mayor parte de los fotorreceptores. Estos fotorreceptores son células especializadas que convierten la luz en señales eléctricas, que luego se transmiten al cerebro a través del nervio óptico\cite{GAR}.
 
@@ -254,12 +254,12 @@ El objetivo principal de este Trabajo de Fin de Grado es proporcionar herramient
 
 \subsection{Procesamiento de archivos \acs{VCF} y secuencias genómicas}
 
-Hacer uso de herramientas y librerías de uso biomédico que permitan la lectura, escritura y análisis de archivos genéticos, y de esta manera, realizar un preproceso y de la información genética y aplicar mutaciones sobre la secuencia de referencia de forma precisa y eficiente.
+Hacer uso de herramientas y librerías de uso biomédico que permitan la lectura, escritura y análisis de archivos genéticos, y de esta manera, realizar un preproceso de la información genética y aplicar mutaciones sobre la secuencia de referencia de forma precisa y eficiente.
 
 Preguntas de Investigación: 
 \begin{itemize}
 \item ¿Qué formato presentan los archivos \acs{VCF} y cómo se puede garantizar la compatibilidad con los archivos \acs{FASTA} con la secuencia genómica?
-\item ¿Cómo se pueden integrar las trasformaciones necesarias en la secuencia de referencia de manera correcta y sin conflictos entre ellas?
+\item ¿Cómo se pueden integrar las transformaciones necesarias en la secuencia de referencia de manera correcta y sin conflictos entre ellas?
 \end{itemize}
 
 \subsection{Aplicación de Teoría de la Información y fuentes de Markov al análisis de secuencias genómicas }
@@ -276,7 +276,7 @@ Preguntas de Investigación:
 
 \subsection{Desarrollo de una interfaz de usuario para la visualización de resultados }
 
-Crear una aplicación para facilitar el uso del programa, sin necesidad de tener conocimientos avanzados en informática. Esto es especialmente importante en este contexto, ya que se trata de una herramienta enfocada a un usuario que no es experto en informática. Además, esta interfaz debe permitir la interacción del usuario con la aplicación, modificando distintos parámetros para obtener diferentes resultados en función de lo que se busque, y visualizar gráficamente y de manera unificada los resultados de este análisis. 
+Crear una aplicación para facilitar el uso del programa, sin necesidad de tener conocimientos avanzados en informática. Esto es especialmente importante en este contexto, ya que se trata de una herramienta enfocada a un usuario que no es experto en informática. Además, esta interfaz debe permitir la interacción del usuario con la aplicación, modificando distintos parámetros para obtener diferentes resultados en función de los objetivos, y visualizar gráficamente y de manera unificada los resultados de este análisis. 
 
 Preguntas de Investigación: 
 \begin{itemize}
@@ -297,10 +297,10 @@ Preguntas de Investigación:
 
 \section{Estructura de la memoria}
 
-La memoria de este \acs{TFG} está estructurada en 7 secciones, cada una de estas a su vez divididas en subsecciones.  
+La memoria de este \acs{TFG} está estructurada en 8 secciones, cada una de estas a su vez divididas en subsecciones.  
 
 
-La primera sección se introduce el proyecto, se exponen el contexto y la motivación, y se justifican los objetivos. En la sección 2, se realiza una investigación del conocimiento y tecnologías existentes en la actualidad sobre el tema que se aborda en el proyecto, así como las limitaciones que aún existen, lo que justifica la necesidad de este proyecto. En la sección 3, se realiza una exposición de los conceptos clave necesarios para entender este trabajo, genética y mutaciones, los archivos genómicos utilizados y los principios de la Teoría de la Información. Después, en la sección 4, se describe la metodología seguida y el flujo de información y herramientas usadas a lo largo del proyecto. En la sección 5, se explica detalladamente el funcionamiento del programa. En la sección 6 se exponen y analizan los resultados obtenidos mediante la realización de pruebas cambiando los diferentes parámetros. Por último, en la sección 7, se finaliza el trabajo, explicando las conclusiones obtenidas, seguida por un listado de las referencias bibliográficas utilizadas. 
+La primera sección se introduce el proyecto, se exponen el contexto y la motivación, y se justifican los objetivos. En la sección 2, se realiza una investigación del conocimiento y tecnologías existentes en la actualidad sobre el tema que se aborda en el proyecto, así como las limitaciones que aún existen, lo que justifica la necesidad de este proyecto. En la sección 3, se realiza una exposición de los conceptos clave necesarios para entender este trabajo, genética y mutaciones, los archivos genómicos utilizados y los principios de la Teoría de la Información. Después, en la sección 4, se analizan tanto el marco legal y éticos, como las soluciones escogidas. La sección 5 describe la metodología seguida y el flujo de información y herramientas usadas a lo largo del proyecto. En la sección 6, se explica detalladamente el funcionamiento del programa. En la sección 7 se exponen y analizan los resultados obtenidos mediante la realización de pruebas cambiando los diferentes parámetros. Por último, en la sección 8, se finaliza el trabajo, explicando las conclusiones obtenidas, seguida por un listado de las referencias bibliográficas utilizadas. 
 
 
 %\section{Notes bibliografiques} %%%%% Opcional
@@ -319,7 +319,7 @@ El campo del análisis genómico de la retinosis pigmentaria (\acs{RP}) está av
 
 Los métodos tradicionales basados en sistemas de codificación médica como el ICD (International Classification of Diseases) y el SNOMED (Systematized Nomenclature of Medicine) han sido ampliamente utilizados en la medicina para clasificar enfermedades y registrar diagnósticos. Sin embargo, en el caso de enfermedades genéticas raras como la retinosis pigmentaria (\acs{RP}), estos sistemas de codificación presentan importantes limitaciones\cite{VER}. Esto es debido a que es una patología altamente heterogénea a nivel genético y clínico: existen numerosas mutaciones responsables y los síntomas pueden evolucionar de formas muy diversas entre pacientes\cite{HAR}. 
 
-Debido a esta complejidad, se ha recurrido a técnicas más especificas como los paneles genéticos dirigidos o la secuenciación de exoma completo (\acs{WES}). Estos enfoques son capaces de examinar una gran cantidad de mutaciones de cada paciente. No obstante, muchos pacientes quedan sin un diagnositco definitivo debido a la dificultad para interpretar el gran volumen de información relativa a las variantes encontradas tras la secuenciación.
+Debido a esta complejidad, se ha recurrido a técnicas más especificas como los paneles genéticos dirigidos o la secuenciación de exoma completo (\acs{WES}). Estos enfoques son capaces de examinar una gran cantidad de mutaciones de cada paciente. No obstante, muchos pacientes quedan sin un diagnóstico definitivo debido a la dificultad para interpretar el gran volumen de información relativa a las variantes encontradas tras la secuenciación.
 
 \section{Inteligencia Artificial}
 
